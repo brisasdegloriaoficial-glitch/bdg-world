@@ -2,14 +2,124 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>BDG World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BDG World - Sitio Oficial</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #0f172a; color: white; }
-        h1 { color: #F59E0B; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* Navegación */
+        header {
+            background-color: #1e293b;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #3b82f6;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #60a5fa;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+        /* Sección Hero (Portada) */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #020617;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <h1>Bienvenido a BDG World</h1>
-    <p>La plataforma oficial de Brisas de Gloria está en construcción.</p>
+
+    <header>
+        <div class="logo">BDG WORLD</div>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Sobre el Juego</a>
+            <a href="#">Avances</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Bienvenido a Brisas de Gloria</h1>
+        <p>La experiencia 3D de carreras de caballos en desarrollo. Innovación, pasión y tecnología en un solo lugar.</p>
+        <a href="#sobre" class="btn">Explorar Proyecto</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 BDG World. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
