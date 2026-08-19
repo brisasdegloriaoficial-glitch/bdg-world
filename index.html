@@ -5,35 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brisas de Gloria - BDG World</title>
     <style>
-        body, html {
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;800&family=Montserrat:wght@400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow: hidden;
-            background-color: #0b0f19;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        .screen-container {
-            width: 100%;
-            height: 100%;
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
+            padding: 40px 20px 20px;
         }
 
-        .desktop-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        /* BIENVENIDO A (TAMAÑO MEDIO PROPORCIONADO) */
+        .welcome-title {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: #a38242;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            margin-top: 20px;
+        }
+
+        /* BRISAS DE GLORIA (GIGANTE, BARROCO, ORO VIEJO / COCHANO) */
+        .main-title {
+            font-family: 'Cinzel Decorative', cursive, serif;
+            font-size: 78px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            max-width: 1000px;
+            margin: 10px 0;
+            
+            /* Color Oro Cochano / Oro Viejo Envejecido */
+            background: linear-gradient(
+                180deg, 
+                #f3e5ab 0%, 
+                #c5a059 25%, 
+                #8c6d3b 65%, 
+                #4a3718 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            /* Relieve profundo */
+            filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.95));
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #94a3b8;
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        /* MENÚ INFERIOR LIGADO */
+        nav {
+            display: flex;
+            gap: 25px;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 12px 30px;
+            border-radius: 6px;
+            border: 1px solid #785a28;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #f3e5ab;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .welcome-title { font-size: 20px; }
+            .main-title { font-size: 42px; }
+            nav { flex-direction: column; gap: 10px; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <div class="screen-container">
-        <img src="https://i.ibb.co/XfXkXkX/Brisas-de-Gloria.png" alt="Pantalla de Brisas de Gloria" class="desktop-image">
-    </div>
+
+    <div class="welcome-title">Bienvenido a</div>
+    
+    <h1 class="main-title">Brisas de Gloria</h1>
+    
+    <p class="subtitle">La experiencia 3D de carreras de caballos en desarrollo. Innovación, pasión y tecnología.</p>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-el-juego">Sobre el Juego</a>
+        <a href="#avances">Avances</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
 </body>
 </html>
