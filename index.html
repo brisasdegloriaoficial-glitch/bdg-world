@@ -5,25 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BDG World</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            background-color: #0f172a;
-            color: #f1f5f9;
+            background-color: #0b0f19;
+            color: #e2e8f0;
             overflow-x: hidden;
-            scroll-behavior: smooth; /* Para el desplazamiento suave */
+            scroll-behavior: smooth;
         }
 
+        /* BARRA SUPERIOR PROPORCIONADA */
         header {
-            background: linear-gradient(to right, #1e293b, #111827);
-            padding: 20px 50px;
+            background: linear-gradient(to right, #111827, #0b0f19);
+            padding: 12px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #a87e2f; /* Borde dorado */
-            box-shadow: 0 4px 15px rgba(168, 126, 47, 0.2);
+            border-bottom: 1px solid #785a28;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
             position: fixed;
             width: 100%;
             top: 0;
@@ -31,29 +37,30 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            color: #d1b464; /* Dorado base */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #c5a059;
+            letter-spacing: 1px;
         }
 
         nav a {
-            color: #f1f5f9;
+            color: #94a3b8;
             text-decoration: none;
-            margin-left: 20px;
-            font-weight: 700;
-            font-size: 16px;
-            transition: color 0.3s ease, border-bottom 0.3s ease;
+            margin-left: 18px;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
             text-transform: uppercase;
         }
 
         nav a:hover {
-            color: #d1b464;
-            border-bottom: 2px solid #d1b464;
+            color: #d4af37;
         }
 
         main {
-            padding: 150px 50px 50px; /* Padding superior ajustado para el header fixed */
+            padding: 100px 20px 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -65,97 +72,106 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 100px; /* Espacio para el desplazamiento */
+            justify-content: center;
+            padding: 40px 10px;
+            max-width: 1000px;
         }
 
-        /* --- ESTILO DEL TÍTULO DORADO PREMIUM --- */
-        .gold-title {
-            font-family: 'Cinzel', serif; /* Tipografía más de "época"/elegante */
-            font-size: 64px;
-            margin-bottom: 30px;
-            position: relative;
+        /* "BIENVENIDO A" EN TAMAÑO MEDIO ARRIBA */
+        .welcome-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #8c6d3b;
+            margin-bottom: 5px;
+        }
+
+        /* --- ORO VIEJO / DORADO COCHANO PARA BRISAS DE GLORIA --- */
+        .gold-title-main {
+            font-family: 'Cinzel', serif;
+            font-size: 62px;
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            
+            /* Degradado de Latón y Oro Viejo */
             background: linear-gradient(
-                to bottom,
-                #fff7af 0%,
-                #d3ae46 22%,
-                #d3ae46 24%,
-                #fff9b6 26%,
-                #fff9b6 27%,
-                #d1b05a 40%,
-                #d1b05a 78%,
-                #413007 100%
+                180deg, 
+                #f3e5ab 0%, 
+                #c5a059 30%, 
+                #8c6d3b 60%, 
+                #4a3718 100%
             );
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: transparent;
-            -webkit-background-size: 100% 100%;
-            background-size: 100% 100%;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8)) drop-shadow(0 0 5px rgba(255, 230, 160, 0.4));
-            animation: shine 5s linear infinite;
-        }
-
-        /* Brillo metálico */
-        @keyframes shine {
-            to { background-position: -200% center; }
+            
+            /* Sombra profunda para relieve metálico */
+            filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.9));
         }
 
         .hero p {
-            font-size: 22px;
-            color: #94a3b8;
-            max-width: 800px;
-            line-height: 1.6;
-            margin-bottom: 50px;
+            font-size: 15px;
+            color: #8a99ad;
+            max-width: 650px;
+            line-height: 1.5;
+            margin-bottom: 30px;
         }
 
+        /* BOTÓN EN DORADO VIEJO */
         .btn-gold {
-            background-color: #d3ae46;
-            color: #0f172a;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
+            background: linear-gradient(180deg, #b89248 0%, #785a28 100%);
+            color: #0b0f19;
+            padding: 12px 30px;
+            border: 1px solid #d4af37;
+            border-radius: 4px;
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
             text-decoration: none;
-            box-shadow: 0 4px 6px rgba(168, 126, 47, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: all 0.2s ease;
         }
 
         .btn-gold:hover {
-            background-color: #f5e6b0;
-            box-shadow: 0 6px 12px rgba(168, 126, 47, 0.5);
-            transform: translateY(-3px);
+            background: linear-gradient(180deg, #d4af37 0%, #8c6d3b 100%);
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+            transform: translateY(-2px);
         }
 
-        /* --- SECCIÓN SIGUIENTE (SOBRE EL JUEGO) --- */
+        /* SECCIÓN PUNTO DE PARTIDA COMPACTA */
         #sobre-el-juego {
             width: 100%;
-            margin-top: 100px;
-            padding: 50px;
-            background: linear-gradient(to bottom, #111827, #1e293b);
-            border-top: 2px solid #d1b464;
-            border-radius: 10px;
+            max-width: 900px;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #111827;
+            border: 1px solid #4a3718;
+            border-radius: 6px;
             text-align: center;
         }
 
         #sobre-el-juego h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 40px;
-            color: #d1b464;
-            margin-bottom: 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            color: #c5a059;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         #sobre-el-juego p {
-            font-size: 18px;
-            color: #f1f5f9;
-            max-width: 900px;
-            margin: 0 auto;
-            line-height: 1.8;
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.6;
         }
-
     </style>
 </head>
 <body>
@@ -171,17 +187,15 @@
 
     <main>
         <section id="hero" class="hero">
-            <!-- TÍTULO DORADO PREMIUM MEJORADO -->
-            <h1 class="gold-title">Bienvenidos a Brisas de Gloria</h1>
+            <span class="welcome-subtitle">Bienvenido a</span>
+            <h1 class="gold-title-main">Brisas de Gloria</h1>
             <p>La experiencia 3D de carreras de caballos en desarrollo. Innovación, pasión y tecnología en un solo lugar.</p>
-            <!-- Botón ahora es un link que apunta al ID de la sección -->
             <a href="#sobre-el-juego" class="btn-gold">Explorar Proyecto</a>
         </section>
 
-        <!-- Esta es la sección a donde baja el botón -->
         <section id="sobre-el-juego">
             <h2>Punto de Partida</h2>
-            <p>Aquí comienza la descripción extendida del proyecto. En las siguientes fases, convertiremos este espacio en un panel interactivo detallado con los modos de juego, la historia detrás del proyecto, la tecnología 3D que estamos desarrollando y las características que lo diferenciarán de cualquier otra simulación. Tu opinión en este punto será fundamental.</p>
+            <p>Aquí comienza la descripción extendida del proyecto. En las siguientes fases, convertiremos este espacio en un panel interactivo detallado con los modos de juego, la historia detrás del proyecto, la tecnología 3D que estamos desarrollando y las características que lo diferenciarán de cualquier otra simulación.</p>
         </section>
     </main>
 </body>
