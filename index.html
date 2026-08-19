@@ -3,123 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDG World - Sitio Oficial</title>
+    <title>BDG World</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:wght@700&family=Montserrat:wght@400;700&display=swap');
 
         body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
             background-color: #0f172a;
-            color: #f8fafc;
-            line-height: 1.6;
+            color: #f1f5f9;
+            overflow-x: hidden;
+            scroll-behavior: smooth; /* Para el desplazamiento suave */
         }
 
-        /* Navegación */
         header {
-            background-color: #1e293b;
-            padding: 1rem 2rem;
+            background: linear-gradient(to right, #1e293b, #111827);
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #3b82f6;
+            border-bottom: 2px solid #a87e2f; /* Borde dorado */
+            box-shadow: 0 4px 15px rgba(168, 126, 47, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #60a5fa;
-            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #d1b464; /* Dorado base */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
         nav a {
-            color: #cbd5e1;
+            color: #f1f5f9;
             text-decoration: none;
-            margin-left: 1.5rem;
-            font-weight: 500;
-            transition: color 0.3s;
+            margin-left: 20px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            text-transform: uppercase;
         }
 
         nav a:hover {
-            color: #60a5fa;
+            color: #d1b464;
+            border-bottom: 2px solid #d1b464;
         }
 
-        /* Sección Hero (Portada) */
-        .hero {
-            min-height: 80vh;
+        main {
+            padding: 150px 50px 50px; /* Padding superior ajustado para el header fixed */
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            min-height: 100vh;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-            text-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        .hero {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 100px; /* Espacio para el desplazamiento */
+        }
+
+        /* --- ESTILO DEL TÍTULO DORADO PREMIUM --- */
+        .gold-title {
+            font-family: 'Cinzel', serif; /* Tipografía más de "época"/elegante */
+            font-size: 64px;
+            margin-bottom: 30px;
+            position: relative;
+            background: linear-gradient(
+                to bottom,
+                #fff7af 0%,
+                #d3ae46 22%,
+                #d3ae46 24%,
+                #fff9b6 26%,
+                #fff9b6 27%,
+                #d1b05a 40%,
+                #d1b05a 78%,
+                #413007 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8)) drop-shadow(0 0 5px rgba(255, 230, 160, 0.4));
+            animation: shine 5s linear infinite;
+        }
+
+        /* Brillo metálico */
+        @keyframes shine {
+            to { background-position: -200% center; }
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 22px;
             color: #94a3b8;
-            max-width: 600px;
-            margin-bottom: 2rem;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 50px;
         }
 
-        .btn {
-            background-color: #2563eb;
-            color: white;
-            padding: 0.8rem 1.8rem;
+        .btn-gold {
+            background-color: #d3ae46;
+            color: #0f172a;
+            padding: 15px 40px;
             border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: bold;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
             cursor: pointer;
             text-decoration: none;
-            transition: background 0.3s;
+            box-shadow: 0 4px 6px rgba(168, 126, 47, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
         }
 
-        .btn:hover {
-            background-color: #1d4ed8;
+        .btn-gold:hover {
+            background-color: #f5e6b0;
+            box-shadow: 0 6px 12px rgba(168, 126, 47, 0.5);
+            transform: translateY(-3px);
         }
 
-        footer {
+        /* --- SECCIÓN SIGUIENTE (SOBRE EL JUEGO) --- */
+        #sobre-el-juego {
+            width: 100%;
+            margin-top: 100px;
+            padding: 50px;
+            background: linear-gradient(to bottom, #111827, #1e293b);
+            border-top: 2px solid #d1b464;
+            border-radius: 10px;
             text-align: center;
-            padding: 1.5rem;
-            background-color: #020617;
-            color: #64748b;
-            font-size: 0.9rem;
         }
+
+        #sobre-el-juego h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            color: #d1b464;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        #sobre-el-juego p {
+            font-size: 18px;
+            color: #f1f5f9;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
     </style>
 </head>
 <body>
-
     <header>
-        <div class="logo">BDG WORLD</div>
+        <div class="logo">BDG World</div>
         <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Sobre el Juego</a>
-            <a href="#">Avances</a>
-            <a href="#">Contacto</a>
+            <a href="#hero">Inicio</a>
+            <a href="#sobre-el-juego">Sobre el Juego</a>
+            <a href="#avances">Avances</a>
+            <a href="#contacto">Contacto</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <h1>Bienvenido a Brisas de Gloria</h1>
-        <p>La experiencia 3D de carreras de caballos en desarrollo. Innovación, pasión y tecnología en un solo lugar.</p>
-        <a href="#sobre" class="btn">Explorar Proyecto</a>
-    </section>
+    <main>
+        <section id="hero" class="hero">
+            <!-- TÍTULO DORADO PREMIUM MEJORADO -->
+            <h1 class="gold-title">Bienvenidos a Brisas de Gloria</h1>
+            <p>La experiencia 3D de carreras de caballos en desarrollo. Innovación, pasión y tecnología en un solo lugar.</p>
+            <!-- Botón ahora es un link que apunta al ID de la sección -->
+            <a href="#sobre-el-juego" class="btn-gold">Explorar Proyecto</a>
+        </section>
 
-    <footer>
-        <p>&copy; 2026 BDG World. Todos los derechos reservados.</p>
-    </footer>
-
+        <!-- Esta es la sección a donde baja el botón -->
+        <section id="sobre-el-juego">
+            <h2>Punto de Partida</h2>
+            <p>Aquí comienza la descripción extendida del proyecto. En las siguientes fases, convertiremos este espacio en un panel interactivo detallado con los modos de juego, la historia detrás del proyecto, la tecnología 3D que estamos desarrollando y las características que lo diferenciarán de cualquier otra simulación. Tu opinión en este punto será fundamental.</p>
+        </section>
+    </main>
 </body>
 </html>
