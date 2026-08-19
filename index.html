@@ -5,87 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brisas de Gloria - BDG World</title>
     <style>
-        /* Eliminamos márgenes por defecto */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Evitamos barras de desplazamiento en el hero */
-            background-color: #0b0f19; /* Fondo oscuro por seguridad */
-            font-family: Arial, sans-serif; /* Font básica para enlaces invisibles */
-        }
-
-        /* --- CONTENEDOR PRINCIPAL (EL HERO) --- */
-        .hero-container {
-            position: relative;
-            width: 100vw; /* Ancho completo de la ventana */
-            height: 100vh; /* Alto completo de la ventana */
-            
-            /* USAMOS TU IMAGEN PERFECTA DE FONDO */
-            background-image: url('https://replicate.delivery/xpbkg/209c3131-482a-43b8-bd23-64478f725a33/output.png');
-            
-            /* Ajustes de fondo para que se vea bien en cualquier pantalla */
-            background-size: cover; /* Cubre todo el espacio sin deformarse */
-            background-position: center; /* Centra la imagen */
-            background-repeat: no-repeat;
-        }
-
-        /* --- CAPA DE ENLACES INVISIBLES (EL MENÚ) --- */
-        /* Esta capa se posiciona encima de la zona del menú de la imagen */
-        .invisible-menu {
-            position: absolute;
-            bottom: 5vh; /* Lo situamos cerca de la parte inferior, donde está el menú en tu imagen */
-            left: 50%;
-            transform: translateX(-50%); /* Centramos horizontalmente */
-            width: 80%; /* Ancho de la zona de cliqueo */
-            max-width: 800px;
+            overflow: hidden;
+            background-color: #0b0f19;
             display: flex;
-            justify-content: center; /* Centramos los enlaces entre ellos */
-            gap: 20px; /* Espacio entre las palabras invisibles */
-            z-index: 10; /* Nos aseguramos de que esté por encima */
+            justify-content: center;
+            align-items: center;
         }
 
-        /* --- ESTILO DE LOS ENLACES REALES PERO INVISIBLES --- */
-        .invisible-menu a {
-            /* Hacemos que el texto sea invisible */
-            color: transparent;
-            text-decoration: none;
-            
-            /* Les damos tamaño y forma para que coincidan con las palabras de la imagen */
-            padding: 15px 25px; 
-            font-size: 20px; /* Tamaño similar al de la imagen para calcular el área */
-            font-weight: bold;
-            text-transform: uppercase;
-            
-            /* Border para debuggear (borrar luego) */
-            /* border: 1px solid red; */ 
-            
-            cursor: pointer; /* Muestra la manito del ratón */
+        .screen-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* --- EFECTO HOVER (OPCIONAL) --- */
-        /* Si quieres que algo cambie levemente al pasar el ratón, 
-           puedes darle un fondo muy suave aquí */
-        .invisible-menu a:hover {
-            background-color: rgba(212, 175, 55, 0.1); /* Un toque dorado casi invisible */
-            border-radius: 5px;
+        .desktop-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
         }
-
     </style>
 </head>
 <body>
-
-    <div class="hero-container">
-        
-        <!-- Aquí está la capa invisible con los enlaces -->
-        <nav class="invisible-menu">
-            <a href="#inicio">Inicio</a>
-            <a href="#sobre-el-juego">Sobre el Juego</a>
-            <a href="#avances">Avances</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-
+    <div class="screen-container">
+        <img src="https://i.ibb.co/XfXkXkX/Brisas-de-Gloria.png" alt="Pantalla de Brisas de Gloria" class="desktop-image">
     </div>
-
 </body>
 </html>
