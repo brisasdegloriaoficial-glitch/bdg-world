@@ -70,7 +70,7 @@
         .content-section h2 { font-family: 'Cinzel', serif; color: #c5a059; margin-bottom: 15px; }
         .content-section p, .content-section ul { color: #d1d5db; line-height: 1.6; }
 
-        #boton-jugar {
+        .boton-dorado {
             font-family: 'Cinzel', serif;
             font-weight: 700;
             text-transform: uppercase;
@@ -80,23 +80,60 @@
             border: 1px solid #785a28;
             border-radius: 6px;
             padding: 14px 32px;
-            margin-top: 25px;
             cursor: pointer;
         }
-        #boton-jugar:hover { filter: brightness(1.1); }
+        .boton-dorado:hover { filter: brightness(1.1); }
+
+        #boton-jugar { margin-top: 25px; }
+
         #contenedor-juego {
             width: 100%;
             display: flex;
             justify-content: center;
             margin-top: 25px;
         }
-        #iframe-juego {
+        .juego-caja {
+            position: relative;
             width: 100%;
             max-width: 960px;
             height: 600px;
             border: 2px solid #785a28;
             border-radius: 8px;
             background: #000;
+            overflow: hidden;
+        }
+        #iframe-juego {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        #overlay-tutorial {
+            position: absolute;
+            inset: 0;
+            background: rgba(11, 15, 25, 0.96);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+        }
+        #overlay-tutorial h3 {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        #overlay-tutorial ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        #overlay-tutorial li {
+            color: #e2e8f0;
+            font-size: 15px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -104,14 +141,30 @@
     <div id="inicio" class="art-container">
         <img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
 
-        <button id="boton-jugar" onclick="mostrarJuego()">JUGAR DEMO</button>
+        <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
 
         <div id="contenedor-juego" style="display:none;">
-            <iframe
-                id="iframe-juego"
-                data-src="/Pre_Alfa_A/BrisasDeGloria.html"
-                allowfullscreen>
-            </iframe>
+            <div class="juego-caja">
+                <iframe
+                    id="iframe-juego"
+                    data-src="/Pre_Alfa_A/BrisasDeGloria.html"
+                    allowfullscreen>
+                </iframe>
+
+                <div id="overlay-tutorial">
+                    <h3>Cómo jugar</h3>
+                    <ul>
+                        <li>Flecha arriba: Arrear (acelerar)</li>
+                        <li>Flecha abajo: Frenar</li>
+                        <li>Flecha izquierda: Girar a la izquierda</li>
+                        <li>Flecha derecha: Girar a la derecha</li>
+                        <li>Clic izquierdo del mouse: Látigo izquierdo</li>
+                        <li>Clic derecho del mouse: Látigo derecho</li>
+                        <li>Barra espaciadora: Cambiar de mano</li>
+                    </ul>
+                    <button id="boton-empezar" class="boton-dorado" onclick="empezarJuego()">EMPEZAR</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -124,6 +177,10 @@
             iframe.src = iframe.getAttribute('data-src');
             contenedor.style.display = 'flex';
             boton.style.display = 'none';
+        }
+
+        function empezarJuego() {
+            document.getElementById('overlay-tutorial').style.display = 'none';
         }
     </script>
 
