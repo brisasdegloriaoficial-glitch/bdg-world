@@ -81,10 +81,36 @@
             border-radius: 6px;
             padding: 14px 32px;
             cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
         }
         .boton-dorado:hover { filter: brightness(1.1); }
 
         #boton-jugar { margin-top: 25px; }
+
+        .botones-inicio {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .boton-secundario {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 16px;
+            color: #f3e5ab;
+            background: transparent;
+            border: 1px solid #785a28;
+            border-radius: 6px;
+            padding: 14px 32px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .boton-secundario:hover { background: rgba(197, 160, 89, 0.1); }
 
         #contenedor-juego {
             width: 100%;
@@ -148,7 +174,10 @@
     <div id="inicio" class="art-container">
         <img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
 
-        <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
+        <div class="botones-inicio">
+            <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
+            <a class="boton-secundario" href="https://github.com/brisasdegloriaoficial-glitch/bdg-world/releases/download/v1.0-prealfa/BrisasDeGloria.apk" download>DESCARGAR PARA ANDROID</a>
+        </div>
 
         <div id="contenedor-juego" style="display:none;">
             <div class="juego-caja">
