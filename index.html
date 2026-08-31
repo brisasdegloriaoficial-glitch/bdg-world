@@ -118,6 +118,7 @@
             justify-content: center;
             padding: 30px;
             text-align: center;
+            overflow-y: auto;
         }
         #overlay-tutorial h3 {
             font-family: 'Cinzel', serif;
@@ -128,12 +129,18 @@
         }
         #overlay-tutorial ul {
             list-style: none;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         #overlay-tutorial li {
             color: #e2e8f0;
             font-size: 15px;
             margin-bottom: 10px;
+        }
+        #overlay-tutorial .nota-limite {
+            color: #c5a059;
+            font-size: 13px;
+            margin-bottom: 25px;
+            max-width: 420px;
         }
     </style>
 </head>
@@ -160,8 +167,9 @@
                         <li>Flecha derecha: Girar a la derecha</li>
                         <li>Clic izquierdo del mouse: Látigo izquierdo</li>
                         <li>Clic derecho del mouse: Látigo derecho</li>
-                        <li>Barra espaciadora: Cambiar de mano</li>
+                        <li>Barra espaciadora: Cambiar de mano (alterna el lado del látigo)</li>
                     </ul>
+                    <p class="nota-limite">El arreo y el látigo son limitados durante la carrera — mirá el contador en pantalla y usalos con cuidado. Cambiar de mano te ayuda a repartir el esfuerzo entre los dos lados.</p>
                     <button id="boton-empezar" class="boton-dorado" onclick="empezarJuego()">EMPEZAR</button>
                 </div>
             </div>
