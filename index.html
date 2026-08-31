@@ -109,7 +109,6 @@
         <div id="contenedor-juego" style="display:none;">
             <iframe
                 id="iframe-juego"
-                src=""
                 data-src="/Pre_Alfa_A/BrisasDeGloria.html"
                 allowfullscreen>
             </iframe>
@@ -122,10 +121,7 @@
             var iframe = document.getElementById('iframe-juego');
             var boton = document.getElementById('boton-jugar');
 
-            if (!iframe.src) {
-                iframe.src = iframe.getAttribute('data-src');
-            }
-
+            iframe.src = iframe.getAttribute('data-src');
             contenedor.style.display = 'flex';
             boton.style.display = 'none';
         }
