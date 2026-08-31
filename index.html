@@ -6,7 +6,6 @@
     <title>Brisas de Gloria</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;700&display=swap');
-
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
@@ -19,22 +18,20 @@
             min-height: 100vh;
             padding: 20px;
         }
-
         .art-container {
             width: 100%;
             max-width: 1100px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             margin-bottom: 30px;
         }
-
         .art-container img {
             width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
-
         .project-desc {
             font-size: 18px;
             color: #c5a059;
@@ -42,7 +39,6 @@
             max-width: 1000px;
             margin-bottom: 30px;
         }
-
         nav {
             position: sticky;
             top: 10px;
@@ -55,7 +51,6 @@
             border: 1px solid #785a28;
             margin-bottom: 40px;
         }
-
         nav a {
             font-family: 'Cinzel', serif;
             color: #f3e5ab;
@@ -63,7 +58,6 @@
             text-transform: uppercase;
             font-weight: 700;
         }
-
         .content-section {
             width: 100%;
             max-width: 1000px;
@@ -73,31 +67,82 @@
             padding: 30px;
             margin-bottom: 30px;
         }
-
         .content-section h2 { font-family: 'Cinzel', serif; color: #c5a059; margin-bottom: 15px; }
         .content-section p, .content-section ul { color: #d1d5db; line-height: 1.6; }
+
+        #boton-jugar {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 16px;
+            color: #0b0f19;
+            background: linear-gradient(180deg, #f3e5ab, #c5a059);
+            border: 1px solid #785a28;
+            border-radius: 6px;
+            padding: 14px 32px;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+        #boton-jugar:hover { filter: brightness(1.1); }
+        #contenedor-juego {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        #iframe-juego {
+            width: 100%;
+            max-width: 960px;
+            height: 600px;
+            border: 2px solid #785a28;
+            border-radius: 8px;
+            background: #000;
+        }
     </style>
 </head>
 <body>
-
     <div id="inicio" class="art-container">
+        <img src="Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
         <img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
+
+        <button id="boton-jugar" onclick="mostrarJuego()">JUGAR DEMO</button>
+
+        <div id="contenedor-juego" style="display:none;">
+            <iframe
+                id="iframe-juego"
+                src=""
+                data-src="/Pre_Alfa_A/BrisasDeGloria.html"
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
-    <p class="project-desc">Proyecto de desarrollo 3D de carreras de caballos.</p>
+    <script>
+        function mostrarJuego() {
+            var contenedor = document.getElementById('contenedor-juego');
+            var iframe = document.getElementById('iframe-juego');
+            var boton = document.getElementById('boton-jugar');
 
+            if (!iframe.src) {
+                iframe.src = iframe.getAttribute('data-src');
+            }
+
+            contenedor.style.display = 'flex';
+            boton.style.display = 'none';
+        }
+    </script>
+
+    <p class="project-desc">Proyecto de desarrollo 3D de carreras de caballos.</p>
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#sobre-el-juego">Sobre el Juego</a>
         <a href="#avances">Avances</a>
         <a href="#contacto">Contacto</a>
     </nav>
-
     <section id="sobre-el-juego" class="content-section">
         <h2>Sobre el Juego</h2>
         <p>Brisas de Gloria es un simulador en desarrollo focalizado en el realismo visual y la precisión en la biomecánica de carreras hípicas.</p>
     </section>
-
     <section id="avances" class="content-section">
         <h2>Avances del Proyecto</h2>
         <ul>
@@ -106,11 +151,9 @@
             <li>Implementación de físicas de galope.</li>
         </ul>
     </section>
-
     <section id="contacto" class="content-section">
         <h2>Contacto</h2>
         <p>Mantente atento a los canales oficiales.</p>
     </section>
-
 </body>
 </html>
