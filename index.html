@@ -70,7 +70,16 @@
         .content-section h2 { font-family: 'Cinzel', serif; color: #c5a059; margin-bottom: 15px; }
         .content-section p, .content-section ul { color: #d1d5db; line-height: 1.6; }
 
-        .boton-dorado {
+        .botones-inicio {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: stretch;
+            margin-top: 25px;
+        }
+
+        .boton-dorado, .boton-secundario {
             font-family: 'Cinzel', serif;
             font-weight: 700;
             text-transform: uppercase;
@@ -84,20 +93,146 @@
             align-items: center;
             justify-content: center;
             box-sizing: border-box;
+        }
+        .boton-dorado {
             color: #0b0f19;
             background: linear-gradient(180deg, #f3e5ab, #c5a059);
             border: 2px solid #785a28;
-            margin-top: 25px;
         }
         .boton-dorado:hover { filter: brightness(1.1); }
+
+        .boton-secundario {
+            color: #f3e5ab;
+            background: transparent;
+            border: 2px solid #785a28;
+        }
+        .boton-secundario:hover { background: rgba(197, 160, 89, 0.12); }
+
+        /* El juego jugable solo se muestra en pantallas grandes (laptop/PC).
+           En celular, solo queda visible el botón de descargar el APK. */
+        #boton-jugar,
+        #contenedor-juego {
+            display: none;
+        }
+
+        @media (min-width: 700px) {
+            #boton-jugar {
+                display: inline-flex;
+            }
+        }
+
+        #contenedor-juego {
+            width: 100%;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        #contenedor-juego.visible {
+            display: flex;
+        }
+        .juego-caja {
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+            height: 600px;
+            border: 2px solid #785a28;
+            border-radius: 8px;
+            background: #000;
+            overflow: hidden;
+        }
+        #iframe-juego {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        #overlay-tutorial {
+            position: absolute;
+            inset: 0;
+            background: rgba(11, 15, 25, 0.96);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            overflow-y: auto;
+        }
+        #overlay-tutorial h3 {
+            font-family: 'Cinzel', serif;
+            color: #c5a059;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        #overlay-tutorial ul {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        #overlay-tutorial li {
+            color: #e2e8f0;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        #overlay-tutorial .nota-limite {
+            color: #c5a059;
+            font-size: 13px;
+            margin-bottom: 25px;
+            max-width: 420px;
+        }
     </style>
 </head>
 <body>
     <div id="inicio" class="art-container">
         <img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
 
-        <a class="boton-dorado" href="/BrisasDeGloria.apk" download>DESCARGAR PARA ANDROID</a>
+        <div class="botones-inicio">
+            <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
+            <a class="boton-secundario" href="/BrisasDeGloria.apk" download>DESCARGAR PARA ANDROID</a>
+        </div>
+
+        <div id="contenedor-juego">
+            <div class="juego-caja">
+                <iframe
+                    id="iframe-juego"
+                    data-src="/Pre_Alfa_A/BrisasDeGloria.html"
+                    allowfullscreen>
+                </iframe>
+
+                <div id="overlay-tutorial">
+                    <h3>Cómo jugar</h3>
+                    <ul>
+                        <li>Flecha arriba: Arrear (acelerar)</li>
+                        <li>Flecha abajo: Frenar</li>
+                        <li>Flecha izquierda: Girar a la izquierda</li>
+                        <li>Flecha derecha: Girar a la derecha</li>
+                        <li>Clic izquierdo del mouse: Látigo izquierdo</li>
+                        <li>Clic derecho del mouse: Látigo derecho</li>
+                        <li>Barra espaciadora: Cambiar de mano (alterna el lado del látigo)</li>
+                        <li>Tecla Control (Ctrl): Cambiar de cámara</li>
+                        <li>Rueda del mouse: Zoom (funciona en todas las cámaras)</li>
+                    </ul>
+                    <p class="nota-limite">El arreo y el látigo son limitados durante la carrera — mirá el contador en pantalla y usalos con cuidado. Cambiar de mano te ayuda a repartir el esfuerzo entre los dos lados.</p>
+                    <button id="boton-empezar" class="boton-dorado" onclick="empezarJuego()">EMPEZAR</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function mostrarJuego() {
+            var contenedor = document.getElementById('contenedor-juego');
+            var iframe = document.getElementById('iframe-juego');
+            var boton = document.getElementById('boton-jugar');
+
+            iframe.src = iframe.getAttribute('data-src');
+            contenedor.classList.add('visible');
+            boton.style.display = 'none';
+        }
+
+        function empezarJuego() {
+            document.getElementById('overlay-tutorial').style.display = 'none';
+        }
+    </script>
 
     <p class="project-desc">Proyecto de desarrollo 3D de carreras de caballos.</p>
     <nav>
