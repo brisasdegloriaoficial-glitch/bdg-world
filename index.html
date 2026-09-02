@@ -1,4 +1,129 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brisas de Gloria</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;700&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0b0f19;
+            color: #e2e8f0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .art-container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .art-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+        .project-desc {
+            font-size: 18px;
+            color: #c5a059;
+            text-align: center;
+            max-width: 1000px;
+            margin-bottom: 30px;
+        }
+        nav {
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            display: flex;
+            gap: 20px;
+            background: #111827;
+            padding: 15px 30px;
+            border-radius: 6px;
+            border: 1px solid #785a28;
+            margin-bottom: 40px;
+        }
+        nav a {
+            font-family: 'Cinzel', serif;
+            color: #f3e5ab;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .content-section {
+            width: 100%;
+            max-width: 1000px;
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c5a059; margin-bottom: 15px; }
+        .content-section p, .content-section ul { color: #d1d5db; line-height: 1.6; }
+
+        .boton-dorado {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 16px;
+            line-height: 1;
+            padding: 17px 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            color: #0b0f19;
+            background: linear-gradient(180deg, #f3e5ab, #c5a059);
+            border: 2px solid #785a28;
+            margin-top: 25px;
+        }
+        .boton-dorado:hover { filter: brightness(1.1); }
+    </style>
+</head>
+<body>
+    <div id="inicio" class="art-container">
+        <img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
+
+        <a class="boton-dorado" href="/BrisasDeGloria.apk" download>DESCARGAR PARA ANDROID</a>
+    </div>
+
+    <p class="project-desc">Proyecto de desarrollo 3D de carreras de caballos.</p>
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-el-juego">Sobre el Juego</a>
+        <a href="#avances">Avances</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <section id="sobre-el-juego" class="content-section">
+        <h2>Sobre el Juego</h2>
+        <p>Brisas de Gloria es un simulador en desarrollo focalizado en el realismo visual y la precisión en la biomecánica de carreras hípicas.</p>
+    </section>
+    <section id="avances" class="content-section">
+        <h2>Avances del Proyecto</h2>
+        <ul>
+            <li>Estructura base del escenario 3D.</li>
+            <li>Modelado de ejemplares hípicos.</li>
+            <li>Implementación de físicas de galope.</li>
+        </ul>
+    </section>
+    <section id="contacto" class="content-section">
+        <h2>Contacto</h2>
+        <p>Mantente atento a los canales oficiales.</p>
+    </section>
+</body>
+</html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
