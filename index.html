@@ -124,6 +124,14 @@
             background: #000;
             overflow: hidden;
         }
+        .juego-caja:fullscreen {
+            max-width: none;
+            width: 100vw;
+            height: 100vh;
+            aspect-ratio: auto;
+            border: none;
+            border-radius: 0;
+        }
         #iframe-juego {
             width: 100%;
             height: 100%;
@@ -176,7 +184,7 @@
         </div>
 
         <div id="contenedor-juego" style="display:none;">
-            <div class="juego-caja">
+            <div class="juego-caja" id="juego-caja">
                 <iframe
                     id="iframe-juego"
                     data-src="/Pre_Alfa_A/BrisasDeGloria.html"
@@ -216,6 +224,23 @@
 
         function empezarJuego() {
             document.getElementById('overlay-tutorial').style.display = 'none';
+
+            var caja = document.getElementById('juego-caja');
+            var pedirPantallaCompleta = caja.requestFullscreen
+                || caja.webkitRequestFullscreen
+                || caja.mozRequestFullScreen
+                || caja.msRequestFullscreen;
+
+            if (pedirPantallaCompleta) {
+                var resultado = pedirPantallaCompleta.call(caja);
+                if (resultado && resultado.then) {
+                    resultado.then(function () {
+                        if (screen.orientation && screen.orientation.lock) {
+                            screen.orientation.lock('landscape').catch(function () {});
+                        }
+                    }).catch(function () {});
+                }
+            }
         }
     </script>
 
