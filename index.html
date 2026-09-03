@@ -356,6 +356,12 @@
             overflow: hidden;
             border: 1px solid #785a28;
             position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .ejemplar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(197, 160, 89, 0.35);
         }
         .ejemplar-card img {
             width: 100%;
@@ -374,6 +380,17 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+        .ejemplar-card .ejemplar-ver {
+            position: absolute;
+            top: 10px; right: 10px;
+            background: rgba(11,15,25,0.7);
+            border: 1px solid #785a28;
+            border-radius: 50%;
+            width: 30px; height: 30px;
+            display: flex; align-items: center; justify-content: center;
+            color: #f3e5ab;
+            font-size: 15px;
         }
 
         /* Pirámide de niveles */
@@ -419,6 +436,73 @@
             max-width: 620px;
             margin: 0 auto;
             line-height: 1.6;
+        }
+
+        /* Vitrina (lightbox) */
+        #vitrina-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 7, 12, 0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+        #vitrina-overlay.visible {
+            display: flex;
+        }
+        .vitrina-caja {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 520px;
+            width: 100%;
+        }
+        .vitrina-caja img {
+            max-width: 100%;
+            max-height: 62vh;
+            border-radius: 10px;
+            border: 2px solid #785a28;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.7);
+            animation: vitrina-flotar 4s ease-in-out infinite;
+        }
+        .vitrina-pedestal {
+            width: 60%;
+            max-width: 320px;
+            height: 22px;
+            margin-top: 6px;
+            background: radial-gradient(ellipse at center, rgba(197,160,89,0.55) 0%, rgba(197,160,89,0) 72%);
+            animation: vitrina-sombra 4s ease-in-out infinite;
+        }
+        .vitrina-nombre {
+            font-family: 'Cinzel', serif;
+            color: #f3e5ab;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 15px;
+            margin-top: 14px;
+        }
+        .vitrina-cerrar {
+            position: absolute;
+            top: 22px; right: 28px;
+            font-family: 'Cinzel', serif;
+            color: #f3e5ab;
+            background: transparent;
+            border: 1px solid #785a28;
+            border-radius: 50%;
+            width: 42px; height: 42px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .vitrina-cerrar:hover { background: rgba(197,160,89,0.15); }
+        @keyframes vitrina-flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+        @keyframes vitrina-sombra {
+            0%, 100% { transform: scaleX(1); opacity: 0.55; }
+            50% { transform: scaleX(0.82); opacity: 0.35; }
         }
     </style>
 </head>
@@ -493,6 +577,16 @@
                 pedirPantallaCompleta.call(caja);
             }
         }
+
+        function abrirVitrina(src, nombre) {
+            document.getElementById('vitrina-img').src = src;
+            document.getElementById('vitrina-nombre').textContent = nombre;
+            document.getElementById('vitrina-overlay').classList.add('visible');
+        }
+
+        function cerrarVitrina() {
+            document.getElementById('vitrina-overlay').classList.remove('visible');
+        }
     </script>
 
     <nav>
@@ -549,20 +643,24 @@
         <h2>Ejemplares Fundadores</h2>
         <p class="ejemplares-aviso">Estos son 4 de los cientos de ejemplares únicos que tendrá Brisas de Gloria. La venta real abre en la fase Alfa.</p>
         <div class="ejemplares-grid">
-            <div class="ejemplar-card">
+            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_1.jpg', 'Fundador I')">
                 <img src="/Ejemplar_Fundador_1.jpg" alt="Ejemplar Fundador">
+                <span class="ejemplar-ver">⤢</span>
                 <div class="ejemplar-label">Fundador I</div>
             </div>
-            <div class="ejemplar-card">
+            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_2.jpg', 'Fundador II')">
                 <img src="/Ejemplar_Fundador_2.jpg" alt="Ejemplar Fundador">
+                <span class="ejemplar-ver">⤢</span>
                 <div class="ejemplar-label">Fundador II</div>
             </div>
-            <div class="ejemplar-card">
+            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_3.jpg', 'Fundador III')">
                 <img src="/Ejemplar_Fundador_3.jpg" alt="Ejemplar Fundador">
+                <span class="ejemplar-ver">⤢</span>
                 <div class="ejemplar-label">Fundador III</div>
             </div>
-            <div class="ejemplar-card">
+            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_4.jpg', 'Fundador IV')">
                 <img src="/Ejemplar_Fundador_4.jpg" alt="Ejemplar Fundador">
+                <span class="ejemplar-ver">⤢</span>
                 <div class="ejemplar-label">Fundador IV</div>
             </div>
         </div>
@@ -612,5 +710,14 @@
             <a class="boton-secundario" href="/Whitepaper_BrisasDeGloria.pdf" download>DESCARGAR EN PDF</a>
         </div>
     </section>
+
+    <div id="vitrina-overlay" onclick="if(event.target===this) cerrarVitrina()">
+        <button class="vitrina-cerrar" onclick="cerrarVitrina()">✕</button>
+        <div class="vitrina-caja">
+            <img id="vitrina-img" src="" alt="Ejemplar en vitrina">
+            <div class="vitrina-pedestal"></div>
+            <div class="vitrina-nombre" id="vitrina-nombre"></div>
+        </div>
+    </div>
 </body>
 </html>
