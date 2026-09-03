@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brisas de Gloria — Whitepaper</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    background-color: #0b0f19;
+    color: #e2e8f0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ---- Topbar ---- */
+.topbar {
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background: #111827;
+    padding: 12px 22px;
+    border-radius: 6px;
+    border: 1px solid #785a28;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.topbar a {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+.topbar .volver { color: #f3e5ab; }
+.topbar .descargar {
+    color: #0b0f19;
+    background: linear-gradient(180deg, #f3e5ab, #c5a059);
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: 1px solid #785a28;
+}
+
+/* ---- Cover header ---- */
+.wp-cover {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.wp-cover img.logo {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    margin-bottom: 22px;
+}
+.wp-cover .kicker {
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #f3e5ab;
+    font-size: 24px;
+}
+.wp-cover .slogan {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c5a059;
+    font-size: 13px;
+    margin-top: 8px;
+}
+.wp-cover .sub {
+    color: #8b93a3;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 14px;
+    text-transform: uppercase;
+}
+
+/* ---- Mini TOC nav ---- */
+nav.wp-toc {
+    position: sticky;
+    top: 66px;
+    z-index: 90;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    gap: 8px 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #111827;
+    padding: 14px 20px;
+    border-radius: 6px;
+    border: 1px solid #374151;
+    margin-bottom: 34px;
+}
+nav.wp-toc a {
+    font-family: 'Cinzel', serif;
+    color: #9aa5b5;
+    text-decoration: none;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+nav.wp-toc a:hover { color: #f3e5ab; }
+
+/* ---- Section container (matches site's content-section) ---- */
+.wp-section {
+    width: 100%;
+    max-width: 1000px;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    padding: 34px;
+    margin-bottom: 26px;
+    scroll-margin-top: 130px;
+}
+.wp-section h1.section-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    color: #c5a059;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #785a28;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+.wp-section h2.sub-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    color: #f3e5ab;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+.wp-section h2.sub-title:first-of-type { margin-top: 0; }
+.wp-section p {
+    line-height: 1.7;
+    margin-bottom: 14px;
+    color: #d1d5db;
+    font-size: 15px;
+}
+.wp-section strong { color: #f3e5ab; font-weight: 700; }
+
+ul.doc-list { margin: 0 0 16px 0; padding-left: 0; list-style: none; }
+ul.doc-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: #d1d5db;
+    font-size: 15px;
+}
+ul.doc-list li::before {
+    content: "❖";
+    color: #785a28;
+    position: absolute;
+    left: 0;
+    font-size: 11px;
+    top: 4px;
+}
+
+table.doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 22px 0;
+    font-size: 13.5px;
+}
+table.doc-table th {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    background: linear-gradient(180deg, #3a2f14, #241c0c);
+    color: #f3e5ab;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 12px;
+    border: 1px solid #785a28;
+    text-align: left;
+}
+table.doc-table td {
+    padding: 10px 12px;
+    border: 1px solid #374151;
+    background: #0b0f19;
+    color: #d1d5db;
+}
+table.doc-table tr:nth-child(even) td { background: #131c2e; }
+
+.callout {
+    border-left: 3px solid #c5a059;
+    background: #0b0f19;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-style: italic;
+    color: #c5a059;
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+.badge-box {
+    border: 1px solid #785a28;
+    border-radius: 6px;
+    background: #0b0f19;
+    padding: 16px 20px;
+    margin-bottom: 18px;
+}
+.badge-box .label {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    color: #c5a059;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+/* tier cards (Oro/Plata/Cobre) */
+.tier-card {
+    border: 1px solid #374151;
+    border-left: 5px solid #c5a059;
+    border-radius: 6px;
+    background: #0b0f19;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.tier-card img.tier-coin-img {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+}
+.tier-card .tier-body { flex: 1; min-width: 200px; }
+.tier-card.oro { border-left-color: #d4af37; }
+.tier-card.plata { border-left-color: #b9c2cc; }
+.tier-card.cobre { border-left-color: #b87333; }
+.tier-card .tier-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+.tier-card .tier-name { font-family: 'Cinzel', serif; font-weight: 800; font-size: 17px; color: #f3e5ab; }
+.tier-card.oro .tier-name { color: #e8cd82; }
+.tier-card.plata .tier-name { color: #d7dde3; }
+.tier-card.cobre .tier-name { color: #d99a63; }
+.tier-card .tier-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    color: #0b0f19;
+    font-weight: 700;
+}
+.tier-card.oro .tier-tag { background: linear-gradient(180deg,#f3e5ab,#d4af37); }
+.tier-card.plata .tier-tag { background: linear-gradient(180deg,#eef1f4,#b9c2cc); }
+.tier-card.cobre .tier-tag { background: linear-gradient(180deg,#e3a06e,#b87333); }
+.tier-card p { margin-bottom: 4px; font-size: 13.5px; }
+
+/* pillar boxes (anti-inflacion) */
+.pillar-box {
+    border: 1px solid #374151;
+    border-radius: 6px;
+    background: #0b0f19;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+}
+.pillar-box .pillar-num {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: 11px;
+    color: #0b0f19;
+    background: linear-gradient(180deg,#f3e5ab,#c5a059);
+    border-radius: 10px;
+    padding: 3px 12px;
+    margin-bottom: 10px;
+}
+.pillar-box .pillar-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    color: #f3e5ab;
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.pillar-box table.doc-table { margin: 0; }
+
+.diamond-divider {
+    text-align: center;
+    color: #785a28;
+    font-size: 15px;
+    letter-spacing: 22px;
+    margin: 26px 0;
+}
+.gold-rule {
+    width: 220px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c5a059, transparent);
+    margin: 24px auto;
+}
+
+.wp-photo-row {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+.wp-photo-row img {
+    width: 170px;
+    max-width: 100%;
+    border-radius: 6px;
+    border: 1px solid #785a28;
+    flex-shrink: 0;
+}
+.wp-photo-row .wp-photo-text { flex: 1; min-width: 240px; }
+
+footer.wp-footer {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    padding: 30px 0 10px;
+}
+footer.wp-footer p.tagline {
+    font-style: italic;
+    color: #c5a059;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+footer.wp-footer p.brand {
+    font-family: 'Cinzel', serif;
+    color: #f3e5ab;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+    <a class="volver" href="/index.html#whitepaper">← Volver al sitio</a>
+    <a class="descargar" href="/Whitepaper_BrisasDeGloria.pdf" download>Descargar PDF</a>
+</div>
+
+<div class="wp-cover">
+    <img class="logo" src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
+    <div class="kicker">Whitepaper</div>
+    <div class="slogan">El Galope Final</div>
+    <div class="sub">Documento vivo · En actualización continua · Septiembre 2026</div>
+</div>
+
+<nav class="wp-toc">
+    <a href="#s01">01 Visión</a>
+    <a href="#s02">02 Personajes</a>
+    <a href="#s03">03 Mecánicas</a>
+    <a href="#s04">04 Arquitectura</a>
+    <a href="#s05">05 Negocio</a>
+    <a href="#s06">06 Roadmap</a>
+    <a href="#s07">07 Economía $BDG</a>
+    <a href="#s08">08 Equipo</a>
+    <a href="#s09">09 Aviso Legal</a>
+    <a href="#s10">10 Conclusión</a>
+</nav>
+
+<!-- 01 -->
+<section id="s01" class="wp-section">
+    <h1 class="section-title">01 · Visión General del Proyecto</h1>
+    <div class="badge-box">
+        <div class="label">Nombre</div>
+        Brisas de Gloria
+    </div>
+    <div class="badge-box">
+        <div class="label">Misión</div>
+        Crear un videojuego 3D inmersivo de carreras de caballos que combine entretenimiento, estrategia y simulación ecuestre, accesible principalmente para dispositivos móviles.
+    </div>
+    <h2 class="sub-title">Problema y Oportunidad</h2>
+    <p>El mercado latinoamericano y de habla hispana carece de juegos de carreras de caballos de calidad, con realismo visual y biomecánico. Al mismo tiempo, existe una base amplia de fanáticos del deporte hípico sin una experiencia digital que los represente. Brisas de Gloria busca capturar ese público desatendido, combinando la tradición del hipódromo con tecnología 3D moderna y accesible.</p>
+</section>
+
+<!-- 02 -->
+<section id="s02" class="wp-section">
+    <h1 class="section-title">02 · Personajes y Narrativa</h1>
+    <div class="wp-photo-row">
+        <img src="/Gloria_BrisasDeGloria.jpg" alt="Gloria">
+        <div class="wp-photo-text">
+            <h2 class="sub-title">Gloria — Embajadora y Guía del Juego</h2>
+            <p>Gloria es la anfitriona, tutora y presentadora virtual de Brisas de Gloria. Su rol es doble:</p>
+        </div>
+    </div>
+    <ul class="doc-list">
+        <li><strong>Dentro del juego:</strong> guía al jugador nuevo a través de los tutoriales, explica las mecánicas de carrera y narra momentos clave (inicio, curvas, sprint final, resultados).</li>
+        <li><strong>Fuera del juego:</strong> es la imagen principal de la marca — presente en videos promocionales, redes sociales y material de presentación a patrocinadores/inversionistas, dando a Brisas de Gloria una identidad reconocible y humana más allá del propio videojuego.</li>
+    </ul>
+    <h2 class="sub-title">Ambientación</h2>
+    <p>El juego se ambienta en <strong>hipódromos 3D realistas</strong>, con foco en la experiencia de la competencia: tribunas, rieles del circuito, líneas de salida y meta, y estructuras propias de un hipódromo real (círculo de ganadores, torre de jueces, entre otras previstas a futuro). El objetivo es que cada carrera se sienta como un evento hípico auténtico, no como una pista genérica de videojuego.</p>
+</section>
+
+<!-- 03 -->
+<section id="s03" class="wp-section">
+    <h1 class="section-title">03 · Mecánicas de Juego</h1>
+    <h2 class="sub-title">Control de la Carrera</h2>
+    <p>Sistema de mandos intuitivos, adaptado tanto a PC como a controles táctiles en Android:</p>
+    <ul class="doc-list">
+        <li><strong>Arreo:</strong> impulsa al caballo, consume resistencia (stamina).</li>
+        <li><strong>Freno:</strong> reduce la velocidad de forma controlada.</li>
+        <li><strong>Látigo (izquierdo/derecho):</strong> impulso adicional de corto alcance, también con costo de stamina.</li>
+        <li><strong>Manejo de carril / cambio de mano:</strong> el jugador se desplaza lateralmente en la pista para buscar mejores posiciones o esquivar rivales.</li>
+    </ul>
+    <h2 class="sub-title">Sistema de Resistencia (Stamina)</h2>
+    <p>El jugador debe administrar el esfuerzo del caballo a lo largo de la carrera: usar el látigo o arrear demasiado pronto deja al caballo sin energía para el sprint final. Este sistema es el corazón estratégico del juego.</p>
+    <h2 class="sub-title">Ecosistema de Juego</h2>
+    <ul class="doc-list">
+        <li><strong>Modo Entrenamiento:</strong> el jugador mejora a su caballo entre carreras.</li>
+        <li><strong>Carreras Individuales:</strong> distancias oficiales (800m, 1200m, 1600m, 1800m, 2400m, 3000m, 3600m), replicando la variedad de un hipódromo real.</li>
+        <li><strong>Rivales con comportamiento propio:</strong> cada caballo rival tiene un perfil (puntero, rematador, constante), lo que genera carreras impredecibles.</li>
+        <li><strong>Futuras Competencias:</strong> torneos y copas, incluyendo eventos patrocinados.</li>
+    </ul>
+    <h2 class="sub-title">Optimización Técnica</h2>
+    <p>Desarrollado sobre el motor gráfico <strong>Godot</strong>, optimizado para mantener buen rendimiento en dispositivos Android de gama media sin sacrificar calidad visual.</p>
+</section>
+
+<!-- 04 -->
+<section id="s04" class="wp-section">
+    <h1 class="section-title">04 · Arquitectura Técnica y Desarrollo</h1>
+    <ul class="doc-list">
+        <li><strong>Motor:</strong> Godot Engine 3.5.3.</li>
+        <li><strong>Modelado y animación:</strong> pipeline en Blender y Tripo AI para caballos y jinetes, con animaciones de galope, arreo, frenado y cambio de mano.</li>
+        <li><strong>Física de carrera:</strong> sistema propio de seguimiento de trayectoria (path-following) con curvas analíticas para un movimiento fluido y realista en las curvas del hipódromo.</li>
+        <li><strong>Plataforma Inicial:</strong> Android (descarga directa vía APK) y demo jugable en navegador web.</li>
+        <li><strong>Estado de Desarrollo:</strong> Fase Pre-Alfa interna, con una hoja de ruta clara hacia las versiones Alfa y Comercial.</li>
+    </ul>
+</section>
+
+<!-- 05 -->
+<section id="s05" class="wp-section">
+    <h1 class="section-title">05 · Modelo de Negocio y Monetización</h1>
+    <p>Para sponsors e inversionistas — en lugar de publicidad intrusiva (tipo AdMob), Brisas de Gloria apuesta por un modelo de <strong>patrocinio directo e integrado</strong>, que no interrumpe la experiencia del jugador:</p>
+    <ul class="doc-list">
+        <li><strong>Vallas y Marcas en Pista:</strong> espacios publicitarios dentro del hipódromo 3D — patrocinio de marcas reales en las vallas del circuito, visibles durante toda la carrera.</li>
+        <li><strong>Eventos y Copas Patrocinadas:</strong> carreras especiales que llevan el nombre del patrocinador (ej. "Copa [Marca]"), con mayor visibilidad y promoción.</li>
+        <li><strong>In-App Purchases:</strong> equipamiento de jockey, personalización de caballos (colores de casaca, nombres), y otros cosméticos.</li>
+        <li><strong>Ecosistema $BDG:</strong> una capa adicional de monetización y participación de comunidad a través del token del proyecto.</li>
+    </ul>
+</section>
+
+<!-- 06 -->
+<section id="s06" class="wp-section">
+    <h1 class="section-title">06 · Hoja de Ruta</h1>
+    <table class="doc-table">
+        <tr><th>Fase</th><th>Estado</th><th>Contenido</th></tr>
+        <tr><td>Fase 1 — Pre-Alfa</td><td><span style="color:#8fbf7a;">● Completada</span> — Pre-Alfa A (Sept 2026)</td><td>Pruebas de rendimiento, mecánicas básicas, demo web + APK Android para mostrar a patrocinadores</td></tr>
+        <tr><td>Fase 2 — Alfa / DevLog</td><td><span style="color:#c5a059;">● En curso</span></td><td>Hipódromo 3D completo, tutorial guiado por Gloria, interfaz final, modelo profesional de caballo/jinete, distancias oficiales completas</td></tr>
+        <tr><td>Fase 3 — Demo / Apertura a Sponsors</td><td><span style="color:#6b7280;">● Pendiente</span></td><td>Presentación del producto terminado, campaña de captación de marcas, apertura comercial</td></tr>
+        <tr><td>Fase 4 — Lanzamiento $BDG</td><td><span style="color:#6b7280;">● Pendiente</span></td><td>Ver hoja de ruta específica en la sección 07</td></tr>
+        <tr><td>Fase 5 — Beta Pública</td><td><span style="color:#6b7280;">● Pendiente</span></td><td>Apertura a comunidad amplia, torneos activos, patrocinios en operación plena</td></tr>
+    </table>
+</section>
+
+<!-- 07 -->
+<section id="s07" class="wp-section">
+    <h1 class="section-title">07 · El Ecosistema Económico y Lanzamiento del $BDG</h1>
+    <p>Esta sección está dedicada exclusivamente a la economía de Brisas de Gloria: su arquitectura de monedas, su propuesta económica y la estructura de lanzamiento del token $BDG.</p>
+
+    <h2 class="sub-title">Arquitectura de Monedas — Modelo Híbrido On-Chain / Off-Chain</h2>
+    <p>La economía se organiza en tres niveles, diferenciados por metal según su función y su naturaleza técnica:</p>
+
+    <div class="tier-card oro">
+        <img class="tier-coin-img" src="/Moneda_BDG.jpg" alt="Moneda $BDG">
+        <div class="tier-body">
+            <div class="tier-head">
+                <span class="tier-name">$BDG</span>
+                <span class="tier-tag">Nivel Oro · On-Chain</span>
+            </div>
+            <p><strong>Naturaleza:</strong> el único token criptográfico en blockchain.</p>
+            <p><strong>Uso:</strong> activo negociable en exchanges, gobernanza, patrocinios corporativos y transferencias externas.</p>
+        </div>
+    </div>
+
+    <div class="tier-card plata">
+        <img class="tier-coin-img" src="/Moneda_Gloria.jpg" alt="Moneda Gloria">
+        <div class="tier-body">
+            <div class="tier-head">
+                <span class="tier-name">Gloria</span>
+                <span class="tier-tag">Nivel Plata · Off-Chain</span>
+            </div>
+            <p><strong>Naturaleza:</strong> moneda blanda interna (registro en base de datos).</p>
+            <p><strong>Uso:</strong> economía del juego, compra de insumos, entradas a carreras estándar y recompensas principales.</p>
+        </div>
+    </div>
+
+    <div class="tier-card cobre">
+        <img class="tier-coin-img" src="/Moneda_Cobre.jpg" alt="Moneda Cobre">
+        <div class="tier-body">
+            <div class="tier-head">
+                <span class="tier-name">Cobre <span style="font-size:11px; font-weight:500; color:#a9a9a9;">(Cobrito / Copper)</span></span>
+                <span class="tier-tag">Nivel Cobre · Off-Chain</span>
+            </div>
+            <p><strong>Naturaleza:</strong> subunidad interna mínima (registro en base de datos).</p>
+            <p><strong>Uso:</strong> microtransacciones, ajustes finos de precios, cambio pequeño y recompensas diarias.</p>
+        </div>
+    </div>
+
+    <h2 class="sub-title">Paridades y Equivalencias</h2>
+    <table class="doc-table">
+        <tr><th>Equivalencia</th></tr>
+        <tr><td>1 $BDG = 100 Gloria</td></tr>
+        <tr><td>1 Gloria = 100 Cobre</td></tr>
+        <tr><td>1 $BDG = 10,000 Cobre</td></tr>
+    </table>
+
+    <h2 class="sub-title">Eficiencia</h2>
+    <p>Mantener Gloria y Cobre fuera de blockchain (off-chain) elimina el pago de comisiones (gas fees) por cada interacción dentro del juego, y simplifica la experiencia para jugadores que no manejan criptomonedas — pueden jugar, ganar y gastar sin necesidad de una wallet ni conocimiento técnico previo.</p>
+
+    <h2 class="sub-title">Conversión Sostenible</h2>
+    <p>Los jugadores depositan $BDG para obtener Gloria y Cobre e ingresar a la economía del juego. El camino de retorno — convertir Gloria de nuevo a $BDG — cuenta con un mecanismo regulado, con límites y una comisión de salida, diseñado para resguardar la liquidez del token y evitar la inflación de la economía interna.</p>
+    <div class="callout">Aviso legal: permitir la conversión de vuelta a $BDG (a diferencia de monedas internas sin retorno, como V-Bucks o Robux) puede exponer al proyecto a tratamiento regulatorio como dinero electrónico o valor financiero, según la jurisdicción. Este mecanismo requiere asesoría legal específica antes de su implementación — no basta con la revisión legal general del token.</div>
+
+    <h2 class="sub-title">Utilidad del $BDG</h2>
+    <ul class="doc-list">
+        <li><strong>Activo negociable:</strong> compra, venta e intercambio en exchanges externos.</li>
+        <li><strong>Patrocinios corporativos:</strong> marcas adquieren espacios publicitarios pagando en $BDG.</li>
+        <li><strong>Gobernanza:</strong> holders votan sobre nuevas funciones, distancias o eventos especiales.</li>
+        <li><strong>Entrada al ecosistema:</strong> se convierte en Gloria/Cobre para participar en la economía diaria del juego.</li>
+    </ul>
+
+    <h2 class="sub-title">Mecanismos Anti-Inflación y Sostenibilidad</h2>
+    <p>Para proteger el valor de $BDG y evitar que la economía interna se devalúe con el tiempo, Brisas de Gloria incorpora un conjunto de frenos y válvulas de escape diseñados directamente en el código. Se organizan en tres pilares:</p>
+
+    <div class="pillar-box">
+        <div class="pillar-num">Pilar 1</div>
+        <div class="pillar-title">Controles de Conversión — Mecanismo de Salida ($BDG Outflow)</div>
+        <table class="doc-table">
+            <tr><th>Mecanismo</th><th>Función</th></tr>
+            <tr><td>Comisión de Retiro con Quema (Burn Fee)</td><td>Porcentaje cobrado en $BDG o Gloria al convertir monedas del juego hacia blockchain; una parte se quema (burn), reduciendo la oferta circulante</td></tr>
+            <tr><td>Límites Dinámicos de Retiro</td><td>Techos diarios y semanales por cuenta, calculados según reputación, tiempo de juego e historial del usuario — frena a los bots</td></tr>
+            <tr><td>Periodos de Enfriamiento (Cooldowns)</td><td>Tiempos de espera obligatorios entre conversiones masivas, para evitar estampidas y sangrado de liquidez</td></tr>
+        </table>
+    </div>
+
+    <div class="pillar-box">
+        <div class="pillar-num">Pilar 2</div>
+        <div class="pillar-title">Sumideros de Moneda Interna — Sinks de Gloria y Cobre</div>
+        <table class="doc-table">
+            <tr><th>Mecanismo</th><th>Función</th></tr>
+            <tr><td>Mantenimiento y Desgaste</td><td>Costos recurrentes obligatorios en Gloria/Cobre por salud, alimentación, entrenamiento y herraje de los caballos antes de competir</td></tr>
+            <tr><td>Inscripciones y Registros</td><td>Comisiones por participar en carreras de alto nivel, torneos y creación de establos/clubes</td></tr>
+            <tr><td>Personalización Visual (Cosméticos)</td><td>Artículos estéticos (chaquetillas, anteojos, nombres personalizados) que absorben moneda sin alterar el balance competitivo — Pay-to-Skin, no Pay-to-Win</td></tr>
+        </table>
+    </div>
+
+    <div class="pillar-box">
+        <div class="pillar-num">Pilar 3</div>
+        <div class="pillar-title">Reguladores Hípicos y Mecánicas de Juego</div>
+        <table class="doc-table">
+            <tr><th>Mecanismo</th><th>Función</th></tr>
+            <tr><td>Retiro de Caballos (Breeding y Descanso)</td><td>Los ejemplares no corren de forma infinita — sufren fatiga y envejecimiento, obligando a reinvertir en crianza o adquisición de nuevos activos</td></tr>
+            <tr><td>Pozo de Premios Dinámico</td><td>Las recompensas de carrera se reajustan automáticamente según el número de participantes activos y el volumen de la economía ese día</td></tr>
+        </table>
+    </div>
+
+    <h2 class="sub-title">Ciclo de Vida de Activos y Reproducción</h2>
+    <p>Para evitar la inflación descontrolada de la población de caballos — el mismo problema que devaluó a varios juegos NFT con cría ilimitada — Brisas de Gloria implementa un ciclo de vida de dos generaciones con reproducción restringida.</p>
+    <table class="doc-table">
+        <tr><th>Generación</th><th>Origen</th><th>Precio Inicial</th><th>Vida Útil</th><th>Reproducción</th></tr>
+        <tr><td>Gen 0 — Fundador</td><td>Venta regular o recompensas</td><td>$10 – $100 USD</td><td>3 temporadas de carrera</td><td>Habilitada al retirarse (tras la 3ª temporada)</td></tr>
+        <tr><td>Gen 1 — Descendencia</td><td>Cría de una pareja Gen 0 retirada</td><td>No se vende — se genera</td><td>2 temporadas de carrera</td><td>Esterilidad absoluta — no reproduce</td></tr>
+    </table>
+    <ul class="doc-list">
+        <li><strong>1 descendiente por pareja, por temporada</strong> — un tope duro que evita camadas masivas.</li>
+        <li><strong>Requiere dos ejemplares Gen 0 retirados</strong> (habiendo completado sus 3 temporadas competitivas).</li>
+        <li><strong>Restricción absoluta:</strong> los ejemplares Gen 1 no pueden reproducirse bajo ninguna circunstancia.</li>
+    </ul>
+    <p>Al completar sus 2 temporadas, un ejemplar Gen 1 pasa a <strong>estado Legado</strong>: se retira permanentemente de la competencia y no puede generar nuevos activos.</p>
+    <div class="callout">Efecto de diseño: como Gen 1 nunca reproduce, cada pareja Gen 0 tiene un techo natural de descendencia — la población total de caballos crece de forma acotada y predecible, nunca de forma exponencial.</div>
+
+    <h2 class="sub-title">Edición Fundadores y Control de Inventario</h2>
+    <p>Dentro de la Generación 0, se emitirá una colección especial y estrictamente limitada: la <strong>Edición Fundadores</strong> — numerada, de tamaño fijo (propuesta inicial: 1,000–5,000 unidades) y que nunca se vuelve a emitir. Sus beneficios son de escasez y estética (mejores probabilidades de cría, cosméticos exclusivos, acceso prioritario), nunca ventaja deportiva.</p>
+    <p>Metodología de reabastecimiento propuesta, atada al crecimiento real de jugadores:</p>
+    <div class="callout" style="font-family:'Cinzel',serif; text-align:center; font-style:normal; color:#f3e5ab;">
+        Emisión(semana) = mín( α × Jugadores Nuevos Activos , Tope Semanal ) − Cría Gen 1 de esa temporada
+    </div>
+    <ul class="doc-list">
+        <li><strong>α (coeficiente de emisión):</strong> punto de partida sugerido 0.4–0.6 — se calibra con datos reales.</li>
+        <li><strong>Tope Semanal:</strong> límite absoluto para proteger el mercado ante picos de crecimiento.</li>
+        <li><strong>Curva de Precio Progresivo:</strong> el precio sube por escalones conforme aumenta el suministro, autorregulando la demanda.</li>
+        <li><strong>Fondo de Estabilización:</strong> una fracción del Tesoro de Respaldo puede recomprar ejemplares si el precio cae por debajo de un piso definido.</li>
+    </ul>
+
+    <h2 class="sub-title">Propuesta Inicial de Tokenomics</h2>
+    <table class="doc-table">
+        <tr><th>Categoría</th><th>Asignación</th><th>Propósito</th></tr>
+        <tr><td>Tesoro de Respaldo (Treasury)</td><td>40%</td><td>Respalda la conversión Gloria/Cobre ⇄ $BDG; no se distribuye directamente</td></tr>
+        <tr><td>Fundador y Futuro Equipo</td><td>15%</td><td>Con vesting progresivo; incluye contratación de profesionales a futuro</td></tr>
+        <tr><td>Desarrollo y operaciones</td><td>20%</td><td>Financiar desarrollo continuo del juego</td></tr>
+        <tr><td>Patrocinadores e inversionistas</td><td>15%</td><td>Alianzas estratégicas y capital semilla</td></tr>
+        <tr><td>Reserva / liquidez</td><td>10%</td><td>Estabilidad del token en mercados</td></tr>
+    </table>
+    <div class="callout">Suministro total propuesto (cifra de ejemplo): 10,000,000 $BDG — a un precio piso de preventa de $1, equivale a una valorización total de $10,000,000, una cifra defendible para un proyecto en etapa Pre-Alfa.</div>
+
+    <h2 class="sub-title">Hoja de Ruta del Lanzamiento del Token</h2>
+    <table class="doc-table">
+        <tr><th>Etapa</th><th>Objetivo</th></tr>
+        <tr><td>1. Fundamentos</td><td>Jurisdicción, forma legal, elección de blockchain, asesoría legal cripto/valores</td></tr>
+        <tr><td>2. Diseño Económico</td><td>Cerrar suministro total, precio de preventa, distribución y vesting definitivos</td></tr>
+        <tr><td>3. Desarrollo Técnico</td><td>Contrato inteligente (smart contract) del $BDG y auditoría de seguridad externa</td></tr>
+        <tr><td>4. Presale / Venta Privada</td><td>Capital inicial de inversionistas estratégicos</td></tr>
+        <tr><td>5. Venta Pública / Listado</td><td>Launchpad, exchanges o DEX, campaña de marketing</td></tr>
+        <tr><td>6. Provisión de Liquidez</td><td>Fondos de liquidez, bloqueo de liquidez (liquidity lock)</td></tr>
+        <tr><td>7. Integración al Juego</td><td>Sistema de depósito/retiro Gloria ⇄ $BDG dentro de Brisas de Gloria</td></tr>
+        <tr><td>8. Comunidad y Gobernanza</td><td>Canales oficiales, votaciones, reportes de transparencia</td></tr>
+    </table>
+    <div class="callout">Esta hoja de ruta del token se irá completando y ajustando a medida que avancemos.</div>
+</section>
+
+<!-- 08 -->
+<section id="s08" class="wp-section">
+    <h1 class="section-title">08 · Equipo y Herramientas de Desarrollo</h1>
+    <p>Brisas de Gloria es desarrollado por un fundador único, apoyado en un stack de herramientas de Inteligencia Artificial que funcionan como asesores y colaboradores técnicos en distintas etapas del proyecto. Esta sección lo deja explícito por transparencia con la comunidad y los inversionistas.</p>
+    <div class="badge-box">
+        <div class="label">Fundador</div>
+        Fundador del proyecto — responsable de la visión, el diseño de juego y la dirección general de Brisas de Gloria. <em style="color:#785a28;">(Datos de contacto a completar.)</em>
+    </div>
+    <h2 class="sub-title">Stack de Inteligencia Artificial</h2>
+    <ul class="doc-list">
+        <li><strong>Claude (Anthropic) — Asesor Principal de Desarrollo y Estrategia:</strong> estructuración del whitepaper, arquitectura de tokenomics, desarrollo del sitio web, diseño de documentos y retoque de assets visuales.</li>
+        <li><strong>Gemini (Google) — Asesor Personal y Generación de Assets:</strong> apoyo creativo y generación de las monedas del ecosistema ($BDG, Gloria, Cobre).</li>
+        <li><strong>ChatGPT (OpenAI) — Soporte Complementario:</strong> asistencia adicional en etapas tempranas del proyecto.</li>
+        <li><strong>Mixamo (Adobe) — Animación de Personajes:</strong> rigging y animaciones base para los modelos 3D de caballos y jinetes.</li>
+    </ul>
+    <div class="callout">Estas son herramientas de IA, no colaboradores humanos — se listan por transparencia. A medida que el proyecto genere ingresos, una parte de la asignación "Fundador y Futuro Equipo" se destinará a contratar profesionales humanos.</div>
+</section>
+
+<!-- 09 -->
+<section id="s09" class="wp-section">
+    <h1 class="section-title">09 · Aviso Legal</h1>
+    <p>Este whitepaper es un documento informativo, vivo y en actualización continua. No constituye una oferta de venta de valores ni una promesa de rendimiento financiero. Los detalles del token $BDG, incluyendo su suministro, distribución y blockchain, son propuestas preliminares sujetas a cambios y a revisión legal antes de cualquier lanzamiento. Brisas de Gloria se encuentra en desarrollo activo (Pre-Alfa).</p>
+</section>
+
+<!-- 10 -->
+<section id="s10" class="wp-section">
+    <h1 class="section-title">10 · Conclusión</h1>
+    <p>Brisas de Gloria combina una tradición deportiva centenaria con tecnología 3D moderna, la guía narrativa de Gloria como embajadora de marca, y un modelo económico digital pensado para recompensar tanto a jugadores como a patrocinadores. Con una Pre-Alfa ya jugable y una hoja de ruta clara — tanto para el juego como para el lanzamiento de $BDG — el proyecto avanza paso a paso hacia un ecosistema completo: juego, comunidad y token.</p>
+    <div class="gold-rule"></div>
+    <p style="text-align:center; font-style:italic; color:#c5a059;">Siente los vientos del triunfo. Vive las brisas del placer. Corre por tu gloria.</p>
+</section>
+
+<footer class="wp-footer">
+    <p class="brand">UN LEGADO DE PASIÓN — DESDE 2026</p>
+</footer>
+
+</body>
+</html>
