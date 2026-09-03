@@ -145,8 +145,6 @@
         }
         .boton-secundario:hover { background: rgba(197, 160, 89, 0.12); }
 
-        /* El juego jugable solo se muestra en pantallas grandes (laptop/PC).
-           En celular, solo queda visible el botón de descargar el APK. */
         #boton-jugar,
         #contenedor-juego {
             display: none;
@@ -231,7 +229,6 @@
             margin-top: 20px;
         }
 
-        /* Sección de Gloria */
         .gloria-section {
             display: flex;
             flex-wrap: wrap;
@@ -260,7 +257,6 @@
             margin-bottom: 10px;
         }
 
-        /* Sección Ecosistema Tri-Metal */
         .tier-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -333,7 +329,6 @@
             border-bottom: 1px solid #374151;
         }
 
-        /* Sección Ejemplares Fundadores */
         .ejemplares-aviso {
             text-align: center;
             color: #c5a059;
@@ -393,7 +388,6 @@
             font-size: 15px;
         }
 
-        /* Pirámide de niveles */
         .piramide-titulo {
             text-align: center;
             font-family: 'Cinzel', serif;
@@ -438,12 +432,12 @@
             line-height: 1.6;
         }
 
-        /* Vitrina (lightbox) */
+        /* Vitrina (lightbox) — GRANDE, casi pantalla completa */
         #vitrina-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(5, 7, 12, 0.92);
+            background: rgba(5, 7, 12, 0.94);
             z-index: 1000;
             align-items: center;
             justify-content: center;
@@ -456,22 +450,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 520px;
+            max-width: min(94vw, 1200px);
             width: 100%;
         }
         .vitrina-caja img {
             max-width: 100%;
-            max-height: 62vh;
+            max-height: 84vh;
+            width: auto;
+            height: auto;
             border-radius: 10px;
             border: 2px solid #785a28;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.7);
+            box-shadow: 0 25px 55px rgba(0,0,0,0.8);
             animation: vitrina-flotar 4s ease-in-out infinite;
         }
         .vitrina-pedestal {
-            width: 60%;
-            max-width: 320px;
-            height: 22px;
-            margin-top: 6px;
+            width: 55%;
+            max-width: 420px;
+            height: 24px;
+            margin-top: 8px;
             background: radial-gradient(ellipse at center, rgba(197,160,89,0.55) 0%, rgba(197,160,89,0) 72%);
             animation: vitrina-sombra 4s ease-in-out infinite;
         }
@@ -480,7 +476,7 @@
             color: #f3e5ab;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 15px;
+            font-size: 16px;
             margin-top: 14px;
         }
         .vitrina-cerrar {
@@ -488,14 +484,14 @@
             top: 22px; right: 28px;
             font-family: 'Cinzel', serif;
             color: #f3e5ab;
-            background: transparent;
+            background: rgba(11,15,25,0.6);
             border: 1px solid #785a28;
             border-radius: 50%;
-            width: 42px; height: 42px;
+            width: 44px; height: 44px;
             font-size: 20px;
             cursor: pointer;
         }
-        .vitrina-cerrar:hover { background: rgba(197,160,89,0.15); }
+        .vitrina-cerrar:hover { background: rgba(197,160,89,0.2); }
         @keyframes vitrina-flotar {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-14px); }
@@ -643,22 +639,22 @@
         <h2>Ejemplares Fundadores</h2>
         <p class="ejemplares-aviso">Estos son 4 de los cientos de ejemplares únicos que tendrá Brisas de Gloria. La venta real abre en la fase Alfa.</p>
         <div class="ejemplares-grid">
-            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_1.jpg', 'Fundador I')">
+            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_1_Full.jpg', 'Fundador I')">
                 <img src="/Ejemplar_Fundador_1.jpg" alt="Ejemplar Fundador">
                 <span class="ejemplar-ver">⤢</span>
                 <div class="ejemplar-label">Fundador I</div>
             </div>
-            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_2.jpg', 'Fundador II')">
+            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_2_Full.jpg', 'Fundador II')">
                 <img src="/Ejemplar_Fundador_2.jpg" alt="Ejemplar Fundador">
                 <span class="ejemplar-ver">⤢</span>
                 <div class="ejemplar-label">Fundador II</div>
             </div>
-            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_3.jpg', 'Fundador III')">
+            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_3_Full.jpg', 'Fundador III')">
                 <img src="/Ejemplar_Fundador_3.jpg" alt="Ejemplar Fundador">
                 <span class="ejemplar-ver">⤢</span>
                 <div class="ejemplar-label">Fundador III</div>
             </div>
-            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_4.jpg', 'Fundador IV')">
+            <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_4_Full.jpg', 'Fundador IV')">
                 <img src="/Ejemplar_Fundador_4.jpg" alt="Ejemplar Fundador">
                 <span class="ejemplar-ver">⤢</span>
                 <div class="ejemplar-label">Fundador IV</div>
