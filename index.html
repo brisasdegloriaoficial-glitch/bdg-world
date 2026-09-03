@@ -18,6 +18,38 @@
             min-height: 100vh;
             padding: 20px;
         }
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
+        }
+        .hero-banner video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .hero-banner-overlay {
+            position: absolute;
+            left: 0; right: 0; bottom: 0;
+            padding: 26px 20px 18px;
+            background: linear-gradient(180deg, rgba(11,15,25,0) 0%, rgba(11,15,25,0.88) 88%);
+            text-align: center;
+        }
+        .hero-banner-overlay p {
+            font-family: 'Cinzel', serif;
+            color: #f3e5ab;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            margin: 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+        @media (max-width: 700px) {
+            .hero-banner-overlay p { font-size: 12px; }
+        }
         .art-container {
             width: 100%;
             max-width: 1100px;
@@ -32,12 +64,24 @@
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
+        .slogan-corto {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #c5a059;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 18px;
+        }
         .project-desc {
             font-size: 18px;
             color: #c5a059;
             text-align: center;
             max-width: 1000px;
             margin-bottom: 30px;
+            margin-top: 8px;
+            line-height: 1.5;
         }
         nav {
             position: sticky;
@@ -195,11 +239,123 @@
         .whitepaper-box .boton-dorado {
             margin-top: 20px;
         }
+
+        /* Sección de Gloria */
+        .gloria-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        .gloria-section img {
+            width: 260px;
+            max-width: 100%;
+            border-radius: 8px;
+            border: 2px solid #785a28;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            flex-shrink: 0;
+        }
+        .gloria-section .gloria-texto {
+            flex: 1;
+            min-width: 260px;
+        }
+        .gloria-section .gloria-rol {
+            color: #c5a059;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        /* Sección Ecosistema Tri-Metal */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 10px;
+        }
+        @media (max-width: 720px) {
+            .tier-grid { grid-template-columns: 1fr; }
+        }
+        .tier-card-web {
+            background: #0b0f19;
+            border: 1px solid #374151;
+            border-top: 4px solid #c5a059;
+            border-radius: 6px;
+            padding: 22px 18px;
+            text-align: center;
+        }
+        .tier-card-web.oro { border-top-color: #d4af37; }
+        .tier-card-web.plata { border-top-color: #b9c2cc; }
+        .tier-card-web.cobre { border-top-color: #b87333; }
+        .tier-card-web img.coin-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 14px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.7);
+        }
+        .tier-card-web .tier-tag-web {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 10px;
+            color: #0b0f19;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .tier-card-web.oro .tier-tag-web { background: linear-gradient(180deg,#f3e5ab,#d4af37); }
+        .tier-card-web.plata .tier-tag-web { background: linear-gradient(180deg,#eef1f4,#b9c2cc); }
+        .tier-card-web.cobre .tier-tag-web { background: linear-gradient(180deg,#e3a06e,#b87333); }
+        .tier-card-web .tier-name-web {
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            font-size: 20px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .tier-card-web.oro .tier-name-web { color: #e8cd82; }
+        .tier-card-web.plata .tier-name-web { color: #d7dde3; }
+        .tier-card-web.cobre .tier-name-web { color: #d99a63; }
+        .tier-card-web p {
+            font-size: 13.5px;
+            color: #d1d5db;
+            line-height: 1.5;
+            margin-bottom: 6px;
+            text-align: left;
+        }
+        .tier-equiv {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            color: #f3e5ab;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            margin-top: 22px;
+            padding: 14px;
+            border-top: 1px solid #374151;
+            border-bottom: 1px solid #374151;
+        }
     </style>
 </head>
 <body>
+    <div class="hero-banner">
+        <video autoplay muted loop playsinline poster="/Hero_Poster.jpg">
+            <source src="/Hero_BrisasDeGloria.mp4" type="video/mp4">
+        </video>
+        <div class="hero-banner-overlay">
+            <p>Siente los vientos del triunfo. Vive las brisas del placer. Corre por tu gloria.</p>
+        </div>
+    </div>
+
     <div id="inicio" class="art-container">
         <img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
+        <div class="slogan-corto">El Galope Final</div>
 
         <div class="botones-inicio">
             <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
@@ -260,10 +416,11 @@
         }
     </script>
 
-    <p class="project-desc">Proyecto de desarrollo 3D de carreras de caballos.</p>
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#sobre-el-juego">Sobre el Juego</a>
+        <a href="#gloria">Gloria</a>
+        <a href="#ecosistema">Ecosistema</a>
         <a href="#avances">Avances</a>
         <a href="#contacto">Contacto</a>
         <a href="#whitepaper">Whitepaper</a>
@@ -271,6 +428,42 @@
     <section id="sobre-el-juego" class="content-section">
         <h2>Sobre el Juego</h2>
         <p>Brisas de Gloria es un simulador en desarrollo focalizado en el realismo visual y la precisión en la biomecánica de carreras hípicas.</p>
+    </section>
+    <section id="gloria" class="content-section gloria-section">
+        <img src="/Gloria_BrisasDeGloria.jpg" alt="Gloria, presentadora virtual de Brisas de Gloria">
+        <div class="gloria-texto">
+            <div class="gloria-rol">Embajadora y Guía del Juego</div>
+            <h2>Gloria</h2>
+            <p>Gloria es la anfitriona, tutora y presentadora virtual de Brisas de Gloria. Dentro del juego, guía al jugador a través de los tutoriales y narra los momentos clave de cada carrera. Fuera del juego, es la imagen principal de la marca — presente en videos, redes sociales y material de presentación a patrocinadores e inversionistas.</p>
+        </div>
+    </section>
+    <section id="ecosistema" class="content-section">
+        <h2>Ecosistema Económico</h2>
+        <p style="margin-bottom: 18px;">La economía de Brisas de Gloria se organiza en tres niveles, cada uno con su propia moneda:</p>
+        <div class="tier-grid">
+            <div class="tier-card-web oro">
+                <img class="coin-img" src="/Moneda_BDG.jpg" alt="Moneda $BDG">
+                <span class="tier-tag-web">Nivel Oro · On-Chain</span>
+                <span class="tier-name-web">$BDG</span>
+                <p><strong>Naturaleza:</strong> el único token criptográfico en blockchain.</p>
+                <p><strong>Uso:</strong> negociable en exchanges, gobernanza, patrocinios corporativos.</p>
+            </div>
+            <div class="tier-card-web plata">
+                <img class="coin-img" src="/Moneda_Gloria.jpg" alt="Moneda Gloria">
+                <span class="tier-tag-web">Nivel Plata · Off-Chain</span>
+                <span class="tier-name-web">Gloria</span>
+                <p><strong>Naturaleza:</strong> moneda blanda interna del juego.</p>
+                <p><strong>Uso:</strong> economía diaria, entradas a carreras, recompensas.</p>
+            </div>
+            <div class="tier-card-web cobre">
+                <img class="coin-img" src="/Moneda_Cobre.jpg" alt="Moneda Cobre">
+                <span class="tier-tag-web">Nivel Cobre · Off-Chain</span>
+                <span class="tier-name-web">Cobre</span>
+                <p><strong>Naturaleza:</strong> subunidad interna mínima.</p>
+                <p><strong>Uso:</strong> microtransacciones y cambio pequeño.</p>
+            </div>
+        </div>
+        <div class="tier-equiv">1 $BDG = 100 Gloria = 10,000 Cobre</div>
     </section>
     <section id="avances" class="content-section">
         <h2>Avances del Proyecto</h2>
