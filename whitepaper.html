@@ -424,13 +424,14 @@ footer.wp-footer p.brand {
     <h2 class="sub-title">Control de la Carrera</h2>
     <p>Sistema de mandos intuitivos, adaptado tanto a PC como a controles táctiles en Android:</p>
     <ul class="doc-list">
-        <li><strong>Arreo:</strong> impulsa al caballo, consume resistencia (stamina).</li>
+        <li><strong>Arreo:</strong> impulsa al caballo, consume resistencia (stamina). Utilizable durante toda la carrera — hasta 60 usos, cada uno con un incremento de velocidad moderado (para evitar cambios bruscos).</li>
         <li><strong>Freno:</strong> reduce la velocidad de forma controlada.</li>
-        <li><strong>Látigo (izquierdo/derecho):</strong> impulso adicional de corto alcance, también con costo de stamina.</li>
-        <li><strong>Manejo de carril / cambio de mano:</strong> el jugador se desplaza lateralmente en la pista para buscar mejores posiciones o esquivar rivales.</li>
+        <li><strong>Látigo (izquierdo/derecho):</strong> impulso adicional de corto alcance, con costo de stamina. Hasta 20 usos — se recomienda reservarlo para los últimos 400 metros de la carrera, donde tiene mayor impacto.</li>
+        <li><strong>Manejo de carril / cambio de mano:</strong> el jugador se desplaza lateralmente en la pista para buscar mejores posiciones o esquivar el tráfico de otros caballos al salir de atrás del pelotón.</li>
     </ul>
     <h2 class="sub-title">Sistema de Resistencia (Stamina)</h2>
-    <p>El jugador debe administrar el esfuerzo del caballo a lo largo de la carrera: usar el látigo o arrear demasiado pronto deja al caballo sin energía para el sprint final. Este sistema es el corazón estratégico del juego.</p>
+    <p>El jugador debe administrar el esfuerzo del caballo a lo largo de la carrera: usar el látigo o arrear demasiado pronto deja al caballo sin energía para el sprint final. La stamina tiene más peso en la jugabilidad que el látigo — es el recurso central que el jugador hábil aprende a administrar. Este sistema es el corazón estratégico del juego.</p>
+    <div class="callout">A partir del nivel 11, el uso excesivo de arreo o látigo por encima de los límites comienza a penalizar el rendimiento del caballo — antes de ese nivel, el jugador nuevo puede experimentar sin penalización.</div>
     <h2 class="sub-title">Ecosistema de Juego</h2>
     <ul class="doc-list">
         <li><strong>Modo Entrenamiento:</strong> el jugador mejora a su caballo entre carreras.</li>
@@ -583,18 +584,79 @@ footer.wp-footer p.brand {
 
     <h2 class="sub-title">Ciclo de Vida de Activos y Reproducción</h2>
     <p>Para evitar la inflación descontrolada de la población de caballos — el mismo problema que devaluó a varios juegos NFT con cría ilimitada — Brisas de Gloria implementa un ciclo de vida de dos generaciones con reproducción restringida.</p>
+    <p><strong>Unidad de venta — el Combo Fundador:</strong> los ejemplares Gen 0 no se venden de forma individual, se venden en pares. Al retirarse, la pareja produce un único descendiente (Gen 1). <strong>Duración de temporada:</strong> 1 mes, seguido de 5 días de descanso para mantenimiento.</p>
     <table class="doc-table">
         <tr><th>Generación</th><th>Origen</th><th>Precio Inicial</th><th>Vida Útil</th><th>Reproducción</th></tr>
-        <tr><td>Gen 0 — Fundador</td><td>Venta regular o recompensas</td><td>$10 – $100 USD</td><td>3 temporadas de carrera</td><td>Habilitada al retirarse (tras la 3ª temporada)</td></tr>
-        <tr><td>Gen 1 — Descendencia</td><td>Cría de una pareja Gen 0 retirada</td><td>No se vende — se genera</td><td>2 temporadas de carrera</td><td>Esterilidad absoluta — no reproduce</td></tr>
+        <tr><td>Gen 0 — Fundador (par)</td><td>Venta regular o recompensas</td><td>$10 – $100 USD (por ejemplar)</td><td>8 temporadas (~8 meses)</td><td>Habilitada al retirarse (tras la 8ª temporada)</td></tr>
+        <tr><td>Gen 1 — Descendencia</td><td>Cría de una pareja Gen 0 retirada</td><td>No se vende — se genera</td><td>4 temporadas (~4 meses)</td><td>Esterilidad absoluta — no reproduce</td></tr>
     </table>
+    <div class="callout">Un Combo Fundador ofrece ~12 temporadas de juego en total (≈1 año) por su inversión inicial. Cifras del primer año de lanzamiento, revisables con datos reales de adopción.</div>
     <ul class="doc-list">
         <li><strong>1 descendiente por pareja, por temporada</strong> — un tope duro que evita camadas masivas.</li>
-        <li><strong>Requiere dos ejemplares Gen 0 retirados</strong> (habiendo completado sus 3 temporadas competitivas).</li>
+        <li><strong>Requiere dos ejemplares Gen 0 retirados</strong> (habiendo completado sus 8 temporadas competitivas).</li>
         <li><strong>Restricción absoluta:</strong> los ejemplares Gen 1 no pueden reproducirse bajo ninguna circunstancia.</li>
     </ul>
-    <p>Al completar sus 2 temporadas, un ejemplar Gen 1 pasa a <strong>estado Legado</strong>: se retira permanentemente de la competencia y no puede generar nuevos activos.</p>
+    <p>Al completar sus 4 temporadas, un ejemplar Gen 1 pasa a <strong>estado Legado</strong>: se retira permanentemente de la competencia y no puede generar nuevos activos.</p>
     <div class="callout">Efecto de diseño: como Gen 1 nunca reproduce, cada pareja Gen 0 tiene un techo natural de descendencia — la población total de caballos crece de forma acotada y predecible, nunca de forma exponencial.</div>
+
+    <h2 class="sub-title">Camino Gratuito y Camino Pagado</h2>
+    <p>La habilidad del jugador pesa más que el dinero invertido. Un jugador gratuito hábil puede competir de tú a tú contra un ejemplar comprado — pagar compra comodidad y ahorro de tiempo, no la victoria.</p>
+    <ul class="doc-list">
+        <li><strong>Niveles 1-10 (gratis):</strong> el jugador cría y entrena su ejemplar sin pagar nada; mejoras desbloqueadas viendo un video publicitario (proveedor por definir); sin acceso al circuito pagado todavía.</li>
+        <li><strong>Nivel 11 (graduación):</strong> el ejemplar criado gratis se vuelve vendible (~$10-$20) y su jugador ya puede pagar la inscripción de $1 para competir por premios — con el mismo caballo que crió desde cero.</li>
+        <li><strong>Camino pagado:</strong> el Combo Fundador entra directo al circuito competitivo, sin publicidad. El precio refleja el nivel de especialización del ejemplar.</li>
+    </ul>
+
+    <h2 class="sub-title">Curva de Valor por Especialización</h2>
+    <p>El precio de cada ejemplar Gen 0 refleja cuántas cualidades locomotivas domina (distancia, terreno/clima, estilo de carrera). Un ejemplar más económico no carece de las demás cualidades — destaca en las que fue adquirido, y rinde de forma promedio en el resto.</p>
+    <table class="doc-table">
+        <tr><th>Nivel</th><th>Precio</th><th>Cualidades de Especialización</th></tr>
+        <tr><td>Debutante</td><td>$10</td><td>2-3 cualidades</td></tr>
+        <tr><td>Especialista</td><td>$30</td><td>4-5 cualidades</td></tr>
+        <tr><td>Competidor</td><td>$50</td><td>6-7 cualidades</td></tr>
+        <tr><td>Campeón</td><td>$70</td><td>8-9 cualidades</td></tr>
+        <tr><td>Todoterreno</td><td>$100</td><td>Domina prácticamente todas las condiciones</td></tr>
+    </table>
+
+    <h2 class="sub-title">Circuito de Competencia de $1</h2>
+    <p>A partir del nivel 11, el ejemplar puede competir en el circuito de inscripción paga — una cuota de inscripción, no una apuesta. 10 jugadores × $1 = $10 recaudados por carrera.</p>
+    <table class="doc-table">
+        <tr><th>Destino</th><th>Monto</th><th>Detalle</th></tr>
+        <tr><td>1er Lugar</td><td>$5</td><td>Pago inmediato al finalizar la carrera</td></tr>
+        <tr><td>2do Lugar</td><td>$2</td><td>Pago inmediato</td></tr>
+        <tr><td>3er Lugar</td><td>$1</td><td>Recupera su inscripción</td></tr>
+        <tr><td>Reserva de la Casa</td><td>$1</td><td>Colchón operativo para imprevistos</td></tr>
+        <tr><td>Pote de Fin de Temporada</td><td>$1</td><td>Se acumula para la eliminatoria general</td></tr>
+    </table>
+    <p><strong>Pote de Fin de Temporada:</strong> formato de eliminatoria general — 1er lugar con recompensa alta, 2do equitativo, premios decrecientes hasta cubrir un rango amplio (aprox. puesto 20-50, según turnout).</p>
+    <div class="callout">Los jugadores del camino gratuito (niveles 1-10) no participan del pote de fin de temporada — reservado para quienes ya se graduaron o compraron su ejemplar.</div>
+
+    <h2 class="sub-title">Atavíos (Equipamiento Cosmético)</h2>
+    <p>Los <strong>Atavíos</strong> — látigo, casco, guantes, botas — se compran con Gloria o Cobre. Filosofía Pay-to-Skin, no Pay-to-Win: identidad visual y un pequeño bono, nunca ventaja decisiva.</p>
+    <ul class="doc-list">
+        <li><strong>Recompensa por habilidad (AirDrop):</strong> los jugadores más hábiles reciben Atavíos directamente, empezando por los más comunes.</li>
+        <li><strong>Camino de progresión:</strong> combinando habilidad y Atavíos ganados, un jugador gratuito puede acercar la calidad de su ejemplar a la de uno comprado — con más tiempo, no con dinero.</li>
+    </ul>
+
+    <h2 class="sub-title">Algoritmo SSDP (Visión de Marketplace)</h2>
+    <div class="callout">Motor de valoración planeado para el Marketplace a futuro — no está activo hoy. El juego actualmente tiene una sola superficie de pista y no cuenta con sistema de clima ni genética. Documentado como hoja de ruta, no como funcionalidad presente.</div>
+    <p>La <strong>Suma Ponderada de Desempeño y Perfil (SSDP)</strong> calculará un índice de valor base por ejemplar, ajustado por atributos, historial deportivo y condiciones de pista:</p>
+    <div class="callout" style="font-family:'Cinzel',serif; text-align:center; font-style:normal; color:#f3e5ab;">
+        V_base = (Bv × Mgen) × (1 + Σ(Atributo_i × Wi)) × Factor_ClimaPista
+    </div>
+    <ul class="doc-list">
+        <li><strong>Multiplicador Generacional:</strong> Gen 0 = 1.5 (cría habilitada); Gen 1 = 1.0 (estéril, enfocado en rendimiento).</li>
+        <li><strong>Modalidad de carrera (peso 0.25):</strong> Puntero, Fondista/Constante, Rematador.</li>
+        <li><strong>Aptitud por distancia (peso 0.25):</strong> Cortas 800-1200m, Intermedias 1600-1800m, Largas 2400-3600m.</li>
+    </ul>
+    <table class="doc-table">
+        <tr><th>Superficie</th><th>Clima Asociado</th><th>Factor de Ajuste</th></tr>
+        <tr><td>Grama</td><td>Sol / Nublado</td><td>1.00</td></tr>
+        <tr><td>Tierra</td><td>Seco / Polvo</td><td>0.95</td></tr>
+        <tr><td>Fango / Pesada</td><td>Lluvia intensa</td><td>0.80 – 1.20 (según genética)</td></tr>
+        <tr><td>Nieve / Congelada</td><td>Bajas temperaturas</td><td>0.75 – 1.15 (según genética)</td></tr>
+    </table>
+    <p><strong>Mecanismo Anti-Especulación:</strong> el precio sugerido se calculará multiplicando V_base por el WinRate y las carreras restantes en temporada. Un ejemplar con fatiga o malas actuaciones fuera de su genética ve caer su V_base automáticamente, evitando burbujas de precio.</p>
 
     <h2 class="sub-title">Edición Fundadores y Control de Inventario</h2>
     <p>Dentro de la Generación 0, se emitirá una colección especial y estrictamente limitada: la <strong>Edición Fundadores</strong> — numerada, de tamaño fijo (propuesta inicial: 1,000–5,000 unidades) y que nunca se vuelve a emitir. Sus beneficios son de escasez y estética (mejores probabilidades de cría, cosméticos exclusivos, acceso prioritario), nunca ventaja deportiva.</p>
@@ -605,7 +667,7 @@ footer.wp-footer p.brand {
     <ul class="doc-list">
         <li><strong>α (coeficiente de emisión):</strong> punto de partida sugerido 0.4–0.6 — se calibra con datos reales.</li>
         <li><strong>Tope Semanal:</strong> límite absoluto para proteger el mercado ante picos de crecimiento.</li>
-        <li><strong>Curva de Precio Progresivo:</strong> el precio sube por escalones conforme aumenta el suministro, autorregulando la demanda.</li>
+        <li><strong>Cría Gen 1 y graduados:</strong> tanto los descendientes como los ejemplares gratuitos graduados en nivel 11 se restan de la emisión primaria.</li>
         <li><strong>Fondo de Estabilización:</strong> una fracción del Tesoro de Respaldo puede recomprar ejemplares si el precio cae por debajo de un piso definido.</li>
     </ul>
 
