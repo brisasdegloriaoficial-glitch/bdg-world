@@ -145,6 +145,31 @@
         }
         .boton-secundario:hover { background: rgba(197, 160, 89, 0.12); }
 
+        /* Aviso de instalación (Android / Windows) */
+        .aviso-instalacion {
+            width: 100%;
+            max-width: 760px;
+            margin-top: 24px;
+            padding: 18px 22px;
+            background: #111827;
+            border: 1px solid #785a28;
+            border-left: 4px solid #c5a059;
+            border-radius: 6px;
+        }
+        .aviso-instalacion p {
+            color: #d1d5db;
+            font-size: 13.5px;
+            line-height: 1.65;
+            margin-bottom: 11px;
+        }
+        .aviso-instalacion p:last-child { margin-bottom: 0; }
+        .aviso-instalacion strong { color: #f3e5ab; }
+        .aviso-instalacion em {
+            color: #c5a059;
+            font-style: normal;
+            font-weight: 600;
+        }
+
         #boton-jugar,
         #contenedor-juego {
             display: none;
@@ -518,8 +543,14 @@
 
         <div class="botones-inicio">
             <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
-                        <a class="boton-secundario" href="/BrisasDeGloria.apk" download>DESCARGAR PARA ANDROID</a>
+            <a class="boton-secundario" href="/BrisasDeGloria.apk" download>DESCARGAR PARA ANDROID</a>
             <a class="boton-secundario" href="/BrisasDeGloria.exe" download>DESCARGAR PARA WINDOWS</a>
+        </div>
+
+        <div class="aviso-instalacion">
+            <p><strong>Antes de instalar, léelo:</strong> el juego todavía no está en las tiendas oficiales, así que tu teléfono y tu computadora van a mostrar una alerta al abrirlo. Es lo normal en un programa nuevo. No es un virus.</p>
+            <p><strong>En Android:</strong> al abrir el archivo descargado va a decir que la instalación está bloqueada. Pulsa <em>Ajustes</em> o <em>Más detalles</em>, autoriza a tu navegador a instalar aplicaciones, y vuelve al archivo. Ahí ya te deja.</p>
+            <p><strong>En Windows:</strong> va a salir una pantalla azul que dice que se protegió el equipo. Pulsa <em>Más información</em> y luego <em>Ejecutar de todas formas</em>.</p>
         </div>
 
         <div id="contenedor-juego">
