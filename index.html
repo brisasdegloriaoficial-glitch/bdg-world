@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brisas de Gloria</title>
+    <meta name="description" content="Simulador 3D de carreras de caballos. Siente los vientos del triunfo. Descarga la Pre-Alfa para Android y Windows.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Brisas de Gloria">
+    <meta property="og:title" content="Brisas de Gloria — El Galope Final">
+    <meta property="og:description" content="Simulador 3D de carreras de caballos. Siente los vientos del triunfo. Descarga la Pre-Alfa para Android y Windows.">
+    <meta property="og:image" content="https://bdg-world.vercel.app/Hero_Poster.jpg">
+    <meta property="og:url" content="https://bdg-world.vercel.app/">
+    <meta name="twitter:card" content="summary_large_image">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;700&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -168,6 +176,41 @@
             color: #c5a059;
             font-style: normal;
             font-weight: 600;
+        }
+
+        .controles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+            margin-top: 6px;
+        }
+        @media (max-width: 720px) {
+            .controles-grid { grid-template-columns: 1fr; }
+        }
+        .controles-col h3 {
+            font-family: 'Cinzel', serif;
+            color: #f3e5ab;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #374151;
+        }
+        .controles-col ul { list-style: none; }
+        .controles-col li {
+            color: #d1d5db;
+            font-size: 13.5px;
+            line-height: 1.55;
+            margin-bottom: 9px;
+        }
+        .controles-col li strong { color: #c5a059; }
+        .controles-nota {
+            margin-top: 20px;
+            color: #c5a059;
+            font-size: 13px;
+            font-style: italic;
+            line-height: 1.6;
         }
 
         #boton-jugar,
@@ -574,7 +617,7 @@
                         <li>Tecla Control (Ctrl): Cambiar de cámara</li>
                         <li>Rueda del mouse: Zoom (funciona en todas las cámaras)</li>
                     </ul>
-                    <p class="nota-limite">El arreo y el látigo son limitados durante la carrera — mirá el contador en pantalla y usalos con cuidado. Cambiar de mano te ayuda a repartir el esfuerzo entre los dos lados.</p>
+                    <p class="nota-limite">El arreo y el látigo son limitados durante la carrera — mira el contador en pantalla y úsalos con cuidado. Cambiar de mano te ayuda a repartir el esfuerzo entre los dos lados.</p>
                     <button id="boton-empezar" class="boton-dorado" onclick="empezarJuego()">EMPEZAR</button>
                 </div>
             </div>
@@ -620,6 +663,7 @@
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#sobre-el-juego">Sobre el Juego</a>
+        <a href="#controles">Controles</a>
         <a href="#gloria">Gloria</a>
         <a href="#ecosistema">Ecosistema</a>
         <a href="#ejemplares">Ejemplares</a>
@@ -630,6 +674,35 @@
     <section id="sobre-el-juego" class="content-section">
         <h2>Sobre el Juego</h2>
         <p>Brisas de Gloria es un simulador en desarrollo focalizado en el realismo visual y la precisión en la biomecánica de carreras hípicas.</p>
+    </section>
+    <section id="controles" class="content-section">
+        <h2>Controles</h2>
+        <div class="controles-grid">
+            <div class="controles-col">
+                <h3>Computadora</h3>
+                <ul>
+                    <li><strong>Flecha arriba:</strong> arrear (acelerar)</li>
+                    <li><strong>Flecha abajo:</strong> frenar</li>
+                    <li><strong>Flechas izquierda y derecha:</strong> cambiar de carril</li>
+                    <li><strong>Clic izquierdo o derecho:</strong> látigo de ese lado</li>
+                    <li><strong>Barra espaciadora:</strong> cambiar de mano</li>
+                    <li><strong>Tecla Control:</strong> cambiar de cámara</li>
+                    <li><strong>Rueda del mouse:</strong> zoom</li>
+                </ul>
+            </div>
+            <div class="controles-col">
+                <h3>Android</h3>
+                <ul>
+                    <li><strong>Mando izquierdo, arriba:</strong> ARREO</li>
+                    <li><strong>Mando izquierdo, abajo:</strong> cambiar de cámara</li>
+                    <li><strong>Mando izquierdo, a los lados:</strong> cambiar de carril</li>
+                    <li><strong>Mando derecho, arriba:</strong> MANO (látigo)</li>
+                    <li><strong>Mando derecho, abajo:</strong> frenar</li>
+                    <li><strong>Pellizcar con dos dedos:</strong> zoom</li>
+                </ul>
+            </div>
+        </div>
+        <p class="controles-nota">Arrear y castigar al mismo tiempo es el impulso máximo del caballo. El arreo y el látigo son limitados durante la carrera: mira el contador en pantalla y úsalos con cuidado.</p>
     </section>
     <section id="gloria" class="content-section gloria-section">
         <img src="/Gloria_BrisasDeGloria.jpg" alt="Gloria, presentadora virtual de Brisas de Gloria">
@@ -665,11 +738,11 @@
                 <p><strong>Uso:</strong> microtransacciones y cambio pequeño.</p>
             </div>
         </div>
-        <div class="tier-equiv">1 Gloria = 1 USD = 100 Cobre · El $BDG se convierte a Gloria al valor de mercado del día</div>
+        <div class="tier-equiv">1 $BDG = 100 Gloria = 10,000 Cobre</div>
     </section>
     <section id="ejemplares" class="content-section">
         <h2>Ejemplares Fundadores</h2>
-        <p class="ejemplares-aviso">Estos son 4 de los cientos de ejemplares únicos que tendrá Brisas de Gloria. La venta real abre en la fase Alfa.</p>
+        <p class="ejemplares-aviso">Estos son 4 ejemplares de la Edición Fundadores, una colección numerada y limitada. Los Fundadores se adquieren en pareja. La venta real abre en la fase Alfa.</p>
         <div class="ejemplares-grid">
             <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_1_Full.jpg', 'Fundador I')">
                 <img src="/Ejemplar_Fundador_1.jpg" alt="Ejemplar Fundador">
@@ -721,14 +794,22 @@
     <section id="avances" class="content-section">
         <h2>Avances del Proyecto</h2>
         <ul>
-            <li>Estructura base del escenario 3D.</li>
-            <li>Modelado de ejemplares hípicos.</li>
-            <li>Implementación de físicas de galope.</li>
+            <li>Hipódromo 3D con tribunas, rieles y gatera de partida numerada.</li>
+            <li>Diez ejemplares en pista: el del jugador y nueve gobernados por la máquina.</li>
+            <li>Tres cámaras con zoom, incluida la vista en primera persona desde el jinete.</li>
+            <li>Photo finish al cruzar la meta.</li>
+            <li>Distancias oficiales, con carreras de una y de dos vueltas.</li>
+            <li>Controles táctiles para Android.</li>
+            <li>Versiones jugables en navegador, Android y Windows.</li>
         </ul>
     </section>
     <section id="contacto" class="content-section">
         <h2>Contacto</h2>
-        <p>Mantente atento a los canales oficiales.</p>
+        <p>¿Preguntas, comentarios o interés en patrocinar? Escríbenos.</p>
+        <div class="botones-inicio" style="justify-content:center;">
+            <a class="boton-dorado" href="https://wa.me/573017717364" target="_blank" rel="noopener">ESCRIBIR POR WHATSAPP</a>
+            <a class="boton-secundario" href="mailto:brisasdegloriaoficial@gmail.com">CORREO</a>
+        </div>
     </section>
     <section id="whitepaper" class="content-section whitepaper-box">
         <h2>Whitepaper</h2>
