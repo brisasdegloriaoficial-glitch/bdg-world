@@ -397,7 +397,7 @@ footer.wp-footer p.brand {
         Crear un videojuego 3D inmersivo de carreras de caballos que combine entretenimiento, estrategia y simulación ecuestre, accesible principalmente para dispositivos móviles.
     </div>
     <h2 class="sub-title">Problema y Oportunidad</h2>
-    <p>El mercado latinoamericano y de habla hispana carece de juegos de carreras de caballos de calidad, con realismo visual y biomecánico. Al mismo tiempo, existe una base amplia de fanáticos del deporte hípico sin una experiencia digital que los represente. Brisas de Gloria busca capturar ese público desatendido, combinando la tradición del hipódromo con tecnología 3D moderna y accesible.</p>
+    <p>El mercado latinoamericano y de habla hispana carece de juegos de carreras de caballos de calidad, con realismo visual y biomecánico. La oportunidad va más allá del aficionado hípico: Brisas de Gloria apunta a tres públicos. Los seguidores del deporte hípico, que no tienen una experiencia digital que los represente. Los jugadores de videojuegos, que buscan competencia, habilidad y progresión. Y el público general, que quiere distraerse un rato con carreras rápidas, fáciles de entender y que se juegan desde el teléfono. Brisas de Gloria combina la tradición del hipódromo con tecnología 3D moderna y accesible.</p>
 </section>
 
 <!-- 02 -->
@@ -424,10 +424,11 @@ footer.wp-footer p.brand {
     <h2 class="sub-title">Control de la Carrera</h2>
     <p>Sistema de mandos intuitivos, adaptado tanto a PC como a controles táctiles en Android:</p>
     <ul class="doc-list">
-        <li><strong>Arreo:</strong> impulsa al caballo, consume resistencia (stamina). Utilizable durante toda la carrera — hasta 60 usos, cada uno con un incremento de velocidad moderado (para evitar cambios bruscos).</li>
+        <li><strong>Arreo:</strong> impulsa al caballo, consume resistencia (stamina). Utilizable durante toda la carrera, con un tope de usos que depende de la distancia: en los 800 metros son 60, porque en esa carrera no se usa látigo; en las distancias más largas el tope baja proporcionalmente, ya que entra el látigo. Cada arreo da un incremento de velocidad moderado, para evitar cambios bruscos.</li>
         <li><strong>Freno:</strong> reduce la velocidad de forma controlada.</li>
-        <li><strong>Látigo (izquierdo/derecho):</strong> impulso adicional de corto alcance, con costo de stamina. Hasta 20 usos — se recomienda reservarlo para los últimos 400 metros de la carrera, donde tiene mayor impacto.</li>
-        <li><strong>Manejo de carril / cambio de mano:</strong> el jugador se desplaza lateralmente en la pista para buscar mejores posiciones o esquivar el tráfico de otros caballos al salir de atrás del pelotón.</li>
+        <li><strong>Látigo (izquierdo/derecho):</strong> impulso adicional de corto alcance, con costo de stamina. Son dos latigazos por mano: para seguir usándolo hay que cambiar el látigo de mano, y cada cambio habilita otros dos. Se recomienda reservarlo para los últimos 400 metros de la carrera, donde tiene mayor impacto.</li>
+        <li><strong>Cambio de carril:</strong> el jugador se desplaza lateralmente en la pista para buscar mejores posiciones o esquivar el tráfico de otros caballos al salir de atrás del pelotón.</li>
+        <li><strong>Cambio de mano (del látigo):</strong> pasa el látigo de un lado al otro. Habilita otros dos latigazos y reparte el esfuerzo entre los dos costados del caballo. Es una mecánica distinta del cambio de carril.</li>
     </ul>
     <h2 class="sub-title">Sistema de Resistencia (Stamina)</h2>
     <p>El jugador debe administrar el esfuerzo del caballo a lo largo de la carrera: usar el látigo o arrear demasiado pronto deja al caballo sin energía para el sprint final. La stamina tiene más peso en la jugabilidad que el látigo — es el recurso central que el jugador hábil aprende a administrar. Este sistema es el corazón estratégico del juego.</p>
@@ -447,8 +448,8 @@ footer.wp-footer p.brand {
 <section id="s04" class="wp-section">
     <h1 class="section-title">04 · Arquitectura Técnica y Desarrollo</h1>
     <ul class="doc-list">
-        <li><strong>Motor:</strong> Godot Engine 3.5.3.</li>
-        <li><strong>Modelado y animación:</strong> pipeline en Blender y Tripo AI para caballos y jinetes, con animaciones de galope, arreo, frenado y cambio de mano.</li>
+        <li><strong>Motor:</strong> Godot Engine.</li>
+        <li><strong>Modelado y animación:</strong> pipeline propio de modelado y animación de caballos y jinetes, con animaciones de galope, arreo, frenado y cambio de mano.</li>
         <li><strong>Física de carrera:</strong> sistema propio de seguimiento de trayectoria (path-following) con curvas analíticas para un movimiento fluido y realista en las curvas del hipódromo.</li>
         <li><strong>Plataforma Inicial:</strong> Android (descarga directa vía APK) y demo jugable en navegador web.</li>
         <li><strong>Estado de Desarrollo:</strong> Fase Pre-Alfa interna, con una hoja de ruta clara hacia las versiones Alfa y Comercial.</li>
@@ -584,27 +585,27 @@ footer.wp-footer p.brand {
 
     <h2 class="sub-title">Ciclo de Vida de Activos y Reproducción</h2>
     <p>Para evitar la inflación descontrolada de la población de caballos — el mismo problema que devaluó a varios juegos NFT con cría ilimitada — Brisas de Gloria implementa un ciclo de vida de dos generaciones con reproducción restringida.</p>
-    <p><strong>Unidad de venta — el Combo Fundador:</strong> los ejemplares Gen 0 no se venden de forma individual, se venden en pares. Al retirarse, la pareja produce un único descendiente (Gen 1). <strong>Duración de temporada:</strong> 1 mes, seguido de 5 días de descanso para mantenimiento.</p>
+    <p><strong>Unidad de venta — el Combo Inicial:</strong> los ejemplares Gen 0 no se venden de forma individual, se venden en pares. Al retirarse, la pareja produce un único descendiente (Gen 1). <strong>Duración de temporada:</strong> 1 mes de competencia, seguido de 5 días de descanso para mantenimiento; diez temporadas completan aproximadamente un año.</p>
     <table class="doc-table">
         <tr><th>Generación</th><th>Origen</th><th>Precio Inicial</th><th>Vida Útil</th><th>Reproducción</th></tr>
-        <tr><td>Gen 0 — Fundador (par)</td><td>Venta regular o recompensas</td><td>$10 – $100 USD (por ejemplar)</td><td>8 temporadas (~8 meses)</td><td>Habilitada al retirarse (tras la 8ª temporada)</td></tr>
-        <tr><td>Gen 1 — Descendencia</td><td>Cría de una pareja Gen 0 retirada</td><td>No se vende — se genera</td><td>4 temporadas (~4 meses)</td><td>Esterilidad absoluta — no reproduce</td></tr>
+        <tr><td>Gen 0 — Inicial (par)</td><td>Venta regular o recompensas</td><td>$10 – $100 USD (por ejemplar)</td><td>10 temporadas (≈1 año)</td><td>Habilitada al retirarse (tras la 10ª temporada)</td></tr>
+        <tr><td>Gen 1 — Descendencia</td><td>Cría de una pareja Gen 0 retirada</td><td>No se vende — se genera</td><td>10 temporadas (≈1 año)</td><td>Esterilidad absoluta — no reproduce</td></tr>
     </table>
-    <div class="callout">Un Combo Fundador ofrece ~12 temporadas de juego en total (≈1 año) por su inversión inicial. Cifras del primer año de lanzamiento, revisables con datos reales de adopción.</div>
+    <div class="callout">Un Combo Inicial ofrece ~20 temporadas de juego en total (≈2 años) por su inversión inicial: un año la pareja Gen 0 y otro año su descendiente Gen 1. Cifras del primer año de lanzamiento, revisables con datos reales de adopción.</div>
     <ul class="doc-list">
         <li><strong>1 descendiente por pareja, por temporada</strong> — un tope duro que evita camadas masivas.</li>
-        <li><strong>Requiere dos ejemplares Gen 0 retirados</strong> (habiendo completado sus 8 temporadas competitivas).</li>
+        <li><strong>Requiere dos ejemplares Gen 0 retirados</strong> (habiendo completado sus 10 temporadas competitivas).</li>
         <li><strong>Restricción absoluta:</strong> los ejemplares Gen 1 no pueden reproducirse bajo ninguna circunstancia.</li>
     </ul>
-    <p>Al completar sus 4 temporadas, un ejemplar Gen 1 pasa a <strong>estado Legado</strong>: se retira permanentemente de la competencia y no puede generar nuevos activos.</p>
+    <p>Al completar sus 10 temporadas, un ejemplar Gen 1 pasa a <strong>estado Legado</strong>: se retira permanentemente de la competencia y no puede generar nuevos activos.</p>
     <div class="callout">Efecto de diseño: como Gen 1 nunca reproduce, cada pareja Gen 0 tiene un techo natural de descendencia — la población total de caballos crece de forma acotada y predecible, nunca de forma exponencial.</div>
 
     <h2 class="sub-title">Camino Gratuito y Camino Pagado</h2>
-    <p>La habilidad del jugador pesa más que el dinero invertido. Un jugador gratuito hábil puede competir de tú a tú contra un ejemplar comprado — pagar compra comodidad y ahorro de tiempo, no la victoria.</p>
+    <p>La habilidad del jugador pesa más que el dinero invertido, pero no lo borra. Un jugador gratuito hábil puede enfrentarse a un ejemplar comprado y ganarle, aunque le cuesta más esfuerzo y más tiempo: tiene que entrenar, subir de nivel y dominar la carrera. Pagar compra comodidad, tiempo y un ejemplar más especializado, nunca la victoria.</p>
     <ul class="doc-list">
-        <li><strong>Niveles 1-10 (gratis):</strong> el jugador cría y entrena su ejemplar sin pagar nada; mejoras desbloqueadas viendo un video publicitario (proveedor por definir); sin acceso al circuito pagado todavía.</li>
-        <li><strong>Nivel 11 (graduación):</strong> el ejemplar criado gratis se vuelve vendible (~$10-$20) y su jugador ya puede pagar la inscripción de $1 para competir por premios — con el mismo caballo que crió desde cero.</li>
-        <li><strong>Camino pagado:</strong> el Combo Fundador entra directo al circuito competitivo, sin publicidad. El precio refleja el nivel de especialización del ejemplar.</li>
+        <li><strong>Niveles 1-10 (gratis):</strong> el jugador cría y entrena su ejemplar sin pagar nada; mejoras desbloqueadas viendo un video publicitario (proveedor por definir).</li>
+        <li><strong>Nivel 11 (graduación):</strong> el ejemplar criado gratis se vuelve vendible (~$10-$20) y entra al circuito competitivo por premios, con el mismo caballo que crió desde cero. No hay cuota de inscripción: los premios los paga la casa.</li>
+        <li><strong>Camino pagado:</strong> el Combo Inicial entra directo al circuito competitivo, sin publicidad. El precio refleja el nivel de especialización del ejemplar.</li>
     </ul>
 
     <h2 class="sub-title">Curva de Valor por Especialización</h2>
@@ -618,18 +619,10 @@ footer.wp-footer p.brand {
         <tr><td>Todoterreno</td><td>$100</td><td>Domina prácticamente todas las condiciones</td></tr>
     </table>
 
-    <h2 class="sub-title">Circuito de Competencia de $1</h2>
-    <p>A partir del nivel 11, el ejemplar puede competir en el circuito de inscripción paga — una cuota de inscripción, no una apuesta. 10 jugadores × $1 = $10 recaudados por carrera.</p>
-    <table class="doc-table">
-        <tr><th>Destino</th><th>Monto</th><th>Detalle</th></tr>
-        <tr><td>1er Lugar</td><td>$5</td><td>Pago inmediato al finalizar la carrera</td></tr>
-        <tr><td>2do Lugar</td><td>$2</td><td>Pago inmediato</td></tr>
-        <tr><td>3er Lugar</td><td>$1</td><td>Recupera su inscripción</td></tr>
-        <tr><td>Reserva de la Casa</td><td>$1</td><td>Colchón operativo para imprevistos</td></tr>
-        <tr><td>Pote de Fin de Temporada</td><td>$1</td><td>Se acumula para la eliminatoria general</td></tr>
-    </table>
+    <h2 class="sub-title">Premios y Fin de Temporada</h2>
+    <p>Competir no cuesta nada: no hay cuota de inscripción. Los premios los paga la casa con sus propios ingresos — venta de ejemplares, vallas patrocinadas y publicidad dentro del juego —, así que el dinero de los jugadores nunca entra en el pozo de premios.</p>
     <p><strong>Pote de Fin de Temporada:</strong> formato de eliminatoria general — 1er lugar con recompensa alta, 2do equitativo, premios decrecientes hasta cubrir un rango amplio (aprox. puesto 20-50, según turnout).</p>
-    <div class="callout">Los jugadores del camino gratuito (niveles 1-10) no participan del pote de fin de temporada — reservado para quienes ya se graduaron o compraron su ejemplar.</div>
+    <div class="callout">Desde el nivel 11, los jugadores del camino gratuito compiten por los mismos premios que los demás, con el ejemplar que criaron ellos mismos.</div>
 
     <h2 class="sub-title">Atavíos (Equipamiento Cosmético)</h2>
     <p>Los <strong>Atavíos</strong> — látigo, casco, guantes, botas — se compran con Gloria o Cobre. Filosofía Pay-to-Skin, no Pay-to-Win: identidad visual y un pequeño bono, nunca ventaja decisiva.</p>
@@ -699,20 +692,13 @@ footer.wp-footer p.brand {
 
 <!-- 08 -->
 <section id="s08" class="wp-section">
-    <h1 class="section-title">08 · Equipo y Herramientas de Desarrollo</h1>
-    <p>Brisas de Gloria es desarrollado por un fundador único, apoyado en un stack de herramientas de Inteligencia Artificial que funcionan como asesores y colaboradores técnicos en distintas etapas del proyecto. Esta sección lo deja explícito por transparencia con la comunidad y los inversionistas.</p>
+    <h1 class="section-title">08 · Equipo</h1>
+    <p>Brisas de Gloria es un proyecto de <strong>IA Power Tech</strong>, la empresa responsable del desarrollo del juego, del sitio web y de todo su ecosistema.</p>
     <div class="badge-box">
         <div class="label">Fundador</div>
         Fundador del proyecto — responsable de la visión, el diseño de juego y la dirección general de Brisas de Gloria.<br><strong>Contacto oficial:</strong> brisasdegloriaoficial@gmail.com
     </div>
-    <h2 class="sub-title">Stack de Inteligencia Artificial</h2>
-    <ul class="doc-list">
-        <li><strong>Claude (Anthropic) — Asesor Principal de Desarrollo y Estrategia:</strong> estructuración del whitepaper, arquitectura de tokenomics, desarrollo del sitio web, diseño de documentos y retoque de assets visuales.</li>
-        <li><strong>Gemini (Google) — Asesor Personal y Generación de Assets:</strong> apoyo creativo y generación de las monedas del ecosistema ($BDG, Gloria, Cobre).</li>
-        <li><strong>ChatGPT (OpenAI) — Soporte Complementario:</strong> asistencia adicional en etapas tempranas del proyecto.</li>
-        <li><strong>Mixamo (Adobe) — Animación de Personajes:</strong> rigging y animaciones base para los modelos 3D de caballos y jinetes.</li>
-    </ul>
-    <div class="callout">Estas son herramientas de IA, no colaboradores humanos — se listan por transparencia. A medida que el proyecto genere ingresos, una parte de la asignación "Fundador y Futuro Equipo" se destinará a contratar profesionales humanos.</div>
+    <div class="callout">A medida que el proyecto genere ingresos, una parte de la asignación "Fundador y Futuro Equipo" se destinará a contratar profesionales para el desarrollo, el arte y la comunidad.</div>
 </section>
 
 <!-- 09 -->
