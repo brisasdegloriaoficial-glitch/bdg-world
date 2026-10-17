@@ -569,9 +569,59 @@
             0%, 100% { transform: scaleX(1); opacity: 0.55; }
             50% { transform: scaleX(0.82); opacity: 0.35; }
         }
+
+        /* Musica principal: "Naci para cabalgar" (boton flotante, abajo a la derecha) */
+        .boton-musica {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px 10px 10px;
+            background: rgba(11, 15, 25, 0.92);
+            border: 2px solid #c5a059;
+            border-radius: 999px;
+            color: #f3e5ab;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        }
+        .boton-musica:hover { background: rgba(197, 160, 89, 0.18); }
+        .boton-musica .icono-musica {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #c5a059;
+            color: #0b0f19;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+        .boton-musica.esperando .icono-musica { animation: musica-latido 1.6s ease-in-out infinite; }
+        @keyframes musica-latido {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
+            50% { box-shadow: 0 0 0 9px rgba(197, 160, 89, 0); }
+        }
+        @media (max-width: 700px) {
+            .boton-musica { right: 10px; bottom: 10px; font-size: 11px; padding: 7px 12px 7px 7px; }
+            .boton-musica .icono-musica { width: 28px; height: 28px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
+    <!-- Musica principal de la pagina. El navegador no deja que suene sola:
+         suena cuando la persona toca el boton. -->
+    <audio id="musica-principal" src="/Naci_ParaCabalgar.mp3" preload="none" loop></audio>
+    <button id="boton-musica" class="boton-musica esperando" onclick="alternarMusica()" aria-label="Escuchar Nací para cabalgar">
+        <span class="icono-musica" id="icono-musica">&#9654;</span>
+        <span id="texto-musica">Escucha: Nací para cabalgar</span>
+    </button>
     <div class="hero-banner">
         <video autoplay muted loop playsinline poster="/Hero_Poster.jpg">
             <source src="/Hero_BrisasDeGloria.mp4" type="video/mp4">
@@ -626,7 +676,32 @@
     </div>
 
     <script>
+        function alternarMusica() {
+            var musica = document.getElementById('musica-principal');
+            var boton = document.getElementById('boton-musica');
+            if (musica.paused) {
+                musica.volume = 0.8;
+                musica.play();
+                boton.classList.remove('esperando');
+                document.getElementById('icono-musica').innerHTML = '&#10074;&#10074;';
+                document.getElementById('texto-musica').textContent = 'Nací para cabalgar';
+            } else {
+                musica.pause();
+                document.getElementById('icono-musica').innerHTML = '&#9654;';
+                document.getElementById('texto-musica').textContent = 'Escucha: Nací para cabalgar';
+            }
+        }
+
+        // Al abrir la demo se pausa la musica: el juego trae la suya.
+        function pausarMusica() {
+            var musica = document.getElementById('musica-principal');
+            if (!musica.paused) {
+                alternarMusica();
+            }
+        }
+
         function mostrarJuego() {
+            pausarMusica();
             var contenedor = document.getElementById('contenedor-juego');
             var iframe = document.getElementById('iframe-juego');
             var boton = document.getElementById('boton-jugar');
