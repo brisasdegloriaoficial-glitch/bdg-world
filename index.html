@@ -571,6 +571,7 @@
         }
 
         /* Musica principal: "Naci para cabalgar" (boton flotante, abajo a la derecha) */
+        /* Colores del boton JUGAR OTRA VEZ del juego: fondo #2b1a6b, borde #997aff, letras #fdf033 */
         .boton-musica {
             position: fixed;
             right: 18px;
@@ -580,23 +581,25 @@
             align-items: center;
             gap: 10px;
             padding: 10px 16px 10px 10px;
-            background: rgba(11, 15, 25, 0.92);
-            border: 2px solid #c5a059;
+            background: #2b1a6b;
+            border: 2px solid #997aff;
             border-radius: 999px;
-            color: #f3e5ab;
+            color: #fdf033;
+            text-shadow: -1px -1px 0 #0d0526, 1px -1px 0 #0d0526, -1px 1px 0 #0d0526, 1px 1px 0 #0d0526;
             font-family: 'Cinzel', serif;
             font-size: 13px;
             letter-spacing: 0.5px;
             cursor: pointer;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
         }
-        .boton-musica:hover { background: rgba(197, 160, 89, 0.18); }
+        .boton-musica:hover { background: #3a2588; }
         .boton-musica .icono-musica {
             width: 34px;
             height: 34px;
             border-radius: 50%;
-            background: #c5a059;
-            color: #0b0f19;
+            background: #fdf033;
+            color: #2b1a6b;
+            text-shadow: none;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -605,8 +608,8 @@
         }
         .boton-musica.esperando .icono-musica { animation: musica-latido 1.6s ease-in-out infinite; }
         @keyframes musica-latido {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
-            50% { box-shadow: 0 0 0 9px rgba(197, 160, 89, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(153, 122, 255, 0.85); }
+            50% { box-shadow: 0 0 0 9px rgba(153, 122, 255, 0); }
         }
         @media (max-width: 700px) {
             .boton-musica { right: 10px; bottom: 10px; font-size: 11px; padding: 7px 12px 7px 7px; }
@@ -699,6 +702,27 @@
                 alternarMusica();
             }
         }
+
+        // Primer toque en cualquier parte de la pagina: arranca la musica.
+        // Chrome no deja que una pagina suene sola; necesita un toque de la persona.
+        // No cuenta si ese primer toque es en el boton de la musica o en la demo del juego.
+        var musicaYaArranco = false;
+        function arrancarConPrimerToque(evento) {
+            if (musicaYaArranco) return;
+            musicaYaArranco = true;
+            document.removeEventListener('click', arrancarConPrimerToque, true);
+            document.removeEventListener('keydown', arrancarConPrimerToque, true);
+            var t = evento.target;
+            if (t && t.closest && (t.closest('#boton-musica') || t.closest('#boton-jugar') || t.closest('#contenedor-juego'))) {
+                return;
+            }
+            var musica = document.getElementById('musica-principal');
+            if (musica.paused) {
+                alternarMusica();
+            }
+        }
+        document.addEventListener('click', arrancarConPrimerToque, true);
+        document.addEventListener('keydown', arrancarConPrimerToque, true);
 
         function mostrarJuego() {
             pausarMusica();
