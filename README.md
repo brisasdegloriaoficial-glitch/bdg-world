@@ -20,25 +20,24 @@
 ## Gratis y con premios
 
 - **Jugar es gratis siempre**, todo lo que quieras.
-- Los niveles 1 al 10 son gratis y son el camino para demostrar tu habilidad.
-- **Desde el nivel 11** puedes competir por premios con un aporte de 10 USD que te mantiene 10 días en carrera (próximamente).
-- El 60% de los aportes vuelve a los jugadores, el 30% mantiene el juego y el 10% es para el equipo creador.
+- Los niveles 1 al 10 son gratis y son el camino para demostrar tu habilidad. Hoy hay 10 niveles; en la Alfa llegan al 20 y en la Beta a 25, con opción a más.
+- **Desde el nivel 11** puedes competir por premios con una recarga de 10 USD: se descuenta 1 USD solo el día que juegas, y cuentan 15 carreras diarias (próximamente).
+- **Becas:** al cerrar cada temporada, el 10% mejor de los que juegan gratis entra becado a la siguiente.
+- **Carreras de 1 USD** desde la Beta, del nivel 20 en adelante: 12 jugadores, 6 USD al primero, 3 al segundo y 1 al tercero.
+- **Reparto:** el 60% vuelve a los jugadores (50% pote de temporada y 10% recompensa diaria). El 40% sostiene el juego: creadores y referidos 10%, equipo 10%, desarrollo e IA 8%, publicidad 5%, servidores 4%, legal y contable 3%.
 - Sin apuestas y sin azar. Competencia por premios solo para mayores de 18 años.
 
 Todos los detalles están en el [Whitepaper](https://bdg-world.vercel.app/whitepaper.html).
 
 ## Estado
 
-Pre-Alfa de pruebas hasta el 31 de octubre de 2026. **Fase Alfa desde el 1 de noviembre de 2026.**
+Pre-Alfa de pruebas hasta el 31 de octubre de 2026. **Fase Alfa desde el 1 de noviembre de 2026** (niveles hasta el 20). Beta en diciembre de 2026 (25 niveles).
 
 ## Comunidad
 
+- Discord: https://discord.gg/Q2cyFJQBTP
 - Telegram (Sala de Juegos): https://t.me/BDG_SalaDeJuegos
 - YouTube: https://www.youtube.com/@BRISASDEGLORIA
-- TikTok: https://www.tiktok.com/@brisas.de.gloria
-- Instagram: https://www.instagram.com/brisasdegloriaoficial
-- X: https://x.com/PROYECTO_BDG
-- Facebook: https://www.facebook.com/share/1EvVFRnScG/
 - Correo: brisasdegloriaoficial@gmail.com
 
 ---
