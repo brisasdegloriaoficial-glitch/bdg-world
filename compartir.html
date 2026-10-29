@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compartir Brisas de Gloria</title>
+    <meta name="description" content="Comparte el enlace de Brisas de Gloria, simulador 3D de carreras de caballos.">
+    <link rel="icon" href="/Moneda_BDG.jpg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Montserrat:wght@500;700&display=swap');
+
+        /* Mismos colores de la ventana de DESAFIO MULTIJUGADOR del juego */
+        :root {
+            --fondo: #0b0f19;
+            --vino: #2b1215;
+            --vino-botones: #1f0c0e;
+            --amarillo: #ffd955;
+            --crema: #f3e6c8;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; min-height: 100%; }
+        body {
+            background: var(--fondo);
+            color: var(--crema);
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+        .ventana {
+            width: 100%;
+            max-width: 460px;
+            background: var(--vino);
+            border: 4px solid var(--amarillo);
+            border-radius: 18px;
+            padding: 30px 24px 26px;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 800;
+            color: var(--amarillo);
+            font-size: 26px;
+            line-height: 1.25;
+            margin: 0 0 8px;
+        }
+        .enlace {
+            font-size: 15px;
+            color: var(--crema);
+            margin: 0 0 26px;
+            word-break: break-all;
+        }
+        button {
+            width: 100%;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--amarillo);
+            background: var(--vino-botones);
+            border: 3px solid var(--amarillo);
+            border-radius: 12px;
+            padding: 16px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        button:active { background: #4a3a10; }
+        button svg { width: 24px; height: 24px; fill: var(--amarillo); flex-shrink: 0; }
+        #boton-copiar { margin-top: 14px; font-size: 17px; padding: 13px 12px; }
+        #aviso {
+            min-height: 22px;
+            margin: 16px 0 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--amarillo);
+        }
+        .volver {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--crema);
+        }
+    </style>
+</head>
+<body>
+    <div class="ventana">
+        <h1>Compartir Brisas de Gloria</h1>
+        <p class="enlace">bdg-world.vercel.app</p>
+
+        <button id="boton-compartir" onclick="compartir()">
+            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 0 0 21 5a3 3 0 1 0-5.91.7L8.04 9.81A2.99 2.99 0 0 0 3 12a3 3 0 0 0 5.04 2.19l7.12 4.16c-.05.21-.08.43-.08.65A2.92 2.92 0 1 0 18 16.08z"/></svg>
+            COMPARTIR
+        </button>
+        <button id="boton-copiar" onclick="copiar()">COPIAR ENLACE</button>
+
+        <p id="aviso"></p>
+        <a class="volver" href="/">Ir a la página del juego</a>
+    </div>
+
+    <script>
+        // Solo se comparte el enlace del juego.
+        var ENLACE = 'https://bdg-world.vercel.app/';
+
+        function avisar(texto) {
+            document.getElementById('aviso').textContent = texto;
+        }
+
+        // Abre el menu de compartir del telefono o de la computadora,
+        // con todas las aplicaciones que tenga la persona.
+        function compartir() {
+            if (navigator.share) {
+                navigator.share({ title: 'Brisas de Gloria', url: ENLACE }).catch(function () {});
+            } else {
+                copiar();
+            }
+        }
+
+        // Donde no hay menu de compartir, se copia el enlace.
+        function copiar() {
+            try {
+                navigator.clipboard.writeText(ENLACE).then(function () {
+                    avisar('Enlace copiado: pégalo donde quieras.');
+                }, function () {
+                    avisar('Copia este enlace: ' + ENLACE);
+                });
+            } catch (e) {
+                avisar('Copia este enlace: ' + ENLACE);
+            }
+        }
+
+        // Si este navegador no tiene menu de compartir, se avisa de una vez.
+        if (!navigator.share) {
+            document.getElementById('boton-compartir').style.display = 'none';
+            document.getElementById('boton-copiar').style.marginTop = '0';
+            avisar('Pulsa COPIAR ENLACE y pégalo donde quieras.');
+        }
+    </script>
+</body>
+</html>
