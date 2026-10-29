@@ -38,6 +38,7 @@ Pre-Alfa de pruebas hasta el 31 de octubre de 2026. **Fase Alfa desde el 1 de no
 - Discord: https://discord.gg/Q2cyFJQBTP
 - Telegram (Sala de Juegos): https://t.me/BDG_SalaDeJuegos
 - YouTube: https://www.youtube.com/@BRISASDEGLORIA
+- X: https://x.com/PROYECTO_BDG
 - Correo: brisasdegloriaoficial@gmail.com
 
 ---
