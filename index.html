@@ -59,6 +59,46 @@
         @media (max-width: 700px) {
             .hero-banner-overlay p { font-size: 12px; }
         }
+        .aviso-desliza {
+            width: fit-content;
+            max-width: calc(100% - 24px);
+            margin: 14px auto 0;
+            padding: 7px 18px;
+            border: 2px solid #997aff;
+            border-radius: 999px;
+            background: #2b1a6b;
+            color: #fdf033;
+            text-shadow: -1px -1px 0 #0d0526, 1px -1px 0 #0d0526, -1px 1px 0 #0d0526, 1px 1px 0 #0d0526;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+            pointer-events: none;
+        }
+        .aviso-desliza span { display: inline-block; margin-left: 6px; animation: rebote-desliza 1.4s ease-in-out infinite; }
+        #aviso-pantalla {
+            position: fixed;
+            left: 12px;
+            right: 12px;
+            bottom: 18px;
+            margin: 0 auto;
+            z-index: 150;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #aviso-pantalla.visible { opacity: 1; }
+        #aviso-pantalla.final span { display: none; }
+        @keyframes rebote-desliza {
+            0%, 100% { transform: translateY(-1px); }
+            50% { transform: translateY(4px); }
+        }
+        #inicio .hero-banner { margin-top: 18px; }
+        @media (max-width: 700px) {
+            .aviso-desliza { font-size: 12px; letter-spacing: 0.5px; padding: 7px 14px; }
+            nav { position: static !important; }
+            body { padding-top: 66px !important; }
+        }
         .art-container {
             width: 100%;
             max-width: 1100px;
@@ -85,7 +125,7 @@
         }
         nav {
             position: sticky;
-            top: 10px;
+            top: 80px;
             z-index: 100;
             display: flex;
             gap: 20px;
@@ -581,7 +621,7 @@
         .boton-musica {
             position: fixed;
             right: 18px;
-            bottom: 18px;
+            top: 12px;
             z-index: 900;
             display: flex;
             align-items: center;
@@ -618,7 +658,7 @@
             50% { box-shadow: 0 0 0 9px rgba(153, 122, 255, 0); }
         }
         @media (max-width: 700px) {
-            .boton-musica { right: 10px; bottom: 10px; font-size: 11px; padding: 7px 12px 7px 7px; }
+            .boton-musica { right: 10px; top: 10px; font-size: 11px; padding: 7px 12px 7px 7px; }
             .boton-musica .icono-musica { width: 28px; height: 28px; font-size: 13px; }
         }
     </style>
@@ -631,18 +671,19 @@
         <span class="icono-musica" id="icono-musica">&#9654;</span>
         <span id="texto-musica">Escucha: Nací para cabalgar</span>
     </button>
-    <div class="hero-banner">
-        <video autoplay muted loop playsinline poster="/Hero_Poster.jpg">
-            <source src="/Hero_BrisasDeGloria.mp4" type="video/mp4">
-        </video>
-        <div class="hero-banner-overlay">
-            <p>Siente los vientos del triunfo. Vive las brisas del placer. Corre por tu gloria.</p>
-        </div>
-    </div>
-
     <div id="inicio" class="art-container">
         <img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
         <div class="slogan-corto">El Galope Final</div>
+        <div id="aviso-inicio" class="aviso-desliza">Desliza hacia abajo<span>&#8595;</span></div>
+
+        <div class="hero-banner">
+            <video autoplay muted loop playsinline poster="/Hero_Poster.jpg">
+                <source src="/Hero_BrisasDeGloria.mp4" type="video/mp4">
+            </video>
+            <div class="hero-banner-overlay">
+                <p>Siente los vientos del triunfo. Vive las brisas del placer. Corre por tu gloria.</p>
+            </div>
+        </div>
 
         <div class="botones-inicio">
             <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
@@ -798,6 +839,23 @@
         function cerrarVitrina() {
             document.getElementById('vitrina-overlay').classList.remove('visible');
         }
+    </script>
+
+    <div id="aviso-pantalla" class="aviso-desliza"><b id="texto-desliza" style="font-weight:600">Desliza hacia abajo</b><span>&#8595;</span></div>
+    <script>
+        function revisarAvisoDesliza() {
+            var inicio = document.getElementById('aviso-inicio').getBoundingClientRect();
+            var seVeArriba = inicio.top >= 0 && inicio.bottom <= window.innerHeight;
+            var llego = document.getElementById('whitepaper').getBoundingClientRect().top < window.innerHeight * 0.8;
+            var aviso = document.getElementById('aviso-pantalla');
+            aviso.classList.toggle('visible', !seVeArriba);
+            aviso.classList.toggle('final', llego);
+            document.getElementById('texto-desliza').textContent = llego ? 'Entra al Whitepaper o descárgalo en PDF' : 'Desliza hacia abajo';
+        }
+        window.addEventListener('scroll', revisarAvisoDesliza);
+        window.addEventListener('resize', revisarAvisoDesliza);
+        window.addEventListener('load', revisarAvisoDesliza);
+        revisarAvisoDesliza();
     </script>
 
     <nav>
