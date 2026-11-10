@@ -203,6 +203,25 @@
         .boton-secundario:hover { background: rgba(197, 160, 89, 0.12); }
         .boton-dorado svg, .boton-secundario svg { flex-shrink: 0; margin-right: 10px; }
         .botones-redes a { min-width: 170px; }
+
+        /* Suscripcion por correo (10-nov) */
+        .suscripcion { max-width: 560px; margin: 0 auto 30px auto; text-align: center; }
+        .suscripcion h3 { font-family: 'Cinzel', serif; color: #f3e5ab; font-size: 20px; margin-bottom: 8px; }
+        .form-suscripcion { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+        .form-suscripcion input {
+            flex: 1 1 260px; min-width: 0; padding: 15px 16px; font-size: 16px;
+            font-family: 'Montserrat', sans-serif; color: #e2e8f0;
+            background: #111827; border: 2px solid #785a28; border-radius: 6px; outline: none;
+        }
+        .form-suscripcion input:focus { border-color: #c5a059; }
+        .form-suscripcion .boton-dorado { flex: 0 0 auto; }
+        .form-suscripcion .boton-dorado:disabled { opacity: 0.6; cursor: wait; }
+        .nota-suscripcion { font-size: 13px; color: #9ca3af !important; margin-top: 10px; }
+        .mensaje-suscripcion { margin-top: 10px; font-weight: 700; min-height: 1.2em; }
+        .mensaje-suscripcion.ok { color: #86efac !important; }
+        .mensaje-suscripcion.error { color: #fca5a5 !important; }
+        @media (max-width: 700px) { .form-suscripcion .boton-dorado { flex: 1 1 100%; } }
+        .separador-contacto { width: 60%; margin: 0 auto 25px auto; border: 0; border-top: 1px solid rgba(197,160,89,0.35); }
         @media (max-width: 700px) {
             .botones-redes a { min-width: 0; flex: 1 1 40%; padding: 15px 12px; }
         }
@@ -1030,7 +1049,18 @@
         </ul>
     </section>
     <section id="contacto" class="content-section">
-        <h2>Contacto</h2>
+        <h2>Únete a la comunidad</h2>
+        <div class="suscripcion">
+            <h3>Recibe las novedades</h3>
+            <p>Deja tu correo y te avisamos de nuevas carreras, recompensas y la llegada de la Beta.</p>
+            <form id="form-suscripcion" class="form-suscripcion" onsubmit="return false;" novalidate>
+                <input type="email" id="correo-suscripcion" placeholder="Tu correo electrónico" autocomplete="email" maxlength="120" required>
+                <button type="submit" id="boton-suscripcion" class="boton-dorado">SUSCRIBIRME</button>
+            </form>
+            <p class="mensaje-suscripcion" id="mensaje-suscripcion" aria-live="polite"></p>
+            <p class="nota-suscripcion">Sin spam. Puedes darte de baja cuando quieras.</p>
+        </div>
+        <hr class="separador-contacto">
         <p>¿Preguntas o fallas del juego? Entra a nuestro Discord. Avisos en Telegram y X, videos en YouTube. ¿Interés en patrocinar? Escríbenos al correo.</p>
         <div class="botones-inicio" style="justify-content:center;">
             <a class="boton-dorado" href="https://discord.gg/Q2cyFJQBTP" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z"/></svg>ENTRA AL DISCORD</a>
@@ -1059,5 +1089,57 @@
             <div class="vitrina-nombre" id="vitrina-nombre"></div>
         </div>
     </div>
+    <!-- Suscripcion por correo: guarda el correo en Firebase, lista "suscriptores" (10-nov) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBBCoP76rSGFDJChiY6zAospJBcYJcpM6o",
+            authDomain: "brisas-de-gloria.firebaseapp.com",
+            projectId: "brisas-de-gloria",
+            messagingSenderId: "81329985500"
+        };
+        const db = getFirestore(initializeApp(firebaseConfig));
+
+        const formulario = document.getElementById("form-suscripcion");
+        const campo = document.getElementById("correo-suscripcion");
+        const boton = document.getElementById("boton-suscripcion");
+        const mensaje = document.getElementById("mensaje-suscripcion");
+
+        function avisar(texto, tipo) {
+            mensaje.textContent = texto;
+            mensaje.className = "mensaje-suscripcion " + tipo;
+        }
+
+        formulario.addEventListener("submit", async (evento) => {
+            evento.preventDefault();
+            const correo = campo.value.trim().toLowerCase();
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(correo) || correo.length < 6 || correo.length > 120) {
+                avisar("Escribe un correo válido.", "error");
+                return;
+            }
+            boton.disabled = true;
+            boton.textContent = "UN MOMENTO...";
+            try {
+                await setDoc(doc(db, "suscriptores", correo), {
+                    correo: correo,
+                    fecha: serverTimestamp(),
+                    origen: "pagina"
+                });
+                avisar("¡Listo! Te avisaremos de las novedades.", "ok");
+                campo.value = "";
+                if (window.gtag) { window.gtag("event", "sign_up", { method: "correo" }); }
+            } catch (error) {
+                if (error && error.code === "permission-denied") {
+                    avisar("Ese correo ya está en la lista. ¡Gracias!", "ok");
+                } else {
+                    avisar("No se pudo guardar. Intenta de nuevo en un momento.", "error");
+                }
+            }
+            boton.disabled = false;
+            boton.textContent = "SUSCRIBIRME";
+        });
+    </script>
 </body>
 </html>
