@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de Ventas · Brisas de Gloria</title>
+<!--
+  panel_ventas.html — Proyecto BDG · Brisas de Gloria · IA Power Tech
+  Creado el 11-nov-2026.
+  Panel PRIVADO de contabilidad: ver y anotar las ventas de caballos.
+  Lee y escribe la lista "ventas_caballos" de Firebase y usa la lista
+  "contadores" (documento "ventas_caballos") para el numero de venta.
+  Solo entra la cuenta administradora (brisasdegloriaoficial); las reglas
+  de Firestore lo protegen aunque alguien encuentre esta pagina.
+-->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;700&display=swap');
+
+    /* ---------- COLORES (los mismos de index.html) ---------- */
+    :root {
+        --fondo: #0b0f19;
+        --tarjeta: #111827;
+        --borde: #374151;
+        --linea: #1f2937;
+        --cabecera-tabla: #0d0526;
+        --oro: #c5a059;
+        --oro-claro: #f3e5ab;
+        --bronce: #785a28;
+        --texto: #e2e8f0;
+        --texto-suave: #b9c2cc;
+        --violeta: #2b1a6b;
+        --violeta-borde: #997aff;
+        --amarillo: #fdf033;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        background-color: var(--fondo);
+        color: var(--texto);
+        font-family: 'Montserrat', sans-serif;
+        padding: 24px 32px;
+        min-height: 100vh;
+    }
+    .oculto { display: none !important; }
+
+    /* ---------- ENTRADA ---------- */
+    #pantalla_entrada {
+        max-width: 380px;
+        margin: 10vh auto 0;
+        background: var(--tarjeta);
+        border: 1px solid var(--bronce);
+        border-radius: 14px;
+        padding: 30px 28px;
+    }
+    #pantalla_entrada h1 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 24px; text-align: center; }
+    #pantalla_entrada p.sub { text-align: center; color: var(--texto-suave); font-size: 13px; margin: 6px 0 22px; }
+    label { display: block; font-size: 13px; color: var(--texto-suave); margin: 12px 0 5px; }
+    input, select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--borde);
+        background: var(--fondo);
+        color: var(--texto);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+    }
+    input:focus, select:focus { outline: none; border-color: var(--oro); }
+    .boton {
+        display: inline-block;
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-weight: 700;
+        font-size: 14px;
+        font-family: 'Montserrat', sans-serif;
+        border: 1px solid var(--oro);
+        color: var(--oro-claro);
+        background: transparent;
+        cursor: pointer;
+    }
+    .boton:hover { background: #1a1408; }
+    .boton.oro { background: var(--oro); color: var(--fondo); }
+    .boton.oro:hover { background: var(--oro-claro); }
+    .boton:disabled { opacity: 0.5; cursor: wait; }
+    .boton.ancho { width: 100%; margin-top: 18px; }
+    .enlace { background: none; border: none; color: var(--oro); font-size: 13px; cursor: pointer; margin-top: 12px; text-decoration: underline; font-family: 'Montserrat', sans-serif; }
+    .aviso { margin-top: 14px; font-size: 13px; min-height: 18px; }
+    .aviso.error { color: #fca5a5; }
+    .aviso.bien { color: #6ee7b7; }
+
+    /* ---------- PANEL ---------- */
+    .cabecera { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--bronce); padding-bottom: 16px; margin-bottom: 22px; gap: 12px; flex-wrap: wrap; }
+    .cabecera h1 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 28px; letter-spacing: 1px; }
+    .cabecera h1 small { display: block; font-family: 'Montserrat', sans-serif; color: var(--texto-suave); font-size: 13px; letter-spacing: 0; margin-top: 4px; font-weight: 500; }
+    .sesion { text-align: right; font-size: 13px; color: var(--texto-suave); }
+    .sesion b { color: var(--oro-claro); }
+    .sesion .boton { margin-top: 8px; }
+
+    .cuadros { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .cuadro { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 12px; padding: 18px 20px; }
+    .cuadro.impulsadores { border-color: var(--bronce); }
+    .cuadro .titulo { font-size: 13px; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 1px; }
+    .cuadro .valor { font-family: 'Cinzel', serif; color: var(--oro-claro); font-size: 30px; margin: 6px 0 2px; }
+    .cuadro .valor span { font-size: 14px; color: var(--oro); font-family: 'Montserrat', sans-serif; font-weight: 700; }
+    .cuadro .detalle { font-size: 13px; color: #d1d5db; line-height: 1.5; }
+
+    .barra { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 10px; flex-wrap: wrap; }
+    .barra h2 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 20px; }
+    .filtros { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .filtro { border: 1px solid var(--borde); border-radius: 20px; padding: 6px 12px; color: #d1d5db; background: transparent; font-size: 13px; cursor: pointer; font-family: 'Montserrat', sans-serif; }
+    .filtro.activo { border-color: var(--oro); color: var(--oro-claro); background: #1a1408; }
+
+    .contenedor_tabla { overflow-x: auto; border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; background: var(--tarjeta); font-size: 14px; }
+    th { background: var(--cabecera-tabla); color: var(--oro); text-align: left; padding: 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+    td { padding: 12px; border-top: 1px solid var(--linea); vertical-align: top; }
+    td.numero { color: var(--oro-claro); font-weight: 700; }
+    td small { display: block; color: var(--texto-suave); font-size: 12px; margin-top: 2px; }
+    .estado { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .estado.pagada { background: #0f3d2a; color: #6ee7b7; }
+    .estado.pendiente { background: #3d300f; color: #fcd34d; }
+    .estado.anulada { background: #3d1212; color: #fca5a5; text-decoration: line-through; }
+    tr.fila_anulada td { color: #6b7280; }
+    .acciones button { background: none; border: none; color: var(--oro); font-weight: 700; font-size: 12px; cursor: pointer; margin: 0 10px 4px 0; font-family: 'Montserrat', sans-serif; }
+    .acciones button:hover { color: var(--oro-claro); text-decoration: underline; }
+    .vacio { text-align: center; color: var(--texto-suave); padding: 30px; }
+    .pie { margin-top: 14px; font-size: 12px; color: var(--texto-suave); }
+
+    /* ---------- VENTANAS ---------- */
+    .fondo_ventana { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 16px; }
+    .ventana { background: var(--tarjeta); border: 1px solid var(--bronce); border-radius: 14px; padding: 24px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; }
+    .ventana h3 { font-family: 'Cinzel', serif; color: var(--oro); font-size: 20px; margin-bottom: 6px; }
+    .ventana p { font-size: 14px; color: #d1d5db; line-height: 1.5; }
+    .ventana .fila_doble { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ventana .botones { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+    .nota { font-size: 12px; color: var(--texto-suave); margin-top: 4px; }
+
+    /* ---------- REPORTE DEL MES (solo al imprimir) ---------- */
+    #reporte_mes { display: none; }
+    @media print {
+        body { background: #fff; color: #111; padding: 0; }
+        #pantalla_panel, #pantalla_entrada, .fondo_ventana { display: none !important; }
+        #reporte_mes { display: block; font-family: 'Montserrat', sans-serif; color: #111; }
+        #reporte_mes h1 { font-family: 'Cinzel', serif; font-size: 22px; color: #111; }
+        #reporte_mes .sub { font-size: 12px; color: #444; margin: 4px 0 16px; }
+        #reporte_mes table { background: #fff; font-size: 11px; }
+        #reporte_mes th { background: #eee; color: #111; padding: 6px; }
+        #reporte_mes td { border-top: 1px solid #ccc; padding: 6px; color: #111; }
+        #reporte_mes .totales { margin-top: 14px; font-size: 13px; line-height: 1.7; }
+    }
+
+    @media (max-width: 900px) {
+        body { padding: 16px; }
+        .cuadros { grid-template-columns: 1fr 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ======================= ENTRADA ======================= -->
+<div id="pantalla_entrada">
+    <h1>PANEL DE VENTAS</h1>
+    <p class="sub">Brisas de Gloria · Acceso privado</p>
+    <form id="formulario_entrada">
+        <label for="entrada_correo">Correo</label>
+        <input id="entrada_correo" type="email" autocomplete="username" required>
+        <label for="entrada_clave">Clave</label>
+        <input id="entrada_clave" type="password" autocomplete="current-password" required>
+        <button id="boton_entrar" class="boton oro ancho" type="submit">ENTRAR</button>
+    </form>
+    <button id="boton_olvide_clave" class="enlace" type="button">Olvidé mi clave</button>
+    <div id="aviso_entrada" class="aviso"></div>
+</div>
+
+<!-- ======================= PANEL ======================= -->
+<div id="pantalla_panel" class="oculto">
+    <div class="cabecera">
+        <h1>PANEL DE VENTAS<small>Brisas de Gloria · Proyecto BDG · IA Power Tech</small></h1>
+        <div class="sesion">Sesión: <b id="sesion_correo"></b><br>
+            <button id="boton_salir" class="boton" type="button">Salir</button>
+        </div>
+    </div>
+
+    <div class="cuadros">
+        <div class="cuadro">
+            <div class="titulo">Hoy</div>
+            <div class="valor"><b id="hoy_vendido">0</b> <span>USDT</span></div>
+            <div class="detalle">Recibido: <b id="hoy_recibido">0</b> USDT<br><span id="hoy_cantidad">0</span> ventas pagadas</div>
+        </div>
+        <div class="cuadro">
+            <div class="titulo">Esta semana</div>
+            <div class="valor"><b id="semana_vendido">0</b> <span>USDT</span></div>
+            <div class="detalle">Recibido: <b id="semana_recibido">0</b> USDT<br><span id="semana_cantidad">0</span> ventas pagadas</div>
+        </div>
+        <div class="cuadro">
+            <div class="titulo">Este mes</div>
+            <div class="valor"><b id="mes_vendido">0</b> <span>USDT</span></div>
+            <div class="detalle">Recibido: <b id="mes_recibido">0</b> USDT<br><span id="mes_cantidad">0</span> ventas pagadas</div>
+        </div>
+        <div class="cuadro impulsadores">
+            <div class="titulo">Comisión impulsadores</div>
+            <div class="valor"><b id="comision_por_pagar">0</b> <span>USDT</span></div>
+            <div class="detalle">por pagar a <span id="impulsadores_por_pagar">0</span> impulsadores</div>
+        </div>
+    </div>
+
+    <div class="barra">
+        <h2>Ventas de caballos</h2>
+        <div class="filtros">
+            <button class="filtro activo" data-filtro="todas" type="button">Todas</button>
+            <button class="filtro" data-filtro="pagada" type="button">Pagadas</button>
+            <button class="filtro" data-filtro="pendiente" type="button">Pendientes</button>
+            <button class="filtro" data-filtro="anulada" type="button">Anuladas</button>
+            <button id="boton_reporte_mes" class="boton" type="button">Reporte del mes</button>
+            <button id="boton_anotar_venta" class="boton oro" type="button">+ Anotar venta (Binance Pay)</button>
+        </div>
+    </div>
+
+    <div class="contenedor_tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th>N.º</th><th>Fecha</th><th>Comprador</th><th>Caballo</th>
+                    <th>Precio</th><th>Recibido</th><th>Medio</th><th>Comprobante</th>
+                    <th>Impulsador</th><th>Estado</th><th></th>
+                </tr>
+            </thead>
+            <tbody id="tabla_ventas">
+                <tr><td colspan="11" class="vacio">Cargando ventas…</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pie">Las ventas no se borran: una venta mala se marca "Anulada" y no suma en los totales. Los totales cuentan solo las ventas pagadas.</div>
+</div>
+
+<!-- ======================= VENTANA: ANOTAR VENTA ======================= -->
+<div id="ventana_anotar" class="fondo_ventana oculto">
+    <div class="ventana">
+        <h3>Anotar venta</h3>
+        <p>Para un pago que te llegó a mano por Binance Pay.</p>
+        <form id="formulario_anotar">
+            <label for="anotar_seudonimo">Seudónimo del comprador</label>
+            <input id="anotar_seudonimo" type="text" required minlength="3" maxlength="20">
+            <div class="nota">Tal cual lo tiene en el juego. El panel busca su cuenta.</div>
+
+            <label for="anotar_correo">Correo del comprador (opcional)</label>
+            <input id="anotar_correo" type="email" maxlength="120">
+
+            <label for="anotar_caballo">Código del caballo</label>
+            <input id="anotar_caballo" type="text" required maxlength="40" placeholder="Ej.: CAB-0001">
+
+            <div class="fila_doble">
+                <div>
+                    <label for="anotar_precio">Precio (USDT)</label>
+                    <input id="anotar_precio" type="number" required min="0.01" step="0.01">
+                </div>
+                <div>
+                    <label for="anotar_neto">Recibido (USDT)</label>
+                    <input id="anotar_neto" type="number" required min="0" step="0.01">
+                </div>
+            </div>
+            <div class="nota">En Binance Pay normalmente recibes lo mismo que el precio.</div>
+
+            <label for="anotar_comprobante">Comprobante (número de la transacción)</label>
+            <input id="anotar_comprobante" type="text" maxlength="120">
+
+            <label for="anotar_estado">Estado</label>
+            <select id="anotar_estado">
+                <option value="pagada">Pagada (ya me llegó el dinero)</option>
+                <option value="pendiente">Pendiente (todavía no me llega)</option>
+            </select>
+
+            <label for="anotar_impulsador">Impulsador (opcional)</label>
+            <input id="anotar_impulsador" type="text" maxlength="60" placeholder="Si llegó por el link de un impulsador">
+            <div class="nota">La comisión del impulsador se calcula sola: <b id="anotar_porcentaje_texto">10</b> % del precio.</div>
+
+            <div id="aviso_anotar" class="aviso"></div>
+            <div class="botones">
+                <button id="boton_cancelar_anotar" class="boton" type="button">Cancelar</button>
+                <button id="boton_guardar_venta" class="boton oro" type="submit">Guardar venta</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ======================= VENTANA: CONFIRMAR ======================= -->
+<div id="ventana_confirmar" class="fondo_ventana oculto">
+    <div class="ventana">
+        <h3 id="confirmar_titulo">Confirmar</h3>
+        <p id="confirmar_texto"></p>
+        <div id="confirmar_bloque_comprobante" class="oculto">
+            <label for="confirmar_comprobante">Comprobante (número de la transacción)</label>
+            <input id="confirmar_comprobante" type="text" maxlength="120">
+        </div>
+        <div id="aviso_confirmar" class="aviso"></div>
+        <div class="botones">
+            <button id="boton_confirmar_no" class="boton" type="button">Cancelar</button>
+            <button id="boton_confirmar_si" class="boton oro" type="button">Sí, confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- ======================= VENTANA: ELEGIR MES DEL REPORTE ======================= -->
+<div id="ventana_reporte" class="fondo_ventana oculto">
+    <div class="ventana">
+        <h3>Reporte del mes</h3>
+        <p>Elige el mes. Se abre la ventana de imprimir: ahí escoge <b>Guardar como PDF</b>.</p>
+        <label for="reporte_mes_elegido">Mes</label>
+        <input id="reporte_mes_elegido" type="month">
+        <div class="botones">
+            <button id="boton_reporte_cancelar" class="boton" type="button">Cancelar</button>
+            <button id="boton_reporte_generar" class="boton oro" type="button">Generar reporte</button>
+        </div>
+    </div>
+</div>
+
+<!-- ======================= REPORTE (solo se ve al imprimir) ======================= -->
+<div id="reporte_mes"></div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail }
+        from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, query, orderBy, onSnapshot, doc, updateDoc, where, getDocs,
+             limit, runTransaction, serverTimestamp }
+        from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // ---------- AJUSTES (se cambian aquí) ----------
+    const UID_ADMINISTRADOR = "0MHSzNvxb8YORjRiXov3APuGdu83";   // cuenta brisasdegloriaoficial
+    const LISTA_VENTAS = "ventas_caballos";
+    const LISTA_CONTADORES = "contadores";
+    const LISTA_JUGADORES = "jugadores";
+    const PORCENTAJE_IMPULSADOR = 10;                           // % de comisión del impulsador
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBBCoP76rSGFDJChiY6zAospJBcYJcpM6o",
+        authDomain: "brisas-de-gloria.firebaseapp.com",
+        projectId: "brisas-de-gloria",
+        messagingSenderId: "81329985500"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const $ = (id) => document.getElementById(id);
+    let ventas = [];
+    let filtroActual = "todas";
+    let dejarDeEscuchar = null;
+
+    $("anotar_porcentaje_texto").textContent = PORCENTAJE_IMPULSADOR;
+
+    // ---------- utilidades ----------
+    function aviso(id, texto, tipo) {
+        const el = $(id);
+        el.textContent = texto || "";
+        el.className = "aviso" + (tipo ? " " + tipo : "");
+    }
+    function redondear(n) { return Math.round((Number(n) || 0) * 100) / 100; }
+    function dinero(n) {
+        return redondear(n).toLocaleString("es", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+    function fechaDe(venta) {
+        if (venta.fecha && typeof venta.fecha.toDate === "function") return venta.fecha.toDate();
+        return new Date();   // recién guardada: el servidor todavía no confirma la hora
+    }
+    function fechaCorta(d) {
+        const meses = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+        const hh = String(d.getHours()).padStart(2, "0");
+        const mm = String(d.getMinutes()).padStart(2, "0");
+        return d.getDate() + "-" + meses[d.getMonth()] + "-" + d.getFullYear() + " " + hh + ":" + mm;
+    }
+    function texto(t) {
+        const span = document.createElement("span");
+        span.textContent = (t === undefined || t === null || t === "") ? "—" : String(t);
+        return span.innerHTML;
+    }
+    function nombreMedio(m) { return m === "BinancePay" ? "Binance Pay" : (m || "—"); }
+    function nombreEstado(e) { return { pagada: "Pagada", pendiente: "Pendiente", anulada: "Anulada" }[e] || e; }
+    function explicarError(e) {
+        const c = (e && e.code) || "";
+        if (c.includes("invalid-credential") || c.includes("wrong-password") || c.includes("user-not-found"))
+            return "Correo o clave incorrectos.";
+        if (c.includes("too-many-requests")) return "Demasiados intentos. Espera unos minutos.";
+        if (c.includes("permission-denied")) return "Firebase no dio permiso (revisa que las reglas estén publicadas).";
+        if (c.includes("network") || c.includes("unavailable")) return "Sin conexión. Revisa el internet e intenta de nuevo.";
+        return "Algo falló: " + (e && e.message ? e.message : c);
+    }
+
+    // ---------- entrada y salida ----------
+    $("formulario_entrada").addEventListener("submit", async (ev) => {
+        ev.preventDefault();
+        $("boton_entrar").disabled = true;
+        aviso("aviso_entrada", "Entrando…");
+        try {
+            await signInWithEmailAndPassword(auth, $("entrada_correo").value.trim(), $("entrada_clave").value);
+        } catch (e) {
+            aviso("aviso_entrada", explicarError(e), "error");
+        }
+        $("boton_entrar").disabled = false;
+    });
+
+    $("boton_olvide_clave").addEventListener("click", async () => {
+        const correo = $("entrada_correo").value.trim();
+        if (!correo) { aviso("aviso_entrada", "Escribe primero tu correo arriba.", "error"); return; }
+        try {
+            await sendPasswordResetEmail(auth, correo);
+            aviso("aviso_entrada", "Te enviamos un correo para cambiar la clave.", "bien");
+        } catch (e) {
+            aviso("aviso_entrada", explicarError(e), "error");
+        }
+    });
+
+    $("boton_salir").addEventListener("click", () => signOut(auth));
+
+    onAuthStateChanged(auth, (usuario) => {
+        if (dejarDeEscuchar) { dejarDeEscuchar(); dejarDeEscuchar = null; }
+        if (usuario && usuario.uid === UID_ADMINISTRADOR) {
+            $("pantalla_entrada").classList.add("oculto");
+            $("pantalla_panel").classList.remove("oculto");
+            $("sesion_correo").textContent = usuario.email || "";
+            escucharVentas();
+        } else {
+            $("pantalla_panel").classList.add("oculto");
+            $("pantalla_entrada").classList.remove("oculto");
+            if (usuario) {
+                aviso("aviso_entrada", "Acceso negado: esta cuenta no es la administradora.", "error");
+                signOut(auth);
+            }
+        }
+    });
+
+    // ---------- leer ventas (se actualiza solo) ----------
+    function escucharVentas() {
+        const q = query(collection(db, LISTA_VENTAS), orderBy("numero", "desc"));
+        dejarDeEscuchar = onSnapshot(q, (foto) => {
+            ventas = foto.docs.map((d) => ({ id: d.id, ...d.data() }));
+            pintarCuadros();
+            pintarTabla();
+        }, (e) => {
+            $("tabla_ventas").innerHTML = '<tr><td colspan="11" class="vacio">' + texto(explicarError(e)) + "</td></tr>";
+        });
+    }
+
+    // ---------- cuadros de totales ----------
+    function pintarCuadros() {
+        const ahora = new Date();
+        const inicioHoy = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate());
+        const diaSemana = (inicioHoy.getDay() + 6) % 7;            // lunes = 0
+        const inicioSemana = new Date(inicioHoy); inicioSemana.setDate(inicioHoy.getDate() - diaSemana);
+        const inicioMes = new Date(ahora.getFullYear(), ahora.getMonth(), 1);
+
+        const tramos = { hoy: inicioHoy, semana: inicioSemana, mes: inicioMes };
+        for (const [nombre, desde] of Object.entries(tramos)) {
+            const pagadas = ventas.filter((v) => v.estado === "pagada" && fechaDe(v) >= desde);
+            $(nombre + "_vendido").textContent = dinero(pagadas.reduce((s, v) => s + (Number(v.precio_usdt) || 0), 0));
+            $(nombre + "_recibido").textContent = dinero(pagadas.reduce((s, v) => s + (Number(v.neto_usdt) || 0), 0));
+            $(nombre + "_cantidad").textContent = pagadas.length;
+        }
+
+        const porPagar = ventas.filter((v) => v.estado === "pagada" && v.impulsador && !v.comision_pagada);
+        $("comision_por_pagar").textContent = dinero(porPagar.reduce((s, v) => s + (Number(v.comision_impulsador) || 0), 0));
+        $("impulsadores_por_pagar").textContent = new Set(porPagar.map((v) => v.impulsador)).size;
+    }
+
+    // ---------- tabla ----------
+    function pintarTabla() {
+        const lista = filtroActual === "todas" ? ventas : ventas.filter((v) => v.estado === filtroActual);
+        if (lista.length === 0) {
+            $("tabla_ventas").innerHTML = '<tr><td colspan="11" class="vacio">Todavía no hay ventas aquí.</td></tr>';
+            return;
+        }
+        $("tabla_ventas").innerHTML = lista.map((v) => {
+            let impulsador = "—";
+            if (v.impulsador) {
+                impulsador = texto(v.impulsador) + "<small>" + dinero(v.comision_impulsador) + " USDT · "
+                    + (v.comision_pagada ? "comisión pagada" : "comisión por pagar") + "</small>";
+            }
+            let acciones = "";
+            if (v.estado === "pendiente") acciones += '<button data-accion="pagar" data-id="' + v.id + '">Marcar pagada</button>';
+            if (v.estado !== "anulada") acciones += '<button data-accion="anular" data-id="' + v.id + '">Anular</button>';
+            if (v.estado === "pagada" && v.impulsador && !v.comision_pagada)
+                acciones += '<button data-accion="comision" data-id="' + v.id + '">Comisión pagada</button>';
+
+            return '<tr class="' + (v.estado === "anulada" ? "fila_anulada" : "") + '">'
+                + '<td class="numero">' + texto(v.numero) + "</td>"
+                + "<td>" + fechaCorta(fechaDe(v)) + "</td>"
+                + "<td>" + texto(v.comprador_seudonimo) + (v.comprador_correo ? "<small>" + texto(v.comprador_correo) + "</small>" : "") + "</td>"
+                + "<td>" + texto(v.caballo_codigo) + "</td>"
+                + "<td>" + dinero(v.precio_usdt) + " USDT</td>"
+                + "<td>" + dinero(v.neto_usdt) + " USDT</td>"
+                + "<td>" + nombreMedio(v.medio_pago) + "</td>"
+                + "<td>" + texto(v.comprobante) + "</td>"
+                + "<td>" + impulsador + "</td>"
+                + '<td><span class="estado ' + texto(v.estado) + '">' + nombreEstado(v.estado) + "</span></td>"
+                + '<td class="acciones">' + acciones + "</td>"
+                + "</tr>";
+        }).join("");
+    }
+
+    document.querySelectorAll(".filtro").forEach((b) => b.addEventListener("click", () => {
+        document.querySelectorAll(".filtro").forEach((x) => x.classList.remove("activo"));
+        b.classList.add("activo");
+        filtroActual = b.dataset.filtro;
+        pintarTabla();
+    }));
+
+    // ---------- acciones de cada venta ----------
+    let accionPendiente = null;
+
+    $("tabla_ventas").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button[data-accion]");
+        if (!b) return;
+        const venta = ventas.find((v) => v.id === b.dataset.id);
+        if (!venta) return;
+        accionPendiente = { accion: b.dataset.accion, venta };
+        aviso("aviso_confirmar", "");
+        $("confirmar_bloque_comprobante").classList.add("oculto");
+        if (b.dataset.accion === "pagar") {
+            $("confirmar_titulo").textContent = "Marcar como pagada";
+            $("confirmar_texto").textContent = "Venta N.º " + venta.numero + " · " + dinero(venta.precio_usdt) + " USDT. ¿Ya te llegó el dinero?";
+            $("confirmar_comprobante").value = venta.comprobante || "";
+            $("confirmar_bloque_comprobante").classList.remove("oculto");
+        } else if (b.dataset.accion === "anular") {
+            $("confirmar_titulo").textContent = "Anular venta";
+            $("confirmar_texto").textContent = "Venta N.º " + venta.numero + ". Queda tachada y deja de sumar en los totales. Esto no se puede deshacer.";
+        } else {
+            $("confirmar_titulo").textContent = "Comisión pagada";
+            $("confirmar_texto").textContent = "¿Ya le pagaste " + dinero(venta.comision_impulsador) + " USDT a " + venta.impulsador + " por la venta N.º " + venta.numero + "?";
+        }
+        $("ventana_confirmar").classList.remove("oculto");
+    });
+
+    $("boton_confirmar_no").addEventListener("click", () => $("ventana_confirmar").classList.add("oculto"));
+
+    $("boton_confirmar_si").addEventListener("click", async () => {
+        if (!accionPendiente) return;
+        const { accion, venta } = accionPendiente;
+        const cambios = {};
+        if (accion === "pagar") {
+            cambios.estado = "pagada";
+            const c = $("confirmar_comprobante").value.trim();
+            if (c) cambios.comprobante = c;
+        } else if (accion === "anular") {
+            cambios.estado = "anulada";
+        } else {
+            cambios.comision_pagada = true;
+        }
+        $("boton_confirmar_si").disabled = true;
+        try {
+            await updateDoc(doc(db, LISTA_VENTAS, venta.id), cambios);
+            $("ventana_confirmar").classList.add("oculto");
+        } catch (e) {
+            aviso("aviso_confirmar", explicarError(e), "error");
+        }
+        $("boton_confirmar_si").disabled = false;
+    });
+
+    // ---------- anotar venta a mano (Binance Pay) ----------
+    $("boton_anotar_venta").addEventListener("click", () => {
+        $("formulario_anotar").reset();
+        aviso("aviso_anotar", "");
+        $("ventana_anotar").classList.remove("oculto");
+    });
+    $("boton_cancelar_anotar").addEventListener("click", () => $("ventana_anotar").classList.add("oculto"));
+
+    // al escribir el precio, el recibido se copia solo (se puede cambiar)
+    $("anotar_precio").addEventListener("input", () => { $("anotar_neto").value = $("anotar_precio").value; });
+
+    $("formulario_anotar").addEventListener("submit", async (ev) => {
+        ev.preventDefault();
+        const seudonimo = $("anotar_seudonimo").value.trim();
+        const precio = redondear($("anotar_precio").value);
+        const neto = redondear($("anotar_neto").value);
+        const impulsador = $("anotar_impulsador").value.trim();
+        if (precio <= 0) { aviso("aviso_anotar", "El precio tiene que ser mayor que cero.", "error"); return; }
+
+        $("boton_guardar_venta").disabled = true;
+        aviso("aviso_anotar", "Buscando la cuenta del comprador…");
+        try {
+            // 1) buscar la cuenta del comprador por su seudónimo
+            const encontrados = await getDocs(query(collection(db, LISTA_JUGADORES),
+                where("seudonimo", "==", seudonimo), limit(2)));
+            if (encontrados.empty) {
+                aviso("aviso_anotar", "No hay ningún jugador con el seudónimo \"" + seudonimo + "\". Revisa mayúsculas y minúsculas.", "error");
+                $("boton_guardar_venta").disabled = false;
+                return;
+            }
+            const compradorUid = encontrados.docs[0].id;
+
+            // 2) guardar la venta con el número siguiente
+            aviso("aviso_anotar", "Guardando…");
+            const refContador = doc(db, LISTA_CONTADORES, LISTA_VENTAS);
+            const numero = await runTransaction(db, async (t) => {
+                const c = await t.get(refContador);
+                const siguiente = (c.exists() ? (c.data().ultimo || 0) : 0) + 1;
+                const venta = {
+                    numero: siguiente,
+                    fecha: serverTimestamp(),
+                    comprador_uid: compradorUid,
+                    comprador_seudonimo: seudonimo,
+                    comprador_correo: $("anotar_correo").value.trim(),
+                    caballo_codigo: $("anotar_caballo").value.trim(),
+                    precio_usdt: precio,
+                    neto_usdt: neto,
+                    medio_pago: "BinancePay",
+                    comprobante: $("anotar_comprobante").value.trim(),
+                    estado: $("anotar_estado").value
+                };
+                if (impulsador) {
+                    venta.impulsador = impulsador;
+                    venta.comision_impulsador = redondear(precio * PORCENTAJE_IMPULSADOR / 100);
+                    venta.comision_pagada = false;
+                }
+                t.set(refContador, { ultimo: siguiente });
+                t.set(doc(db, LISTA_VENTAS, String(siguiente).padStart(6, "0")), venta);
+                return siguiente;
+            });
+            aviso("aviso_anotar", "Venta N.º " + numero + " guardada.", "bien");
+            setTimeout(() => $("ventana_anotar").classList.add("oculto"), 1200);
+        } catch (e) {
+            aviso("aviso_anotar", explicarError(e), "error");
+        }
+        $("boton_guardar_venta").disabled = false;
+    });
+
+    // ---------- reporte del mes (para guardar en PDF) ----------
+    $("boton_reporte_mes").addEventListener("click", () => {
+        const hoy = new Date();
+        $("reporte_mes_elegido").value = hoy.getFullYear() + "-" + String(hoy.getMonth() + 1).padStart(2, "0");
+        $("ventana_reporte").classList.remove("oculto");
+    });
+    $("boton_reporte_cancelar").addEventListener("click", () => $("ventana_reporte").classList.add("oculto"));
+
+    $("boton_reporte_generar").addEventListener("click", () => {
+        const valor = $("reporte_mes_elegido").value;
+        if (!valor) return;
+        const [anio, mes] = valor.split("-").map(Number);
+        const desde = new Date(anio, mes - 1, 1);
+        const hasta = new Date(anio, mes, 1);
+        const delMes = ventas.filter((v) => { const f = fechaDe(v); return f >= desde && f < hasta; })
+                             .sort((a, b) => a.numero - b.numero);
+        const pagadas = delMes.filter((v) => v.estado === "pagada");
+        const nombresMes = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+        const filas = delMes.map((v) => "<tr>"
+            + "<td>" + texto(v.numero) + "</td><td>" + fechaCorta(fechaDe(v)) + "</td>"
+            + "<td>" + texto(v.comprador_seudonimo) + "</td><td>" + texto(v.caballo_codigo) + "</td>"
+            + "<td>" + dinero(v.precio_usdt) + "</td><td>" + dinero(v.neto_usdt) + "</td>"
+            + "<td>" + nombreMedio(v.medio_pago) + "</td><td>" + texto(v.comprobante) + "</td>"
+            + "<td>" + (v.impulsador ? texto(v.impulsador) + " (" + dinero(v.comision_impulsador) + ")" : "—") + "</td>"
+            + "<td>" + nombreEstado(v.estado) + "</td></tr>").join("");
+
+        const suma = (arr, campo) => dinero(arr.reduce((s, v) => s + (Number(v[campo]) || 0), 0));
+        const comisiones = pagadas.filter((v) => v.impulsador);
+
+        $("reporte_mes").innerHTML =
+            "<h1>Reporte de ventas de caballos · " + nombresMes[mes - 1] + " " + anio + "</h1>"
+            + '<div class="sub">IA Power Tech · Proyecto BDG · Brisas de Gloria · generado el ' + fechaCorta(new Date()) + "</div>"
+            + "<table><thead><tr><th>N.º</th><th>Fecha</th><th>Comprador</th><th>Caballo</th><th>Precio USDT</th>"
+            + "<th>Recibido USDT</th><th>Medio</th><th>Comprobante</th><th>Impulsador (comisión)</th><th>Estado</th></tr></thead>"
+            + "<tbody>" + (filas || '<tr><td colspan="10">Sin ventas en este mes.</td></tr>') + "</tbody></table>"
+            + '<div class="totales">'
+            + "<b>Ventas pagadas:</b> " + pagadas.length
+            + " · <b>Vendido:</b> " + suma(pagadas, "precio_usdt") + " USDT"
+            + " · <b>Recibido:</b> " + suma(pagadas, "neto_usdt") + " USDT<br>"
+            + "<b>Comisiones de impulsadores:</b> " + suma(comisiones, "comision_impulsador") + " USDT"
+            + " (por pagar: " + suma(comisiones.filter((v) => !v.comision_pagada), "comision_impulsador") + " USDT)<br>"
+            + "<b>Ventas anuladas:</b> " + delMes.filter((v) => v.estado === "anulada").length
+            + " · <b>Pendientes:</b> " + delMes.filter((v) => v.estado === "pendiente").length
+            + "</div>";
+
+        $("ventana_reporte").classList.add("oculto");
+        setTimeout(() => window.print(), 300);
+    });
+</script>
+</body>
+</html>
