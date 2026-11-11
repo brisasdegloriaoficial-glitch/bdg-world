@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8PNZQ5K3D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-J8PNZQ5K3D');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brisas de Gloria</title>
     <script defer src="/_vercel/insights/script.js"></script>
-    <meta name="description" content="Simulador 3D de carreras de caballos. Siente los vientos del triunfo. Descarga la Pre-Alfa para Android y Windows.">
+    <meta name="description" content="Simulador 3D de carreras de caballos. Siente los vientos del triunfo. Juega gratis la Alfa en web, Android y Windows.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Brisas de Gloria">
     <meta property="og:title" content="Brisas de Gloria — El Galope Final">
-    <meta property="og:description" content="Simulador 3D de carreras de caballos. Siente los vientos del triunfo. Descarga la Pre-Alfa para Android y Windows.">
+    <meta property="og:description" content="Simulador 3D de carreras de caballos. Siente los vientos del triunfo. Juega gratis la Alfa en web, Android y Windows.">
     <meta property="og:image" content="https://bdg-world.vercel.app/Hero_Poster.jpg">
     <meta property="og:url" content="https://bdg-world.vercel.app/">
     <meta name="twitter:card" content="summary_large_image">
@@ -59,6 +67,46 @@
         @media (max-width: 700px) {
             .hero-banner-overlay p { font-size: 12px; }
         }
+        .aviso-desliza {
+            width: fit-content;
+            max-width: calc(100% - 24px);
+            margin: 14px auto 0;
+            padding: 7px 18px;
+            border: 2px solid #997aff;
+            border-radius: 999px;
+            background: #2b1a6b;
+            color: #fdf033;
+            text-shadow: -1px -1px 0 #0d0526, 1px -1px 0 #0d0526, -1px 1px 0 #0d0526, 1px 1px 0 #0d0526;
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+            pointer-events: none;
+        }
+        .aviso-desliza span { display: inline-block; margin-left: 6px; animation: rebote-desliza 1.4s ease-in-out infinite; }
+        #aviso-pantalla {
+            position: fixed;
+            left: 12px;
+            right: 12px;
+            bottom: 18px;
+            margin: 0 auto;
+            z-index: 150;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        #aviso-pantalla.visible { opacity: 1; }
+        #aviso-pantalla.final span { display: none; }
+        @keyframes rebote-desliza {
+            0%, 100% { transform: translateY(-1px); }
+            50% { transform: translateY(4px); }
+        }
+        #inicio .hero-banner { margin-top: 18px; }
+        @media (max-width: 700px) {
+            .aviso-desliza { font-size: 12px; letter-spacing: 0.5px; padding: 7px 14px; }
+            nav { position: static !important; }
+            body { padding-top: 66px !important; }
+        }
         .art-container {
             width: 100%;
             max-width: 1100px;
@@ -85,7 +133,7 @@
         }
         nav {
             position: sticky;
-            top: 10px;
+            top: 80px;
             z-index: 100;
             display: flex;
             gap: 20px;
@@ -155,6 +203,25 @@
         .boton-secundario:hover { background: rgba(197, 160, 89, 0.12); }
         .boton-dorado svg, .boton-secundario svg { flex-shrink: 0; margin-right: 10px; }
         .botones-redes a { min-width: 170px; }
+
+        /* Suscripcion por correo (10-nov) */
+        .suscripcion { max-width: 560px; margin: 0 auto 30px auto; text-align: center; }
+        .suscripcion h3 { font-family: 'Cinzel', serif; color: #f3e5ab; font-size: 20px; margin-bottom: 8px; }
+        .form-suscripcion { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+        .form-suscripcion input {
+            flex: 1 1 260px; min-width: 0; padding: 15px 16px; font-size: 16px;
+            font-family: 'Montserrat', sans-serif; color: #e2e8f0;
+            background: #111827; border: 2px solid #785a28; border-radius: 6px; outline: none;
+        }
+        .form-suscripcion input:focus { border-color: #c5a059; }
+        .form-suscripcion .boton-dorado { flex: 0 0 auto; }
+        .form-suscripcion .boton-dorado:disabled { opacity: 0.6; cursor: wait; }
+        .nota-suscripcion { font-size: 13px; color: #9ca3af !important; margin-top: 10px; }
+        .mensaje-suscripcion { margin-top: 10px; font-weight: 700; min-height: 1.2em; }
+        .mensaje-suscripcion.ok { color: #86efac !important; }
+        .mensaje-suscripcion.error { color: #fca5a5 !important; }
+        @media (max-width: 700px) { .form-suscripcion .boton-dorado { flex: 1 1 100%; } }
+        .separador-contacto { width: 60%; margin: 0 auto 25px auto; border: 0; border-top: 1px solid rgba(197,160,89,0.35); }
         @media (max-width: 700px) {
             .botones-redes a { min-width: 0; flex: 1 1 40%; padding: 15px 12px; }
         }
@@ -581,7 +648,7 @@
         .boton-musica {
             position: fixed;
             right: 18px;
-            bottom: 18px;
+            top: 12px;
             z-index: 900;
             display: flex;
             align-items: center;
@@ -618,7 +685,7 @@
             50% { box-shadow: 0 0 0 9px rgba(153, 122, 255, 0); }
         }
         @media (max-width: 700px) {
-            .boton-musica { right: 10px; bottom: 10px; font-size: 11px; padding: 7px 12px 7px 7px; }
+            .boton-musica { right: 10px; top: 10px; font-size: 11px; padding: 7px 12px 7px 7px; }
             .boton-musica .icono-musica { width: 28px; height: 28px; font-size: 13px; }
         }
     </style>
@@ -631,18 +698,19 @@
         <span class="icono-musica" id="icono-musica">&#9654;</span>
         <span id="texto-musica">Escucha: Nací para cabalgar</span>
     </button>
-    <div class="hero-banner">
-        <video autoplay muted loop playsinline poster="/Hero_Poster.jpg">
-            <source src="/Hero_BrisasDeGloria.mp4" type="video/mp4">
-        </video>
-        <div class="hero-banner-overlay">
-            <p>Siente los vientos del triunfo. Vive las brisas del placer. Corre por tu gloria.</p>
-        </div>
-    </div>
-
     <div id="inicio" class="art-container">
         <img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria">
         <div class="slogan-corto">El Galope Final</div>
+        <div id="aviso-inicio" class="aviso-desliza">Desliza hacia abajo<span>&#8595;</span></div>
+
+        <div class="hero-banner">
+            <video autoplay muted loop playsinline poster="/Hero_Poster.jpg">
+                <source src="/Hero_BrisasDeGloria.mp4" type="video/mp4">
+            </video>
+            <div class="hero-banner-overlay">
+                <p>Siente los vientos del triunfo. Vive las brisas del placer. Corre por tu gloria.</p>
+            </div>
+        </div>
 
         <div class="botones-inicio">
             <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
@@ -800,6 +868,23 @@
         }
     </script>
 
+    <div id="aviso-pantalla" class="aviso-desliza"><b id="texto-desliza" style="font-weight:600">Desliza hacia abajo</b><span>&#8595;</span></div>
+    <script>
+        function revisarAvisoDesliza() {
+            var inicio = document.getElementById('aviso-inicio').getBoundingClientRect();
+            var seVeArriba = inicio.top >= 0 && inicio.bottom <= window.innerHeight;
+            var llego = document.getElementById('whitepaper').getBoundingClientRect().top < window.innerHeight * 0.8;
+            var aviso = document.getElementById('aviso-pantalla');
+            aviso.classList.toggle('visible', !seVeArriba);
+            aviso.classList.toggle('final', llego);
+            document.getElementById('texto-desliza').textContent = llego ? 'Entra al Whitepaper o descárgalo en PDF' : 'Desliza hacia abajo';
+        }
+        window.addEventListener('scroll', revisarAvisoDesliza);
+        window.addEventListener('resize', revisarAvisoDesliza);
+        window.addEventListener('load', revisarAvisoDesliza);
+        revisarAvisoDesliza();
+    </script>
+
     <nav>
         <a href="#inicio">Inicio</a>
         <a href="#sobre-el-juego">Sobre el Juego</a>
@@ -859,7 +944,7 @@
         <p style="margin-bottom: 18px;">Próximamente. Así funcionará la competencia:</p>
         <ul>
             <li><strong>Jugar es gratis:</strong> carreras contra la máquina, sin límite y todo el día. Los niveles 1 al 10 son gratis y son el camino para demostrar tu habilidad.</li>
-            <li><strong>Niveles:</strong> hoy hay 10 en cada distancia. En la Alfa (noviembre) llegan al 20 y en la Beta (diciembre) a 25, con opción a más.</li>
+            <li><strong>Niveles:</strong> estamos en la Alfa. La primera temporada de la Beta se jugará con 25 niveles.</li>
             <li><strong>Competir por premios es opcional:</strong> se abre desde el nivel 11. Con un aporte de 10 USD te mantienes 10 días en carrera por los premios grandes: se descuenta 1 USD solo los días que juegas (cuentan 15 carreras diarias).</li>
             <li><strong>El 60% de los aportes vuelve a los jugadores:</strong> el pote de la temporada y una recompensa diaria para los 3 mejores del día.</li>
             <li><strong>El 40% sostiene el juego, y siempre lo mostramos desglosado:</strong> creadores y referidos 10%, equipo 10%, desarrollo e IA 8%, publicidad 5%, servidores 4%, legal y contable 3%.</li>
@@ -867,7 +952,7 @@
             <li><strong>Temporadas de 4 semanas:</strong> los 48 mejores corren semifinales de 12 y los 3 primeros de cada una pasan a la gran final.</li>
             <li><strong>Carreras de 1 USD (desde la Beta, del nivel 20 en adelante):</strong> 12 jugadores y una sola carrera. 6 USD al primero, 3 al segundo y 1 al tercero; 1 USD va al pote final de estas carreras y 1 USD sostiene el juego.</li>
             <li><strong>Solo habilidad:</strong> en las carreras con premio se compite entre personas reales, sin apuestas y sin azar.</li>
-            <li><strong>Juego limpio:</strong> solo para mayores de 18 años. Ni el equipo de Brisas de Gloria ni sus familiares compiten por premios.</li>
+            <li><strong>Juego limpio:</strong> cualquiera puede jugar; para transar con criptos o cobrar premios hay que ser mayor de edad. Ni el equipo de Brisas de Gloria ni sus familiares compiten por premios.</li>
         </ul>
     </section>
     <section id="ecosistema" class="content-section">
@@ -955,7 +1040,7 @@
             <li>Hipódromo 3D con tribunas, rieles y gatera de partida numerada.</li>
             <li>Doce ejemplares en pista: el del jugador y once gobernados por la máquina.</li>
             <li>Desafío Multijugador: carreras entre jugadores reales por internet, con código de invitación.</li>
-            <li>Diez niveles de dificultad en cada distancia, en grama y en arena.</li>
+            <li>Múltiples niveles de dificultad en cada distancia, en grama y en arena.</li>
             <li>Tres cámaras con zoom, incluida la vista en primera persona desde el jinete.</li>
             <li>Photo finish al cruzar la meta.</li>
             <li>Distancias oficiales, con carreras de una y de dos vueltas.</li>
@@ -964,7 +1049,18 @@
         </ul>
     </section>
     <section id="contacto" class="content-section">
-        <h2>Contacto</h2>
+        <h2>Únete a la comunidad</h2>
+        <div class="suscripcion">
+            <h3>Recibe las novedades</h3>
+            <p>Deja tu correo y te avisamos de nuevas carreras, recompensas y la llegada de la Beta.</p>
+            <form id="form-suscripcion" class="form-suscripcion" onsubmit="return false;" novalidate>
+                <input type="email" id="correo-suscripcion" placeholder="Tu correo electrónico" autocomplete="email" maxlength="120" required>
+                <button type="submit" id="boton-suscripcion" class="boton-dorado">SUSCRIBIRME</button>
+            </form>
+            <p class="mensaje-suscripcion" id="mensaje-suscripcion" aria-live="polite"></p>
+            <p class="nota-suscripcion">Sin spam. Puedes darte de baja cuando quieras.</p>
+        </div>
+        <hr class="separador-contacto">
         <p>¿Preguntas o fallas del juego? Entra a nuestro Discord. Avisos en Telegram y X, videos en YouTube. ¿Interés en patrocinar? Escríbenos al correo.</p>
         <div class="botones-inicio" style="justify-content:center;">
             <a class="boton-dorado" href="https://discord.gg/Q2cyFJQBTP" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z"/></svg>ENTRA AL DISCORD</a>
@@ -993,5 +1089,57 @@
             <div class="vitrina-nombre" id="vitrina-nombre"></div>
         </div>
     </div>
+    <!-- Suscripcion por correo: guarda el correo en Firebase, lista "suscriptores" (10-nov) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBBCoP76rSGFDJChiY6zAospJBcYJcpM6o",
+            authDomain: "brisas-de-gloria.firebaseapp.com",
+            projectId: "brisas-de-gloria",
+            messagingSenderId: "81329985500"
+        };
+        const db = getFirestore(initializeApp(firebaseConfig));
+
+        const formulario = document.getElementById("form-suscripcion");
+        const campo = document.getElementById("correo-suscripcion");
+        const boton = document.getElementById("boton-suscripcion");
+        const mensaje = document.getElementById("mensaje-suscripcion");
+
+        function avisar(texto, tipo) {
+            mensaje.textContent = texto;
+            mensaje.className = "mensaje-suscripcion " + tipo;
+        }
+
+        formulario.addEventListener("submit", async (evento) => {
+            evento.preventDefault();
+            const correo = campo.value.trim().toLowerCase();
+            if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(correo) || correo.length < 6 || correo.length > 120) {
+                avisar("Escribe un correo válido.", "error");
+                return;
+            }
+            boton.disabled = true;
+            boton.textContent = "UN MOMENTO...";
+            try {
+                await setDoc(doc(db, "suscriptores", correo), {
+                    correo: correo,
+                    fecha: serverTimestamp(),
+                    origen: "pagina"
+                });
+                avisar("¡Listo! Te avisaremos de las novedades.", "ok");
+                campo.value = "";
+                if (window.gtag) { window.gtag("event", "sign_up", { method: "correo" }); }
+            } catch (error) {
+                if (error && error.code === "permission-denied") {
+                    avisar("Ese correo ya está en la lista. ¡Gracias!", "ok");
+                } else {
+                    avisar("No se pudo guardar. Intenta de nuevo en un momento.", "error");
+                }
+            }
+            boton.disabled = false;
+            boton.textContent = "SUSCRIBIRME";
+        });
+    </script>
 </body>
 </html>
