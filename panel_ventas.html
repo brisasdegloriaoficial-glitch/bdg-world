@@ -67,6 +67,10 @@
         font-size: 14px;
     }
     input:focus, select:focus { outline: none; border-color: var(--oro); }
+    .campo_clave { position: relative; }
+    .campo_clave input { padding-right: 44px; }
+    .ojo_clave { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--oro); cursor: pointer; padding: 4px; display: flex; }
+    .ojo_clave:hover { color: var(--oro-claro); }
     .boton {
         display: inline-block;
         border-radius: 8px;
@@ -166,7 +170,15 @@
         <label for="entrada_correo">Correo</label>
         <input id="entrada_correo" type="email" autocomplete="username" required>
         <label for="entrada_clave">Clave</label>
-        <input id="entrada_clave" type="password" autocomplete="current-password" required>
+        <div class="campo_clave">
+            <input id="entrada_clave" type="password" autocomplete="current-password" required>
+            <button id="boton_ver_clave" class="ojo_clave" type="button" title="Ver u ocultar la clave" aria-label="Ver u ocultar la clave">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle>
+                    <line id="ojo_tachado" x1="3" y1="3" x2="21" y2="21"></line>
+                </svg>
+            </button>
+        </div>
         <button id="boton_entrar" class="boton oro ancho" type="submit">ENTRAR</button>
     </form>
     <button id="boton_olvide_clave" class="enlace" type="button">Olvidé mi clave</button>
@@ -409,6 +421,14 @@
         } catch (e) {
             aviso("aviso_entrada", explicarError(e), "error");
         }
+    });
+
+    // ojito: ver u ocultar la clave mientras se escribe
+    $("boton_ver_clave").addEventListener("click", () => {
+        const campo = $("entrada_clave");
+        const mostrar = campo.type === "password";
+        campo.type = mostrar ? "text" : "password";
+        $("ojo_tachado").style.display = mostrar ? "none" : "";
     });
 
     $("boton_salir").addEventListener("click", () => signOut(auth));
