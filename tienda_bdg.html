@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketplace · Brisas de Gloria</title>
+<meta name="description" content="Marketplace oficial de Brisas de Gloria. Consigue tu caballo, viste a tu jinete y prepara a tu ejemplar.">
+<!--
+  tienda_bdg.html — Proyecto BDG · Brisas de Gloria · IA Power Tech
+  Creado el 12-nov-2026. Convertido en Marketplace el 13-nov-2026.
+  Marketplace del proyecto. El catálogo se ve sin entrar; para comprar,
+  el jugador entra con su cuenta del juego. Hoy se cobra el Caballo Retador
+  (USDT por NOWPayments, servidor cobrador-pagos-bdg). Los demás artículos
+  se muestran como "Muy pronto" hasta que existan el saldo de Gloria y Centi
+  y los anuncios. Los artículos están en LISTA_ARTICULOS, al final.
+-->
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;700&display=swap');
+
+    /* ---------- COLORES (los mismos de index.html) ---------- */
+    :root {
+        --fondo: #0b0f19;
+        --tarjeta: #111827;
+        --borde: #374151;
+        --oro: #c5a059;
+        --oro-claro: #f3e5ab;
+        --bronce: #785a28;
+        --cobre: #b87333;
+        --plata: #b9c2cc;
+        --oro-metal: #d4af37;
+        --violeta: #2b1a6b;
+        --violeta-borde: #997aff;
+        --amarillo: #fdf033;
+        --texto: #e2e8f0;
+        --texto-suave: #b9c2cc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        background: var(--fondo);
+        color: var(--texto);
+        font-family: 'Montserrat', sans-serif;
+        min-height: 100vh;
+        padding: 0 0 40px;
+    }
+    .oculto { display: none !important; }
+    .ancho { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+    .cabecera { border-bottom: 1px solid var(--bronce); background: #0e1322; padding: 14px 0; position: sticky; top: 0; z-index: 5; }
+    .cabecera .ancho { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .cabecera a { color: var(--oro); font-size: 13px; text-decoration: none; min-width: 60px; }
+    .cabecera h1 { font-family: 'Cinzel', serif; color: var(--oro-claro); font-size: 20px; letter-spacing: 2px; }
+    .cabecera .lado { min-width: 60px; text-align: right; }
+
+    .saludo { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--texto-suave); margin-top: 14px; gap: 10px; }
+    .saludo b { color: var(--oro-claro); }
+
+    .moneda {
+        display: flex; align-items: center; gap: 10px; margin-top: 12px; padding: 12px 14px;
+        border: 1px solid var(--bronce); border-radius: 10px; background: var(--tarjeta);
+        font-size: 12px; color: var(--texto-suave); line-height: 1.5;
+    }
+    .moneda b { color: var(--oro-claro); }
+    .moneda .pronto { margin-left: auto; white-space: nowrap; padding: 6px 10px; border-radius: 999px; background: var(--violeta); border: 1px solid var(--violeta-borde); color: var(--amarillo); font-weight: 700; font-size: 11px; }
+
+    .pestanas { display: flex; gap: 8px; overflow-x: auto; padding: 14px 0 4px; scrollbar-width: none; }
+    .pestanas::-webkit-scrollbar { display: none; }
+    .pestana { white-space: nowrap; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--borde); background: none; color: #cbd5e1; font-size: 12px; font-family: 'Montserrat', sans-serif; cursor: pointer; }
+    .pestana.activa { background: var(--oro); border-color: var(--oro); color: var(--fondo); font-weight: 700; }
+
+    h2.titulo_seccion { font-family: 'Cinzel', serif; color: var(--oro); font-size: 15px; letter-spacing: 1px; margin: 22px 0 10px; }
+
+    .caja { background: var(--tarjeta); border: 1px solid var(--bronce); border-radius: 14px; padding: 22px 20px; }
+    .caja h2 { font-family: 'Cinzel', serif; color: var(--oro-claro); font-size: 20px; margin-bottom: 6px; }
+    .caja p.sub { color: var(--texto-suave); font-size: 13px; line-height: 1.5; }
+    #pantalla_entrada { margin-top: 14px; }
+
+    label { display: block; font-size: 13px; color: var(--texto-suave); margin: 14px 0 5px; }
+    input {
+        width: 100%; padding: 12px; border-radius: 8px;
+        border: 1px solid var(--borde); background: var(--fondo);
+        color: var(--texto); font-family: 'Montserrat', sans-serif; font-size: 15px;
+    }
+    input:focus { outline: none; border-color: var(--oro); }
+    .campo_clave { position: relative; }
+    .campo_clave input { padding-right: 46px; }
+    .ojo_clave { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--oro); cursor: pointer; padding: 4px; display: flex; }
+
+    .boton {
+        display: block; width: 100%; margin-top: 18px; padding: 15px;
+        border-radius: 8px; border: 2px solid var(--bronce);
+        background: linear-gradient(180deg, #f3e5ab, #c5a059); color: var(--fondo);
+        font-family: 'Cinzel', serif; font-weight: 800; font-size: 15px; letter-spacing: 1px;
+        cursor: pointer;
+    }
+    .boton:hover { filter: brightness(1.08); }
+    .boton:disabled { opacity: 0.55; cursor: not-allowed; }
+    .enlace { background: none; border: none; color: var(--oro); font-size: 13px; cursor: pointer; margin-top: 12px; text-decoration: underline; font-family: 'Montserrat', sans-serif; }
+    .aviso { margin-top: 12px; font-size: 13px; min-height: 18px; line-height: 1.5; }
+    .aviso.error { color: #fca5a5; }
+    .aviso.bien { color: #6ee7b7; }
+
+    /* ---------- ejemplar de la temporada ---------- */
+    .producto { border: 2px solid var(--oro); }
+    .producto img { width: 100%; border-radius: 10px; border: 1px solid var(--bronce); margin-bottom: 14px; display: block; }
+    .insignia {
+        display: inline-block; padding: 4px 14px; border-radius: 20px;
+        background: linear-gradient(180deg, #e3a06e, #b87333); color: var(--fondo);
+        font-family: 'Cinzel', serif; font-weight: 800; font-size: 12px; letter-spacing: 1px;
+    }
+    .producto h2 { margin-top: 10px; font-size: 24px; }
+    .precio { font-family: 'Cinzel', serif; color: var(--oro); font-size: 36px; margin: 4px 0 0; }
+    .precio small { font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--texto-suave); display: block; letter-spacing: 1px; text-transform: uppercase; }
+    .lista { margin: 14px 0 4px; list-style: none; }
+    .lista li { font-size: 14px; color: #d1d5db; padding: 5px 0 5px 22px; position: relative; line-height: 1.45; }
+    .lista li::before { content: "✦"; color: var(--oro); position: absolute; left: 0; }
+    .razas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+    .raza {
+        padding: 10px 8px; border-radius: 8px; border: 1px solid var(--borde);
+        background: var(--fondo); color: var(--texto); cursor: pointer;
+        font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 14px;
+    }
+    .raza small { display: block; font-weight: 400; font-size: 11px; color: var(--texto-suave); margin-top: 2px; }
+    .raza.escogida { border-color: var(--oro); color: var(--oro-claro); background: #1a1408; }
+    .nota_pago { font-size: 12px; color: var(--texto-suave); margin-top: 12px; line-height: 1.55; text-align: center; }
+
+    /* ---------- artículos ---------- */
+    .rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+    .articulo { position: relative; border: 1px solid var(--borde); border-radius: 10px; background: var(--tarjeta); padding: 10px; display: flex; flex-direction: column; }
+    .articulo .dibujo { height: 64px; border-radius: 6px; background: #1a1f2e; display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 8px; }
+    .articulo b { font-size: 13px; color: var(--oro-claro); }
+    .articulo .para_que { font-size: 11px; color: #94a3b8; margin: 3px 0 10px; line-height: 1.4; flex: 1; }
+    .articulo .abajo { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; }
+    .articulo .muy_pronto { padding: 5px 8px; border-radius: 6px; background: var(--borde); color: #cbd5e1; font-size: 10px; font-weight: 700; white-space: nowrap; }
+    .articulo.metal_cobre { border-color: var(--cobre); }
+    .articulo.metal_cobre .dibujo { box-shadow: inset 0 0 0 2px var(--cobre); }
+    .articulo.cerrado { opacity: 0.55; }
+    .sello { position: absolute; top: 6px; right: 6px; font-size: 9px; padding: 3px 7px; border-radius: 999px; font-weight: 800; letter-spacing: 0.5px; }
+    .sello_cobre { background: var(--cobre); color: var(--fondo); }
+    .sello_plata { background: var(--plata); color: var(--fondo); }
+    .sello_oro { background: var(--oro-metal); color: var(--fondo); }
+    .sello_anuncios { background: var(--violeta); color: var(--amarillo); border: 1px solid var(--violeta-borde); }
+
+    .leyenda { margin-top: 22px; font-size: 12px; color: #94a3b8; text-align: center; line-height: 1.6; }
+    .leyenda b { color: var(--amarillo); }
+    .pie { margin-top: 20px; font-size: 12px; color: #6b7280; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="cabecera">
+    <div class="ancho">
+        <a href="/">‹ Inicio</a>
+        <h1>MARKETPLACE</h1>
+        <span class="lado"></span>
+    </div>
+</div>
+
+<div class="ancho">
+
+    <!-- ======================= SALUDO (ya entró) ======================= -->
+    <div id="barra_jugador" class="saludo oculto">
+        <span>Hola, <b id="nombre_jugador"></b></span>
+        <button id="boton_salir" class="enlace" type="button" style="margin-top:0">Salir</button>
+    </div>
+
+    <div class="moneda">
+        <span><b>Gloria y Centi</b>, la moneda del Marketplace. Recarga tu saldo o gana Centi viendo anuncios.</span>
+        <span class="pronto">Muy pronto</span>
+    </div>
+
+    <div id="pestanas" class="pestanas"></div>
+
+    <!-- ======================= EJEMPLAR DE LA TEMPORADA ======================= -->
+    <div data-seccion="caballos">
+        <h2 class="titulo_seccion">EJEMPLAR DE LA TEMPORADA</h2>
+        <div class="caja producto">
+            <img src="/Hero_Poster.jpg" alt="Caballo de Brisas de Gloria en carrera">
+            <span class="insignia">NIVEL RETADOR</span>
+            <h2 id="nombre_producto">Caballo Retador</h2>
+            <div class="precio">$<span id="precio_producto">10</span><small>Precio de lanzamiento · USDT</small></div>
+
+            <ul class="lista">
+                <li>Entra directo al nivel <b>Retador</b>, sin pasar por el entrenamiento de los primeros niveles.</li>
+                <li>Tu jinete lleva el distintivo de <b>cobre</b>.</li>
+                <li>Tu caballo crece contigo: más brillo, más músculo y colores más vivos a medida que sube de nivel.</li>
+                <li>La carrera la sigue ganando tu habilidad.</li>
+            </ul>
+
+            <label>Escoge la raza</label>
+            <div id="razas" class="razas"></div>
+
+            <button id="boton_pagar" class="boton" type="button" disabled>ESCOGE UNA RAZA</button>
+            <p class="nota_pago">Pagas con criptomonedas. Recomendado: <b>USDT por la red BSC (BNB Smart Chain)</b>, con comisión de centavos. Al confirmarse, recibes tu comprobante por correo con el código de tu caballo.</p>
+            <div id="aviso_tienda" class="aviso"></div>
+        </div>
+    </div>
+
+    <!-- ======================= ENTRADA (aparece al querer comprar) ======================= -->
+    <div id="pantalla_entrada" class="caja oculto">
+        <h2>Entra con tu cuenta del juego</h2>
+        <p class="sub">La misma con la que juegas. Así tu compra queda directo en tu cuenta.</p>
+        <form id="formulario_entrada">
+            <label for="entrada_correo">Correo</label>
+            <input id="entrada_correo" type="email" autocomplete="username" required>
+            <label for="entrada_clave">Clave</label>
+            <div class="campo_clave">
+                <input id="entrada_clave" type="password" autocomplete="current-password" required>
+                <button id="boton_ver_clave" class="ojo_clave" type="button" aria-label="Ver u ocultar la clave">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"></path><circle cx="12" cy="12" r="3"></circle>
+                        <line id="ojo_tachado" x1="3" y1="3" x2="21" y2="21"></line>
+                    </svg>
+                </button>
+            </div>
+            <button id="boton_entrar" class="boton" type="submit">ENTRAR</button>
+        </form>
+        <button id="boton_olvide_clave" class="enlace" type="button">Olvidé mi clave</button>
+        <div id="aviso_entrada" class="aviso"></div>
+    </div>
+
+    <!-- ======================= ARTÍCULOS (los arma el guion de abajo) ======================= -->
+    <div id="secciones_articulos"></div>
+
+    <p class="leyenda"><b>▶ CON ANUNCIOS</b>: si no lo compras, lo consigues viendo anuncios.<br>Los artículos con candado se abren al subir de nivel.</p>
+    <div class="pie">IA Power Tech · Proyecto BDG · Brisas de Gloria</div>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail }
+        from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, getDoc }
+        from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // ---------- AJUSTES (se cambian aquí) ----------
+    const DIRECCION_COBRADOR = "https://cobrador-pagos-bdg.brisasdegloriaoficial.workers.dev/crear-cobro";
+    const NOMBRE_PRODUCTO = "Caballo Retador";
+    const PRECIO_PRODUCTO = 10;
+    // "valor" es lo que recibe el cobrador; "nombre" y "estilo" es lo que ve el jugador.
+    const RAZAS_A_LA_VENTA = [
+        { valor: "Americano", nombre: "Americano", estilo: "Equilibrado" },
+        { valor: "Árabe", nombre: "Árabe", estilo: "Fondista" },
+        { valor: "Cuarto de Milla", nombre: "Cuarto de Milla", estilo: "Puntero" },
+        { valor: "Inglés", nombre: "Patilargo", estilo: "Rematador" }
+    ];
+
+    // ---------- CATÁLOGO (para agregar un artículo, se agrega un renglón) ----------
+    // metal: "cobre", "plata", "oro" o "". anuncios: true si también se consigue viendo anuncios.
+    // cerrado: true si se abre al subir de nivel.
+    const LISTA_SECCIONES = [
+        { clave: "caballos", pestana: "Caballos" },
+        { clave: "jinete", pestana: "Jinete", titulo: "EQUIPO DEL JINETE" },
+        { clave: "equipo_caballo", pestana: "Equipo", titulo: "EQUIPO DEL CABALLO" },
+        { clave: "comida", pestana: "Comida", titulo: "COMIDA" },
+        { clave: "entrenamiento", pestana: "Entrenar", titulo: "ENTRENAMIENTO" },
+        { clave: "cuidados", pestana: "Cuidados", titulo: "CUIDADOS" }
+    ];
+    const LISTA_ARTICULOS = [
+        { seccion: "jinete", dibujo: "🏇", nombre: "Látigo de cobre", para_que: "Luce tu nivel en cada carrera", precio: "1 Gloria", metal: "cobre" },
+        { seccion: "jinete", dibujo: "⛑️", nombre: "Casco de cobre", para_que: "Luce tu nivel en cada carrera", precio: "1 Gloria", metal: "cobre" },
+        { seccion: "jinete", dibujo: "👢", nombre: "Botas de cobre", para_que: "Luce tu nivel en cada carrera", precio: "1 Gloria", metal: "cobre" },
+        { seccion: "jinete", dibujo: "🧤", nombre: "Guantes de cobre", para_que: "Luce tu nivel en cada carrera", precio: "50 Centi", metal: "cobre" },
+        { seccion: "jinete", dibujo: "🔒", nombre: "Juego de plata", para_que: "Se abre al subir de nivel", precio: "", metal: "plata", cerrado: true },
+        { seccion: "jinete", dibujo: "🔒", nombre: "Juego de oro", para_que: "Se abre al subir de nivel", precio: "", metal: "oro", cerrado: true },
+        { seccion: "jinete", dibujo: "🥽", nombre: "Lentes de carrera", para_que: "Cristal ámbar contra el polvo", precio: "50 Centi", anuncios: true },
+        { seccion: "equipo_caballo", dibujo: "🎗️", nombre: "Brida y riendas de color", para_que: "Elige el color de tu cuadra", precio: "30 Centi", anuncios: true },
+        { seccion: "equipo_caballo", dibujo: "🎨", nombre: "Bozal de color", para_que: "Combínalo con tus sedas", precio: "20 Centi", anuncios: true },
+        { seccion: "equipo_caballo", dibujo: "🐴", nombre: "Silla de cobre", para_que: "La montura de tu nivel", precio: "1.5 Gloria", metal: "cobre" },
+        { seccion: "comida", dibujo: "🌾", nombre: "Avena", para_que: "El alimento diario de tu caballo", precio: "2 Centi", anuncios: true },
+        { seccion: "comida", dibujo: "🥕", nombre: "Zanahorias y manzanas", para_que: "Súbele el ánimo", precio: "1 Centi", anuncios: true },
+        { seccion: "comida", dibujo: "🌿", nombre: "Heno premium", para_que: "Recupera más estamina entre carreras", precio: "5 Centi", anuncios: true },
+        { seccion: "comida", dibujo: "💊", nombre: "Vitaminas", para_que: "Para que crezca más fuerte", precio: "10 Centi" },
+        { seccion: "entrenamiento", dibujo: "🏁", nombre: "Galope en pista", para_que: "Entrena su fuerza", precio: "4 Centi", anuncios: true },
+        { seccion: "entrenamiento", dibujo: "🚪", nombre: "Aparato de partida", para_que: "Para salir adelante desde el inicio", precio: "6 Centi", anuncios: true },
+        { seccion: "entrenamiento", dibujo: "⚡", nombre: "Trabajo de remate", para_que: "Para cerrar fuerte al final", precio: "6 Centi", anuncios: true },
+        { seccion: "entrenamiento", dibujo: "⛰️", nombre: "Trabajo de fondo", para_que: "Para aguantar las distancias largas", precio: "6 Centi", anuncios: true },
+        { seccion: "cuidados", dibujo: "🧽", nombre: "Cepillado y baño", para_que: "Pelaje con más brillo", precio: "2 Centi", anuncios: true },
+        { seccion: "cuidados", dibujo: "🩺", nombre: "Veterinario", para_que: "Recupera a tu caballo tras varias carreras", precio: "10 Centi", anuncios: true },
+        { seccion: "cuidados", dibujo: "✏️", nombre: "Cambio de nombre", para_que: "Ponle otro nombre a tu caballo", precio: "1 Gloria" }
+    ];
+    const LISTA_JUGADORES = "jugadores";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBBCoP76rSGFDJChiY6zAospJBcYJcpM6o",
+        authDomain: "brisas-de-gloria.firebaseapp.com",
+        projectId: "brisas-de-gloria",
+        messagingSenderId: "81329985500"
+    };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const $ = (id) => document.getElementById(id);
+    let razaEscogida = "";
+    let nombreRazaEscogida = "";
+    let jugador = null;
+
+    $("nombre_producto").textContent = NOMBRE_PRODUCTO;
+    $("precio_producto").textContent = PRECIO_PRODUCTO;
+
+    function aviso(id, texto, tipo) {
+        const el = $(id);
+        el.textContent = texto || "";
+        el.className = "aviso" + (tipo ? " " + tipo : "");
+    }
+    function explicarError(e) {
+        const c = (e && e.code) || "";
+        if (c.includes("invalid-credential") || c.includes("wrong-password") || c.includes("user-not-found"))
+            return "Correo o clave incorrectos.";
+        if (c.includes("too-many-requests")) return "Demasiados intentos. Espera unos minutos.";
+        if (c.includes("network")) return "Sin conexión. Revisa el internet e intenta de nuevo.";
+        return "Algo falló. Intenta de nuevo en un momento.";
+    }
+
+    // ---------- razas ----------
+    $("razas").innerHTML = RAZAS_A_LA_VENTA.map((r) =>
+        '<button class="raza" type="button" data-raza="' + r.valor + '" data-nombre="' + r.nombre + '">' +
+        r.nombre + "<small>" + r.estilo + "</small></button>").join("");
+    $("razas").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button[data-raza]");
+        if (!b) return;
+        document.querySelectorAll(".raza").forEach((x) => x.classList.remove("escogida"));
+        b.classList.add("escogida");
+        razaEscogida = b.dataset.raza;
+        nombreRazaEscogida = b.dataset.nombre;
+        $("boton_pagar").disabled = false;
+        $("boton_pagar").textContent = "PAGAR $" + PRECIO_PRODUCTO + " · " + nombreRazaEscogida.toUpperCase();
+    });
+
+    // ---------- entrada y salida ----------
+    $("formulario_entrada").addEventListener("submit", async (ev) => {
+        ev.preventDefault();
+        $("boton_entrar").disabled = true;
+        aviso("aviso_entrada", "Entrando…");
+        try {
+            await signInWithEmailAndPassword(auth, $("entrada_correo").value.trim(), $("entrada_clave").value);
+        } catch (e) {
+            aviso("aviso_entrada", explicarError(e), "error");
+        }
+        $("boton_entrar").disabled = false;
+    });
+
+    $("boton_olvide_clave").addEventListener("click", async () => {
+        const correo = $("entrada_correo").value.trim();
+        if (!correo) { aviso("aviso_entrada", "Escribe primero tu correo arriba.", "error"); return; }
+        try {
+            await sendPasswordResetEmail(auth, correo);
+            aviso("aviso_entrada", "Te enviamos un correo para cambiar la clave.", "bien");
+        } catch (e) {
+            aviso("aviso_entrada", explicarError(e), "error");
+        }
+    });
+
+    $("boton_ver_clave").addEventListener("click", () => {
+        const campo = $("entrada_clave");
+        const mostrar = campo.type === "password";
+        campo.type = mostrar ? "text" : "password";
+        $("ojo_tachado").style.display = mostrar ? "none" : "";
+    });
+
+    $("boton_salir").addEventListener("click", () => signOut(auth));
+
+    onAuthStateChanged(auth, async (usuario) => {
+        jugador = usuario;
+        if (!usuario) {
+            $("barra_jugador").classList.add("oculto");
+            return;
+        }
+        $("pantalla_entrada").classList.add("oculto");
+        $("barra_jugador").classList.remove("oculto");
+        aviso("aviso_tienda", "");
+        $("nombre_jugador").textContent = usuario.email || "";
+        try {
+            const ficha = await getDoc(doc(db, LISTA_JUGADORES, usuario.uid));
+            if (ficha.exists() && ficha.data().seudonimo) $("nombre_jugador").textContent = ficha.data().seudonimo;
+        } catch (e) { /* si no se puede leer, se queda el correo */ }
+    });
+
+    // ---------- catálogo y pestañas ----------
+    function tarjetaArticulo(a) {
+        let sello = "";
+        if (a.metal) sello = '<span class="sello sello_' + a.metal + '">' + a.metal.toUpperCase() + "</span>";
+        else if (a.anuncios) sello = '<span class="sello sello_anuncios">▶ CON ANUNCIOS</span>';
+        const clases = "articulo" + (a.metal === "cobre" && !a.cerrado ? " metal_cobre" : "") + (a.cerrado ? " cerrado" : "");
+        return '<div class="' + clases + '">' + sello +
+            '<div class="dibujo">' + a.dibujo + "</div><b>" + a.nombre + "</b>" +
+            '<span class="para_que">' + a.para_que + "</span>" +
+            '<div class="abajo"><span>' + (a.precio || "—") + "</span>" +
+            '<span class="muy_pronto">' + (a.cerrado ? "Cerrado" : "Muy pronto") + "</span></div></div>";
+    }
+    $("secciones_articulos").innerHTML = LISTA_SECCIONES.filter((s) => s.titulo).map((s) =>
+        '<div data-seccion="' + s.clave + '"><h2 class="titulo_seccion">' + s.titulo + '</h2><div class="rejilla">' +
+        LISTA_ARTICULOS.filter((a) => a.seccion === s.clave).map(tarjetaArticulo).join("") + "</div></div>").join("");
+
+    $("pestanas").innerHTML = '<button class="pestana activa" type="button" data-ver="todo">Todo</button>' +
+        LISTA_SECCIONES.map((s) => '<button class="pestana" type="button" data-ver="' + s.clave + '">' + s.pestana + "</button>").join("");
+    $("pestanas").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button[data-ver]");
+        if (!b) return;
+        document.querySelectorAll(".pestana").forEach((x) => x.classList.remove("activa"));
+        b.classList.add("activa");
+        document.querySelectorAll("[data-seccion]").forEach((s) =>
+            s.classList.toggle("oculto", b.dataset.ver !== "todo" && s.dataset.seccion !== b.dataset.ver));
+    });
+
+    // ---------- pagar ----------
+    $("boton_pagar").addEventListener("click", async () => {
+        if (!razaEscogida) return;
+        if (!jugador) {
+            // El catálogo se ve sin entrar; para comprar hace falta la cuenta del juego.
+            $("pantalla_entrada").classList.remove("oculto");
+            $("pantalla_entrada").scrollIntoView({ behavior: "smooth", block: "center" });
+            aviso("aviso_tienda", "Entra con tu cuenta del juego y vuelve a pulsar PAGAR.");
+            return;
+        }
+        $("boton_pagar").disabled = true;
+        aviso("aviso_tienda", "Preparando tu pago…");
+        try {
+            const r = await fetch(DIRECCION_COBRADOR, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ uid: jugador.uid, correo: jugador.email, raza: razaEscogida })
+            });
+            const d = await r.json();
+            if (!d.ok || !d.enlace_pago) throw new Error(d.error || "No se pudo preparar el pago.");
+            aviso("aviso_tienda", "Te llevamos a la página de pago…", "bien");
+            window.location.href = d.enlace_pago;
+        } catch (e) {
+            aviso("aviso_tienda", e.message || "No se pudo preparar el pago. Intenta de nuevo.", "error");
+            $("boton_pagar").disabled = false;
+        }
+    });
+</script>
+</body>
+</html>
