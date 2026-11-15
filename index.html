@@ -194,6 +194,9 @@
             border: 2px solid #785a28;
         }
         .boton-dorado:hover { filter: brightness(1.1); }
+        .marketplace-acceso { text-align: center; margin: 18px 0; }
+        .marketplace-acceso .boton-dorado { letter-spacing: 2px; }
+        .marketplace-acceso.portada .boton-dorado { font-size: 1.2em; padding: 14px 44px; }
 
         .boton-secundario {
             color: #f3e5ab;
@@ -712,9 +715,10 @@
             </div>
         </div>
 
+        <div class="marketplace-acceso portada"><a class="boton-dorado" href="/tienda_bdg.html">MARKETPLACE</a></div>
+
         <div class="botones-inicio">
             <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR DEMO</button>
-            <a class="boton-dorado" href="/tienda_bdg.html">TIENDA</a>
             <a class="boton-secundario" href="https://github.com/brisasdegloriaoficial-glitch/bdg-world/releases/latest/download/BrisasDeGloria.apk">DESCARGAR PARA ANDROID</a>
             <a class="boton-secundario" href="https://github.com/brisasdegloriaoficial-glitch/bdg-world/releases/latest/download/BrisasDeGloria.exe">DESCARGAR PARA WINDOWS</a>
             <button id="boton-compartir" class="boton-secundario" onclick="compartirJuego()"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 0 0 21 5a3 3 0 1 0-5.91.7L8.04 9.81A2.99 2.99 0 0 0 3 12a3 3 0 0 0 5.04 2.19l7.12 4.16c-.05.21-.08.43-.08.65A2.92 2.92 0 1 0 18 16.08z"/></svg><span id="texto-compartir">COMPARTIR</span></button>
@@ -888,11 +892,11 @@
 
     <nav>
         <a href="#inicio">Inicio</a>
-        <a href="/tienda_bdg.html">Tienda</a>
+        <a href="/tienda_bdg.html">Marketplace</a>
         <a href="#sobre-el-juego">Sobre el Juego</a>
         <a href="#controles">Controles</a>
         <a href="#gloria">Gloria</a>
-        <a href="#premios">Premios</a>
+        <a href="#premios">Recompensas</a>
         <a href="#ecosistema">Ecosistema</a>
         <a href="#ejemplares">Ejemplares</a>
         <a href="#avances">Avances</a>
@@ -901,7 +905,7 @@
     </nav>
     <section id="sobre-el-juego" class="content-section">
         <h2>Sobre el Juego</h2>
-        <p>Brisas de Gloria es un simulador gratuito en desarrollo, focalizado en el realismo visual y la precisión en la biomecánica de carreras hípicas. Jugar es gratis y lo será siempre: aquí no hay apuestas ni azar, la carrera la gana la habilidad del jugador.</p>
+        <p>Brisas de Gloria es un simulador gratuito en desarrollo, focalizado en el realismo visual y la precisión en la biomecánica de carreras hípicas. Jugar es gratis y lo será siempre: aquí no hay azar: la carrera la gana la habilidad del jugador.</p>
     </section>
     <section id="controles" class="content-section">
         <h2>Controles</h2>
@@ -942,19 +946,19 @@
         </div>
     </section>
     <section id="premios" class="content-section">
-        <h2>Juega Gratis · Compite por Premios</h2>
+        <h2>Juega Gratis · Compite por Recompensas</h2>
         <p style="margin-bottom: 18px;">Próximamente. Así funcionará la competencia:</p>
         <ul>
             <li><strong>Jugar es gratis:</strong> carreras contra la máquina, sin límite y todo el día. Los niveles 1 al 10 son gratis y son el camino para demostrar tu habilidad.</li>
             <li><strong>Niveles:</strong> estamos en la Alfa. La primera temporada de la Beta se jugará con 25 niveles.</li>
-            <li><strong>Competir por premios es opcional:</strong> se abre desde el nivel 11. Con un aporte de 10 USD te mantienes 10 días en carrera por los premios grandes: se descuenta 1 USD solo los días que juegas (cuentan 15 carreras diarias).</li>
+            <li><strong>Competir por recompensas es opcional:</strong> se abre desde el nivel 11. Con un aporte de 10 USD te mantienes 10 días en carrera por las recompensas grandes: se descuenta 1 USD solo los días que juegas (cuentan 15 carreras diarias).</li>
             <li><strong>El 60% de los aportes vuelve a los jugadores:</strong> el pote de la temporada y una recompensa diaria para los 3 mejores del día.</li>
             <li><strong>El 40% sostiene el juego, y siempre lo mostramos desglosado:</strong> creadores y referidos 10%, equipo 10%, desarrollo e IA 8%, publicidad 5%, servidores 4%, legal y contable 3%.</li>
             <li><strong>Becas:</strong> al cerrar cada temporada, el 10% mejor de los que juegan gratis entra becado a la siguiente, sin pagar.</li>
             <li><strong>Temporadas de 4 semanas:</strong> los 48 mejores corren semifinales de 12 y los 3 primeros de cada una pasan a la gran final.</li>
             <li><strong>Carreras de 1 USD (desde la Beta, del nivel 20 en adelante):</strong> 12 jugadores y una sola carrera. 6 USD al primero, 3 al segundo y 1 al tercero; 1 USD va al pote final de estas carreras y 1 USD sostiene el juego.</li>
-            <li><strong>Solo habilidad:</strong> en las carreras con premio se compite entre personas reales, sin apuestas y sin azar.</li>
-            <li><strong>Juego limpio:</strong> cualquiera puede jugar; para transar con criptos o cobrar premios hay que ser mayor de edad. Ni el equipo de Brisas de Gloria ni sus familiares compiten por premios.</li>
+            <li><strong>Solo habilidad:</strong> en las carreras con recompensa se compite entre personas reales, sin azar.</li>
+            <li><strong>Juego limpio:</strong> cualquiera puede jugar; para transar con criptos o cobrar recompensas hay que ser mayor de edad. Ni el equipo de Brisas de Gloria ni sus familiares compiten por recompensas.</li>
         </ul>
     </section>
     <section id="ecosistema" class="content-section">
@@ -984,10 +988,12 @@
             </div>
         </div>
         <div class="tier-equiv">1 Gloria = 1 USD = 100 Centi · Para jugar no necesitas ninguna moneda: el juego es gratis</div>
+        <div class="marketplace-acceso"><a class="boton-dorado" href="/tienda_bdg.html">MARKETPLACE</a></div>
     </section>
     <section id="ejemplares" class="content-section">
         <h2>Ejemplares Fundadores</h2>
-        <p class="ejemplares-aviso">Estos son 4 ejemplares de la Edición Fundadores, una colección numerada y limitada. Los Fundadores se adquieren en pareja. Son opcionales y llegarán más adelante, cuando la comunidad crezca.</p>
+        <p class="ejemplares-aviso">Estos son ejemplares de la Edición Fundadores, una colección numerada. Son opcionales y ya puedes conocerlos en el Marketplace.</p>
+        <div class="marketplace-acceso"><a class="boton-dorado" href="/tienda_bdg.html">MARKETPLACE</a></div>
         <div class="ejemplares-grid">
             <div class="ejemplar-card" onclick="abrirVitrina('/Ejemplar_Fundador_1_Full.jpg', 'Fundador I')">
                 <img src="/Ejemplar_Fundador_1.jpg" alt="Ejemplar Fundador">
@@ -1034,7 +1040,7 @@
                 <span class="pn-detalle">Todoterreno</span>
             </div>
         </div>
-        <p class="piramide-nota">Ejemplares opcionales, disponibles más adelante. A mayor nivel, más cualidades de especialización: distancia (corta, media o larga), tipo de pista (grama, arena, tierra, sintética), clima (lluvia, fango y más) y estilo de carrera. Como en la vida real, cada ejemplar destaca en aquello para lo que fue criado: un velocista difícilmente gana en fondo, y en el fango brilla el fanguero. El Todoterreno rinde en toda pista, todo clima y toda distancia. Ninguna compra reemplaza la habilidad del jugador. Precios y cualidades son referenciales y se irán ajustando junto con la comunidad a medida que avanza el desarrollo.</p>
+        <p class="piramide-nota">Ejemplares opcionales. A mayor nivel, más cualidades de especialización: distancia (corta, media o larga), tipo de pista (grama, arena, tierra, sintética), clima (lluvia, fango y más) y estilo de carrera. Como en la vida real, cada ejemplar destaca en aquello para lo que fue criado: un velocista difícilmente gana en fondo, y en el fango brilla el fanguero. El Todoterreno rinde en toda pista, todo clima y toda distancia. Ninguna compra reemplaza la habilidad del jugador. Precios y cualidades son referenciales y se irán ajustando junto con la comunidad a medida que avanza el desarrollo.</p>
     </section>
     <section id="avances" class="content-section">
         <h2>Avances del Proyecto</h2>
