@@ -691,12 +691,11 @@
             .boton-musica { right: 10px; top: 10px; font-size: 11px; padding: 7px 12px 7px 7px; }
             .boton-musica .icono-musica { width: 28px; height: 28px; font-size: 13px; }
         }
-        .bdg-desplegable { border-top: 1px solid #374151; padding: 10px 0; }
-        .bdg-desplegable summary { cursor: pointer; color: #e5e7eb; line-height: 1.5; list-style: none; }
-        .bdg-desplegable summary::-webkit-details-marker { display: none; }
-        .bdg-desplegable summary::before { content: "\25B8"; color: #c5a059; margin-right: 8px; display: inline-block; transition: transform .2s; }
-        .bdg-desplegable[open] summary::before { transform: rotate(90deg); }
-        .bdg-desplegable > p, .bdg-desplegable > ul, .bdg-desplegable > div { margin-top: 10px; }
+        .bdg-punto { border-top: 1px solid #374151; padding: 10px 0; }
+        .bdg-titulo-punto { color: #e5e7eb; line-height: 1.5; }
+        .bdg-nota { margin-top: 6px; background: #0b1220; border: 1px solid #2a3446; border-radius: 6px; padding: 8px 12px; font-size: .82em; }
+        .bdg-nota p, .bdg-nota ul, .bdg-nota li { font-size: 1em; line-height: 1.45; margin: 0; }
+        .bdg-nota ul { padding-left: 18px; }
         .bdg-subtitulo { color: #c5a059 !important; font-size: 1.15em; margin-bottom: 10px; }
         .bdg-ligas { margin-top: 16px; color: #d1d5db; text-align: center; font-size: .95em; }
         .bdg-lema { text-align: center; color: #c5a059 !important; font-family: 'Cinzel', serif; margin-top: 18px; letter-spacing: 1px; }
@@ -917,8 +916,7 @@
         <h2>Brisas de Gloria</h2>
         <p class="bdg-subtitulo">El videojuego 3D de carreras de caballos donde gana el que mejor corre.</p>
         <p>Aquí no decide la suerte: decides tú. Cómo arrancas, cuándo aceleras, por dónde pasas y cómo usas la fusta marcan la diferencia en cada carrera. Compite contra jugadores reales, sube de nivel, entra a las ligas y forma parte de una comunidad que crece carrera a carrera.</p>
-        <details class="bdg-desplegable">
-            <summary>Controles del juego</summary>
+        <div class="bdg-punto"><div class="bdg-titulo-punto">Controles del juego</div><div class="bdg-nota">
         <div class="controles-grid">
             <div class="controles-col">
                 <h3>Computadora</h3>
@@ -946,44 +944,44 @@
             </div>
         </div>
         <p class="controles-nota">Arrear y castigar al mismo tiempo es el impulso máximo del caballo. El arreo y el látigo son limitados durante la carrera: mira el contador en pantalla y úsalos con cuidado.</p>
-        </details>
+        </div></div>
     </section>
 
     <section id="tu-camino" class="content-section">
         <h2>Tu Camino en Brisas de Gloria</h2>
-        <details class="bdg-desplegable"><summary><b>1. Juega gratis:</b> corre, sube de nivel y haz crecer tu caballo.</summary>
-            <p>Corre contra la IA o contra otros jugadores que juegan gratis. Aquí se compite por el honor de ganar. Puedes llevar tu caballo por todos los niveles sin pagar.</p></details>
-        <details class="bdg-desplegable"><summary><b>2. Mejora tu caballo:</b> entrénalo y equípalo con la moneda gratis del juego.</summary>
-            <p>Tu caballo mejora a medida que lo entrenas. El entrenamiento y el equipo se pagan con Centi, la moneda gratis del juego.</p></details>
-        <details class="bdg-desplegable"><summary><b>3. Gana skins gratis:</b> equipo para tu jinete según tu liga.</summary>
-            <p>El equipo de tu jinete cambia con tu liga: Cobre, Plata, Oro, Platino y Diamante. Las skins se ganan gratis, por ejemplo viendo anuncios, y siempre son realistas.</p></details>
-        <details class="bdg-desplegable"><summary><b>4. Desde el nivel 11:</b> recarga y compite por recompensas diarias y mensuales.</summary>
-            <p>Con una recarga de 10 USD compites 10 días. Solo se descuenta 1 USD los días que juegas, y cada día cuentan 15 carreras. Hay recompensa al cierre de cada día y una gran repartición al cerrar la temporada de 4 semanas.</p></details>
-        <details class="bdg-desplegable"><summary><b>5. Desde el nivel 15:</b> recarga 1 USD por carrera, compite contra jugadores reales y opta a recompensas del 50 %, 25 % y 8 %.</summary>
-            <p>Cada carrera es independiente: 12 jugadores reales y una sola carrera. Las recompensas son para los tres primeros, según lo recaudado en la carrera. Corre todas las que quieras.</p></details>
-        <details class="bdg-desplegable"><summary><b>6. Marketplace:</b> pon tu caballo a la venta cuando cumpla las condiciones.</summary>
-            <p>Compra, vende y descubre caballos y artículos dentro del ecosistema BDG.</p></details>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>1. Juega gratis:</b> corre, sube de nivel y haz crecer tu caballo.</div><div class="bdg-nota">
+            <p>Corre contra la IA o contra otros jugadores que juegan gratis. Aquí se compite por el honor de ganar. Puedes llevar tu caballo por todos los niveles sin pagar.</p></div></div>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>2. Mejora tu caballo:</b> entrénalo y equípalo con la moneda gratis del juego.</div><div class="bdg-nota">
+            <p>Tu caballo mejora a medida que lo entrenas. El entrenamiento y el equipo se pagan con Centi, la moneda gratis del juego.</p></div></div>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>3. Gana skins gratis:</b> equipo para tu jinete según tu liga.</div><div class="bdg-nota">
+            <p>El equipo de tu jinete cambia con tu liga: Cobre, Plata, Oro, Platino y Diamante. Las skins se ganan gratis y siempre son realistas.</p></div></div>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>4. Desde el nivel 11:</b> recarga y compite por recompensas diarias y mensuales.</div><div class="bdg-nota">
+            <p>Con una recarga de 10 USD compites 10 días. Solo se descuenta 1 USD los días que juegas, y cada día cuentan 15 carreras. Hay recompensa al cierre de cada día y una gran repartición al cerrar la temporada de 4 semanas.</p></div></div>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>5. Desde el nivel 15:</b> recarga 1 USD por carrera, compite contra jugadores reales y opta a recompensas del 50 %, 25 % y 8 %.</div><div class="bdg-nota">
+            <p>Cada carrera es independiente: 12 jugadores reales y una sola carrera. Las recompensas son para los tres primeros, según lo recaudado en la carrera. Corre todas las que quieras.</p></div></div>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>6. Marketplace:</b> pon tu caballo a la venta cuando cumpla las condiciones.</div><div class="bdg-nota">
+            <p>Compra, vende y descubre caballos y artículos dentro del ecosistema BDG.</p></div></div>
         <div class="bdg-ligas"><b>Nivel</b> es tu experiencia · <b>Categoría</b>: Amateur o Profesional · <b>Liga</b>: Cobre → Plata → Oro → Platino → Diamante</div>
     </section>
 
     <section id="carreras" class="content-section">
         <h2>Sistema de Carreras</h2>
-        <details class="bdg-desplegable"><summary><b>Carreras Amateur:</b> lleva tu caballo desde el primer nivel hasta lo más alto, completamente gratis.</summary>
-            <p>Contra la IA o contra otros jugadores Amateur, por el honor de ganar. Sube de nivel, entrena y haz crecer tu caballo.</p></details>
-        <details class="bdg-desplegable"><summary><b>Competencia por recarga (desde el nivel 11):</b> recompensas diarias y mensuales.</summary>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>Carreras Amateur:</b> lleva tu caballo desde el primer nivel hasta lo más alto, completamente gratis.</div><div class="bdg-nota">
+            <p>Contra la IA o contra otros jugadores Amateur, por el honor de ganar. Sube de nivel, entrena y haz crecer tu caballo.</p></div></div>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>Competencia por recarga (desde el nivel 11):</b> recompensas diarias y mensuales.</div><div class="bdg-nota">
             <ul>
                 <li>Recarga de 10 USD = 10 días de competencia. Se descuenta 1 USD solo los días que juegas.</li>
                 <li>Cada día de juego cuentan 15 carreras.</li>
                 <li>Recompensa diaria para los mejores del día y gran repartición al cerrar la temporada de 4 semanas.</li>
                 <li>El 60 % de lo recaudado vuelve a los jugadores. El 40 % sostiene el juego y siempre lo mostramos desglosado.</li>
                 <li>La recarga no compra victorias: tu habilidad decide.</li>
-            </ul></details>
-        <details class="bdg-desplegable"><summary><b>Carreras de 1 USD (desde el nivel 15):</b> jugadores reales y recompensas para los tres primeros.</summary>
+            </ul></div></div>
+        <div class="bdg-punto"><div class="bdg-titulo-punto"><b>Carreras de 1 USD (desde el nivel 15):</b> jugadores reales y recompensas para los tres primeros.</div><div class="bdg-nota">
             <ul>
                 <li>12 jugadores reales en una sola carrera.</li>
                 <li>Recompensas del 50 %, 25 % y 8 % de lo recaudado para el primero, el segundo y el tercero.</li>
                 <li>Corre todas las carreras que quieras en el día.</li>
-            </ul></details>
+            </ul></div></div>
         <p class="bdg-lema">EN BRISAS DE GLORIA, TU HABILIDAD MARCA LA DIFERENCIA.</p>
         <p class="controles-nota">Juego limpio: cualquiera puede jugar; para cobrar recompensas hay que ser mayor de edad. Ni el equipo de Brisas de Gloria ni sus familiares compiten por recompensas.</p>
     </section>
@@ -1044,8 +1042,8 @@
     <section id="becas" class="content-section">
         <h2>Programa de Becas BDG</h2>
         <p>Obtén una beca por 30 días, compite y gana recompensas diarias y mensuales.</p>
-        <details class="bdg-desplegable"><summary>¿Cómo funcionan las becas?</summary>
-            <p>Se entregan por solicitud y a través de creadores de contenido aliados. La beca que no se usa se retira y pasa a otro jugador. Una beca no es dinero ni garantiza recompensas: tu habilidad decide.</p></details>
+        <div class="bdg-punto"><div class="bdg-titulo-punto">¿Cómo funcionan las becas?</div><div class="bdg-nota">
+            <p>Se entregan por solicitud y a través de creadores de contenido aliados. La beca que no se usa se retira y pasa a otro jugador. Una beca no es dinero ni garantiza recompensas: tu habilidad decide.</p></div></div>
     </section>
 
     <section id="marketplace" class="content-section">
@@ -1060,8 +1058,8 @@
             <div class="gloria-rol">Embajadora del Proyecto</div>
             <h2>Gloria</h2>
             <p>La imagen y voz de Brisas de Gloria.</p>
-            <details class="bdg-desplegable"><summary>Conoce a Gloria</summary>
-                <p>Dentro del juego, guía al jugador en los tutoriales y narra los momentos clave de cada carrera. Fuera del juego, presenta las novedades del proyecto a la comunidad.</p></details>
+            <div class="bdg-punto"><div class="bdg-titulo-punto">Conoce a Gloria</div><div class="bdg-nota">
+                <p>Dentro del juego, guía al jugador en los tutoriales y narra los momentos clave de cada carrera. Fuera del juego, presenta las novedades del proyecto a la comunidad.</p></div></div>
         </div>
     </section>
 
@@ -1094,7 +1092,7 @@
     <section id="ecosistema" class="content-section">
         <h2>Ecosistema BDG</h2>
         <p>Un entorno que integra videojuegos, comunidad, Marketplace y activos digitales.</p>
-        <details class="bdg-desplegable"><summary>Conoce el ecosistema</summary>
+        <div class="bdg-punto"><div class="bdg-titulo-punto">Conoce el ecosistema</div><div class="bdg-nota">
         <div class="tier-grid">
             <div class="tier-card-web oro">
                 <img class="coin-img" src="/Moneda_BDG.jpg" alt="Moneda $BDG">
@@ -1115,11 +1113,11 @@
                 <span class="tier-tag-web">Moneda de Utilidad</span>
                 <span class="tier-name-web">Centi</span>
                 <p><strong>Naturaleza:</strong> la centésima parte de una Gloria.</p>
-                <p><strong>Uso:</strong> se gana viendo anuncios o se compra. Con Centi se compran las skins, solo realistas.</p>
+                <p><strong>Uso:</strong> se gana gratis o se compra. Con Centi se compran las skins, solo realistas.</p>
             </div>
         </div>
         <div class="tier-equiv">1 Gloria = 1 USD = 100 Centi · Para jugar no necesitas ninguna moneda: el juego es gratis</div>
-        </details>
+        </div></div>
     </section>
 
     <section id="whitepaper" class="content-section whitepaper-box">
@@ -1134,7 +1132,7 @@
     <section id="hoja-de-ruta" class="content-section">
         <h2>Hoja de Ruta</h2>
         <p>El camino de crecimiento de Brisas de Gloria.</p>
-        <details class="bdg-desplegable"><summary>Lo que ya está hecho</summary>
+        <div class="bdg-punto"><div class="bdg-titulo-punto">Lo que ya está hecho</div><div class="bdg-nota">
         <ul>
             <li>Hipódromo 3D con tribunas, rieles y gatera de partida numerada.</li>
             <li>Doce ejemplares en pista: el del jugador y once gobernados por la máquina.</li>
@@ -1146,7 +1144,7 @@
             <li>Controles táctiles para Android.</li>
             <li>Versiones jugables en navegador, Android y Windows.</li>
         </ul>
-        </details>
+        </div></div>
     </section>
 
     <div id="vitrina-overlay" onclick="if(event.target===this) cerrarVitrina()">
