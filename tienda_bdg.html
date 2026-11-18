@@ -232,6 +232,11 @@
         .grupo-mk { margin-top: 22px; }
         .titulo-grupo { font-size: 15px; }
     }
+    .tabla-esc { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 11.5px; text-align: center; }
+    .tabla-esc th { font-size: 10px; font-weight: 700; color: var(--dorado-claro); padding: 5px 2px; border-bottom: 1px solid #8f6d2b; }
+    .tabla-esc td { padding: 6px 2px; border-bottom: 1px solid #222b42; color: var(--texto); }
+    .tabla-esc td:first-child { font-weight: 800; color: #fff; white-space: nowrap; }
+    .tabla-esc tr.tt td { color: var(--dorado-claro); font-weight: 800; }
 </style>
 </head>
 <body>
@@ -321,21 +326,22 @@
 
         <section class="grupo-mk"><h4 class="titulo-grupo">I. Caballos y propiedad</h4>
         <div class="punto-mk"><h4><span>1</span>Caballos del proyecto</h4>
-            <p>El proyecto siempre tiene caballos a la venta, de todas las razas y especialidades. Cada uno tiene su número de registro único y tú le pones el nombre.</p>
-            <div class="escalones">
-                <div><b>10 USD</b><small>Una especialidad</small></div>
-                <div><b>20 USD</b><small>Dos estilos</small></div>
-                <div><b>40 USD</b><small>Dos grupos de distancias</small></div>
-                <div><b>60 USD</b><small>Distancias y estilos combinados</small></div>
-                <div><b>80 USD</b><small>Todos los estilos</small></div>
-                <div><b>100 USD</b><small>Casi todoterreno</small></div>
-            </div>
-            <div class="nota">Mientras más alto el precio, más cualidades combina el caballo: <b>distancias</b> (cortas, medianas y largas), <b>pistas</b> (grama y arena) y <b>estilo</b> (puntero, mediofondista o rematador).</div>
+            <p>El proyecto siempre tiene caballos a la venta, de todas las razas. Tú eliges la especialidad de cada uno, le pones el nombre y recibe su número de registro único.</p>
+            <table class="tabla-esc">
+                <tr><th>Precio</th><th>Pista</th><th>Distancia</th><th>Estilo</th><th>Clima</th><th>Cond. de pista</th></tr>
+                <tr><td>10 USD</td><td>1</td><td>1</td><td>1</td><td>Seco</td><td>Normal</td></tr>
+                <tr><td>20 USD</td><td>2</td><td>2</td><td>1</td><td>Seco</td><td>Normal</td></tr>
+                <tr><td>40 USD</td><td>2</td><td>2</td><td>2</td><td>Seco</td><td>Normal</td></tr>
+                <tr><td>60 USD</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+                <tr><td>80 USD</td><td>2</td><td>3</td><td>2</td><td>2</td><td>2</td></tr>
+                <tr class="tt"><td>100 USD</td><td colspan="5">TODOTERRENO: todo de todo</td></tr>
+            </table>
+            <div class="nota"><b>Pista:</b> grama o arena. <b>Distancia:</b> cortas, medianas o largas. <b>Estilo:</b> puntero, mediofondista o rematador. <b>Clima:</b> seco, lluvia o nieve. <b>Condición de pista:</b> normal, mojada o con restos de nieve.<br>Compra en par y combina: por ejemplo, uno de distancias cortas y otro de largas. Al aparearlos, la cría hereda lo de los dos.</div>
         </div>
 
         <div class="punto-mk"><h4><span>2</span>Especialización</h4>
-            <p>Cada caballo sobresale en su ambiente: su distancia, su pista y su estilo. Allí compite contra otros especialistas de ese ambiente. Fuera de él, rinde menos.</p>
-            <div class="nota">Lo que gana carreras es tu habilidad para correrlo. El precio no compra victorias.</div>
+            <p>Cada caballo sobresale en su ambiente. El clima y la condición de la pista son sorpresa: nadie sabe antes cómo estará la carrera. Fuera de su ambiente el caballo corre, pero rinde menos.</p>
+            <div class="nota">Ningún caballo tiene ventaja: el que sale de su ambiente tiene desventaja. Lo que gana carreras es tu habilidad. El precio no compra victorias.</div>
         </div>
 
         <div class="punto-mk"><h4><span>3</span>La ficha de tu caballo</h4>
