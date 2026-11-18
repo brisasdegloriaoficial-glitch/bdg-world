@@ -204,6 +204,25 @@
         .cerrada { margin-left: 24px; margin-right: 24px; }
     }
     @media (prefers-reduced-motion: reduce) { .comprar::before { animation: none; } }
+
+    /* ---------- presentación: cómo funciona el Marketplace ---------- */
+    .presenta { margin: 0 12px; }
+    .presenta .lema { text-align: center; font-family: 'Cinzel', serif; font-weight: 800; font-size: 15px; line-height: 1.45; letter-spacing: .5px; margin: 0 6px 12px; }
+    .presenta .lema small { display: block; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 12px; color: var(--suave); letter-spacing: 0; margin-top: 4px; }
+    .punto-mk { background: linear-gradient(180deg, #141c30, #0e1424); border: 1px solid #2f3a57; border-left: 3px solid var(--dorado); border-radius: 12px; padding: 12px 13px; margin-bottom: 9px; }
+    .punto-mk h4 { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: var(--dorado-claro); margin-bottom: 5px; }
+    .punto-mk h4 span { width: 26px; height: 26px; flex: none; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff1bd, #c5a059 60%, #8f6d2b); color: #1a1205; font-size: 13px; }
+    .punto-mk p { font-size: 13px; line-height: 1.5; color: var(--texto); }
+    .punto-mk .nota { margin-top: 7px; padding: 7px 9px; border-radius: 8px; background: rgba(11,15,25,.7); font-size: 11.5px; line-height: 1.5; color: var(--suave); }
+    .punto-mk .nota b { color: var(--dorado-claro); font-weight: 700; }
+    .escalones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+    .escalones div { text-align: center; padding: 7px 4px; border-radius: 9px; border: 1px solid #8f6d2b; background: rgba(197,160,89,.08); }
+    .escalones b { display: block; font-size: 15px; font-weight: 800; color: #fff; }
+    .escalones small { font-size: 10px; color: var(--suave); line-height: 1.3; display: block; }
+    .tabla-mk { width: 100%; border-collapse: collapse; margin-top: 7px; font-size: 12px; }
+    .tabla-mk td { padding: 4px 6px; border-bottom: 1px solid #222b42; }
+    .tabla-mk td:last-child { text-align: right; font-weight: 700; color: var(--dorado-claro); white-space: nowrap; }
+    .presenta .cierre { text-align: center; font-size: 12px; color: var(--suave); margin: 4px 8px 0; line-height: 1.5; }
 </style>
 </head>
 <body>
@@ -267,6 +286,88 @@
         <button id="boton_olvide_clave" class="enlace" type="button">Olvidé mi clave</button>
         <div id="aviso_entrada" class="aviso"></div>
     </div>
+
+
+    <!-- ===== PRESENTACIÓN: CÓMO FUNCIONA EL MARKETPLACE ===== -->
+    <div class="cab" id="como_funciona"><h3 class="foil">Cómo funciona</h3><i></i></div>
+    <section class="presenta">
+        <p class="lema foil">TU LEYENDA COMIENZA AQUÍ<small>Aquí no gana quien más compra. Gana quien mejor compite.</small></p>
+
+        <div class="punto-mk"><h4><span>1</span>Caballos del proyecto</h4>
+            <p>El proyecto siempre tiene caballos a la venta, de todas las razas y especialidades. Cada uno tiene su número de registro único y tú le pones el nombre.</p>
+            <div class="escalones">
+                <div><b>10 USD</b><small>Una especialidad</small></div>
+                <div><b>20 USD</b><small>Dos estilos</small></div>
+                <div><b>40 USD</b><small>Dos grupos de distancias</small></div>
+                <div><b>60 USD</b><small>Distancias y estilos combinados</small></div>
+                <div><b>80 USD</b><small>Todos los estilos</small></div>
+                <div><b>100 USD</b><small>Casi todoterreno</small></div>
+            </div>
+            <div class="nota">Mientras más alto el precio, más cualidades combina el caballo: <b>distancias</b> (cortas, medianas y largas), <b>pistas</b> (grama y arena) y <b>estilo</b> (puntero, mediofondista o rematador).</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>2</span>Especialización</h4>
+            <p>Cada caballo sobresale en su ambiente: su distancia, su pista y su estilo. Allí compite contra otros especialistas de ese ambiente. Fuera de él, rinde menos.</p>
+            <div class="nota">Lo que gana carreras es tu habilidad para correrlo. El precio no compra victorias.</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>3</span>La ficha de tu caballo</h4>
+            <p>Identidad, especialización, apariencia, padres y vida deportiva. Ves la ficha corta aquí en el Marketplace y la ficha completa en tu establo.</p>
+            <div class="nota">Las fichas se guardan en el servidor del juego. Nadie puede alterarlas.</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>4</span>Compra y venta entre jugadores</h4>
+            <p>Pon a la venta tu caballo al precio que tú decidas. Cada venta paga una comisión del 5 %.</p>
+            <div class="nota">El proyecto siempre vende un poco más caro que los jugadores. Si alguien se pasa de precio, la gente le compra al proyecto. Así los precios se mantienen justos.</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>5</span>Cría</h4>
+            <p>Dos caballos se aparean y nace uno solo. Los padres se retiran y la cría hereda de los dos, y nunca sale peor que ellos.</p>
+            <div class="nota">Hasta de dos caballos económicos puede nacer un ejemplar excepcional. La cría no se aparea. Apareamiento: <b>300 Centi</b>.</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>6</span>Carreras diarias y cuidados</h4>
+            <p>Cada día tienes carreras gratis que dan puntos y recompensas. Después, tu caballo descansa un día y recupera toda su fuerza, sin gastar nada.</p>
+            <table class="tabla-mk">
+                <tr><td>Heno: recupera 10 %</td><td>10 Centi</td></tr>
+                <tr><td>Avena: recupera 20 %</td><td>20 Centi</td></tr>
+                <tr><td>Zanahoria: recupera 30 %</td><td>30 Centi</td></tr>
+                <tr><td>Vitaminas: recupera 50 %</td><td>50 Centi</td></tr>
+                <tr><td>Ración completa: recupera 100 %</td><td>100 Centi</td></tr>
+                <tr><td>Veterinario</td><td>20 Centi</td></tr>
+            </table>
+            <div class="nota">La comida es solo para correr de más: entrenar, practicar o divertirte. También recuperas condición entrenando.</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>7</span>Vida deportiva</h4>
+            <p>Tu caballo compite 12 temporadas cortas o una temporada larga. Al terminar, lo apareas o lo vendes.</p>
+            <div class="nota">Si no lo apareas ni lo vendes, pasa a retirado y queda en el registro del juego.</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>8</span>Becas</h4>
+            <p>Obtén una beca por 30 días, compite y gana recompensas diarias y mensuales.</p>
+            <div class="nota">La beca que no se usa se retira y pasa a otro jugador.</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>9</span>Apariencia y servicios</h4>
+            <table class="tabla-mk">
+                <tr><td>Cosmético común</td><td>100 Centi</td></tr>
+                <tr><td>Cosmético raro</td><td>3 Gloria</td></tr>
+                <tr><td>Cosmético épico</td><td>8 Gloria</td></tr>
+                <tr><td>Cosmético legendario</td><td>20 Gloria</td></tr>
+                <tr><td>Cambio de nombre</td><td>100 Centi</td></tr>
+                <tr><td>Tu propio stud (nombre y colores)</td><td>500 Centi</td></tr>
+            </table>
+            <div class="nota">La apariencia es solo estética. No da ventaja en la carrera.</div>
+        </div>
+
+        <div class="punto-mk"><h4><span>10</span>Las monedas</h4>
+            <p><b>Gloria</b> es la moneda que se recarga. <b>Centi</b> es la moneda gratis: la ganas jugando. <b>$BDG</b> es el futuro token del ecosistema.</p>
+            <div class="nota">1 Gloria = 100 Centi.</div>
+        </div>
+
+        <p class="cierre">Brisas de Gloria · Tu habilidad marca la diferencia.</p>
+    </section>
 
     <div class="cab"><h3 class="foil">Categorías</h3><i></i></div>
     <div class="categorias" id="categorias"></div>
