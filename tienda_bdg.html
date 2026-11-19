@@ -215,6 +215,15 @@
     .punto-mk p { font-size: 13px; line-height: 1.5; color: var(--texto); }
     .punto-mk .nota { margin-top: 7px; padding: 7px 9px; border-radius: 8px; background: rgba(11,15,25,.7); font-size: 11.5px; line-height: 1.5; color: var(--suave); }
     .punto-mk .nota b { color: var(--dorado-claro); font-weight: 700; }
+    .punto-mk details.explica { margin-top: 7px; }
+    .punto-mk details.explica summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--dorado-claro); padding: 4px 10px; border: 1px solid var(--dorado); border-radius: 999px; }
+    .punto-mk details.explica summary::-webkit-details-marker { display: none; }
+    .punto-mk details.explica summary::before { content: "▸"; display: inline-block; transition: transform .2s; }
+    .punto-mk details.explica[open] summary::before { transform: rotate(90deg); }
+    .punto-mk details.explica .nota { margin-top: 8px; }
+    .tabla-seg { width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 2px 0 6px; }
+    .tabla-seg td { padding: 4px 6px; border-bottom: 1px solid #222b42; vertical-align: top; }
+    .tabla-seg td:first-child { color: var(--dorado-claro); font-weight: 700; white-space: nowrap; }
     .escalones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
     .escalones div { text-align: center; padding: 7px 4px; border-radius: 9px; border: 1px solid #8f6d2b; background: rgba(197,160,89,.08); }
     .escalones b { display: block; font-size: 15px; font-weight: 800; color: #fff; }
@@ -321,7 +330,7 @@
             <p class="sub">Elige tu raza favorita</p>
             <div class="razas" id="razas"></div>
             <p class="mas-razas">✦ Más razas muy pronto ✦</p>
-            <div class="promo-lanzamiento"><b>2 CABALLOS POR EL PRECIO DE 1</b><span>Compra un caballo y llévate otro sin costo. Los caballos se adquieren por pares, para que combines sus especialidades y críes. Oferta de lanzamiento por tiempo limitado.</span></div>
+            <div class="promo-lanzamiento"><b>2 CABALLOS POR EL PRECIO DE 1</b><span>Compra un caballo y llévate otro sin costo. Oferta de lanzamiento por tiempo limitado.</span></div>
             <button class="comprar" id="boton_pagar" type="button"><span id="precio_producto">10</span> USDT <small>COMPRAR</small></button>
             <p class="pago">Pagas con USDT por la red BSC (BNB Smart Chain).<br>Al confirmarse, recibes tu comprobante por correo.</p>
             <div id="aviso_tienda" class="aviso"></div>
@@ -386,53 +395,69 @@
                 <tr><td>80 USD</td><td>2</td><td>3</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
                 <tr class="tt"><td>100 USD</td><td colspan="6">TODOTERRENO: todo de todo</td></tr>
             </table>
-            <div class="nota"><b>Pista:</b> grama o arena. <b>Distancia:</b> cortas, medianas o largas. <b>Estilo:</b> puntero, mediofondista o rematador. <b>Clima:</b> seco, lluvia o nieve. <b>Condición de pista:</b> normal, mojada o con restos de nieve. <b>Horario:</b> de día o de noche.<br>Compra en par y combina: por ejemplo, uno de distancias cortas y otro de largas. Al aparearlos, la cría hereda lo de los dos.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">
+                <table class="tabla-seg">
+                    <tr><td>Pista</td><td>Grama o arena</td></tr>
+                    <tr><td>Distancias cortas</td><td>800 m (grama) · 1100 m (arena) · 1200 m</td></tr>
+                    <tr><td>Distancias medianas</td><td>1600 m (grama) · 1900 m (arena)</td></tr>
+                    <tr><td>Distancias largas</td><td>2000 m · 2400 m · 3000 m</td></tr>
+                    <tr><td>Estilo</td><td>Puntero, mediofondista o rematador</td></tr>
+                    <tr><td>Clima</td><td>Seco, lluvia o nieve</td></tr>
+                    <tr><td>Condición de pista</td><td>Normal, mojada o con restos de nieve</td></tr>
+                    <tr><td>Horario</td><td>Diurno o nocturno</td></tr>
+                </table>
+                Se irán sumando nuevas distancias.<br>Compra en par y combina: por ejemplo, uno de distancias cortas y otro de largas. Al aparearlos, la cría hereda lo de los dos.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>2</span>Especialización</h4>
-            <p>Cada caballo sobresale en su ambiente. El clima y la condición de la pista son sorpresa: nadie sabe antes cómo estará la carrera. Fuera de su ambiente el caballo corre, pero rinde menos.</p>
-            <div class="nota">Ningún caballo tiene ventaja: el que sale de su ambiente tiene desventaja. Lo que gana carreras es tu habilidad. El precio no compra victorias.</div>
+            <p>Cada caballo tiene su especialidad. Fuera de su ambiente corre, compite y hasta puede ganar, pero rinde menos.</p>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">En su ambiente todos corren parejos: ningún caballo tiene ventaja. El que sale de su ambiente es el que rinde menos. El clima y la condición de la pista son sorpresa: nadie sabe antes cómo estará la carrera. Lo que gana carreras es tu habilidad. El precio no compra victorias.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>3</span>La ficha de tu caballo</h4>
             <p>Identidad, especialización, apariencia, padres y vida deportiva. Ves la ficha corta aquí en el Marketplace y la ficha completa en tu establo.</p>
-            <div class="nota">Las fichas se guardan en el servidor del juego. Nadie puede alterarlas.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">Las fichas se guardan en el servidor del juego. Nadie puede alterarlas.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>4</span>Compra y venta entre jugadores</h4>
             <p>Pon a la venta tu caballo al precio que tú decidas. Cada venta paga una comisión del 5 %.</p>
-            <div class="nota">El Marketplace es de los criadores: ellos fijan sus precios, comercian y hacen crecer el ecosistema. El proyecto mantiene una reserva de ejemplares con precios de referencia estables, para que siempre haya caballos para quien empieza. Todo caballo se puede mejorar, sin importar su precio, e incluso el caballo gratuito puede volverse competitivo y venderse en el Marketplace.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">El Marketplace es de los criadores: ellos fijan sus precios, comercian y hacen crecer el ecosistema. El proyecto mantiene una reserva de ejemplares con precios de referencia estables, para que siempre haya caballos para quien empieza. Todo caballo se puede mejorar, sin importar su precio, e incluso el caballo gratuito puede volverse competitivo y venderse en el Marketplace.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>5</span>Cría</h4>
-            <p>Dos caballos se aparean y nace uno solo. Los padres se retiran y la cría hereda de los dos, y nunca sale peor que ellos.</p>
-            <div class="nota">Hasta de dos caballos económicos puede nacer un ejemplar excepcional. La cría no se aparea. Apareamiento: <b>300 Centi</b>.</div>
+            <p>Dos caballos se aparean y nace una sola cría. Sus genes siempre serán superiores a los de sus padres.</p>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">Los padres se retiran de la competencia. Hasta de dos caballos económicos puede nacer un ejemplar excepcional. La cría corre una temporada larga y no se puede reproducir. Apareamiento: <b>300 Centi</b>.</div></details>
         </div>
 
         </section>
 
         <section class="grupo-mk"><h4 class="titulo-grupo">II. Competición y desarrollo</h4>
         <div class="punto-mk"><h4><span>6</span>Carreras diarias y cuidados</h4>
-            <p>Cada día tienes carreras gratis que dan puntos y recompensas. Después, tu caballo descansa un día y recupera toda su fuerza, sin gastar nada.</p>
+            <p>Cada día tienes carreras gratis que dan puntos y recompensas. Después, tu caballo descansa un día y recupera toda su fuerza, sin gastar nada. <b>¿Quieres seguir disfrutando de las carreras oficiales? Compite, mejora tu caballo y gana skins.</b> O recupéralo al instante:</p>
             <table class="tabla-mk">
-                <tr><td>Heno: recupera 10 %</td><td>10 Centi</td></tr>
-                <tr><td>Avena: recupera 20 %</td><td>20 Centi</td></tr>
-                <tr><td>Zanahoria: recupera 30 %</td><td>30 Centi</td></tr>
-                <tr><td>Vitaminas: recupera 50 %</td><td>50 Centi</td></tr>
-                <tr><td>Ración completa: recupera 100 %</td><td>100 Centi</td></tr>
-                <tr><td>Veterinario</td><td>20 Centi</td></tr>
+                <tr><td>Heno: 10 % de energía</td><td>10 Centi</td></tr>
+                <tr><td>Avena: 20 % de energía</td><td>20 Centi</td></tr>
+                <tr><td>Zanahoria: 30 % de energía</td><td>30 Centi</td></tr>
+                <tr><td>Vitaminas: 50 % de energía</td><td>50 Centi</td></tr>
+                <tr><td>Ración completa: 100 %, listo para otra jornada</td><td>100 Centi</td></tr>
+                <tr><td>Cepillado y baño: 5 % de energía</td><td>10 Centi</td></tr>
+                <tr><td>Veterinario: 15 % de energía</td><td>20 Centi</td></tr>
+                <tr><td>Galope en pista: 5 % de energía + fuerza</td><td>10 Centi</td></tr>
+                <tr><td>Aparato de partida: 10 % de energía + mejor salida</td><td>20 Centi</td></tr>
+                <tr><td>Trabajo de remate: 10 % de energía + mejor cierre</td><td>20 Centi</td></tr>
+                <tr><td>Trabajo de fondo: 10 % de energía + más aguante</td><td>20 Centi</td></tr>
             </table>
-            <div class="nota">La comida es solo para correr de más: entrenar, practicar o divertirte. También recuperas condición entrenando.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">La energía que recuperas es para correr de más el mismo día: entrenar, practicar o divertirte. El entrenamiento, además de devolver energía, mejora a tu caballo.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>7</span>Vida deportiva</h4>
-            <p>Tu caballo compite 12 temporadas cortas o una temporada larga. Al terminar, lo apareas o lo vendes.</p>
-            <div class="nota">Si no lo apareas ni lo vendes, pasa a retirado y queda en el registro del juego.</div>
+            <p>Tu caballo tiene 12 temporadas cortas (una temporada larga) de vida deportiva, contadas desde que lo compras.</p>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">Corras o no, las temporadas pasan: la que no corres, se pierde. Puedes venderlo cuando quieras, desde el primer día, y el nuevo dueño recibe las temporadas que le queden. También puedes aparearlo cuando quieras: los padres se retiran y nace una cría que corre una temporada larga y no se puede reproducir. Si al final no lo apareaste ni lo vendiste, pasa a retirado y queda en el registro del juego.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>8</span>Becas</h4>
-            <p>Obtén una beca por 30 días, compite y gana recompensas diarias y mensuales.</p>
-            <div class="nota">La beca que no se usa se retira y pasa a otro jugador.</div>
+            <p>Una beca te cubre la recarga por 30 días: compites por recompensas diarias y mensuales sin pagar.</p>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">La beca equivale a tres recargas de 10 USD. Durante esos 30 días juegas como Profesional sin recargar. La beca que no se usa se retira y pasa a otro jugador.</div></details>
         </div>
 
         </section>
@@ -440,14 +465,15 @@
         <section class="grupo-mk"><h4 class="titulo-grupo">III. Personalización y monedas</h4>
         <div class="punto-mk"><h4><span>9</span>Apariencia y servicios</h4>
             <table class="tabla-mk">
-                <tr><td>Cosmético común</td><td>100 Centi</td></tr>
-                <tr><td>Cosmético raro</td><td>3 Gloria</td></tr>
-                <tr><td>Cosmético épico</td><td>8 Gloria</td></tr>
-                <tr><td>Cosmético legendario</td><td>20 Gloria</td></tr>
+                <tr><td>Skin común</td><td>100 Centi</td></tr>
+                <tr><td>Skin poco común</td><td>200 Centi</td></tr>
+                <tr><td>Skin rara</td><td>3 Gloria</td></tr>
+                <tr><td>Skin épica</td><td>8 Gloria</td></tr>
+                <tr><td>Skin legendaria</td><td>20 Gloria</td></tr>
                 <tr><td>Cambio de nombre</td><td>100 Centi</td></tr>
                 <tr><td>Stud propio (nombre y colores)</td><td>500 Centi</td></tr>
             </table>
-            <div class="nota">La apariencia es solo estética. No da ventaja en la carrera.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">Las skins también se ganan gratis jugando y figurando: mientras más arriba llegas, más skins ganas. La apariencia es solo estética: no da ventaja en la carrera.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>10</span>Las monedas</h4>
@@ -780,21 +806,21 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
             { dibujo: "bozal", nombre: "Bozal de color", precio: "20 Centi" }
         ],
         comida: [
-            { dibujo: "avena", nombre: "Avena", texto: "Recupera 20 %", precio: "20 Centi", fondo: "campo" },
-            { dibujo: "zanahoria", nombre: "Zanahoria", texto: "Recupera 30 %", precio: "30 Centi", fondo: "campo" },
-            { dibujo: "heno", nombre: "Heno", texto: "Recupera 10 %", precio: "10 Centi", fondo: "campo" },
-            { dibujo: "vitaminas", nombre: "Vitaminas", texto: "Recupera 50 %", precio: "50 Centi", fondo: "campo" },
-            { dibujo: "heno", nombre: "Ración completa", texto: "Recupera 100 %", precio: "100 Centi", fondo: "campo" }
+            { dibujo: "avena", nombre: "Avena", texto: "20 % de energía", precio: "20 Centi", fondo: "campo" },
+            { dibujo: "zanahoria", nombre: "Zanahoria", texto: "30 % de energía", precio: "30 Centi", fondo: "campo" },
+            { dibujo: "heno", nombre: "Heno", texto: "10 % de energía", precio: "10 Centi", fondo: "campo" },
+            { dibujo: "vitaminas", nombre: "Vitaminas", texto: "50 % de energía", precio: "50 Centi", fondo: "campo" },
+            { dibujo: "heno", nombre: "Ración completa", texto: "100 % de energía", precio: "100 Centi", fondo: "campo" }
         ],
         entrenamiento: [
-            { dibujo: "galope", nombre: "Galope en pista", texto: "Entrena su fuerza", precio: "4 Centi", fondo: "pista" },
-            { dibujo: "partida", nombre: "Aparato de partida", texto: "Para salir adelante", precio: "6 Centi", fondo: "pista" },
-            { dibujo: "remate", nombre: "Trabajo de remate", texto: "Para cerrar fuerte al final", precio: "6 Centi", fondo: "pista" },
-            { dibujo: "fondo", nombre: "Trabajo de fondo", texto: "Para aguantar las largas", precio: "6 Centi", fondo: "pista" }
+            { dibujo: "galope", nombre: "Galope en pista", texto: "5 % de energía · entrena su fuerza", precio: "10 Centi", fondo: "pista" },
+            { dibujo: "partida", nombre: "Aparato de partida", texto: "10 % de energía · mejor salida", precio: "20 Centi", fondo: "pista" },
+            { dibujo: "remate", nombre: "Trabajo de remate", texto: "10 % de energía · mejor cierre", precio: "20 Centi", fondo: "pista" },
+            { dibujo: "fondo", nombre: "Trabajo de fondo", texto: "10 % de energía · más aguante", precio: "20 Centi", fondo: "pista" }
         ],
         cuidados: [
-            { dibujo: "cepillo", nombre: "Cepillado y baño", precio: "2 Centi", fondo: "cuadra" },
-            { dibujo: "veterinario", nombre: "Veterinario", precio: "20 Centi", fondo: "cuadra" }
+            { dibujo: "cepillo", nombre: "Cepillado y baño", texto: "5 % de energía", precio: "10 Centi", fondo: "cuadra" },
+            { dibujo: "veterinario", nombre: "Veterinario", texto: "15 % de energía", precio: "20 Centi", fondo: "cuadra" }
         ]
     };
     // Ligas del equipo: las abiertas se ven con candado; las próximas dicen "Próximamente".
