@@ -14,7 +14,7 @@
   Las imágenes de categorías y monedas van metidas dentro de este archivo (IMAGENES, al final).
 -->
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@500;600;700;800&family=Noto+Serif:wght@500&display=swap');
 
     :root {
         --noche: #0b0f19; --tarjeta: #111827; --borde: #273048;
@@ -113,7 +113,7 @@
     /* ---------- categorías ---------- */
     .categorias { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; padding: 0 12px; }
     .categoria { display: block; border-radius: 10px; overflow: hidden; background: #0d1322; text-align: left; }
-    .categoria img { display: block; width: 100%; height: 74px; object-fit: cover; }
+    .categoria img { display: block; width: 100%; height: auto; }
     .categoria .nombre { height: 40px; display: flex; align-items: center; gap: 4px; padding: 0 6px; background: linear-gradient(180deg, #121a2e, #0a0f1b); border-top: 1px solid rgba(197,160,89,.5); }
     .categoria .nombre b { flex: 1; text-align: center; font-family: 'Cinzel', serif; font-weight: 800; font-size: 10.5px; line-height: 1.1; color: #fff; }
     .categoria .nombre svg { flex: none; }
@@ -182,7 +182,7 @@
     /* ---------- computadora ---------- */
     @media (min-width: 760px) {
         .pagina { max-width: 980px; }
-        .cabecera { height: 150px; padding: 0 24px; }
+        .cabecera { height: 150px; padding: 0 6px 0 24px; }
         .logo img { height: 96px; }
         .titulo { margin: 4px 24px 0; height: 72px; }
         .titulo h1 { font-size: 40px; }
@@ -196,7 +196,7 @@
         .comprar { width: 380px; }
         .cab { margin-left: 26px; margin-right: 26px; }
         .categorias { padding: 0 24px; gap: 14px; }
-        .categoria img { height: 130px; }
+        .categoria img { height: auto; }
         .categoria .nombre b { font-size: 13px; }
         .entrada { max-width: 520px; margin-left: auto; margin-right: auto; }
         .pestanas, .rejilla { padding-left: 24px; padding-right: 24px; }
@@ -237,14 +237,63 @@
     .tabla-esc td { padding: 6px 2px; border-bottom: 1px solid #222b42; color: var(--texto); }
     .tabla-esc td:first-child { font-weight: 800; color: #fff; white-space: nowrap; }
     .tabla-esc tr.tt td { color: var(--dorado-claro); font-weight: 800; }
+
+    /* ---------- rediseño 19-nov: barra superior y "Cómo funciona" en tarjetas ---------- */
+    .barra-mk { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 20px; padding: 11px 14px; background: rgba(8,12,22,.94); backdrop-filter: blur(6px); border-bottom: 1px solid #1c2740; }
+    .barra-mk a { font-size: 12.5px; font-weight: 600; color: #cbd5e1; white-space: nowrap; }
+    .barra-mk a:hover, .barra-mk a.activo { color: var(--dorado-claro); }
+    .presenta .titulo-grupo { font-family: 'Noto Serif', Georgia, serif; font-weight: 500; font-size: 19px; color: var(--dorado-claro); letter-spacing: .3px; }
+    .cab h3 { font-family: 'Noto Serif', Georgia, serif; font-weight: 500; }
+    @media (min-width: 760px) {
+        .presenta { max-width: 940px; }
+        .grupo-mk { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+        .grupo-mk > .titulo-grupo { grid-column: 1 / -1; margin-bottom: 0; }
+        .grupo-mk .punto-mk { margin-bottom: 0; height: 100%; }
+        .grupo-mk .punto-mk:has(.tabla-esc) { grid-column: 1 / -1; }
+        .presenta .lema { font-size: 20px; }
+    }
+
+    /* ---------- oferta de lanzamiento y monedas (19-nov) ---------- */
+    .promo-lanzamiento { margin: 4px auto 12px; max-width: 440px; padding: 10px 16px; border-radius: 10px; text-align: center; background: linear-gradient(180deg, rgba(20,26,42,.92), rgba(11,15,25,.92)); border: 1.5px solid #c5a059; box-shadow: 0 0 14px rgba(212,175,55,.35), inset 0 0 14px rgba(212,175,55,.12); }
+    .promo-lanzamiento b { display: block; font-family: 'Cinzel', serif; font-weight: 800; font-size: 17px; letter-spacing: .5px; background: linear-gradient(180deg, #fff6d2 0%, #f0d68f 35%, #c5a059 70%, #e9cd84 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .promo-lanzamiento span { display: block; margin-top: 3px; font-size: 12.5px; color: #e2e8f0; }
+    .vias-monedas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 10px; margin-top: 8px; }
+    .vias-monedas span { font-size: 13px; color: #fff; text-shadow: 0 1px 3px #000; }
+    .vias-monedas span b { color: #ffe9a8; font-weight: 800; }
+    .vias-monedas span:not(.o) { padding: 6px 12px; border-radius: 8px; background: rgba(11,15,25,.65); border: 1px solid rgba(240,214,143,.7); }
+    .vias-monedas .o { font-family: 'Cinzel', serif; color: var(--dorado-claro); font-weight: 800; }
+    @media (min-width: 760px) { .promo-lanzamiento b { font-size: 20px; } .promo-lanzamiento span { font-size: 14px; } .vias-monedas span { font-size: 15px; } }
+
+    /* ---------- tablero BRISAS DE GLORIA (igual que la página principal) ---------- */
+    .tablero-nombre { --h: clamp(50px, 7vw, 84px); display: flex; align-items: stretch; height: var(--h); width: min(560px, 62%); border-radius: 7px; overflow: hidden; border: 1.5px solid #8a6a2c; box-shadow: 0 8px 22px rgba(0,0,0,.75), inset 0 0 0 2px rgba(0,0,0,.4); background: radial-gradient(120% 140% at 50% 50%, #3b4033 0%, #2a2e25 45%, #1a1c17 100%); }
+    .tablero-adorno { flex: none; width: calc(var(--h) * 320 / 420); background-image: url('/Logo_PaginaPrincipal.png'); background-repeat: no-repeat; background-size: calc(var(--h) * 1376 / 420) auto; }
+    .tablero-adorno.izquierdo { background-position: calc(var(--h) * -10 / 420) calc(var(--h) * -200 / 420); }
+    .tablero-adorno.derecho { background-position: calc(var(--h) * -1036 / 420) calc(var(--h) * -120 / 420); }
+    .tablero-centro { flex: 1; display: flex; align-items: center; justify-content: center; border-left: 1.5px solid #6b5426; border-right: 1.5px solid #6b5426; box-shadow: inset 0 0 26px rgba(0,0,0,.7); min-width: 0; }
+    .tablero-letras { position: relative; font-family: 'Cinzel Decorative', 'Cinzel', serif; font-weight: 700; font-size: calc(var(--h) * .36); line-height: 1.1; white-space: nowrap;
+        background: linear-gradient(180deg, #fff8d8 0%, #f7dc8c 22%, #d9a640 40%, #9c6b1e 52%, #e8c165 64%, #fff0b8 76%, #b07a28 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: .8px #4a3209;
+        filter: drop-shadow(0 1px 0 #fff3c4) drop-shadow(0 2px 0 #5a3d0c) drop-shadow(0 5px 7px rgba(0,0,0,.85)); }
+    .tablero-letras::after { content: attr(data-t); position: absolute; left: 0; top: 0; background: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 38%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; }
+    .logo.tablero-nombre img { display: none; }
 </style>
 </head>
 <body>
+<nav class="barra-mk">
+    <a href="/">Inicio</a>
+    <a href="#seccion_caballos" class="activo">Caballo Retador</a>
+    <a href="#explorar">Artículos</a>
+    <a href="#como_funciona">Cómo funciona</a>
+    <a href="/whitepaper.html">Whitepaper</a>
+</nav>
 <div class="pagina">
 
     <header class="cabecera">
         <img class="fondo" src="/BDG_Marketplace_Fondo_Cabecera_Hipodromo_Atardecer_Palmeras.png" alt="">
-        <a class="logo" href="/" aria-label="Volver al inicio"><img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria"></a>
+        <a class="logo tablero-nombre" href="/" aria-label="Volver al inicio">
+            <span class="tablero-adorno izquierdo" aria-hidden="true"></span>
+            <span class="tablero-centro"><span class="tablero-letras" data-t="BRISAS DE GLORIA">BRISAS DE GLORIA</span></span>
+            <span class="tablero-adorno derecho" aria-hidden="true"></span>
+        </a>
         <div class="saldos">
             <button class="saldo" type="button" data-ir="fortuna" aria-label="Saldo de Gloria"><img data-moneda="gloria" alt=""><b id="saldo_gloria">0</b><span class="mas">+</span></button>
             <button class="saldo" type="button" data-ir="fortuna" aria-label="Saldo de Centi"><img data-moneda="centi" alt=""><b id="saldo_centi">0</b><span class="mas">+</span></button>
@@ -265,13 +314,14 @@
     <!-- ===== CABALLO RETADOR (lo único que se cobra hoy) ===== -->
     <section class="destacada marco" id="seccion_caballos">
         <div class="escena"></div><div class="luces"></div><div class="chispas"></div>
-        <span class="cinta">OFERTA DESTACADA</span>
+        <span class="cinta">OFERTA DE LANZAMIENTO</span>
         <span class="liga-cinta">LIGA COBRE</span>
         <div class="contenido">
             <h2 class="foil" id="nombre_producto">Caballo Retador</h2>
             <p class="sub">Elige tu raza favorita</p>
             <div class="razas" id="razas"></div>
             <p class="mas-razas">✦ Más razas muy pronto ✦</p>
+            <div class="promo-lanzamiento"><b>2 CABALLOS POR EL PRECIO DE 1</b><span>Compra un caballo y llévate otro sin costo. Oferta de lanzamiento por tiempo limitado.</span></div>
             <button class="comprar" id="boton_pagar" type="button"><span id="precio_producto">10</span> USDT <small>COMPRAR</small></button>
             <p class="pago">Pagas con USDT por la red BSC (BNB Smart Chain).<br>Al confirmarse, recibes tu comprobante por correo.</p>
             <div id="aviso_tienda" class="aviso"></div>
@@ -310,8 +360,8 @@
         <div class="cofre" id="cofre"></div>
         <div class="texto">
             <h4 class="foil">Tu fortuna en el hipódromo</h4>
-            <p>Recarga tu saldo con USDT, o juega y gana Centi con anuncios cortos.</p>
-            <p class="cambio">1 Gloria = 100 Centi</p>
+            <div class="vias-monedas"><span><b>RECARGA</b> tu saldo de Gloria con USDT</span><span class="o">o</span><span><b>GANA CENTI GRATIS</b> jugando y viendo anuncios cortos</span></div>
+            <p class="cambio">1 Gloria = 1 USD = 100 Centi</p>
             <button class="boton" type="button" data-pronto="Las recargas de Gloria abren muy pronto.">OBTENER MONEDAS</button>
         </div>
     </section>
@@ -395,14 +445,14 @@
                 <tr><td>Cosmético épico</td><td>8 Gloria</td></tr>
                 <tr><td>Cosmético legendario</td><td>20 Gloria</td></tr>
                 <tr><td>Cambio de nombre</td><td>100 Centi</td></tr>
-                <tr><td>Tu propio stud (nombre y colores)</td><td>500 Centi</td></tr>
+                <tr><td>Stud propio (nombre y colores)</td><td>500 Centi</td></tr>
             </table>
             <div class="nota">La apariencia es solo estética. No da ventaja en la carrera.</div>
         </div>
 
         <div class="punto-mk"><h4><span>10</span>Las monedas</h4>
             <p><b>Gloria</b> es la moneda que se recarga. <b>Centi</b> es la moneda gratis: la ganas jugando. <b>$BDG</b> es el futuro token del ecosistema.</p>
-            <div class="nota">1 Gloria = 100 Centi.</div>
+            <div class="nota">1 Gloria = 1 USD = 100 Centi.</div>
         </div>
 
         </section>
@@ -730,10 +780,11 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
             { dibujo: "bozal", nombre: "Bozal de color", precio: "20 Centi" }
         ],
         comida: [
-            { dibujo: "avena", nombre: "Avena", texto: "El alimento de todos los días", precio: "2 Centi", fondo: "campo" },
-            { dibujo: "zanahoria", nombre: "Zanahorias y manzanas", texto: "Le suben el ánimo", precio: "1 Centi", fondo: "campo" },
-            { dibujo: "heno", nombre: "Heno premium", texto: "Recupera estamina entre carreras", precio: "5 Centi", fondo: "campo" },
-            { dibujo: "vitaminas", nombre: "Vitaminas", texto: "Para que crezca más fuerte", precio: "10 Centi", fondo: "campo" }
+            { dibujo: "avena", nombre: "Avena", texto: "Recupera 20 %", precio: "20 Centi", fondo: "campo" },
+            { dibujo: "zanahoria", nombre: "Zanahoria", texto: "Recupera 30 %", precio: "30 Centi", fondo: "campo" },
+            { dibujo: "heno", nombre: "Heno", texto: "Recupera 10 %", precio: "10 Centi", fondo: "campo" },
+            { dibujo: "vitaminas", nombre: "Vitaminas", texto: "Recupera 50 %", precio: "50 Centi", fondo: "campo" },
+            { dibujo: "heno", nombre: "Ración completa", texto: "Recupera 100 %", precio: "100 Centi", fondo: "campo" }
         ],
         entrenamiento: [
             { dibujo: "galope", nombre: "Galope en pista", texto: "Entrena su fuerza", precio: "4 Centi", fondo: "pista" },
@@ -743,8 +794,7 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
         ],
         cuidados: [
             { dibujo: "cepillo", nombre: "Cepillado y baño", precio: "2 Centi", fondo: "cuadra" },
-            { dibujo: "veterinario", nombre: "Veterinario", precio: "10 Centi", fondo: "cuadra" },
-            { dibujo: "nombre", nombre: "Cambio de nombre", precio: "1 Gloria", fondo: "cuadra" }
+            { dibujo: "veterinario", nombre: "Veterinario", precio: "20 Centi", fondo: "cuadra" }
         ]
     };
     // Ligas del equipo: las abiertas se ven con candado; las próximas dicen "Próximamente".
