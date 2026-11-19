@@ -422,7 +422,7 @@ footer.wp-footer p.brand {
         <li><strong>Fuera del juego:</strong> presenta las novedades del proyecto a la comunidad, en videos, redes sociales y material para patrocinadores e inversionistas.</li>
     </ul>
     <h2 class="sub-title">Ambientación</h2>
-    <p>Hipódromos 3D realistas, con tribunas, rieles, gatera de partida numerada, línea de meta con photo finish y estructuras propias de un hipódromo real. Las carreras se corren de día o de noche, con clima seco, lluvia o nieve, y con la pista normal, mojada con charcos o con restos de nieve.</p>
+    <p>Hipódromos 3D realistas, con tribunas, rieles, gatera de partida numerada, línea de meta con photo finish y estructuras propias de un hipódromo real. Las carreras pueden ser diurnas o nocturnas, con clima seco, lluvia o nieve, y con la pista normal, mojada con charcos o con restos de nieve.</p>
 </section>
 
 <!-- 03 -->
@@ -434,12 +434,11 @@ footer.wp-footer p.brand {
         <li><strong>Arreo:</strong> impulsa al caballo y consume estamina. Se usa durante toda la carrera; arreando seguido, el caballo mantiene su avance.</li>
         <li><strong>Freno:</strong> reduce la velocidad de forma controlada y ayuda a recuperar estamina poco a poco.</li>
         <li><strong>Látigo (izquierdo y derecho):</strong> con varios latigazos seguidos el caballo acelera a su punto máximo por un tiempo; rinde más en el tramo final.</li>
-        <li><strong>Cambio de mano:</strong> pasa el látigo de un lado al otro y reparte el esfuerzo entre los dos costados del caballo.</li>
         <li><strong>Cambio de carril:</strong> mueve al caballo a los lados para buscar el hueco junto a la baranda o salir del tráfico del pelotón.</li>
     </ul>
     <h2 class="sub-title">Estamina: el corazón estratégico</h2>
     <p>El jugador administra el esfuerzo del caballo durante toda la carrera: el que gasta la estamina antes de tiempo se queda sin fuerza para el remate. Saber cuándo arrear, cuándo frenar y cuándo pedir el máximo es lo que separa al jugador hábil.</p>
-    <div class="callout">Desde el nivel 21, el uso excesivo de arreo o látigo empieza a penalizar el rendimiento, y vale la regla del cambio de mano del látigo. Antes de ese nivel, el jugador puede practicar sin esa penalización.</div>
+    <div class="callout">Desde el nivel 21, el uso excesivo de arreo o látigo empieza a penalizar el rendimiento. Antes de ese nivel, el jugador puede practicar sin esa penalización.</div>
     <h2 class="sub-title">Grados de dificultad <span class="estado desarrollo">En desarrollo</span></h2>
     <ul class="doc-list">
         <li><strong>Nivel 11:</strong> las carreras se ponen un poco más exigentes.</li>
@@ -461,7 +460,7 @@ footer.wp-footer p.brand {
     <h1 class="section-title">04 · Arquitectura Técnica y Desarrollo</h1>
     <ul class="doc-list">
         <li><strong>Motor:</strong> Godot Engine, optimizado para teléfonos Android de gama media.</li>
-        <li><strong>Modelado y animación:</strong> caballos y jinetes propios, con animaciones de galope, arreo, frenado, látigo y cambio de mano.</li>
+        <li><strong>Modelado y animación:</strong> caballos y jinetes propios, con animaciones de galope, arreo, frenado y látigo.</li>
         <li><strong>Física de carrera:</strong> sistema propio de seguimiento de trayectoria con curvas suaves y realistas.</li>
         <li><strong>Plataformas:</strong> Android (descarga directa), Windows y versión jugable en el navegador.</li>
         <li><strong>Cuentas y fichas:</strong> las cuentas de los jugadores y las fichas de los caballos se guardan en un servidor seguro (Firebase). Solo el sistema las modifica.</li>
@@ -491,9 +490,12 @@ footer.wp-footer p.brand {
     <h2 class="sub-title">Recompensas fijas</h2>
     <p>En todas las competencias con recompensa —diarias, de temporada y carreras de 1 USD— el juego publica las recompensas fijas en Gloria <strong>antes de abrir la inscripción</strong>. La inscripción entra a la caja del proyecto y el proyecto paga las recompensas publicadas. Cada carrera arranca cuando se llena el cupo.</p>
     <h2 class="sub-title">Modelo diario</h2>
-    <p>Cada día hay carreras gratis que dan puntos y recompensas y gastan la condición del caballo. Con un día de descanso, el caballo recupera solo toda su fuerza. La comida o la recarga sirven para correr de más: entrenar, practicar o divertirse contra la IA.</p>
+    <p>Cada día cuentan 15 carreras, que gastan la condición del caballo. Con un día de descanso, el caballo recupera solo toda su fuerza. <strong>¿Quieres seguir disfrutando de las carreras oficiales? Compite, mejora tu caballo y gana skins.</strong> La comida, los cuidados y el entrenamiento devuelven energía para correr de más el mismo día: entrenar, practicar o divertirse contra la IA.</p>
+    <h2 class="sub-title">Puntos y desarrollo del caballo</h2>
+    <p>Las carreras gratis y las de pago dan puntos y skins; las de pago dan muchos más. Las recompensas en Gloria son solo de las competencias con recarga o inscripción. Los puntos desarrollan al caballo y se suman para las recompensas de fin de temporada.</p>
+    <p>El caballo que compite una temporada llega a la siguiente más desarrollado que uno nuevo. Esa ventaja es pequeña a propósito: lo que gana carreras sigue siendo la habilidad del jugador. Con el entrenamiento el caballo mejora y se valora más en el Marketplace.</p>
     <h2 class="sub-title">Becas <span class="estado beta">Beta · diciembre</span></h2>
-    <p>Una beca cubre la recarga durante 30 días: el becado compite y gana recompensas diarias y mensuales sin recargar. La beca que no se usa se retira y pasa a otro jugador.</p>
+    <p>Una beca cubre la recarga durante 30 días, lo que equivale a tres recargas de 10 USD: el becado juega como Profesional y compite por recompensas diarias y mensuales sin recargar. La beca que no se usa se retira y pasa a otro jugador.</p>
     <h2 class="sub-title">Juego limpio</h2>
     <ul class="doc-list">
         <li><strong>Habilidad:</strong> el resultado lo decide el jugador. La apariencia del caballo y del jinete es solo estética.</li>
@@ -513,7 +515,7 @@ footer.wp-footer p.brand {
     <h1 class="section-title">06 · Marketplace</h1>
     <p>Aquí no gana quien más compra: gana quien mejor compite. El caballo mejora la estrategia, pero nunca sustituye la habilidad.</p>
     <h2 class="sub-title">Caballos del proyecto <span class="estado disponible">Disponible</span></h2>
-    <p>El proyecto mantiene una reserva de caballos de todas las razas, con precios de referencia estables, para que siempre haya ejemplares para quien empieza. El jugador elige la especialidad, le pone el nombre y el caballo recibe un número de registro único e inmutable. Los caballos se adquieren por pares, para que el jugador combine sus especialidades y críe.</p>
+    <p>El proyecto mantiene una reserva de caballos de todas las razas, con precios de referencia estables, para que siempre haya ejemplares para quien empieza. El jugador elige la especialidad, le pone el nombre y el caballo recibe un número de registro único e inmutable.</p>
     <p>Todo caballo se puede mejorar, sin importar el precio al que se compró, e incluso el caballo gratuito puede volverse competitivo y venderse en el Marketplace.</p>
     <div class="callout">Oferta de lanzamiento: 2 caballos por el precio de 1, por tiempo limitado.</div>
     <h2 class="sub-title">Escalones de especialización <span class="estado beta">Beta · diciembre</span></h2>
@@ -526,8 +528,19 @@ footer.wp-footer p.brand {
         <tr><td>80 USD</td><td>2</td><td>3</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
         <tr><td>100 USD</td><td colspan="6">Todoterreno: todas las opciones</td></tr>
     </table>
-    <p><strong>Pista:</strong> grama o arena. <strong>Distancia:</strong> cortas, medianas o largas. <strong>Estilo:</strong> puntero, mediofondista o rematador. <strong>Clima:</strong> seco, lluvia o nieve. <strong>Condición de pista:</strong> normal, mojada o con restos de nieve. <strong>Horario:</strong> día o noche.</p>
-    <div class="callout">Cada caballo es sobresaliente en su ambiente y compite allí contra los especialistas de ese ambiente. Fuera de su ambiente corre, pero rinde menos. El Todoterreno se desenvuelve en todas las condiciones y por eso se enfrenta a los mejores. El precio no compra victorias.</div>
+    <table class="doc-table">
+        <tr><th>Segmento</th><th>Opciones</th></tr>
+        <tr><td>Pista</td><td>Grama o arena</td></tr>
+        <tr><td>Distancias cortas</td><td>800 m (grama) · 1100 m (arena) · 1200 m</td></tr>
+        <tr><td>Distancias medianas</td><td>1600 m (grama) · 1900 m (arena)</td></tr>
+        <tr><td>Distancias largas</td><td>2000 m · 2400 m · 3000 m</td></tr>
+        <tr><td>Estilo</td><td>Puntero, mediofondista o rematador</td></tr>
+        <tr><td>Clima</td><td>Seco, lluvia o nieve</td></tr>
+        <tr><td>Condición de pista</td><td>Normal, mojada o con restos de nieve</td></tr>
+        <tr><td>Horario</td><td>Diurno o nocturno</td></tr>
+    </table>
+    <p>Se irán sumando nuevas distancias. Compra en par y combina: por ejemplo, uno de distancias cortas y otro de largas. Al aparearlos, la cría hereda lo de los dos.</p>
+    <div class="callout">Cada caballo tiene su especialidad. En su ambiente todos corren parejos: ningún caballo tiene ventaja. Fuera de su ambiente corre, compite y hasta puede ganar, pero rinde menos. El Todoterreno se desenvuelve en todas las condiciones. El precio no compra victorias.</div>
     <h2 class="sub-title">Ficha del caballo <span class="estado beta">Beta · diciembre</span></h2>
     <p>Identidad, especialización, constitución y musculatura, pelaje, medidas, patas y cascos, zancada, padres y vida deportiva. La ficha corta se ve en el Marketplace y la completa en el establo. En la Beta, solo la especialización influye en la carrera; lo demás es visual.</p>
     <h2 class="sub-title">Compra y venta entre jugadores <span class="estado desarrollo">En desarrollo</span></h2>
@@ -536,27 +549,31 @@ footer.wp-footer p.brand {
     <ul class="doc-list">
         <li>Dos caballos se aparean y nace uno solo. Los dos padres se retiran de la competencia.</li>
         <li>Se puede cruzar cualquier raza con cualquier especialización. El dueño decide cuándo aparear.</li>
-        <li>La cría hereda de los dos padres y nunca sale peor que ellos: puede igualarlos o superarlos. De dos caballos económicos puede nacer un ejemplar excepcional.</li>
-        <li>La cría no se aparea. Cada apareamiento y cada transferencia quedan en el registro genealógico.</li>
+        <li>La cría hereda de los dos padres y sus genes siempre serán superiores a los de sus padres. De dos caballos económicos puede nacer un ejemplar excepcional.</li>
+        <li>La cría corre una temporada larga y no se puede reproducir. Cada apareamiento y cada transferencia quedan en el registro genealógico.</li>
         <li>Dos Todoterreno apareados dan una cría Todoterreno que nace en el nivel 16.</li>
     </ul>
     <h2 class="sub-title">Vida deportiva</h2>
-    <p>Cada caballo compite 12 temporadas cortas o una temporada larga. Al terminar, el dueño lo aparea o lo vende; si no, pasa a retirado y queda en el registro del juego.</p>
+    <p>Cada caballo tiene 12 temporadas cortas (una temporada larga) de vida deportiva, contadas desde que se compra. Corra o no, las temporadas pasan: la que no se corre, se pierde. El dueño puede venderlo cuando quiera, desde el primer día, y el nuevo dueño recibe las temporadas que le queden; también puede aparearlo cuando quiera. Si al final no lo apareó ni lo vendió, pasa a retirado y queda en el registro del juego.</p>
     <h2 class="sub-title">Artículos y servicios <span class="estado beta">Beta · diciembre</span></h2>
     <table class="doc-table">
         <tr><th>Artículo o servicio</th><th>Precio</th></tr>
-        <tr><td>Heno (recupera 10 %)</td><td>10 Centi</td></tr>
-        <tr><td>Avena (recupera 20 %)</td><td>20 Centi</td></tr>
-        <tr><td>Zanahoria (recupera 30 %)</td><td>30 Centi</td></tr>
-        <tr><td>Vitaminas (recupera 50 %)</td><td>50 Centi</td></tr>
-        <tr><td>Ración completa (recupera 100 %)</td><td>100 Centi</td></tr>
-        <tr><td>Veterinario</td><td>20 Centi</td></tr>
-        <tr><td>Cosmético común / raro / épico / legendario</td><td>100 Centi / 3 Gloria / 8 Gloria / 20 Gloria</td></tr>
+        <tr><td>Heno: 10 % de energía</td><td>10 Centi</td></tr>
+        <tr><td>Avena: 20 % de energía</td><td>20 Centi</td></tr>
+        <tr><td>Zanahoria: 30 % de energía</td><td>30 Centi</td></tr>
+        <tr><td>Vitaminas: 50 % de energía</td><td>50 Centi</td></tr>
+        <tr><td>Ración completa: 100 %, listo para otra jornada</td><td>100 Centi</td></tr>
+        <tr><td>Cepillado y baño: 5 % de energía</td><td>10 Centi</td></tr>
+        <tr><td>Veterinario: 15 % de energía</td><td>20 Centi</td></tr>
+        <tr><td>Galope en pista: 5 % de energía + fuerza</td><td>10 Centi</td></tr>
+        <tr><td>Aparato de partida / remate / fondo: 10 % de energía + mejora</td><td>20 Centi</td></tr>
+        <tr><td>Skin Cobre / Plata</td><td>100 Centi / 200 Centi</td></tr>
+        <tr><td>Skin Oro / Platino / Diamante</td><td>3 Gloria / 8 Gloria / 20 Gloria</td></tr>
         <tr><td>Cambio de nombre</td><td>100 Centi</td></tr>
         <tr><td>Stud propio (nombre y colores)</td><td>500 Centi</td></tr>
         <tr><td>Apareamiento</td><td>300 Centi</td></tr>
     </table>
-    <div class="callout">Los cosméticos son solo identidad visual: Pay-to-Skin, nunca Pay-to-Win.</div>
+    <div class="callout">Las skins van por liga: Cobre, Plata, Oro, Platino y Diamante. Cada skin se usa al llegar a su liga, para que el caballo y su skin vayan a la par. Se ganan gratis jugando y figurando, al cierre de cada temporada corta se entregan skins altas como recompensa, y también se pueden vender en el Marketplace. Al final de la temporada larga, las skins se pierden junto con los caballos. Las skins son solo apariencia: no dan ventaja en la carrera.</div>
 </section>
 
 <!-- 07 -->
@@ -572,7 +589,7 @@ footer.wp-footer p.brand {
                 <span class="tier-tag">Moneda de Utilidad</span>
             </div>
             <p><strong>Naturaleza:</strong> la moneda gratis del juego y la centésima parte de una Gloria (registro en base de datos).</p>
-            <p><strong>Uso:</strong> se gana jugando; sirve para comida, cuidados, entrenamiento, equipo y cosméticos. No se convierte a dinero real.</p>
+            <p><strong>Uso:</strong> se gana jugando; sirve para comida, cuidados, entrenamiento, equipo y skins. No se convierte a dinero real.</p>
         </div>
     </div>
 
@@ -608,7 +625,7 @@ footer.wp-footer p.brand {
     <p>Así no se pagan comisiones por cada movimiento dentro del juego, y quien no maneja criptomonedas puede jugar, ganar y gastar sin necesidad de una wallet.</p>
 
     <h2 class="sub-title">Sumideros de moneda</h2>
-    <p>Para que la economía no se infle, las monedas salen de circulación al usarse: comida, cuidados, entrenamiento, cosméticos, cambio de nombre, stud propio y apareamiento. Lo indispensable para competir no se cobra en Gloria.</p>
+    <p>Para que la economía no se infle, las monedas salen de circulación al usarse: comida, cuidados, entrenamiento, skins, cambio de nombre, stud propio y apareamiento. Lo indispensable para competir no se cobra en Gloria.</p>
 
 </section>
 
