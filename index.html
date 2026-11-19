@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://bdg-world.vercel.app/">
     <meta name="twitter:card" content="summary_large_image">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600&display=swap');
         :root {
             --noche: #0b0f19; --noche-2: #0e1526; --tarjeta: #111a2e; --tarjeta-2: #0f1729;
             --borde: #24304a; --dorado: #c5a059; --dorado-claro: #f3e5ab; --bronce: #785a28;
@@ -48,8 +48,8 @@
         .boton-dorado:disabled { opacity: .6; cursor: wait; }
 
         /* ---------- cabecera fija ---------- */
-        .cabecera { position: sticky; top: 0; z-index: 200; background: rgba(8,12,22,.94); backdrop-filter: blur(6px); border-bottom: 1px solid #1c2740; }
-        .cabecera-interior { max-width: 1180px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 22px; }
+        .cabecera { position: sticky; top: 0; z-index: 200; background: rgba(11,11,14,.94); backdrop-filter: blur(6px); border-bottom: 1px solid #1c2740; }
+        .cabecera-interior { max-width: 1340px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 22px; }
         .cabecera-logo img { display: block; height: 44px; width: auto; border-radius: 4px; }
         .cabecera nav { flex: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; }
         .cabecera nav a { font-size: 12.5px; color: #cbd5e1; white-space: nowrap; }
@@ -57,15 +57,32 @@
         .cabecera .boton-dorado { padding: 9px 16px; font-size: 12px; }
 
         /* ---------- portada ---------- */
-        .portada { background: radial-gradient(120% 70% at 50% 0%, #16213d 0%, var(--noche) 70%); padding: 34px 20px 50px; text-align: center; }
-        .portada-interior { max-width: 1000px; margin: 0 auto; }
+        .portada { background: var(--noche); padding: 0 0 50px; text-align: center; }
+        .portada-interior { max-width: none; margin: 0 auto; }
+        .portada-interior > :not(.hero-banner) { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
+        .portada-interior > .aviso-desliza { padding: 0; }
         .portada .antetitulo { font-family: 'Cinzel', serif; color: var(--dorado); letter-spacing: 5px; font-size: 13px; }
         .portada h1 { font-family: 'Cinzel', serif; font-weight: 800; letter-spacing: 3px; font-size: clamp(30px, 6vw, 56px); line-height: 1.1; margin: 6px 0 22px;
             background: linear-gradient(180deg, #fff6d2 0%, #f0d68f 35%, #c5a059 65%, #8f6d2b 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .hero-banner { position: relative; border-radius: 10px; overflow: hidden; border: 1px solid var(--bronce); box-shadow: 0 20px 50px rgba(0,0,0,.6); }
-        .hero-banner video { display: block; width: 100%; height: auto; }
-        .hero-banner-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 18px 14px; background: linear-gradient(180deg, rgba(11,15,25,0) 0%, rgba(11,15,25,.9) 90%); }
-        .hero-banner-overlay p { font-family: 'Cinzel', serif; color: var(--dorado-claro); font-size: 14px; letter-spacing: .5px; text-shadow: 0 2px 10px #000; }
+        .hero-banner { position: relative; width: 100%; overflow: hidden; border-bottom: 1px solid var(--bronce); }
+        .hero-titulo { padding: 14px 16px 16px; text-align: center; }
+        .portada h1.tablero-nombre { -webkit-background-clip: border-box; background-clip: border-box; color: inherit; letter-spacing: normal; padding: 0; --h: clamp(64px, 10.6vw, 170px); display: flex; align-items: stretch; height: var(--h); max-width: 1500px; margin: 8px auto 0 !important; border-radius: 8px; overflow: hidden; border: 2px solid #8a6a2c;
+            box-shadow: 0 12px 30px rgba(0,0,0,.8), inset 0 0 0 3px rgba(0,0,0,.4); background: radial-gradient(120% 140% at 50% 50%, #3b4033 0%, #2a2e25 45%, #1a1c17 100%); font-size: inherit !important; line-height: 1 !important; }
+        .tablero-adorno { flex: none; width: calc(var(--h) * 320 / 420); background-image: url('/Logo_PaginaPrincipal.png'); background-repeat: no-repeat; background-size: calc(var(--h) * 1376 / 420) auto; }
+        .tablero-adorno.izquierdo { background-position: calc(var(--h) * -10 / 420) calc(var(--h) * -200 / 420); }
+        .tablero-adorno.derecho { background-position: calc(var(--h) * -1036 / 420) calc(var(--h) * -120 / 420); }
+        .tablero-centro { flex: 1; display: flex; align-items: center; justify-content: center; border-left: 2px solid #6b5426; border-right: 2px solid #6b5426; box-shadow: inset 0 0 40px rgba(0,0,0,.7); min-width: 0; }
+        .tablero-letras { position: relative; font-family: 'Cinzel Decorative', 'Cinzel', serif; font-weight: 700; font-size: calc(var(--h) * .47); line-height: 1.1; white-space: nowrap; letter-spacing: 1px;
+            background: linear-gradient(180deg, #fff8d8 0%, #f7dc8c 22%, #d9a640 40%, #9c6b1e 52%, #e8c165 64%, #fff0b8 76%, #b07a28 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 1.2px #4a3209;
+            filter: drop-shadow(0 1px 0 #fff3c4) drop-shadow(0 3px 0 #5a3d0c) drop-shadow(0 4px 0 #3a2706) drop-shadow(0 8px 10px rgba(0,0,0,.85)); }
+        .tablero-letras::after { content: attr(data-t); position: absolute; left: 0; top: 0; background: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 38%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; }
+        @media (max-width: 700px) { .tablero-letras { -webkit-text-stroke: .6px #4a3209; letter-spacing: 0; font-size: calc(var(--h) * .38); } }
+        .hero-titulo h1.tablero-nombre { -webkit-text-fill-color: initial; }
+        .hero-titulo .antetitulo { text-shadow: 0 2px 8px #000; }
+        .hero-banner video { display: block; width: 100%; height: calc(100vh - 64px); min-height: 380px; object-fit: cover; }
+        @media (max-width: 700px) { .hero-banner video { height: auto; min-height: 0; } }
+        .hero-banner-overlay { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 18px 66px; background: linear-gradient(180deg, rgba(11,15,25,0) 0%, rgba(11,15,25,.9) 90%); }
+        .hero-banner-overlay p { font-family: 'Cinzel', serif; color: var(--dorado-claro); font-size: clamp(13px, 1.6vw, 20px); letter-spacing: .5px; text-shadow: 0 2px 10px #000; }
         .hero-subtitulo { color: #e5e7eb; font-size: clamp(15px, 2.2vw, 19px); margin: 22px auto 18px; max-width: 720px; }
         .botones-portada, .botones-fila { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
         .botones-fila { margin-top: 18px; }
@@ -101,8 +118,8 @@
 
         /* ---------- secciones ---------- */
         .seccion { border-top: 1px solid #151e33; padding: 70px 20px; }
-        .seccion:nth-of-type(even) { background: var(--noche-2); }
-        .seccion-interior { max-width: 1080px; margin: 0 auto; }
+        .seccion:nth-of-type(even) { background: #10131c; }
+        .seccion-interior { max-width: 1280px; margin: 0 auto; }
         .antetitulo-seccion { display: block; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--dorado); margin-bottom: 10px; }
         .seccion h2 { font-family: 'Noto Serif', Georgia, serif; font-weight: 500; text-align: center; color: var(--dorado-claro); font-size: clamp(26px, 4vw, 38px); line-height: 1.2; margin-bottom: 12px; }
         .seccion .entrada { text-align: center; color: #cbd5e1; max-width: 760px; margin: 0 auto 34px; font-size: 15px; }
@@ -110,15 +127,15 @@
         .rejilla.tres { grid-template-columns: repeat(3, 1fr); }
         .rejilla.cuatro { grid-template-columns: repeat(4, 1fr); }
         .rejilla.dos { grid-template-columns: repeat(2, 1fr); }
-        .tarjeta { background: linear-gradient(180deg, #132040 0%, var(--tarjeta) 100%); border: 1px solid var(--borde); border-radius: 8px; padding: 22px 20px; }
+        .tarjeta { background: #161b26; border: 1px solid #3a3020; border-radius: 8px; padding: 22px 20px; }
         .tarjeta h3 { font-family: 'Noto Serif', Georgia, serif; font-weight: 500; color: var(--dorado-claro); font-size: 19px; line-height: 1.3; margin-bottom: 8px; }
         .tarjeta .numero { display: block; font-family: 'Noto Serif', Georgia, serif; color: var(--dorado); font-size: 22px; margin-bottom: 6px; }
         .tarjeta p, .tarjeta li { color: #cbd5e1; font-size: 13.5px; line-height: 1.55; }
         .tarjeta.centrada { text-align: center; }
-        .nota { margin-top: 12px; background: #0b1220; border: 1px solid #22304a; border-radius: 6px; padding: 9px 12px; }
+        .nota { margin-top: 12px; background: #0f131b; border: 1px solid #2a2a2a; border-radius: 6px; padding: 9px 12px; }
         .nota p, .nota li { font-size: 12px !important; color: var(--suave) !important; line-height: 1.5; }
         .nota ul { padding-left: 16px; }
-        .franja { margin-top: 18px; text-align: center; background: #0b1220; border-left: 3px solid var(--dorado); border-radius: 4px; padding: 10px 14px; font-size: 13px; color: #cbd5e1; }
+        .franja { margin-top: 18px; text-align: center; background: #161b26; border-left: 3px solid var(--dorado); border-radius: 4px; padding: 10px 14px; font-size: 13px; color: #cbd5e1; }
         .lema { text-align: center; color: var(--dorado); font-family: 'Cinzel', serif; letter-spacing: 1px; margin-top: 26px; }
         .nota-pequena { text-align: center; color: var(--suave); font-size: 12px; margin-top: 10px; }
         .acceso { text-align: center; margin-top: 26px; }
@@ -131,16 +148,23 @@
         .controles-col li strong { color: var(--dorado); }
 
         /* ---------- ejemplares ---------- */
-        .ejemplar-card { position: relative; border: 1px solid var(--borde); border-radius: 8px; overflow: hidden; background: var(--tarjeta); cursor: pointer; transition: transform .2s, border-color .2s; }
+        .ejemplar-card { position: relative; border: 1px solid #3a3020; border-radius: 8px; overflow: hidden; background: #161b26; cursor: pointer; transition: transform .2s, border-color .2s; }
         .ejemplar-card:hover { transform: translateY(-3px); border-color: var(--dorado); }
-        .ejemplar-card img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+        .ejemplar-card img { display: block; width: 100%; aspect-ratio: 614 / 768; object-fit: cover; object-position: center top; }
         .ejemplar-label { padding: 12px 10px; text-align: center; font-family: 'Noto Serif', Georgia, serif; color: var(--dorado-claro); font-size: 16px; }
         .ejemplar-label small { display: block; font-family: 'Montserrat', sans-serif; color: var(--suave); font-size: 11.5px; }
         .ejemplar-ver { position: absolute; top: 8px; right: 10px; color: var(--dorado-claro); font-size: 18px; text-shadow: 0 1px 4px #000; }
 
         /* ---------- Gloria ---------- */
-        .gloria-bloque { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .gloria-bloque img { display: block; width: 100%; max-width: 440px; justify-self: center; border-radius: 8px; border: 1px solid var(--bronce); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+        .gloria-bloque { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; max-width: 1100px; }
+        #gloria { padding-top: 40px; padding-bottom: 40px; }
+        .gloria-bloque h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 10px; }
+        .gloria-bloque > div > p { font-size: 21px; line-height: 1.5; color: #e5e7eb; }
+        .gloria-bloque .nota { margin-top: 16px; padding: 16px 20px; }
+        .gloria-bloque .nota p { font-size: 16px !important; line-height: 1.65; color: #cbd5e1 !important; }
+        .gloria-bloque .antetitulo-seccion { font-size: 12px; }
+        .gloria-bloque img { display: block; width: 100%; max-width: 560px; aspect-ratio: 1760 / 1880; object-fit: cover; object-position: center bottom; justify-self: start;
+            width: 560px; border-radius: 8px; border: 1px solid var(--bronce); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
         .gloria-bloque .antetitulo-seccion, .gloria-bloque h2 { text-align: left; }
         .gloria-bloque p { color: #cbd5e1; }
 
@@ -162,7 +186,7 @@
 
         /* ---------- pie ---------- */
         .pie { border-top: 1px solid #151e33; padding: 26px 20px 80px; }
-        .pie-interior { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--suave); }
+        .pie-interior { max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--suave); }
 
         /* ---------- vitrina ---------- */
         #vitrina-overlay { display: none; position: fixed; inset: 0; background: rgba(5,7,12,.94); z-index: 1000; align-items: center; justify-content: center; padding: 30px 20px; }
@@ -176,9 +200,10 @@
         @keyframes vitrina-sombra { 0%, 100% { transform: scaleX(1); opacity: .55; } 50% { transform: scaleX(.82); opacity: .35; } }
 
         /* ---------- música ---------- */
-        .boton-musica { position: fixed; left: 16px; bottom: 16px; z-index: 900; display: flex; align-items: center; gap: 10px; padding: 7px 14px 7px 7px; background: #2b1a6b; border: 2px solid #997aff; border-radius: 999px; color: #fdf033; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: .5px; cursor: pointer; box-shadow: 0 6px 20px rgba(0,0,0,.6); }
+        .boton-musica { position: fixed; left: 12px; bottom: 12px; z-index: 900; display: flex; align-items: center; gap: 6px; padding: 3px 10px 3px 3px; background: rgba(43,26,107,.85); border: 1px solid #997aff; border-radius: 999px; color: #fdf033; font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: .3px; cursor: pointer; opacity: .85; box-shadow: 0 3px 10px rgba(0,0,0,.5); }
+        .boton-musica:hover { opacity: 1; }
         .boton-musica:hover { background: #3a2588; }
-        .boton-musica .icono-musica { width: 30px; height: 30px; border-radius: 50%; background: #fdf033; color: #2b1a6b; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+        .boton-musica .icono-musica { width: 20px; height: 20px; border-radius: 50%; background: #fdf033; color: #2b1a6b; display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; }
         .boton-musica.esperando .icono-musica { animation: musica-latido 1.6s ease-in-out infinite; }
         @keyframes musica-latido { 0%, 100% { box-shadow: 0 0 0 0 rgba(153,122,255,.85); } 50% { box-shadow: 0 0 0 9px rgba(153,122,255,0); } }
 
@@ -186,6 +211,7 @@
         @media (max-width: 900px) {
             .rejilla.tres, .rejilla.cuatro { grid-template-columns: repeat(2, 1fr); }
             .gloria-bloque { grid-template-columns: 1fr; gap: 24px; }
+            .gloria-bloque img { width: 100%; justify-self: center; }
             .gloria-bloque .antetitulo-seccion, .gloria-bloque h2 { text-align: center; }
             .gloria-bloque p { text-align: center; }
         }
@@ -198,8 +224,8 @@
             .rejilla.ejemplares { grid-template-columns: repeat(2, 1fr); }
             .seccion { padding: 50px 16px; }
             .juego-caja { height: 420px; }
-            .boton-musica { font-size: 11px; padding: 5px 11px 5px 5px; }
-            .boton-musica .icono-musica { width: 26px; height: 26px; }
+            .boton-musica #texto-musica { display: none; }
+            .boton-musica { padding: 3px; }
             #aviso-pantalla { bottom: 64px; }
         }
     </style>
@@ -233,9 +259,14 @@
 
     <div id="inicio" class="portada">
         <div class="portada-interior">
-            <div class="antetitulo">EL GALOPE FINAL</div>
-            <h1>BRISAS DE GLORIA</h1>
-
+            <div class="hero-titulo">
+                <div class="antetitulo">EL GALOPE FINAL</div>
+                <h1 class="tablero-nombre">
+                    <span class="tablero-adorno izquierdo" aria-hidden="true"></span>
+                    <span class="tablero-centro"><span class="tablero-letras" data-t="BRISAS DE GLORIA">BRISAS DE GLORIA</span></span>
+                    <span class="tablero-adorno derecho" aria-hidden="true"></span>
+                </h1>
+            </div>
             <div class="hero-banner">
                 <video autoplay muted loop playsinline poster="/Hero_Poster.jpg" aria-label="Carrera de caballos de Brisas de Gloria">
                     <source src="/Hero_BrisasDeGloria.mp4" type="video/mp4">
@@ -610,7 +641,7 @@
         <div class="seccion-interior">
             <span class="antetitulo-seccion">Comunidad</span>
             <h2>Crece carrera a carrera</h2>
-            <p class="entrada">¿Preguntas o fallas del juego? Entra a nuestro Discord. Avisos en Telegram y X, videos en YouTube. ¿Interés en patrocinar? Escríbenos al correo.</p>
+            <p class="entrada">Únete a la comunidad de Brisas de Gloria.</p>
             <div class="redes">
                 <a class="boton-dorado" href="https://discord.gg/Q2cyFJQBTP" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 0 0-.042-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z"/></svg>ENTRA AL DISCORD</a>
                 <a class="boton-secundario" href="https://t.me/BDG_SalaDeJuegos" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.538-.196 1.006.128.828.942z"/></svg>TELEGRAM</a>
