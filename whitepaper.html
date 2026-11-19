@@ -356,6 +356,10 @@ footer.wp-footer p.brand {
     font-weight: 600;
     font-size: 13px;
 }
+.estado{display:inline-block;margin-left:10px;padding:2px 10px;border-radius:999px;font-size:11px;letter-spacing:1px;text-transform:uppercase;vertical-align:middle;border:1px solid;font-weight:600;}
+.estado.disponible{color:#4fbf7f;border-color:#4fbf7f;}
+.estado.beta{color:#c5a059;border-color:#c5a059;}
+.estado.desarrollo{color:#9aa0a6;border-color:#9aa0a6;}
 </style>
 </head>
 <body>
@@ -379,7 +383,7 @@ footer.wp-footer p.brand {
     <a href="#s04">04 Arquitectura</a>
     <a href="#s05">05 Progresión y recompensas</a>
     <a href="#s06">06 Marketplace</a>
-    <a href="#s07">07 Monedas y $BDG</a>
+    <a href="#s07">07 Monedas</a>
     <a href="#s08">08 Hoja de ruta</a>
     <a href="#s09">09 Equipo</a>
     <a href="#s10">10 Aviso legal</a>
@@ -424,7 +428,7 @@ footer.wp-footer p.brand {
 <!-- 03 -->
 <section id="s03" class="wp-section">
     <h1 class="section-title">03 · Mecánicas de Juego</h1>
-    <h2 class="sub-title">Control de la Carrera</h2>
+    <h2 class="sub-title">Control de la Carrera <span class="estado disponible">Disponible</span></h2>
     <p>Mandos sencillos, adaptados a computadora y a controles táctiles en Android:</p>
     <ul class="doc-list">
         <li><strong>Arreo:</strong> impulsa al caballo y consume estamina. Se usa durante toda la carrera; arreando seguido, el caballo mantiene su avance.</li>
@@ -436,14 +440,14 @@ footer.wp-footer p.brand {
     <h2 class="sub-title">Estamina: el corazón estratégico</h2>
     <p>El jugador administra el esfuerzo del caballo durante toda la carrera: el que gasta la estamina antes de tiempo se queda sin fuerza para el remate. Saber cuándo arrear, cuándo frenar y cuándo pedir el máximo es lo que separa al jugador hábil.</p>
     <div class="callout">Desde el nivel 21, el uso excesivo de arreo o látigo empieza a penalizar el rendimiento, y vale la regla del cambio de mano del látigo. Antes de ese nivel, el jugador puede practicar sin esa penalización.</div>
-    <h2 class="sub-title">Grados de dificultad</h2>
+    <h2 class="sub-title">Grados de dificultad <span class="estado desarrollo">En desarrollo</span></h2>
     <ul class="doc-list">
         <li><strong>Nivel 11:</strong> las carreras se ponen un poco más exigentes.</li>
         <li><strong>Nivel 16:</strong> más exigentes.</li>
         <li><strong>Nivel 21:</strong> mucho más exigentes. Del nivel 21 al 25 se practica para los clásicos, que se corren en el nivel 25.</li>
         <li>En los grados altos, pisar un charco o una mancha de nieve también le resta al caballo.</li>
     </ul>
-    <h2 class="sub-title">Las carreras</h2>
+    <h2 class="sub-title">Las carreras <span class="estado disponible">Disponible</span></h2>
     <ul class="doc-list">
         <li><strong>Múltiples distancias</strong> en grama y en arena, con carreras de una y de varias vueltas.</li>
         <li><strong>Rivales con comportamiento propio:</strong> punteros, mediofondistas y rematadores, que obligan a leer la carrera.</li>
@@ -476,32 +480,30 @@ footer.wp-footer p.brand {
     <ul class="doc-list">
         <li><strong>Amateur:</strong> juega gratis, contra la IA o contra otros jugadores Amateur, por el honor de ganar. Puede llevar su caballo por todos los niveles sin pagar.</li>
         <li><strong>Profesional:</strong> recarga y compite por recompensas.</li>
-        <li><strong>Ligas:</strong> Cobre, Plata, Oro, Platino y Diamante. El equipo del jinete cambia con la liga, y las skins se ganan gratis.</li>
+        <li><strong>Ligas:</strong> Cobre, Plata, Oro, Platino y Diamante. El equipo del jinete cambia con la liga, y las skins se ganan gratis jugando y figurando.</li>
     </ul>
-    <h2 class="sub-title">Tu camino</h2>
-    <ul class="doc-list">
-        <li><strong>Juega gratis:</strong> corre, sube de nivel y haz crecer tu caballo.</li>
-        <li><strong>Mejora tu caballo:</strong> entrénalo y equípalo con Centi, la moneda gratis del juego.</li>
-        <li><strong>Desde el nivel 11:</strong> recarga y compite por recompensas diarias y mensuales. Una recarga de 10 USD da 10 días de competencia; solo se descuenta 1 USD los días que juegas, y cada día cuentan 15 carreras. Hay recompensa al cierre de cada día y una gran repartición al cerrar la temporada de 4 semanas.</li>
-        <li><strong>Desde el nivel 15:</strong> carreras de 1 USD contra jugadores reales, con recompensas para los tres primeros. Todas las que quieras en el día.</li>
-        <li><strong>Marketplace:</strong> compra, vende y descubre caballos y artículos (ver sección 06).</li>
-    </ul>
+    <h2 class="sub-title">1. Gratuito <span class="estado disponible">Disponible</span></h2>
+    <p><strong>Participa, corre, gana y obtén tus skins gratis.</strong> Sube de nivel, haz crecer tu caballo y mejóralo con Centi, la moneda gratis del juego. Las skins se ganan jugando y figurando: mientras más arriba llegas, más skins ganas.</p>
+    <h2 class="sub-title">2. Recarga: 10 USD por 10 días <span class="estado beta">Beta · diciembre</span></h2>
+    <p>Desde el nivel 11, recarga y compite por recompensas diarias y mensuales. Una recarga de 10 USD da 10 días de competencia; solo se descuenta 1 USD los días que juegas, y cada día cuentan 15 carreras. Hay recompensa al cierre de cada día y una gran repartición al cerrar la temporada de 4 semanas.</p>
+    <h2 class="sub-title">3. Carreras de 1 USD <span class="estado beta">Beta · diciembre</span></h2>
+    <p>Desde el nivel 15, carreras contra jugadores reales con inscripción de 1 USD y recompensas para los tres primeros. Todas las que quieras en el día.</p>
     <h2 class="sub-title">Recompensas fijas</h2>
     <p>En todas las competencias con recompensa —diarias, de temporada y carreras de 1 USD— el juego publica las recompensas fijas en Gloria <strong>antes de abrir la inscripción</strong>. La inscripción entra a la caja del proyecto y el proyecto paga las recompensas publicadas. Cada carrera arranca cuando se llena el cupo.</p>
     <h2 class="sub-title">Modelo diario</h2>
-    <p>Cada día hay carreras gratis que dan puntos y recompensas y gastan la condición del caballo. Con un día de descanso, el caballo recupera solo toda su fuerza. La comida, los anuncios o el pago sirven para correr de más: entrenar, practicar o divertirse contra la IA.</p>
-    <h2 class="sub-title">Becas</h2>
+    <p>Cada día hay carreras gratis que dan puntos y recompensas y gastan la condición del caballo. Con un día de descanso, el caballo recupera solo toda su fuerza. La comida o la recarga sirven para correr de más: entrenar, practicar o divertirse contra la IA.</p>
+    <h2 class="sub-title">Becas <span class="estado beta">Beta · diciembre</span></h2>
     <p>Una beca cubre la recarga durante 30 días: el becado compite y gana recompensas diarias y mensuales sin recargar. La beca que no se usa se retira y pasa a otro jugador.</p>
     <h2 class="sub-title">Juego limpio</h2>
     <ul class="doc-list">
         <li><strong>Habilidad:</strong> el resultado lo decide el jugador. La apariencia del caballo y del jinete es solo estética.</li>
-        <li><strong>Mayores de edad:</strong> cualquiera puede jugar; para cobrar recompensas hay que ser mayor de edad.</li>
+        <li><strong>Mayores de edad:</strong> cualquiera puede jugar; para comprar y recibir recompensas hay que ser mayor de 18 años.</li>
         <li><strong>Sin conflicto de intereses:</strong> ni el equipo de Brisas de Gloria ni sus familiares compiten por recompensas.</li>
     </ul>
     <h2 class="sub-title">Otras fuentes de ingreso</h2>
     <ul class="doc-list">
         <li><strong>Patrocinios integrados:</strong> vallas y marcas dentro del hipódromo 3D, visibles en carrera y en el photo finish, y copas con el nombre del patrocinador.</li>
-        <li><strong>Anuncios con recompensa:</strong> el jugador que no quiere pagar ve anuncios cortos y gana Centi.</li>
+        <li><strong>Publicidad:</strong> anuncios breves dentro del juego, que mantienen gratis la modalidad Amateur.</li>
         <li><strong>Marketplace:</strong> venta de caballos del proyecto, artículos y servicios, y comisión en la compra y venta entre jugadores.</li>
     </ul>
 </section>
@@ -510,10 +512,11 @@ footer.wp-footer p.brand {
 <section id="s06" class="wp-section">
     <h1 class="section-title">06 · Marketplace</h1>
     <p>Aquí no gana quien más compra: gana quien mejor compite. El caballo mejora la estrategia, pero nunca sustituye la habilidad.</p>
-    <h2 class="sub-title">Caballos del proyecto</h2>
-    <p>El proyecto siempre tiene caballos a la venta, de todas las razas, en su propio stock. El jugador elige la especialidad, le pone el nombre y el caballo recibe un número de registro único e inmutable. El proyecto vende un poco más caro que los jugadores: si alguien se pasa de precio, la gente le compra al proyecto, y así los precios se mantienen justos.</p>
+    <h2 class="sub-title">Caballos del proyecto <span class="estado disponible">Disponible</span></h2>
+    <p>El proyecto mantiene una reserva de caballos de todas las razas, con precios de referencia estables, para que siempre haya ejemplares para quien empieza. El jugador elige la especialidad, le pone el nombre y el caballo recibe un número de registro único e inmutable. Los caballos se adquieren por pares, para que el jugador combine sus especialidades y críe.</p>
+    <p>Todo caballo se puede mejorar, sin importar el precio al que se compró, e incluso el caballo gratuito puede volverse competitivo y venderse en el Marketplace.</p>
     <div class="callout">Oferta de lanzamiento: 2 caballos por el precio de 1, por tiempo limitado.</div>
-    <h2 class="sub-title">Escalones de especialización</h2>
+    <h2 class="sub-title">Escalones de especialización <span class="estado beta">Beta · diciembre</span></h2>
     <table class="doc-table">
         <tr><th>Precio</th><th>Pista</th><th>Distancia</th><th>Estilo</th><th>Clima</th><th>Condición de pista</th><th>Horario</th></tr>
         <tr><td>10 USD</td><td>1</td><td>1</td><td>1</td><td>Seco</td><td>Normal</td><td>1</td></tr>
@@ -525,21 +528,21 @@ footer.wp-footer p.brand {
     </table>
     <p><strong>Pista:</strong> grama o arena. <strong>Distancia:</strong> cortas, medianas o largas. <strong>Estilo:</strong> puntero, mediofondista o rematador. <strong>Clima:</strong> seco, lluvia o nieve. <strong>Condición de pista:</strong> normal, mojada o con restos de nieve. <strong>Horario:</strong> día o noche.</p>
     <div class="callout">Cada caballo es sobresaliente en su ambiente y compite allí contra los especialistas de ese ambiente. Fuera de su ambiente corre, pero rinde menos. El Todoterreno se desenvuelve en todas las condiciones y por eso se enfrenta a los mejores. El precio no compra victorias.</div>
-    <h2 class="sub-title">Ficha del caballo</h2>
+    <h2 class="sub-title">Ficha del caballo <span class="estado beta">Beta · diciembre</span></h2>
     <p>Identidad, especialización, constitución y musculatura, pelaje, medidas, patas y cascos, zancada, padres y vida deportiva. La ficha corta se ve en el Marketplace y la completa en el establo. En la Beta, solo la especialización influye en la carrera; lo demás es visual.</p>
-    <h2 class="sub-title">Compra y venta entre jugadores</h2>
-    <p>Cada jugador pone a la venta su caballo al precio que decida. Cada venta paga una comisión del 5 %. Los jugadores pueden crear su propio stud, con nombre y colores.</p>
-    <h2 class="sub-title">Cría</h2>
+    <h2 class="sub-title">Compra y venta entre jugadores <span class="estado desarrollo">En desarrollo</span></h2>
+    <p>El Marketplace es de los criadores: ellos fijan sus precios, comercian y hacen crecer el ecosistema. Cada jugador pone a la venta su caballo al precio que decida. Cada venta paga una comisión del 5 %. Los jugadores pueden crear su propio stud, con nombre y colores.</p>
+    <h2 class="sub-title">Cría <span class="estado desarrollo">En desarrollo</span></h2>
     <ul class="doc-list">
         <li>Dos caballos se aparean y nace uno solo. Los dos padres se retiran de la competencia.</li>
         <li>Se puede cruzar cualquier raza con cualquier especialización. El dueño decide cuándo aparear.</li>
-        <li>La cría hereda de los dos padres y nunca sale peor que ellos. De dos caballos económicos puede nacer un ejemplar excepcional.</li>
+        <li>La cría hereda de los dos padres y nunca sale peor que ellos: puede igualarlos o superarlos. De dos caballos económicos puede nacer un ejemplar excepcional.</li>
         <li>La cría no se aparea. Cada apareamiento y cada transferencia quedan en el registro genealógico.</li>
         <li>Dos Todoterreno apareados dan una cría Todoterreno que nace en el nivel 16.</li>
     </ul>
     <h2 class="sub-title">Vida deportiva</h2>
     <p>Cada caballo compite 12 temporadas cortas o una temporada larga. Al terminar, el dueño lo aparea o lo vende; si no, pasa a retirado y queda en el registro del juego.</p>
-    <h2 class="sub-title">Artículos y servicios</h2>
+    <h2 class="sub-title">Artículos y servicios <span class="estado beta">Beta · diciembre</span></h2>
     <table class="doc-table">
         <tr><th>Artículo o servicio</th><th>Precio</th></tr>
         <tr><td>Heno (recupera 10 %)</td><td>10 Centi</td></tr>
@@ -554,13 +557,11 @@ footer.wp-footer p.brand {
         <tr><td>Apareamiento</td><td>300 Centi</td></tr>
     </table>
     <div class="callout">Los cosméticos son solo identidad visual: Pay-to-Skin, nunca Pay-to-Win.</div>
-    <h2 class="sub-title">Edición Fundadores</h2>
-    <p>El nombre "Fundadores" queda reservado para una colección especial futura, con sus propias reglas. Se definirá más adelante, junto con la comunidad.</p>
 </section>
 
 <!-- 07 -->
 <section id="s07" class="wp-section">
-    <h1 class="section-title">07 · Monedas y Lanzamiento del $BDG</h1>
+    <h1 class="section-title">07 · Monedas</h1>
     <p>Para jugar no se necesita ninguna moneda: el juego es gratis.</p>
 
     <div class="tier-card cobre">
@@ -571,7 +572,7 @@ footer.wp-footer p.brand {
                 <span class="tier-tag">Moneda de Utilidad</span>
             </div>
             <p><strong>Naturaleza:</strong> la moneda gratis del juego y la centésima parte de una Gloria (registro en base de datos).</p>
-            <p><strong>Uso:</strong> se gana jugando y viendo anuncios cortos; sirve para comida, cuidados, entrenamiento, equipo y cosméticos. No se convierte a dinero real.</p>
+            <p><strong>Uso:</strong> se gana jugando; sirve para comida, cuidados, entrenamiento, equipo y cosméticos. No se convierte a dinero real.</p>
         </div>
     </div>
 
@@ -594,15 +595,13 @@ footer.wp-footer p.brand {
                 <span class="tier-name">$BDG</span>
                 <span class="tier-tag">Moneda del Ecosistema</span>
             </div>
-            <p><strong>Naturaleza:</strong> la moneda de todo el ecosistema de IA Power Tech. Arranca como moneda interna y pasará a token cuando cuente con el aval legal correspondiente; desde entonces, su valor lo fijará el mercado.</p>
-            <p><strong>Uso:</strong> comprar Gloria, patrocinios corporativos y gobernanza; como token, también intercambio en exchanges. No financia recompensas hasta tener aval legal.</p>
+            <p>La moneda del ecosistema de IA Power Tech.</p>
         </div>
     </div>
 
     <table class="doc-table">
         <tr><th>Equivalencias</th></tr>
         <tr><td>1 Gloria = 1 USD = 100 Centi</td></tr>
-        <tr><td>Con $BDG se compra Gloria; cuando $BDG sea token, al valor de mercado del día</td></tr>
     </table>
 
     <h2 class="sub-title">Por qué Gloria y Centi fuera de blockchain</h2>
@@ -611,34 +610,6 @@ footer.wp-footer p.brand {
     <h2 class="sub-title">Sumideros de moneda</h2>
     <p>Para que la economía no se infle, las monedas salen de circulación al usarse: comida, cuidados, entrenamiento, cosméticos, cambio de nombre, stud propio y apareamiento. Lo indispensable para competir no se cobra en Gloria.</p>
 
-    <h2 class="sub-title">Algoritmo SSDP (visión de Marketplace)</h2>
-    <div class="callout">Motor de valoración planeado para el mercado entre jugadores; todavía no está activo. Ya existen en el juego la pista (grama y arena), la distancia, el estilo, el clima, la condición de la pista y el horario, que serán su base.</div>
-    <p>La <strong>Suma Ponderada de Desempeño y Perfil (SSDP)</strong> calculará un valor de referencia para cada caballo según su especialización, su historial deportivo y las temporadas que le quedan, para evitar burbujas de precio.</p>
-
-    <h2 class="sub-title">Propuesta Inicial de Tokenomics</h2>
-    <table class="doc-table">
-        <tr><th>Categoría</th><th>Asignación</th><th>Propósito</th></tr>
-        <tr><td>Tesoro de Respaldo (Treasury)</td><td>40%</td><td>Respalda la conversión Gloria ⇄ $BDG; no se distribuye directamente</td></tr>
-        <tr><td>Fundador y Futuro Equipo</td><td>15%</td><td>Con vesting progresivo; incluye contratación de profesionales a futuro</td></tr>
-        <tr><td>Desarrollo y operaciones</td><td>20%</td><td>Financiar el desarrollo continuo del juego</td></tr>
-        <tr><td>Patrocinadores e inversionistas</td><td>15%</td><td>Alianzas estratégicas y capital semilla</td></tr>
-        <tr><td>Reserva / liquidez</td><td>10%</td><td>Estabilidad del token en mercados</td></tr>
-    </table>
-    <div class="callout">Suministro total propuesto: 1.800.000.000 $BDG, en guiño a los 1.800 metros, una distancia clásica del hipódromo. Cifra preliminar, sujeta a ajuste antes del lanzamiento, previsto desde junio de 2027 y siempre con aval legal.</div>
-
-    <h2 class="sub-title">Hoja de ruta del token</h2>
-    <table class="doc-table">
-        <tr><th>Etapa</th><th>Objetivo</th></tr>
-        <tr><td>1. Fundamentos</td><td>Jurisdicción, forma legal, elección de blockchain y asesoría legal</td></tr>
-        <tr><td>2. Diseño económico</td><td>Suministro, precio de preventa, distribución y vesting definitivos</td></tr>
-        <tr><td>3. Desarrollo técnico</td><td>Contrato inteligente del $BDG y auditoría de seguridad externa</td></tr>
-        <tr><td>4. Venta privada</td><td>Capital inicial de inversionistas estratégicos</td></tr>
-        <tr><td>5. Venta pública y listado</td><td>Launchpad, exchanges o DEX, y campaña de difusión</td></tr>
-        <tr><td>6. Liquidez</td><td>Fondos de liquidez y bloqueo de liquidez</td></tr>
-        <tr><td>7. Integración al juego</td><td>Depósito y retiro Gloria ⇄ $BDG dentro de Brisas de Gloria, con límites y comisión de salida</td></tr>
-        <tr><td>8. Comunidad y gobernanza</td><td>Canales oficiales, votaciones y reportes de transparencia</td></tr>
-    </table>
-    <div class="callout">Permitir la conversión de vuelta a $BDG puede tener tratamiento regulatorio según el país. Este mecanismo se activa solo con asesoría legal específica.</div>
 </section>
 
 <!-- 08 -->
@@ -648,9 +619,8 @@ footer.wp-footer p.brand {
         <tr><th>Fase</th><th>Estado</th><th>Contenido</th></tr>
         <tr><td>Fase 1 — Pre-Alfa</td><td><span style="color:#c5a059;">● Completada</span> — septiembre y octubre de 2026</td><td>Pruebas de rendimiento y mecánicas; versiones web, Android y Windows</td></tr>
         <tr><td>Fase 2 — Alfa</td><td><span style="color:#c5a059;">● En curso</span> — desde el 1 de noviembre de 2026</td><td>Desafío Multijugador, clima, noche y condición de pista, comunidad en Discord, Marketplace con el Caballo Retador</td></tr>
-        <tr><td>Fase 3 — Beta Pública</td><td><span style="color:#6b7280;">● Pendiente</span> — diciembre de 2026</td><td>Grados de dificultad, primera temporada con recompensas, carreras de 1 USD, becas y Marketplace completo</td></tr>
+        <tr><td>Fase 3 — Beta Pública</td><td><span style="color:#c5a059;">● Diciembre de 2026</span></td><td>Grados de dificultad, primera temporada con recompensas, carreras de 1 USD, becas y Marketplace completo</td></tr>
         <tr><td>Fase 4 — Patrocinadores</td><td><span style="color:#6b7280;">● Pendiente</span></td><td>Vallas en el hipódromo y copas patrocinadas</td></tr>
-        <tr><td>Fase 5 — $BDG como token</td><td><span style="color:#6b7280;">● Pendiente</span> — desde 2027, con aval legal</td><td>Ver la hoja de ruta del token en la sección 07</td></tr>
     </table>
 </section>
 
@@ -683,13 +653,13 @@ footer.wp-footer p.brand {
 <!-- 10 -->
 <section id="s10" class="wp-section">
     <h1 class="section-title">10 · Aviso Legal</h1>
-    <p>Este whitepaper es un documento informativo, vivo y en actualización continua. No constituye una oferta de venta de valores ni una promesa de rendimiento financiero. Los detalles del token $BDG —suministro, distribución y blockchain— son propuestas preliminares sujetas a cambios y a revisión legal antes de cualquier lanzamiento. En Brisas de Gloria las recompensas se obtienen por habilidad, y para cobrar recompensas hay que ser mayor de edad. Las funciones marcadas como futuras pueden cambiar.</p>
+    <p>Este whitepaper es un documento informativo, vivo y en actualización continua. No constituye una oferta de venta de valores ni una promesa de rendimiento financiero. Los caballos y artículos del Marketplace son bienes digitales para usar dentro del juego, no una inversión. En Brisas de Gloria las recompensas se obtienen por habilidad, y para comprar y recibir recompensas hay que ser mayor de 18 años. Las funciones marcadas como "En desarrollo" pueden cambiar.</p>
 </section>
 
 <!-- 11 -->
 <section id="s11" class="wp-section">
     <h1 class="section-title">11 · Conclusión</h1>
-    <p>Brisas de Gloria une una tradición deportiva centenaria con tecnología 3D moderna y con Gloria como embajadora de marca. Es gratis para quien quiera disfrutarlo, y para quien quiera competir ofrece recompensas que se ganan con habilidad, en un modelo transparente. Con una Alfa jugable, un Marketplace en marcha y una hoja de ruta clara, el proyecto avanza hacia un ecosistema completo: juego, comunidad y token.</p>
+    <p>Brisas de Gloria une una tradición deportiva centenaria con tecnología 3D moderna y con Gloria como embajadora de marca. Es gratis para quien quiera disfrutarlo, y para quien quiera competir ofrece recompensas que se ganan con habilidad, en un modelo transparente. Con una Alfa jugable, un Marketplace en marcha y una hoja de ruta clara, el proyecto avanza hacia un ecosistema completo: juego, comunidad y Marketplace.</p>
     <div class="gold-rule"></div>
     <p style="text-align:center; font-family:'Cinzel',serif; color:#f3e5ab; letter-spacing:1px;">En Brisas de Gloria, tu habilidad marca la diferencia.</p>
     <p style="text-align:center; font-style:italic; color:#c5a059; margin-top:8px;">Siente los vientos del triunfo. Vive las brisas del placer. Corre por tu gloria.</p>
