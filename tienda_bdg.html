@@ -90,6 +90,7 @@
     .tipos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 10px; }
     .tipo { padding: 7px 4px; border-radius: 9px; border: 1.5px solid rgba(197,160,89,.45); background: #0d1322; color: #fff; font-weight: 800; font-size: 12px; cursor: pointer; }
     .tipo small { display: block; font-weight: 700; font-size: 10.5px; color: var(--dorado-claro); }
+    .tipo.incognita { opacity: .55; cursor: not-allowed; border-style: dashed; }
     .tipo.activo { border-color: #ffe9a8; box-shadow: 0 0 0 2px rgba(255,233,168,.35), 0 0 12px rgba(255,214,106,.6); }
     .pestanas { display: flex; gap: 6px; margin-top: 12px; justify-content: center; }
     .pestana { padding: 6px 12px; border-radius: 999px; border: 1.5px solid #8f6d2b; background: #0b0f19; color: #fff; font-weight: 800; font-size: 12px; cursor: pointer; }
@@ -264,6 +265,9 @@
     .tabla-esc td { padding: 6px 2px; border-bottom: 1px solid #222b42; color: var(--texto); }
     .tabla-esc td:first-child { font-weight: 800; color: #fff; white-space: nowrap; }
     .tabla-esc tr.tt td { color: var(--dorado-claro); font-weight: 800; }
+    .tabla-esc .tt-sub { display: block; font-size: 8.5px; font-weight: 700; letter-spacing: .5px; color: var(--dorado-claro); }
+    .tabla-esc tr.incognita td { color: var(--suave); font-style: italic; }
+    .nota-tabla { margin-top: 8px; font-size: 11.5px; line-height: 1.5; color: var(--suave); }
 
     /* ---------- rediseño 19-nov: barra superior y "Cómo funciona" en tarjetas ---------- */
     .barra-mk { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 20px; padding: 11px 14px; background: rgba(8,12,22,.94); backdrop-filter: blur(6px); border-bottom: 1px solid #1c2740; }
@@ -416,23 +420,24 @@
         <div class="punto-mk"><h4><span>1</span>Caballos del proyecto</h4>
             <p>El proyecto siempre tiene caballos a la venta, de todas las razas. Tú eliges la especialidad de cada uno, le pones el nombre y recibe su número de registro único.</p>
             <table class="tabla-esc">
-                <tr><th>Precio</th><th>Pista</th><th>Distancia</th><th>Estilo</th><th>Clima</th><th>Cond. de pista</th><th>Horario</th></tr>
-                <tr><td>10 USD</td><td>1</td><td>1</td><td>1</td><td>Seco</td><td>Normal</td><td>1</td></tr>
-                <tr><td>20 USD</td><td>2</td><td>2</td><td>1</td><td>Seco</td><td>Normal</td><td>1</td></tr>
-                <tr><td>40 USD</td><td>2</td><td>2</td><td>2</td><td>Seco</td><td>Normal y mojada</td><td>2</td></tr>
-                <tr><td>60 USD</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
-                <tr><td>80 USD</td><td>2</td><td>3</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
-                <tr class="tt"><td>100 USD</td><td colspan="6">TODOTERRENO: todo de todo</td></tr>
+                <tr><th>Tipo</th><th>Precio</th><th>Pista (de 2)</th><th>Distancias (de 3)</th><th>Estilo (de 3)</th><th>Clima (de 3)</th><th>Horario (de 2)</th></tr>
+                <tr><td>Cobre</td><td>10 Gloria</td><td>1 pista</td><td>1 grupo</td><td>1 estilo</td><td>Seco</td><td>1 horario</td></tr>
+                <tr><td>Plata</td><td>20 Gloria</td><td>1 pista</td><td>2 grupos vecinos</td><td>1 estilo</td><td>Seco</td><td>1 horario</td></tr>
+                <tr><td>Oro</td><td>40 Gloria</td><td>Ambas pistas</td><td>2 grupos vecinos</td><td>2 estilos</td><td>2 climas, incluye seco</td><td>Ambos</td></tr>
+                <tr><td>Platino</td><td>60 Gloria</td><td>Ambas pistas</td><td>Los 3 grupos</td><td>2 estilos</td><td>2 climas, incluye seco</td><td>Ambos</td></tr>
+                <tr class="tt"><td>Diamante<small class="tt-sub">Todoterreno</small></td><td>100 Gloria</td><td>Ambas pistas</td><td>Los 3 grupos</td><td>Los 3 estilos</td><td>Los 3 climas</td><td>Ambos</td></tr>
+                <tr class="incognita"><td>Imperial</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr>
             </table>
+            <p class="nota-tabla">La condición de pista va con el clima: seco con pista normal, lluvia con pista mojada y nieve con restos de nieve. Dos grupos de distancia van juntos solo si son vecinos: cortas con medianas, o medianas con largas.<br>Recarga Gloria con USDT por la red BSC, el monto que quieras (1 USDT = 1 Gloria), y con tu Gloria compras en el Marketplace.</p>
             <details class="explica"><summary>Ver explicación</summary><div class="nota">
                 <table class="tabla-seg">
                     <tr><td>Pista</td><td>Grama o arena</td></tr>
-                    <tr><td>Distancias cortas</td><td>800 m (grama) · 1100 m (arena) · 1200 m</td></tr>
-                    <tr><td>Distancias medianas</td><td>1600 m (grama) · 1900 m (arena)</td></tr>
-                    <tr><td>Distancias largas</td><td>2000 m · 2400 m · 3000 m</td></tr>
+                    <tr><td>Distancias cortas</td><td>800 m (grama) · 1100 m (arena) · 1200 m (grama)</td></tr>
+                    <tr><td>Distancias medianas</td><td>1600 m (grama) · 1800 m (arena)</td></tr>
+                    <tr><td>Distancias largas</td><td>2000 m (grama) · 2400 m (grama) · 2500 m (arena, 3 vueltas) · 3000 m (grama)</td></tr>
                     <tr><td>Estilo</td><td>Puntero, mediofondista o rematador</td></tr>
                     <tr><td>Clima</td><td>Seco, lluvia o nieve</td></tr>
-                    <tr><td>Condición de pista</td><td>Normal, mojada o con restos de nieve</td></tr>
+                    <tr><td>Condición de pista</td><td>Va con el clima: normal, mojada o con restos de nieve</td></tr>
                     <tr><td>Horario</td><td>Diurno o nocturno</td></tr>
                 </table>
                 Se irán sumando nuevas distancias.<br>Compra en par y combina: por ejemplo, uno de distancias cortas y otro de largas. Al aparearlos, la cría hereda lo de los dos.</div></details>
@@ -821,13 +826,16 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     };
     const NOMBRE_SEGMENTO = { pista: "Pista", distancia: "Distancias", estilo: "Estilo", clima: "Clima", condicion: "Condición de pista", horario: "Horario" };
     const TIPOS_CABALLO = {
-        cobre:    { nombre: "Cobre",    precio: 10,  pista: { n: 1 }, distancia: { n: 1 }, estilo: { n: 1 }, clima: { fijo: ["seco"] }, condicion: { fijo: ["normal"] }, horario: { n: 1 } },
-        plata:    { nombre: "Plata",    precio: 20,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 1 }, clima: { fijo: ["seco"] }, condicion: { fijo: ["normal"] }, horario: { n: 1 } },
-        oro:      { nombre: "Oro",      precio: 40,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 2 }, clima: { fijo: ["seco"] }, condicion: { fijo: ["normal", "mojada"] }, horario: { n: 2 } },
-        platino:  { nombre: "Platino",  precio: 60,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { n: 2, incluye: "normal" }, horario: { n: 2 } },
-        diamante: { nombre: "Diamante", precio: 80,  pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { n: 2, incluye: "normal" }, horario: { n: 2 } },
-        imperial: { nombre: "Imperial", precio: 100, pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 3 }, clima: { n: 3 }, condicion: { n: 3 }, horario: { n: 2 } }
+        cobre:    { nombre: "Cobre",    precio: 10,  pista: { n: 1 }, distancia: { n: 1 }, estilo: { n: 1 }, clima: { fijo: ["seco"] },       condicion: { sigue_clima: true }, horario: { n: 1 } },
+        plata:    { nombre: "Plata",    precio: 20,  pista: { n: 1 }, distancia: { n: 2 }, estilo: { n: 1 }, clima: { fijo: ["seco"] },       condicion: { sigue_clima: true }, horario: { n: 1 } },
+        oro:      { nombre: "Oro",      precio: 40,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { sigue_clima: true }, horario: { n: 2 } },
+        platino:  { nombre: "Platino",  precio: 60,  pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { sigue_clima: true }, horario: { n: 2 } },
+        diamante: { nombre: "Diamante", precio: 100, pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 3 }, clima: { n: 3 },               condicion: { sigue_clima: true }, horario: { n: 2 } }
     };
+    // La condición de pista va con el clima (no se escoge aparte).
+    const CONDICION_DEL_CLIMA = { seco: "normal", lluvia: "mojada", nieve: "restos de nieve" };
+    // Tipo futuro: se muestra cerrado, con incógnita.
+    const TIPO_INCOGNITA = "Imperial";
     const CABALLOS_POR_COMPRA = OFERTA_2X1 ? 2 : 1;
     // "valor" es lo que recibe el cobrador; "nombre" y "estilo" es lo que ve el jugador.
     // Para agregar una raza nueva, se agrega un renglón.
@@ -907,8 +915,10 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
         caballoActivo = 0;
     }
     function reglaDe(s) { return TIPOS_CABALLO[tipoEscogido][s]; }
+    function condicionDe(climas) { return OPCIONES.condicion.filter((x) => climas.some((cl) => CONDICION_DEL_CLIMA[cl] === x)); }
     function valorInicial(s) {
         const r = reglaDe(s), op = OPCIONES[s];
+        if (r.sigue_clima) return condicionDe(valorInicial("clima"));
         if (r.fijo) return r.fijo.slice();
         if (r.n >= op.length) return op.slice();
         return r.incluye ? [r.incluye] : [];
@@ -952,7 +962,8 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 
     // ---------- tipos, pestañas y segmentos ----------
     $("tipos").innerHTML = Object.entries(TIPOS_CABALLO).map(([clave, tp]) =>
-        '<button class="tipo" type="button" data-tipo="' + clave + '">' + tp.nombre + "<small>" + tp.precio + " Gloria</small></button>").join("");
+        '<button class="tipo" type="button" data-tipo="' + clave + '">' + tp.nombre + "<small>" + tp.precio + " Gloria</small></button>").join("") +
+        '<button class="tipo incognita" type="button" disabled>' + TIPO_INCOGNITA + " 🔒<small>? Gloria</small></button>";
     $("tipos").addEventListener("click", (ev) => {
         const b = ev.target.closest("button[data-tipo]");
         if (!b) return;
@@ -979,6 +990,7 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
             while (lista.length > r.n) { const i = lista.findIndex((x) => x !== r.incluye); lista.splice(i, 1); }
         }
         caballos[caballoActivo].segmentos[s] = OPCIONES[s].filter((x) => lista.includes(x));
+        if (s === "clima") caballos[caballoActivo].segmentos.condicion = condicionDe(caballos[caballoActivo].segmentos.clima);
         pintarCompra();
     });
     function pintarCompra() {
@@ -998,8 +1010,8 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
         $("texto_eleccion").textContent = "2. Escoge la raza del caballo " + (caballoActivo + 1);
         $("segmentos").innerHTML = Object.keys(OPCIONES).map((s) => {
             const r = reglaDe(s), op = OPCIONES[s];
-            const fijo = !!r.fijo || r.n >= op.length;
-            const nota = fijo ? "incluido" : "escoge " + r.n;
+            const fijo = !!r.fijo || !!r.sigue_clima || r.n >= op.length;
+            const nota = r.sigue_clima ? "va con el clima" : fijo ? "incluido" : "escoge " + r.n;
             return '<div class="segmento"><b>' + NOMBRE_SEGMENTO[s] + " <small>(" + nota + ")</small></b><div class=\"chips\">" +
                 op.filter((o) => !fijo || c.segmentos[s].includes(o)).map((o) =>
                     '<button type="button" class="chip' + (c.segmentos[s].includes(o) ? " si" : "") + (fijo || o === r.incluye ? " fijo" : "") +
@@ -1012,7 +1024,7 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
             if (!c.raza) return "Escoge la raza del caballo " + (i + 1) + ".";
             for (const s of Object.keys(OPCIONES)) {
                 const r = reglaDe(s);
-                if (!r.fijo && r.n < OPCIONES[s].length && c.segmentos[s].length !== r.n)
+                if (!r.fijo && !r.sigue_clima && r.n < OPCIONES[s].length && c.segmentos[s].length !== r.n)
                     return "Caballo " + (i + 1) + ": en " + NOMBRE_SEGMENTO[s].toLowerCase() + " escoge " + r.n + ".";
                 if (s === "distancia" && c.segmentos[s].length === 2 && !c.segmentos[s].includes("medianas"))
                     return "Caballo " + (i + 1) + ": las distancias van juntas solo si son vecinas (cortas con medianas, o medianas con largas).";
