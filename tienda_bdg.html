@@ -80,13 +80,27 @@
     .r-naranja .rotulo { background: linear-gradient(180deg, #e2702a, #a2400c); }
     .r-violeta .rotulo { background: linear-gradient(180deg, #7f45c9, #4a2286); }
     .raza.escogida { border-color: #ffe9a8; box-shadow: 0 0 0 2px rgba(255,233,168,.35), 0 0 16px rgba(255,214,106,.75); }
-    .raza.escogida::after { content: "✓"; position: absolute; right: 4px; top: 4px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(180deg, #fff1bd, #c5a059); color: #1a1205; font-size: 12px; font-weight: 800; box-shadow: 0 1px 4px rgba(0,0,0,.6); }
+    .raza.escogida::after { content: attr(data-marca); position: absolute; right: 4px; top: 4px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(180deg, #fff1bd, #c5a059); color: #1a1205; font-size: 12px; font-weight: 800; box-shadow: 0 1px 4px rgba(0,0,0,.6); }
     .mas-razas { margin-top: 8px; font-size: 11px; color: var(--dorado-claro); font-weight: 600; opacity: .85; }
     .comprar { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; gap: 10px; width: 80%; height: 56px; margin: 12px auto 0; border-radius: 12px; border: 2px solid #5a4010; background: linear-gradient(180deg, #fff6cf 0%, #f2d77f 38%, #d4af37 62%, #a7801c 100%); box-shadow: 0 0 22px rgba(255,214,106,.55), inset 0 2px 0 rgba(255,255,255,.7), inset 0 -3px 0 rgba(0,0,0,.18); color: #1a1205; font-family: 'Cinzel', serif; font-weight: 800; font-size: 22px; letter-spacing: 1px; }
     .comprar::before { content: ""; position: absolute; top: -30%; bottom: -30%; left: -30%; width: 40px; transform: skewX(-22deg); background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.7), rgba(255,255,255,0)); animation: brillo 5s ease-in-out infinite; }
     @keyframes brillo { 0%, 70% { left: -30%; } 100% { left: 130%; } }
     .comprar small { position: relative; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 11px; letter-spacing: .5px; padding: 3px 7px; border-radius: 6px; background: #1a1205; color: var(--dorado-claro); }
     .comprar:disabled { filter: grayscale(.6) brightness(.8); cursor: wait; }
+    .tipos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 10px; }
+    .tipo { padding: 7px 4px; border-radius: 9px; border: 1.5px solid rgba(197,160,89,.45); background: #0d1322; color: #fff; font-weight: 800; font-size: 12px; cursor: pointer; }
+    .tipo small { display: block; font-weight: 700; font-size: 10.5px; color: var(--dorado-claro); }
+    .tipo.activo { border-color: #ffe9a8; box-shadow: 0 0 0 2px rgba(255,233,168,.35), 0 0 12px rgba(255,214,106,.6); }
+    .pestanas { display: flex; gap: 6px; margin-top: 12px; justify-content: center; }
+    .pestana { padding: 6px 12px; border-radius: 999px; border: 1.5px solid #8f6d2b; background: #0b0f19; color: #fff; font-weight: 800; font-size: 12px; cursor: pointer; }
+    .pestana.activa { background: linear-gradient(180deg, #fff1bd, #c5a059); color: #1a1205; }
+    .segmentos { margin-top: 10px; display: grid; gap: 7px; text-align: left; }
+    .segmento b { display: block; font-size: 11.5px; color: var(--dorado-claro); margin-bottom: 3px; }
+    .segmento b small { color: #cbd5e1; font-weight: 600; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .chip { padding: 5px 10px; border-radius: 999px; border: 1.3px solid #3a4560; background: #0d1322; color: #e5e7eb; font-size: 11.5px; font-weight: 700; cursor: pointer; }
+    .chip.si { border-color: #ffe9a8; background: linear-gradient(180deg, #fff1bd, #c5a059); color: #1a1205; }
+    .chip.fijo { cursor: default; opacity: .9; }
     .pago { margin-top: 9px; font-size: 10.5px; color: #cbd5e1; line-height: 1.5; }
     .aviso { margin-top: 8px; font-size: 12.5px; min-height: 16px; line-height: 1.5; }
     .aviso.error { color: #fca5a5; }
@@ -129,6 +143,10 @@
     .fortuna .texto { position: relative; flex: 1; padding: 12px 12px 12px 4px; text-align: center; }
     .fortuna h4 { font-family: 'Cinzel', serif; font-weight: 800; font-size: 17px; line-height: 1.1; filter: drop-shadow(0 2px 2px rgba(0,0,0,.8)); }
     .fortuna p { margin-top: 5px; font-size: 11.5px; line-height: 1.4; color: #fff; text-shadow: 0 1px 3px #000; }
+    .recarga { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+    .recarga input { width: 110px; height: 36px; border-radius: 9px; border: 1.5px solid #8f6d2b; background: #0b0f19; color: #fff; font-weight: 800; font-size: 15px; padding: 0 9px; }
+    .recarga .unidad { font-weight: 800; color: var(--dorado-claro); font-size: 13px; }
+    .recarga .aviso { flex-basis: 100%; }
     .fortuna p.cambio { font-size: 10.5px; color: var(--dorado-claro); margin-top: 3px; font-weight: 700; }
     .fortuna .boton { display: inline-block; margin-top: 8px; padding: 9px 18px; border-radius: 10px; border: 1.5px solid #5a4010; background: linear-gradient(180deg, #fff6cf 0%, #f2d77f 40%, #d4af37 65%, #a7801c 100%); box-shadow: 0 0 14px rgba(255,214,106,.45), inset 0 1px 0 rgba(255,255,255,.7); color: #1a1205; font-family: 'Cinzel', serif; font-weight: 800; font-size: 13px; letter-spacing: .5px; }
 
@@ -326,13 +344,18 @@
         <span class="cinta">OFERTA DE LANZAMIENTO</span>
         <span class="liga-cinta">LIGA COBRE</span>
         <div class="contenido">
-            <h2 class="foil" id="nombre_producto">Caballo Retador</h2>
-            <p class="sub">Elige tu raza favorita</p>
+            <h2 class="foil" id="nombre_producto">Caballo Cobre</h2>
+            <p class="sub">1. Escoge el tipo de caballo</p>
+            <div class="tipos" id="tipos"></div>
+            <div class="pestanas" id="pestanas"></div>
+            <p class="sub" id="texto_eleccion">2. Escoge su raza</p>
             <div class="razas" id="razas"></div>
+            <p class="sub">3. Escoge sus segmentos</p>
+            <div class="segmentos" id="segmentos"></div>
             <p class="mas-razas">✦ Más razas muy pronto ✦</p>
             <div class="promo-lanzamiento"><b>2 CABALLOS POR EL PRECIO DE 1</b><span>Compra un caballo y llévate otro sin costo. Oferta de lanzamiento por tiempo limitado.</span></div>
-            <button class="comprar" id="boton_pagar" type="button"><span id="precio_producto">10</span> USDT <small>COMPRAR</small></button>
-            <p class="pago">Pagas con USDT por la red BSC (BNB Smart Chain).<br>Al confirmarse, recibes tu comprobante por correo.</p>
+            <button class="comprar" id="boton_pagar" type="button"><span id="precio_producto">10</span> GLORIA <small>COMPRAR</small></button>
+            <p class="pago">Pagas con tu saldo de Gloria. ¿No tienes suficiente? Recárgala más abajo con USDT (1 USDT = 1 Gloria).</p>
             <div id="aviso_tienda" class="aviso"></div>
         </div>
     </section>
@@ -371,7 +394,13 @@
             <h4 class="foil">Tu fortuna en el hipódromo</h4>
             <div class="vias-monedas"><span><b>RECARGA</b> tu saldo de Gloria con USDT</span><span class="o">o</span><span><b>GANA CENTI GRATIS</b> jugando</span></div>
             <p class="cambio">1 Gloria = 1 USD = 100 Centi</p>
-            <button class="boton" type="button" data-pronto="Las recargas de Gloria abren muy pronto.">OBTENER MONEDAS</button>
+            <button class="boton" type="button" id="boton_obtener_monedas">OBTENER MONEDAS</button>
+            <div class="recarga oculto" id="panel_recarga">
+                <input type="number" id="monto_recarga" min="0" step="1" inputmode="decimal" placeholder="Monto" aria-label="Monto a recargar en USDT">
+                <span class="unidad">USDT = Gloria</span>
+                <button class="boton" type="button" id="boton_recargar">RECARGAR</button>
+                <div id="aviso_recarga" class="aviso"></div>
+            </div>
         </div>
     </section>
 
@@ -782,7 +811,24 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 
     // ---------- AJUSTES (se cambian aquí) ----------
     const DIRECCION_COBRADOR = "https://cobrador-pagos-bdg.brisasdegloriaoficial.workers.dev/crear-cobro";
-    const PRECIO_PRODUCTO = 10;
+    // ----- VALOR AJUSTABLE: oferta de lanzamiento 2x1 (true = se escogen 2 caballos; false = 1) -----
+    const OFERTA_2X1 = true;
+    const BASE_COBRADOR = DIRECCION_COBRADOR.replace("/crear-cobro", "");
+    // ----- TIPOS DE CABALLO (deben ser iguales a los del cobrador) -----
+    const OPCIONES = {
+        pista: ["grama", "arena"], distancia: ["cortas", "medianas", "largas"], estilo: ["puntero", "mediofondista", "rematador"],
+        clima: ["seco", "lluvia", "nieve"], condicion: ["normal", "mojada", "restos de nieve"], horario: ["diurno", "nocturno"]
+    };
+    const NOMBRE_SEGMENTO = { pista: "Pista", distancia: "Distancias", estilo: "Estilo", clima: "Clima", condicion: "Condición de pista", horario: "Horario" };
+    const TIPOS_CABALLO = {
+        cobre:    { nombre: "Cobre",    precio: 10,  pista: { n: 1 }, distancia: { n: 1 }, estilo: { n: 1 }, clima: { fijo: ["seco"] }, condicion: { fijo: ["normal"] }, horario: { n: 1 } },
+        plata:    { nombre: "Plata",    precio: 20,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 1 }, clima: { fijo: ["seco"] }, condicion: { fijo: ["normal"] }, horario: { n: 1 } },
+        oro:      { nombre: "Oro",      precio: 40,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 2 }, clima: { fijo: ["seco"] }, condicion: { fijo: ["normal", "mojada"] }, horario: { n: 2 } },
+        platino:  { nombre: "Platino",  precio: 60,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { n: 2, incluye: "normal" }, horario: { n: 2 } },
+        diamante: { nombre: "Diamante", precio: 80,  pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { n: 2, incluye: "normal" }, horario: { n: 2 } },
+        imperial: { nombre: "Imperial", precio: 100, pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 3 }, clima: { n: 3 }, condicion: { n: 3 }, horario: { n: 2 } }
+    };
+    const CABALLOS_POR_COMPRA = OFERTA_2X1 ? 2 : 1;
     // "valor" es lo que recibe el cobrador; "nombre" y "estilo" es lo que ve el jugador.
     // Para agregar una raza nueva, se agrega un renglón.
     const RAZAS_A_LA_VENTA = [
@@ -850,10 +896,23 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     const auth = getAuth(app);
 
     const $ = (id) => document.getElementById(id);
-    let razaEscogida = RAZAS_A_LA_VENTA[0].valor;
     let jugador = null;
-
-    $("precio_producto").textContent = PRECIO_PRODUCTO;
+    let tipoEscogido = "cobre";
+    let caballoActivo = 0;
+    let caballos = [];
+    function caballoNuevo() { return { raza: "", segmentos: {} }; }
+    function reiniciarCaballos() {
+        caballos = Array.from({ length: CABALLOS_POR_COMPRA }, caballoNuevo);
+        caballos.forEach((c) => Object.keys(OPCIONES).forEach((s) => { c.segmentos[s] = valorInicial(s); }));
+        caballoActivo = 0;
+    }
+    function reglaDe(s) { return TIPOS_CABALLO[tipoEscogido][s]; }
+    function valorInicial(s) {
+        const r = reglaDe(s), op = OPCIONES[s];
+        if (r.fijo) return r.fijo.slice();
+        if (r.n >= op.length) return op.slice();
+        return r.incluye ? [r.incluye] : [];
+    }
     $("defs_dibujos").innerHTML = DEFS_DIBUJOS;
     document.querySelectorAll("img[data-moneda]").forEach((i) => { i.src = IMAGENES["moneda_" + i.dataset.moneda]; });
 
@@ -881,16 +940,88 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 
     // ---------- razas ----------
     $("razas").innerHTML = RAZAS_A_LA_VENTA.map((r, i) =>
-        '<button class="raza ' + r.color + (i === 0 ? " escogida" : "") + '" type="button" data-raza="' + r.valor + '" aria-label="Raza ' + r.nombre + '">' +
+        '<button class="raza ' + r.color + '" type="button" data-raza="' + r.valor + '" aria-label="Raza ' + r.nombre + '">' +
         '<div class="foto" style="background-image:url(' + r.foto + ");background-position:" + r.encuadre + '"></div>' +
         '<div class="rotulo">' + r.nombre + "<small>" + r.estilo + "</small></div></button>").join("");
     $("razas").addEventListener("click", (ev) => {
         const b = ev.target.closest("button[data-raza]");
         if (!b) return;
-        document.querySelectorAll(".raza").forEach((x) => x.classList.remove("escogida"));
-        b.classList.add("escogida");
-        razaEscogida = b.dataset.raza;
+        caballos[caballoActivo].raza = b.dataset.raza;
+        pintarCompra();
     });
+
+    // ---------- tipos, pestañas y segmentos ----------
+    $("tipos").innerHTML = Object.entries(TIPOS_CABALLO).map(([clave, tp]) =>
+        '<button class="tipo" type="button" data-tipo="' + clave + '">' + tp.nombre + "<small>" + tp.precio + " Gloria</small></button>").join("");
+    $("tipos").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button[data-tipo]");
+        if (!b) return;
+        tipoEscogido = b.dataset.tipo;
+        reiniciarCaballos();
+        pintarCompra();
+    });
+    $("pestanas").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button[data-caballo]");
+        if (!b) return;
+        caballoActivo = Number(b.dataset.caballo);
+        pintarCompra();
+    });
+    $("segmentos").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button[data-seg]");
+        if (!b || b.classList.contains("fijo")) return;
+        const s = b.dataset.seg, o = b.dataset.op, r = reglaDe(s);
+        let lista = caballos[caballoActivo].segmentos[s].slice();
+        if (lista.includes(o)) {
+            if (o !== r.incluye) lista = lista.filter((x) => x !== o);
+        } else {
+            lista.push(o);
+            // si se pasa de la cuenta, sale la más vieja (nunca la que siempre va)
+            while (lista.length > r.n) { const i = lista.findIndex((x) => x !== r.incluye); lista.splice(i, 1); }
+        }
+        caballos[caballoActivo].segmentos[s] = OPCIONES[s].filter((x) => lista.includes(x));
+        pintarCompra();
+    });
+    function pintarCompra() {
+        const tp = TIPOS_CABALLO[tipoEscogido];
+        $("nombre_producto").textContent = "Caballo " + tp.nombre;
+        document.querySelector(".liga-cinta").textContent = "LIGA " + tp.nombre.toUpperCase();
+        $("precio_producto").textContent = tp.precio;
+        document.querySelectorAll(".tipo").forEach((x) => x.classList.toggle("activo", x.dataset.tipo === tipoEscogido));
+        $("pestanas").innerHTML = caballos.map((c, i) =>
+            '<button class="pestana' + (i === caballoActivo ? " activa" : "") + '" type="button" data-caballo="' + i + '">Caballo ' + (i + 1) +
+            (i === 1 ? " (regalo 2x1)" : "") + (c.raza ? " ✓" : "") + "</button>").join("");
+        const c = caballos[caballoActivo];
+        document.querySelectorAll(".raza").forEach((x) => {
+            x.classList.toggle("escogida", x.dataset.raza === c.raza);
+            x.dataset.marca = "✓";
+        });
+        $("texto_eleccion").textContent = "2. Escoge la raza del caballo " + (caballoActivo + 1);
+        $("segmentos").innerHTML = Object.keys(OPCIONES).map((s) => {
+            const r = reglaDe(s), op = OPCIONES[s];
+            const fijo = !!r.fijo || r.n >= op.length;
+            const nota = fijo ? "incluido" : "escoge " + r.n;
+            return '<div class="segmento"><b>' + NOMBRE_SEGMENTO[s] + " <small>(" + nota + ")</small></b><div class=\"chips\">" +
+                op.filter((o) => !fijo || c.segmentos[s].includes(o)).map((o) =>
+                    '<button type="button" class="chip' + (c.segmentos[s].includes(o) ? " si" : "") + (fijo || o === r.incluye ? " fijo" : "") +
+                    '" data-seg="' + s + '" data-op="' + o + '">' + o + "</button>").join("") + "</div></div>";
+        }).join("");
+    }
+    function faltaEscoger() {
+        for (let i = 0; i < caballos.length; i++) {
+            const c = caballos[i];
+            if (!c.raza) return "Escoge la raza del caballo " + (i + 1) + ".";
+            for (const s of Object.keys(OPCIONES)) {
+                const r = reglaDe(s);
+                if (!r.fijo && r.n < OPCIONES[s].length && c.segmentos[s].length !== r.n)
+                    return "Caballo " + (i + 1) + ": en " + NOMBRE_SEGMENTO[s].toLowerCase() + " escoge " + r.n + ".";
+                if (s === "distancia" && c.segmentos[s].length === 2 && !c.segmentos[s].includes("medianas"))
+                    return "Caballo " + (i + 1) + ": las distancias van juntas solo si son vecinas (cortas con medianas, o medianas con largas).";
+            }
+        }
+        return "";
+    }
+    reiniciarCaballos();
+    pintarCompra();
 
     // ---------- categorías ----------
     const flecha = '<svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true"><path d="M2 2 L8 8 L2 14" fill="none" stroke="#e6c25a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -975,8 +1106,57 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
         if (!usuario) { $("barra_jugador").classList.add("oculto"); return; }
         $("pantalla_entrada").classList.add("oculto");
         $("barra_jugador").classList.remove("oculto");
-        aviso("aviso_tienda", "Listo. Pulsa COMPRAR para pagar tu caballo.", "bien");
+        aviso("aviso_tienda", "Listo. Escoge tus caballos y pulsa COMPRAR.", "bien");
+        cargarSaldo();
     });
+
+    // ---------- saldo y recargas de Gloria ----------
+    async function cargarSaldo() {
+        if (!jugador) return;
+        try {
+            const r = await fetch(BASE_COBRADOR + "/mi-saldo", {
+                method: "POST", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ idToken: await jugador.getIdToken() })
+            });
+            const d = await r.json();
+            if (d.ok) {
+                $("saldo_gloria").textContent = Number(d.gloria || 0).toLocaleString("es", { maximumFractionDigits: 2 });
+                $("saldo_centi").textContent = Number(d.centi || 0).toLocaleString("es", { maximumFractionDigits: 0 });
+            }
+        } catch (e) { /* si falla, el saldo se queda como está */ }
+    }
+    $("boton_obtener_monedas").addEventListener("click", () => {
+        $("panel_recarga").classList.toggle("oculto");
+        $("monto_recarga").focus();
+    });
+    $("boton_recargar").addEventListener("click", async () => {
+        if (!jugador) {
+            $("pantalla_entrada").classList.remove("oculto");
+            $("pantalla_entrada").scrollIntoView({ behavior: "smooth", block: "center" });
+            aviso("aviso_recarga", "Entra con tu cuenta del juego y vuelve a pulsar RECARGAR.");
+            return;
+        }
+        const monto = Number($("monto_recarga").value);
+        if (!(monto > 0)) { aviso("aviso_recarga", "Escribe cuánto quieres recargar.", "error"); return; }
+        $("boton_recargar").disabled = true;
+        aviso("aviso_recarga", "Preparando tu pago…");
+        try {
+            const r = await fetch(BASE_COBRADOR + "/crear-recarga", {
+                method: "POST", headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ idToken: await jugador.getIdToken(), monto: monto })
+            });
+            const d = await r.json();
+            if (!d.ok || !d.enlace_pago) throw new Error(d.error || "No se pudo preparar el pago.");
+            aviso("aviso_recarga", "Te llevamos a la página de pago…", "bien");
+            window.location.href = d.enlace_pago;
+        } catch (e) {
+            aviso("aviso_recarga", e.message || "No se pudo preparar el pago. Intenta de nuevo.", "error");
+            $("boton_recargar").disabled = false;
+        }
+    });
+    if (new URLSearchParams(location.search).get("recarga") === "ok") {
+        avisoFlotante("¡Pago recibido! Tu Gloria aparecerá en tu saldo en unos minutos.");
+    }
 
     // ---------- pagar ----------
     $("boton_pagar").addEventListener("click", async () => {
@@ -987,22 +1167,26 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
             aviso("aviso_tienda", "Entra con tu cuenta del juego y vuelve a pulsar COMPRAR.");
             return;
         }
+        const falta = faltaEscoger();
+        if (falta) { aviso("aviso_tienda", falta, "error"); return; }
         $("boton_pagar").disabled = true;
-        aviso("aviso_tienda", "Preparando tu pago…");
+        aviso("aviso_tienda", "Comprando tus caballos…");
         try {
-            const r = await fetch(DIRECCION_COBRADOR, {
+            const r = await fetch(BASE_COBRADOR + "/comprar-caballo", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ uid: jugador.uid, correo: jugador.email, raza: razaEscogida })
+                body: JSON.stringify({ idToken: await jugador.getIdToken(), tipo: tipoEscogido, caballos: caballos })
             });
             const d = await r.json();
-            if (!d.ok || !d.enlace_pago) throw new Error(d.error || "No se pudo preparar el pago.");
-            aviso("aviso_tienda", "Te llevamos a la página de pago…", "bien");
-            window.location.href = d.enlace_pago;
+            if (!d.ok) throw new Error(d.error || "No se pudo completar la compra.");
+            aviso("aviso_tienda", "¡Listo! Tus caballos: " + d.codigos.join(" y ") + ". Ya están en tu cuadra.", "bien");
+            $("saldo_gloria").textContent = Number(d.saldo_gloria || 0).toLocaleString("es", { maximumFractionDigits: 2 });
+            reiniciarCaballos();
+            pintarCompra();
         } catch (e) {
-            aviso("aviso_tienda", e.message || "No se pudo preparar el pago. Intenta de nuevo.", "error");
-            $("boton_pagar").disabled = false;
+            aviso("aviso_tienda", e.message || "No se pudo completar la compra. Intenta de nuevo.", "error");
         }
+        $("boton_pagar").disabled = false;
     });
 </script>
 </body>
