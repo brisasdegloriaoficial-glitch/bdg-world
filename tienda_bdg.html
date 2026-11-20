@@ -14,7 +14,7 @@
   Las imágenes de categorías y monedas van metidas dentro de este archivo (IMAGENES, al final).
 -->
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Montserrat:wght@500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@500;600;700;800&family=Noto+Serif:wght@500&display=swap');
 
     :root {
         --noche: #0b0f19; --tarjeta: #111827; --borde: #273048;
@@ -113,7 +113,7 @@
     /* ---------- categorías ---------- */
     .categorias { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; padding: 0 12px; }
     .categoria { display: block; border-radius: 10px; overflow: hidden; background: #0d1322; text-align: left; }
-    .categoria img { display: block; width: 100%; height: 74px; object-fit: cover; }
+    .categoria img { display: block; width: 100%; height: auto; }
     .categoria .nombre { height: 40px; display: flex; align-items: center; gap: 4px; padding: 0 6px; background: linear-gradient(180deg, #121a2e, #0a0f1b); border-top: 1px solid rgba(197,160,89,.5); }
     .categoria .nombre b { flex: 1; text-align: center; font-family: 'Cinzel', serif; font-weight: 800; font-size: 10.5px; line-height: 1.1; color: #fff; }
     .categoria .nombre svg { flex: none; }
@@ -182,7 +182,7 @@
     /* ---------- computadora ---------- */
     @media (min-width: 760px) {
         .pagina { max-width: 980px; }
-        .cabecera { height: 150px; padding: 0 24px; }
+        .cabecera { height: 150px; padding: 0 6px 0 24px; }
         .logo img { height: 96px; }
         .titulo { margin: 4px 24px 0; height: 72px; }
         .titulo h1 { font-size: 40px; }
@@ -196,7 +196,7 @@
         .comprar { width: 380px; }
         .cab { margin-left: 26px; margin-right: 26px; }
         .categorias { padding: 0 24px; gap: 14px; }
-        .categoria img { height: 130px; }
+        .categoria img { height: auto; }
         .categoria .nombre b { font-size: 13px; }
         .entrada { max-width: 520px; margin-left: auto; margin-right: auto; }
         .pestanas, .rejilla { padding-left: 24px; padding-right: 24px; }
@@ -215,6 +215,15 @@
     .punto-mk p { font-size: 13px; line-height: 1.5; color: var(--texto); }
     .punto-mk .nota { margin-top: 7px; padding: 7px 9px; border-radius: 8px; background: rgba(11,15,25,.7); font-size: 11.5px; line-height: 1.5; color: var(--suave); }
     .punto-mk .nota b { color: var(--dorado-claro); font-weight: 700; }
+    .punto-mk details.explica { margin-top: 7px; }
+    .punto-mk details.explica summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--dorado-claro); padding: 4px 10px; border: 1px solid var(--dorado); border-radius: 999px; }
+    .punto-mk details.explica summary::-webkit-details-marker { display: none; }
+    .punto-mk details.explica summary::before { content: "▸"; display: inline-block; transition: transform .2s; }
+    .punto-mk details.explica[open] summary::before { transform: rotate(90deg); }
+    .punto-mk details.explica .nota { margin-top: 8px; }
+    .tabla-seg { width: 100%; border-collapse: collapse; font-size: 11.5px; margin: 2px 0 6px; }
+    .tabla-seg td { padding: 4px 6px; border-bottom: 1px solid #222b42; vertical-align: top; }
+    .tabla-seg td:first-child { color: var(--dorado-claro); font-weight: 700; white-space: nowrap; }
     .escalones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
     .escalones div { text-align: center; padding: 7px 4px; border-radius: 9px; border: 1px solid #8f6d2b; background: rgba(197,160,89,.08); }
     .escalones b { display: block; font-size: 15px; font-weight: 800; color: #fff; }
@@ -237,14 +246,63 @@
     .tabla-esc td { padding: 6px 2px; border-bottom: 1px solid #222b42; color: var(--texto); }
     .tabla-esc td:first-child { font-weight: 800; color: #fff; white-space: nowrap; }
     .tabla-esc tr.tt td { color: var(--dorado-claro); font-weight: 800; }
+
+    /* ---------- rediseño 19-nov: barra superior y "Cómo funciona" en tarjetas ---------- */
+    .barra-mk { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 20px; padding: 11px 14px; background: rgba(8,12,22,.94); backdrop-filter: blur(6px); border-bottom: 1px solid #1c2740; }
+    .barra-mk a { font-size: 12.5px; font-weight: 600; color: #cbd5e1; white-space: nowrap; }
+    .barra-mk a:hover, .barra-mk a.activo { color: var(--dorado-claro); }
+    .presenta .titulo-grupo { font-family: 'Noto Serif', Georgia, serif; font-weight: 500; font-size: 19px; color: var(--dorado-claro); letter-spacing: .3px; }
+    .cab h3 { font-family: 'Noto Serif', Georgia, serif; font-weight: 500; }
+    @media (min-width: 760px) {
+        .presenta { max-width: 940px; }
+        .grupo-mk { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+        .grupo-mk > .titulo-grupo { grid-column: 1 / -1; margin-bottom: 0; }
+        .grupo-mk .punto-mk { margin-bottom: 0; height: 100%; }
+        .grupo-mk .punto-mk:has(.tabla-esc) { grid-column: 1 / -1; }
+        .presenta .lema { font-size: 20px; }
+    }
+
+    /* ---------- oferta de lanzamiento y monedas (19-nov) ---------- */
+    .promo-lanzamiento { margin: 4px auto 12px; max-width: 440px; padding: 10px 16px; border-radius: 10px; text-align: center; background: linear-gradient(180deg, rgba(20,26,42,.92), rgba(11,15,25,.92)); border: 1.5px solid #c5a059; box-shadow: 0 0 14px rgba(212,175,55,.35), inset 0 0 14px rgba(212,175,55,.12); }
+    .promo-lanzamiento b { display: block; font-family: 'Cinzel', serif; font-weight: 800; font-size: 17px; letter-spacing: .5px; background: linear-gradient(180deg, #fff6d2 0%, #f0d68f 35%, #c5a059 70%, #e9cd84 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .promo-lanzamiento span { display: block; margin-top: 3px; font-size: 12.5px; color: #e2e8f0; }
+    .vias-monedas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 10px; margin-top: 8px; }
+    .vias-monedas span { font-size: 13px; color: #fff; text-shadow: 0 1px 3px #000; }
+    .vias-monedas span b { color: #ffe9a8; font-weight: 800; }
+    .vias-monedas span:not(.o) { padding: 6px 12px; border-radius: 8px; background: rgba(11,15,25,.65); border: 1px solid rgba(240,214,143,.7); }
+    .vias-monedas .o { font-family: 'Cinzel', serif; color: var(--dorado-claro); font-weight: 800; }
+    @media (min-width: 760px) { .promo-lanzamiento b { font-size: 20px; } .promo-lanzamiento span { font-size: 14px; } .vias-monedas span { font-size: 15px; } }
+
+    /* ---------- tablero BRISAS DE GLORIA (igual que la página principal) ---------- */
+    .tablero-nombre { --h: clamp(50px, 7vw, 84px); display: flex; align-items: stretch; height: var(--h); width: min(560px, 62%); border-radius: 7px; overflow: hidden; border: 1.5px solid #8a6a2c; box-shadow: 0 8px 22px rgba(0,0,0,.75), inset 0 0 0 2px rgba(0,0,0,.4); background: radial-gradient(120% 140% at 50% 50%, #3b4033 0%, #2a2e25 45%, #1a1c17 100%); }
+    .tablero-adorno { flex: none; width: calc(var(--h) * 320 / 420); background-image: url('/Logo_PaginaPrincipal.png'); background-repeat: no-repeat; background-size: calc(var(--h) * 1376 / 420) auto; }
+    .tablero-adorno.izquierdo { background-position: calc(var(--h) * -10 / 420) calc(var(--h) * -200 / 420); }
+    .tablero-adorno.derecho { background-position: calc(var(--h) * -1036 / 420) calc(var(--h) * -120 / 420); }
+    .tablero-centro { flex: 1; display: flex; align-items: center; justify-content: center; border-left: 1.5px solid #6b5426; border-right: 1.5px solid #6b5426; box-shadow: inset 0 0 26px rgba(0,0,0,.7); min-width: 0; }
+    .tablero-letras { position: relative; font-family: 'Cinzel Decorative', 'Cinzel', serif; font-weight: 700; font-size: calc(var(--h) * .36); line-height: 1.1; white-space: nowrap;
+        background: linear-gradient(180deg, #fff8d8 0%, #f7dc8c 22%, #d9a640 40%, #9c6b1e 52%, #e8c165 64%, #fff0b8 76%, #b07a28 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: .8px #4a3209;
+        filter: drop-shadow(0 1px 0 #fff3c4) drop-shadow(0 2px 0 #5a3d0c) drop-shadow(0 5px 7px rgba(0,0,0,.85)); }
+    .tablero-letras::after { content: attr(data-t); position: absolute; left: 0; top: 0; background: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 38%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; }
+    .logo.tablero-nombre img { display: none; }
 </style>
 </head>
 <body>
+<nav class="barra-mk">
+    <a href="/">Inicio</a>
+    <a href="#seccion_caballos" class="activo">Caballo Retador</a>
+    <a href="#explorar">Artículos</a>
+    <a href="#como_funciona">Cómo funciona</a>
+    <a href="/whitepaper.html">Whitepaper</a>
+</nav>
 <div class="pagina">
 
     <header class="cabecera">
         <img class="fondo" src="/BDG_Marketplace_Fondo_Cabecera_Hipodromo_Atardecer_Palmeras.png" alt="">
-        <a class="logo" href="/" aria-label="Volver al inicio"><img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria"></a>
+        <a class="logo tablero-nombre" href="/" aria-label="Volver al inicio">
+            <span class="tablero-adorno izquierdo" aria-hidden="true"></span>
+            <span class="tablero-centro"><span class="tablero-letras" data-t="BRISAS DE GLORIA">BRISAS DE GLORIA</span></span>
+            <span class="tablero-adorno derecho" aria-hidden="true"></span>
+        </a>
         <div class="saldos">
             <button class="saldo" type="button" data-ir="fortuna" aria-label="Saldo de Gloria"><img data-moneda="gloria" alt=""><b id="saldo_gloria">0</b><span class="mas">+</span></button>
             <button class="saldo" type="button" data-ir="fortuna" aria-label="Saldo de Centi"><img data-moneda="centi" alt=""><b id="saldo_centi">0</b><span class="mas">+</span></button>
@@ -265,13 +323,14 @@
     <!-- ===== CABALLO RETADOR (lo único que se cobra hoy) ===== -->
     <section class="destacada marco" id="seccion_caballos">
         <div class="escena"></div><div class="luces"></div><div class="chispas"></div>
-        <span class="cinta">OFERTA DESTACADA</span>
+        <span class="cinta">OFERTA DE LANZAMIENTO</span>
         <span class="liga-cinta">LIGA COBRE</span>
         <div class="contenido">
             <h2 class="foil" id="nombre_producto">Caballo Retador</h2>
             <p class="sub">Elige tu raza favorita</p>
             <div class="razas" id="razas"></div>
             <p class="mas-razas">✦ Más razas muy pronto ✦</p>
+            <div class="promo-lanzamiento"><b>2 CABALLOS POR EL PRECIO DE 1</b><span>Compra un caballo y llévate otro sin costo. Oferta de lanzamiento por tiempo limitado.</span></div>
             <button class="comprar" id="boton_pagar" type="button"><span id="precio_producto">10</span> USDT <small>COMPRAR</small></button>
             <p class="pago">Pagas con USDT por la red BSC (BNB Smart Chain).<br>Al confirmarse, recibes tu comprobante por correo.</p>
             <div id="aviso_tienda" class="aviso"></div>
@@ -310,8 +369,8 @@
         <div class="cofre" id="cofre"></div>
         <div class="texto">
             <h4 class="foil">Tu fortuna en el hipódromo</h4>
-            <p>Recarga tu saldo con USDT, o juega y gana Centi con anuncios cortos.</p>
-            <p class="cambio">1 Gloria = 100 Centi</p>
+            <div class="vias-monedas"><span><b>RECARGA</b> tu saldo de Gloria con USDT</span><span class="o">o</span><span><b>GANA CENTI GRATIS</b> jugando</span></div>
+            <p class="cambio">1 Gloria = 1 USD = 100 Centi</p>
             <button class="boton" type="button" data-pronto="Las recargas de Gloria abren muy pronto.">OBTENER MONEDAS</button>
         </div>
     </section>
@@ -336,53 +395,78 @@
                 <tr><td>80 USD</td><td>2</td><td>3</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
                 <tr class="tt"><td>100 USD</td><td colspan="6">TODOTERRENO: todo de todo</td></tr>
             </table>
-            <div class="nota"><b>Pista:</b> grama o arena. <b>Distancia:</b> cortas, medianas o largas. <b>Estilo:</b> puntero, mediofondista o rematador. <b>Clima:</b> seco, lluvia o nieve. <b>Condición de pista:</b> normal, mojada o con restos de nieve. <b>Horario:</b> de día o de noche.<br>Compra en par y combina: por ejemplo, uno de distancias cortas y otro de largas. Al aparearlos, la cría hereda lo de los dos.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">
+                <table class="tabla-seg">
+                    <tr><td>Pista</td><td>Grama o arena</td></tr>
+                    <tr><td>Distancias cortas</td><td>800 m (grama) · 1100 m (arena) · 1200 m</td></tr>
+                    <tr><td>Distancias medianas</td><td>1600 m (grama) · 1900 m (arena)</td></tr>
+                    <tr><td>Distancias largas</td><td>2000 m · 2400 m · 3000 m</td></tr>
+                    <tr><td>Estilo</td><td>Puntero, mediofondista o rematador</td></tr>
+                    <tr><td>Clima</td><td>Seco, lluvia o nieve</td></tr>
+                    <tr><td>Condición de pista</td><td>Normal, mojada o con restos de nieve</td></tr>
+                    <tr><td>Horario</td><td>Diurno o nocturno</td></tr>
+                </table>
+                Se irán sumando nuevas distancias.<br>Compra en par y combina: por ejemplo, uno de distancias cortas y otro de largas. Al aparearlos, la cría hereda lo de los dos.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>2</span>Especialización</h4>
-            <p>Cada caballo sobresale en su ambiente. El clima y la condición de la pista son sorpresa: nadie sabe antes cómo estará la carrera. Fuera de su ambiente el caballo corre, pero rinde menos.</p>
-            <div class="nota">Ningún caballo tiene ventaja: el que sale de su ambiente tiene desventaja. Lo que gana carreras es tu habilidad. El precio no compra victorias.</div>
+            <p>Cada caballo tiene su especialidad. Fuera de su ambiente corre, compite y hasta puede ganar, pero rinde menos.</p>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">En su ambiente todos corren parejos: ningún caballo tiene ventaja. El que sale de su ambiente es el que rinde menos. El clima y la condición de la pista son sorpresa: nadie sabe antes cómo estará la carrera. Lo que gana carreras es tu habilidad. El precio no compra victorias.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>3</span>La ficha de tu caballo</h4>
             <p>Identidad, especialización, apariencia, padres y vida deportiva. Ves la ficha corta aquí en el Marketplace y la ficha completa en tu establo.</p>
-            <div class="nota">Las fichas se guardan en el servidor del juego. Nadie puede alterarlas.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">Las fichas se guardan en el servidor del juego. Nadie puede alterarlas.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>4</span>Compra y venta entre jugadores</h4>
             <p>Pon a la venta tu caballo al precio que tú decidas. Cada venta paga una comisión del 5 %.</p>
-            <div class="nota">El proyecto siempre vende un poco más caro que los jugadores. Si alguien se pasa de precio, la gente le compra al proyecto. Así los precios se mantienen justos.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">El Marketplace es de los criadores: ellos fijan sus precios, comercian y hacen crecer el ecosistema. El proyecto mantiene una reserva de ejemplares con precios de referencia estables, para que siempre haya caballos para quien empieza. Todo caballo se puede mejorar, sin importar su precio, e incluso el caballo gratuito puede volverse competitivo y venderse en el Marketplace.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>5</span>Cría</h4>
-            <p>Dos caballos se aparean y nace uno solo. Los padres se retiran y la cría hereda de los dos, y nunca sale peor que ellos.</p>
-            <div class="nota">Hasta de dos caballos económicos puede nacer un ejemplar excepcional. La cría no se aparea. Apareamiento: <b>300 Centi</b>.</div>
+            <p>Dos caballos se aparean y nace una sola cría. Sus genes siempre serán superiores a los de sus padres.</p>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">Los padres se retiran de la competencia. Hasta de dos caballos económicos puede nacer un ejemplar excepcional. La cría corre una temporada larga y no se puede reproducir. Apareamiento: <b>300 Centi</b>.</div></details>
         </div>
 
         </section>
 
         <section class="grupo-mk"><h4 class="titulo-grupo">II. Competición y desarrollo</h4>
         <div class="punto-mk"><h4><span>6</span>Carreras diarias y cuidados</h4>
-            <p>Cada día tienes carreras gratis que dan puntos y recompensas. Después, tu caballo descansa un día y recupera toda su fuerza, sin gastar nada.</p>
+            <p>Cada día tienes carreras gratis que dan puntos y recompensas. Después, tu caballo descansa un día y recupera toda su fuerza, sin gastar nada. <b>¿Quieres seguir disfrutando de las carreras oficiales? Compite, mejora tu caballo y gana skins.</b> O recupéralo al instante:</p>
             <table class="tabla-mk">
-                <tr><td>Heno: recupera 10 %</td><td>10 Centi</td></tr>
-                <tr><td>Avena: recupera 20 %</td><td>20 Centi</td></tr>
-                <tr><td>Zanahoria: recupera 30 %</td><td>30 Centi</td></tr>
-                <tr><td>Vitaminas: recupera 50 %</td><td>50 Centi</td></tr>
-                <tr><td>Ración completa: recupera 100 %</td><td>100 Centi</td></tr>
-                <tr><td>Veterinario</td><td>20 Centi</td></tr>
+                <tr><td>Heno: 10 % de energía</td><td>10 Centi</td></tr>
+                <tr><td>Avena: 20 % de energía</td><td>20 Centi</td></tr>
+                <tr><td>Zanahoria: 30 % de energía</td><td>30 Centi</td></tr>
+                <tr><td>Vitaminas: 50 % de energía</td><td>50 Centi</td></tr>
+                <tr><td>Ración completa: 100 %, listo para otra jornada</td><td>100 Centi</td></tr>
+                <tr><td>Cepillado y baño: 5 % de energía</td><td>10 Centi</td></tr>
+                <tr><td>Veterinario: 15 % de energía</td><td>20 Centi</td></tr>
+                <tr><td>Galope en pista: 5 % de energía + fuerza</td><td>10 Centi</td></tr>
+                <tr><td>Aparato de partida: 10 % de energía + mejor salida</td><td>20 Centi</td></tr>
+                <tr><td>Trabajo de remate: 10 % de energía + mejor cierre</td><td>20 Centi</td></tr>
+                <tr><td>Trabajo de fondo: 10 % de energía + más aguante</td><td>20 Centi</td></tr>
             </table>
-            <div class="nota">La comida es solo para correr de más: entrenar, practicar o divertirte. También recuperas condición entrenando.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">La energía que recuperas es para correr de más el mismo día: entrenar, practicar o divertirte. <b>Con el entrenamiento tu caballo mejora, sube su valor y se vende mejor en el Marketplace.</b><br><br><b>Puntos:</b> las carreras gratis y las de pago dan puntos y skins; las de pago dan muchos más puntos y más skins. <b>Las recompensas en Gloria son solo de las competencias con recarga o inscripción.</b>
+                <table class="tabla-seg">
+                    <tr><td>Puesto</td><td>Gratis · De pago</td></tr>
+                    <tr><td>1.º</td><td>10 · 100 puntos</td></tr>
+                    <tr><td>2.º</td><td>7 · 42 puntos</td></tr>
+                    <tr><td>3.º</td><td>5 · 30 puntos</td></tr>
+                    <tr><td>4.º</td><td>3 · 18 puntos</td></tr>
+                    <tr><td>5.º en adelante</td><td>1 · 6 puntos</td></tr>
+                </table>
+                <b>Desarrollo:</b> cada 100 puntos tu caballo gana 1 % de desarrollo, hasta el 100 % (rinde un 5 % más que uno nuevo). Cada día cuentan 15 carreras, el desarrollo se acumula durante la temporada de 4 semanas y tu caballo empieza la siguiente temporada más desarrollado. Los puntos también se suman para las recompensas de fin de temporada.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>7</span>Vida deportiva</h4>
-            <p>Tu caballo compite 12 temporadas cortas o una temporada larga. Al terminar, lo apareas o lo vendes.</p>
-            <div class="nota">Si no lo apareas ni lo vendes, pasa a retirado y queda en el registro del juego.</div>
+            <p>Tu caballo tiene 12 temporadas cortas (una temporada larga) de vida deportiva, contadas desde que lo compras.</p>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">Corras o no, las temporadas pasan: la que no corres, se pierde. Puedes venderlo cuando quieras, desde el primer día, y el nuevo dueño recibe las temporadas que le queden. También puedes aparearlo cuando quieras: los padres se retiran y nace una cría que corre una temporada larga y no se puede reproducir. Si al final no lo apareaste ni lo vendiste, pasa a retirado y queda en el registro del juego.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>8</span>Becas</h4>
-            <p>Obtén una beca por 30 días, compite y gana recompensas diarias y mensuales.</p>
-            <div class="nota">La beca que no se usa se retira y pasa a otro jugador.</div>
+            <p>Una beca te cubre la recarga por 30 días: compites por recompensas diarias y mensuales sin pagar.</p>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">La beca equivale a tres recargas de 10 USD. Durante esos 30 días juegas como Profesional sin recargar. La beca que no se usa se retira y pasa a otro jugador.</div></details>
         </div>
 
         </section>
@@ -390,19 +474,20 @@
         <section class="grupo-mk"><h4 class="titulo-grupo">III. Personalización y monedas</h4>
         <div class="punto-mk"><h4><span>9</span>Apariencia y servicios</h4>
             <table class="tabla-mk">
-                <tr><td>Cosmético común</td><td>100 Centi</td></tr>
-                <tr><td>Cosmético raro</td><td>3 Gloria</td></tr>
-                <tr><td>Cosmético épico</td><td>8 Gloria</td></tr>
-                <tr><td>Cosmético legendario</td><td>20 Gloria</td></tr>
+                <tr><td>Skin Cobre</td><td>100 Centi</td></tr>
+                <tr><td>Skin Plata</td><td>200 Centi</td></tr>
+                <tr><td>Skin Oro</td><td>3 Gloria</td></tr>
+                <tr><td>Skin Platino</td><td>8 Gloria</td></tr>
+                <tr><td>Skin Diamante</td><td>20 Gloria</td></tr>
                 <tr><td>Cambio de nombre</td><td>100 Centi</td></tr>
-                <tr><td>Tu propio stud (nombre y colores)</td><td>500 Centi</td></tr>
+                <tr><td>Stud propio (nombre y colores)</td><td>500 Centi</td></tr>
             </table>
-            <div class="nota">La apariencia es solo estética. No da ventaja en la carrera.</div>
+            <details class="explica"><summary>Ver explicación</summary><div class="nota">Cada skin se usa al llegar a su liga, para que tu caballo y su skin vayan a la par. Las skins se ganan gratis jugando y figurando: mientras más arriba llegas, más skins ganas, y al cierre de cada temporada corta se entregan skins altas como recompensa. También puedes vender tus skins en el Marketplace. Al final de la temporada larga, las skins se pierden junto con los caballos. La apariencia es solo estética: no da ventaja en la carrera.</div></details>
         </div>
 
         <div class="punto-mk"><h4><span>10</span>Las monedas</h4>
-            <p><b>Gloria</b> es la moneda que se recarga. <b>Centi</b> es la moneda gratis: la ganas jugando. <b>$BDG</b> es el futuro token del ecosistema.</p>
-            <div class="nota">1 Gloria = 100 Centi.</div>
+            <p><b>Gloria</b> es la moneda que se recarga. <b>Centi</b> es la moneda gratis: la ganas jugando. <b>$BDG</b> es la moneda del ecosistema de IA Power Tech.</p>
+            <div class="nota">1 Gloria = 1 USD = 100 Centi.</div>
         </div>
 
         </section>
@@ -730,21 +815,21 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
             { dibujo: "bozal", nombre: "Bozal de color", precio: "20 Centi" }
         ],
         comida: [
-            { dibujo: "avena", nombre: "Avena", texto: "El alimento de todos los días", precio: "2 Centi", fondo: "campo" },
-            { dibujo: "zanahoria", nombre: "Zanahorias y manzanas", texto: "Le suben el ánimo", precio: "1 Centi", fondo: "campo" },
-            { dibujo: "heno", nombre: "Heno premium", texto: "Recupera estamina entre carreras", precio: "5 Centi", fondo: "campo" },
-            { dibujo: "vitaminas", nombre: "Vitaminas", texto: "Para que crezca más fuerte", precio: "10 Centi", fondo: "campo" }
+            { dibujo: "avena", nombre: "Avena", texto: "20 % de energía", precio: "20 Centi", fondo: "campo" },
+            { dibujo: "zanahoria", nombre: "Zanahoria", texto: "30 % de energía", precio: "30 Centi", fondo: "campo" },
+            { dibujo: "heno", nombre: "Heno", texto: "10 % de energía", precio: "10 Centi", fondo: "campo" },
+            { dibujo: "vitaminas", nombre: "Vitaminas", texto: "50 % de energía", precio: "50 Centi", fondo: "campo" },
+            { dibujo: "heno", nombre: "Ración completa", texto: "100 % de energía", precio: "100 Centi", fondo: "campo" }
         ],
         entrenamiento: [
-            { dibujo: "galope", nombre: "Galope en pista", texto: "Entrena su fuerza", precio: "4 Centi", fondo: "pista" },
-            { dibujo: "partida", nombre: "Aparato de partida", texto: "Para salir adelante", precio: "6 Centi", fondo: "pista" },
-            { dibujo: "remate", nombre: "Trabajo de remate", texto: "Para cerrar fuerte al final", precio: "6 Centi", fondo: "pista" },
-            { dibujo: "fondo", nombre: "Trabajo de fondo", texto: "Para aguantar las largas", precio: "6 Centi", fondo: "pista" }
+            { dibujo: "galope", nombre: "Galope en pista", texto: "5 % de energía · entrena su fuerza", precio: "10 Centi", fondo: "pista" },
+            { dibujo: "partida", nombre: "Aparato de partida", texto: "10 % de energía · mejor salida", precio: "20 Centi", fondo: "pista" },
+            { dibujo: "remate", nombre: "Trabajo de remate", texto: "10 % de energía · mejor cierre", precio: "20 Centi", fondo: "pista" },
+            { dibujo: "fondo", nombre: "Trabajo de fondo", texto: "10 % de energía · más aguante", precio: "20 Centi", fondo: "pista" }
         ],
         cuidados: [
-            { dibujo: "cepillo", nombre: "Cepillado y baño", precio: "2 Centi", fondo: "cuadra" },
-            { dibujo: "veterinario", nombre: "Veterinario", precio: "10 Centi", fondo: "cuadra" },
-            { dibujo: "nombre", nombre: "Cambio de nombre", precio: "1 Gloria", fondo: "cuadra" }
+            { dibujo: "cepillo", nombre: "Cepillado y baño", texto: "5 % de energía", precio: "10 Centi", fondo: "cuadra" },
+            { dibujo: "veterinario", nombre: "Veterinario", texto: "15 % de energía", precio: "20 Centi", fondo: "cuadra" }
         ]
     };
     // Ligas del equipo: las abiertas se ven con candado; las próximas dicen "Próximamente".
