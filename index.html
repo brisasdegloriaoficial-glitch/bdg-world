@@ -139,10 +139,13 @@
         .ejemplar-ver { position: absolute; top: 8px; right: 10px; color: var(--dorado-claro); font-size: 18px; text-shadow: 0 1px 4px #000; }
 
         /* ---------- Gloria ---------- */
-        .gloria-bloque { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .gloria-bloque img { display: block; width: 100%; max-width: 440px; justify-self: center; border-radius: 8px; border: 1px solid var(--bronce); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+        .gloria-bloque { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center; }
+        .gloria-bloque img { display: block; width: 100%; max-width: 300px; justify-self: center; border-radius: 8px; border: 1px solid var(--bronce); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
         .gloria-bloque .antetitulo-seccion, .gloria-bloque h2 { text-align: left; }
-        .gloria-bloque p { color: #cbd5e1; }
+        .gloria-bloque p, .gloria-bloque li { color: #cbd5e1; font-size: 16px; line-height: 1.65; }
+        .gloria-bloque ul { list-style: none; margin-top: 14px; }
+        .gloria-bloque li { margin-bottom: 8px; }
+        .gloria-bloque li strong { color: var(--dorado-claro); }
 
         /* ---------- comunidad ---------- */
         .redes { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
@@ -600,8 +603,11 @@
             <div>
                 <span class="antetitulo-seccion">Embajadora del proyecto</span>
                 <h2>Gloria</h2>
-                <p>La imagen y voz de Brisas de Gloria.</p>
-                <div class="nota"><p>Dentro del juego, guía al jugador en los tutoriales y narra los momentos clave de cada carrera. Fuera del juego, presenta las novedades del proyecto a la comunidad.</p></div>
+                <p>Gloria es la imagen y la voz de Brisas de Gloria: modelo y presentadora del proyecto, embajadora de la marca y protagonista de los videos promocionales.</p>
+                <ul>
+                    <li><strong>Dentro del juego:</strong> guía al jugador nuevo en los tutoriales y narra los momentos clave de cada carrera.</li>
+                    <li><strong>Fuera del juego:</strong> presenta las novedades del proyecto a la comunidad, en videos, redes sociales y material para patrocinadores e inversionistas.</li>
+                </ul>
             </div>
         </div>
     </section>
