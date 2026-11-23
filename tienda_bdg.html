@@ -355,10 +355,10 @@
     <section class="destacada marco" id="seccion_caballos">
         <div class="escena"></div><div class="luces"></div><div class="chispas"></div>
         <span class="cinta">OFERTA DE LANZAMIENTO<small>2 POR EL PRECIO DE 1</small></span>
-        <span class="liga-cinta">LIGA COBRE</span>
+        <span class="liga-cinta">VERSATILIDAD BÁSICA</span>
         <div class="contenido">
-            <h2 class="foil" id="nombre_producto">Caballo Cobre</h2>
-            <p class="sub">1. Escoge el tipo de caballo</p>
+            <h2 class="foil" id="nombre_producto">Caballo de Versatilidad Básica</h2>
+            <p class="sub">1. Escoge la versatilidad del caballo</p>
             <div class="tipos" id="tipos"></div>
             <div class="pestanas" id="pestanas"></div>
             <p class="sub" id="texto_eleccion">2. Escoge su raza</p>
@@ -429,12 +429,12 @@
         <div class="punto-mk"><h4><span>1</span>Caballos del proyecto</h4>
             <p>El proyecto siempre tiene caballos a la venta, de todas las razas. Tú eliges la especialidad de cada uno, le pones el nombre y recibe su número de registro único.</p>
             <table class="tabla-esc">
-                <tr><th>Tipo</th><th>Precio</th><th>Pista (de 2)</th><th>Distancias (de 3)</th><th>Estilo (de 3)</th><th>Clima (de 3)</th><th>Horario (de 2)</th></tr>
-                <tr><td>Cobre</td><td>10 Gloria</td><td>1 pista</td><td>1 grupo</td><td>1 estilo</td><td>Seco</td><td>1 horario</td></tr>
-                <tr><td>Plata</td><td>20 Gloria</td><td>1 pista</td><td>2 grupos vecinos</td><td>1 estilo</td><td>Seco</td><td>1 horario</td></tr>
-                <tr><td>Oro</td><td>40 Gloria</td><td>Ambas pistas</td><td>2 grupos vecinos</td><td>2 estilos</td><td>2 climas, incluye seco</td><td>Ambos</td></tr>
-                <tr><td>Platino</td><td>60 Gloria</td><td>Ambas pistas</td><td>Los 3 grupos</td><td>2 estilos</td><td>2 climas, incluye seco</td><td>Ambos</td></tr>
-                <tr class="tt"><td>Diamante<small class="tt-sub">Todoterreno</small></td><td>100 Gloria</td><td>Ambas pistas</td><td>Los 3 grupos</td><td>Los 3 estilos</td><td>Los 3 climas</td><td>Ambos</td></tr>
+                <tr><th>Versatilidad</th><th>Precio</th><th>Pista (de 2)</th><th>Distancias (de 3)</th><th>Estilo (de 3)</th><th>Clima (de 3)</th><th>Horario (de 2)</th></tr>
+                <tr><td>Básica</td><td>10 Gloria</td><td>1 pista</td><td>1 grupo</td><td>1 estilo</td><td>Seco</td><td>1 horario</td></tr>
+                <tr><td>Intermedia</td><td>20 Gloria</td><td>1 pista</td><td>2 grupos vecinos</td><td>1 estilo</td><td>Seco</td><td>1 horario</td></tr>
+                <tr><td>Amplia</td><td>40 Gloria</td><td>Ambas pistas</td><td>2 grupos vecinos</td><td>2 estilos</td><td>2 climas, incluye seco</td><td>Ambos</td></tr>
+                <tr><td>Avanzada</td><td>60 Gloria</td><td>Ambas pistas</td><td>Los 3 grupos</td><td>2 estilos</td><td>2 climas, incluye seco</td><td>Ambos</td></tr>
+                <tr class="tt"><td>Excepcional<small class="tt-sub">Todoterreno</small></td><td>100 Gloria</td><td>Ambas pistas</td><td>Los 3 grupos</td><td>Los 3 estilos</td><td>Los 3 climas</td><td>Ambos</td></tr>
                 <tr class="incognita"><td>Imperial</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td><td>?</td></tr>
             </table>
             <p class="nota-tabla">La condición de pista va con el clima: seco con pista normal, lluvia con pista mojada y nieve con restos de nieve. Dos grupos de distancia van juntos solo si son vecinos: cortas con medianas, o medianas con largas.<br>Recarga Gloria con USDT por la red BSC, el monto que quieras (1 USDT = 1 Gloria), y con tu Gloria compras en el Marketplace.</p>
@@ -835,11 +835,11 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     };
     const NOMBRE_SEGMENTO = { pista: "Pista", distancia: "Distancias", estilo: "Estilo", clima: "Clima", condicion: "Condición de pista", horario: "Horario" };
     const TIPOS_CABALLO = {
-        cobre:    { nombre: "Cobre",    precio: 10,  pista: { n: 1 }, distancia: { n: 1 }, estilo: { n: 1 }, clima: { fijo: ["seco"] },       condicion: { sigue_clima: true }, horario: { n: 1 } },
-        plata:    { nombre: "Plata",    precio: 20,  pista: { n: 1 }, distancia: { n: 2 }, estilo: { n: 1 }, clima: { fijo: ["seco"] },       condicion: { sigue_clima: true }, horario: { n: 1 } },
-        oro:      { nombre: "Oro",      precio: 40,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { sigue_clima: true }, horario: { n: 2 } },
-        platino:  { nombre: "Platino",  precio: 60,  pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { sigue_clima: true }, horario: { n: 2 } },
-        diamante: { nombre: "Diamante", precio: 100, pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 3 }, clima: { n: 3 },               condicion: { sigue_clima: true }, horario: { n: 2 } }
+        cobre:    { nombre: "Básica",    precio: 10,  pista: { n: 1 }, distancia: { n: 1 }, estilo: { n: 1 }, clima: { fijo: ["seco"] },       condicion: { sigue_clima: true }, horario: { n: 1 } },
+        plata:    { nombre: "Intermedia",    precio: 20,  pista: { n: 1 }, distancia: { n: 2 }, estilo: { n: 1 }, clima: { fijo: ["seco"] },       condicion: { sigue_clima: true }, horario: { n: 1 } },
+        oro:      { nombre: "Amplia",      precio: 40,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { sigue_clima: true }, horario: { n: 2 } },
+        platino:  { nombre: "Avanzada",  precio: 60,  pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { sigue_clima: true }, horario: { n: 2 } },
+        diamante: { nombre: "Excepcional", precio: 100, pista: { n: 2 }, distancia: { n: 3 }, estilo: { n: 3 }, clima: { n: 3 },               condicion: { sigue_clima: true }, horario: { n: 2 } }
     };
     // La condición de pista va con el clima (no se escoge aparte).
     const CONDICION_DEL_CLIMA = { seco: "normal", lluvia: "mojada", nieve: "restos de nieve" };
@@ -1004,8 +1004,8 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     });
     function pintarCompra() {
         const tp = TIPOS_CABALLO[tipoEscogido];
-        $("nombre_producto").textContent = "Caballo " + tp.nombre;
-        document.querySelector(".liga-cinta").textContent = "LIGA " + tp.nombre.toUpperCase();
+        $("nombre_producto").textContent = "Caballo de Versatilidad " + tp.nombre;
+        document.querySelector(".liga-cinta").textContent = "VERSATILIDAD " + tp.nombre.toUpperCase();
         $("precio_producto").textContent = tp.precio;
         document.querySelectorAll(".tipo").forEach((x) => x.classList.toggle("activo", x.dataset.tipo === tipoEscogido));
         $("pestanas").innerHTML = caballos.map((c, i) =>
