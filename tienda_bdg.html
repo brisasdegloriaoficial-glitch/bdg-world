@@ -117,6 +117,11 @@
     .aviso { margin-top: 8px; font-size: 12.5px; min-height: 16px; line-height: 1.5; }
     .aviso.error { color: #ffd2d2; font-size: 14.5px; font-weight: 800; background: rgba(200,16,46,.28); border: 1.5px solid #ff6b6b; border-radius: 10px; padding: 8px 12px; }
     /* ===== MI STUD ===== */
+    .acceso-stud { display: flex; align-items: center; gap: 12px; width: 100%; max-width: 520px; margin: 10px auto 4px; padding: 8px 14px; border-radius: 14px; background: linear-gradient(180deg, #16203a, #0d1426); cursor: pointer; text-align: left; }
+    .acceso-stud .texto { flex: 1; }
+    .acceso-stud b { display: block; font-family: 'Cinzel', serif; font-weight: 800; font-size: 20px; letter-spacing: 1px; }
+    .acceso-stud small { color: #e5e7eb; font-size: 12px; font-weight: 600; }
+    .acceso-stud .flecha { color: var(--dorado-claro); font-size: 30px; font-weight: 800; }
     .stud { margin-top: 14px; padding: 16px 14px 18px; border-radius: 16px; background: linear-gradient(180deg, #121a2e, #0b1020); text-align: center; }
     .stud h2 { font-family: 'Cinzel', serif; font-weight: 800; font-size: 26px; letter-spacing: 1px; }
     .stud .sub { margin: 12px 0 6px; font-family: 'Cinzel', serif; font-weight: 600; font-size: 14px; color: #fff; }
@@ -383,6 +388,7 @@
         <span class="separa"></span>
         <h1 class="foil">MARKETPLACE</h1>
     </div>
+
     <span class="rombo"></span>
     <div id="barra_jugador" class="sesion oculto"><span>Sesión iniciada</span><button id="boton_salir" type="button">Salir</button></div>
 
@@ -406,6 +412,13 @@
             <div id="aviso_tienda" class="aviso"></div>
         </div>
     </section>
+
+    <!-- ===== ACCESO A MI STUD (cuadrito debajo del Marketplace) ===== -->
+    <button class="acceso-stud marco" id="acceso_stud" type="button">
+        <span id="acceso_stud_chaquetilla"></span>
+        <span class="texto"><b class="foil">MI STUD</b><small>Tus caballos, tus colores y tus skins</small></span>
+        <span class="flecha">›</span>
+    </button>
 
     <!-- ===== ENTRADA (aparece al pulsar COMPRAR sin haber entrado) ===== -->
     <div id="pantalla_entrada" class="entrada marco oculto">
@@ -574,7 +587,7 @@
 
     <p class="pie">Los artículos se abren muy pronto. El equipo de cada liga se abre al subir de liga.<br>IA Power Tech · Proyecto BDG · Brisas de Gloria</p>
     <!-- ===== MI STUD (24-nov-2026): nombre, chaquetilla, mantilla, caballos y skins del jugador ===== -->
-    <section class="stud marco" id="seccion_stud">
+    <section class="stud marco oculto" id="seccion_stud">
         <h2 class="foil">MI STUD</h2>
         <div id="stud_fuera">
             <p class="vacio">Entra con tu cuenta del juego para ver tus caballos, escoger los colores de tu stud y equipar tus skins.</p>
@@ -1234,6 +1247,7 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     function pintarStud() {
         const c = stud.colores;
         $("vista_stud").innerHTML = chaquetilla(c);
+        if ($("acceso_stud_chaquetilla")) $("acceso_stud_chaquetilla").innerHTML = chaquetilla(c).replace('width="150" height="150"', 'width="64" height="64"').replace(/corte_stud/g, "corte_acceso").replace(/cuadros_stud/g, "cuadros_acceso");
         $("stud_colores").innerHTML = Object.entries(COLORES_STUD).map(([k, nombre]) =>
             '<div class="colores"><b>' + nombre + "</b>" + PALETA_STUD.map((h) =>
                 '<button type="button" class="color' + (c[k] === h ? " si" : "") + '" data-parte="' + k + '" data-color="' + h + '" style="background:' + h + '" aria-label="' + nombre + " " + h + '"></button>').join("") + "</div>").join("");
@@ -1330,6 +1344,16 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
         $("boton_guardar_stud").disabled = false;
     });
     pintarStud();
+    // el cuadrito de MI STUD (debajo del Marketplace) abre el stud
+    function pintarAccesoStud() { $("acceso_stud_chaquetilla").innerHTML = chaquetilla(stud.colores).replace('width="150" height="150"', 'width="64" height="64"').replace(/corte_stud/g, "corte_acceso").replace(/cuadros_stud/g, "cuadros_acceso"); }
+    function abrirStud() {
+        $("seccion_stud").classList.remove("oculto");
+        $("seccion_stud").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    $("acceso_stud").addEventListener("click", abrirStud);
+    document.querySelectorAll('a[href="#seccion_stud"]').forEach((a) => a.addEventListener("click", (ev) => { ev.preventDefault(); abrirStud(); }));
+    if (location.hash === "#seccion_stud") abrirStud();
+    pintarAccesoStud();
 
     // ---------- saldo y recargas de Gloria ----------
     async function cargarSaldo() {
