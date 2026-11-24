@@ -100,6 +100,8 @@
     .tipo { padding: 7px 4px; border-radius: 9px; border: 1.5px solid rgba(197,160,89,.45); background: #0d1322; color: #fff; font-weight: 800; font-size: 12px; cursor: pointer; }
     .tipo small { display: block; font-weight: 700; font-size: 10.5px; color: var(--dorado-claro); }
     .tipo.incognita { opacity: .55; cursor: not-allowed; border-style: dashed; }
+    .tipo.gratis { border-color: #3ddc84; color: #b9ffd6; }
+    .tipo.gratis small { color: #3ddc84; }
     .tipo.activo { border-color: #ffe9a8; box-shadow: 0 0 0 2px rgba(255,233,168,.35), 0 0 12px rgba(255,214,106,.6); }
     .pestanas { display: flex; gap: 6px; margin-top: 12px; justify-content: center; }
     .pestana { padding: 6px 12px; border-radius: 999px; border: 1.5px solid #8f6d2b; background: #0b0f19; color: #fff; font-weight: 800; font-size: 12px; cursor: pointer; }
@@ -355,9 +357,8 @@
     <section class="destacada marco" id="seccion_caballos">
         <div class="escena"></div><div class="luces"></div><div class="chispas"></div>
         <span class="cinta">OFERTA DE LANZAMIENTO<small>2 POR EL PRECIO DE 1</small></span>
-        <span class="liga-cinta">VERSATILIDAD BÁSICA</span>
         <div class="contenido">
-            <h2 class="foil" id="nombre_producto">Caballo de Versatilidad Básica</h2>
+            <h2 class="foil" id="nombre_producto">Escoge tu caballo</h2>
             <p class="sub">1. Escoge la versatilidad del caballo</p>
             <div class="tipos" id="tipos"></div>
             <div class="pestanas" id="pestanas"></div>
@@ -835,6 +836,8 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     };
     const NOMBRE_SEGMENTO = { pista: "Pista", distancia: "Distancias", estilo: "Estilo", clima: "Clima", condicion: "Condición de pista", horario: "Horario" };
     const TIPOS_CABALLO = {
+        // ----- CABALLO GRATIS: uno solo por cuenta, de Versatilidad Básica (lo entrega el cobrador, no la página) -----
+        gratis:   { nombre: "Básica", precio: 0, gratis: true, pista: { n: 1 }, distancia: { n: 1 }, estilo: { n: 1 }, clima: { fijo: ["seco"] }, condicion: { sigue_clima: true }, horario: { n: 1 } },
         cobre:    { nombre: "Básica",    precio: 10,  pista: { n: 1 }, distancia: { n: 1 }, estilo: { n: 1 }, clima: { fijo: ["seco"] },       condicion: { sigue_clima: true }, horario: { n: 1 } },
         plata:    { nombre: "Intermedia",    precio: 20,  pista: { n: 1 }, distancia: { n: 2 }, estilo: { n: 1 }, clima: { fijo: ["seco"] },       condicion: { sigue_clima: true }, horario: { n: 1 } },
         oro:      { nombre: "Amplia",      precio: 40,  pista: { n: 2 }, distancia: { n: 2 }, estilo: { n: 2 }, clima: { n: 2, incluye: "seco" }, condicion: { sigue_clima: true }, horario: { n: 2 } },
@@ -919,7 +922,7 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     let caballos = [];
     function caballoNuevo() { return { raza: "", segmentos: {} }; }
     function reiniciarCaballos() {
-        caballos = Array.from({ length: CABALLOS_POR_COMPRA }, caballoNuevo);
+        caballos = Array.from({ length: TIPOS_CABALLO[tipoEscogido].gratis ? 1 : CABALLOS_POR_COMPRA }, caballoNuevo);
         caballos.forEach((c) => Object.keys(OPCIONES).forEach((s) => { c.segmentos[s] = valorInicial(s); }));
         caballoActivo = 0;
     }
@@ -971,7 +974,8 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
 
     // ---------- tipos, pestañas y segmentos ----------
     $("tipos").innerHTML = Object.entries(TIPOS_CABALLO).map(([clave, tp]) =>
-        '<button class="tipo" type="button" data-tipo="' + clave + '">' + tp.nombre + "<small>" + tp.precio + " Gloria</small></button>").join("") +
+        (tp.gratis ? '<button class="tipo gratis" type="button" data-tipo="' + clave + '">GRATIS<small>1 por cuenta</small></button>'
+                  : '<button class="tipo" type="button" data-tipo="' + clave + '">' + tp.nombre + "<small>" + tp.precio + " Gloria</small></button>")).join("") +
         '<button class="tipo incognita" type="button" disabled>' + TIPO_INCOGNITA + " 🔒<small>? Gloria</small></button>";
     $("tipos").addEventListener("click", (ev) => {
         const b = ev.target.closest("button[data-tipo]");
@@ -1004,9 +1008,13 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     });
     function pintarCompra() {
         const tp = TIPOS_CABALLO[tipoEscogido];
-        $("nombre_producto").textContent = "Caballo de Versatilidad " + tp.nombre;
-        document.querySelector(".liga-cinta").textContent = "VERSATILIDAD " + tp.nombre.toUpperCase();
-        $("precio_producto").textContent = tp.precio;
+        $("boton_pagar").innerHTML = tp.gratis ? 'GRATIS <small>RECLAMAR</small>'
+            : '<span id="precio_producto">' + tp.precio + '</span> GLORIA <small>COMPRAR</small>';
+        document.querySelector(".cinta").classList.toggle("oculto", !!tp.gratis);
+        document.querySelector(".promo-lanzamiento").classList.toggle("oculto", !!tp.gratis);
+        document.querySelector(".pago").textContent = tp.gratis
+            ? "Un caballo gratis por cuenta, para que pruebes el juego. Escoge bien: se reclama una sola vez."
+            : "Pagas con tu saldo de Gloria. ¿No tienes suficiente? Recárgala más abajo con USDT (1 USDT = 1 Gloria).";
         document.querySelectorAll(".tipo").forEach((x) => x.classList.toggle("activo", x.dataset.tipo === tipoEscogido));
         $("pestanas").innerHTML = caballos.map((c, i) =>
             '<button class="pestana' + (i === caballoActivo ? " activa" : "") + '" type="button" data-caballo="' + i + '">Caballo ' + (i + 1) +
@@ -1191,6 +1199,25 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
         const falta = faltaEscoger();
         if (falta) { aviso("aviso_tienda", falta, "error"); return; }
         $("boton_pagar").disabled = true;
+        if (TIPOS_CABALLO[tipoEscogido].gratis) {
+            aviso("aviso_tienda", "Reclamando tu caballo gratis…");
+            try {
+                const r = await fetch(BASE_COBRADOR + "/caballo-gratis", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ idToken: await jugador.getIdToken(), caballo: caballos[0] })
+                });
+                const d = await r.json();
+                if (!d.ok) throw new Error(d.error || "No se pudo reclamar el caballo.");
+                aviso("aviso_tienda", "¡Listo! Tu caballo gratis: " + d.codigo + ". Ya está en tu cuadra.", "bien");
+                reiniciarCaballos();
+                pintarCompra();
+            } catch (e) {
+                aviso("aviso_tienda", e.message || "No se pudo reclamar el caballo. Intenta de nuevo.", "error");
+            }
+            $("boton_pagar").disabled = false;
+            return;
+        }
         aviso("aviso_tienda", "Comprando tus caballos…");
         try {
             const r = await fetch(BASE_COBRADOR + "/comprar-caballo", {
