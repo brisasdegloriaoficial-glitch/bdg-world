@@ -354,11 +354,11 @@
 <body>
 <nav class="barra-mk">
     <a href="/">Inicio</a>
-    <a href="#seccion_stud">Mi Stud</a>
     <a href="#seccion_caballos" class="activo">Caballo Retador</a>
     <a href="#explorar">Artículos</a>
     <a href="#como_funciona">Cómo funciona</a>
     <a href="/whitepaper.html">Whitepaper</a>
+    <a href="#seccion_stud">Mi Stud</a>
 </nav>
 <div class="pagina">
 
@@ -385,32 +385,6 @@
     </div>
     <span class="rombo"></span>
     <div id="barra_jugador" class="sesion oculto"><span>Sesión iniciada</span><button id="boton_salir" type="button">Salir</button></div>
-
-    <!-- ===== MI STUD (24-nov-2026): nombre, chaquetilla, mantilla, caballos y skins del jugador ===== -->
-    <section class="stud marco" id="seccion_stud">
-        <h2 class="foil">MI STUD</h2>
-        <div id="stud_fuera">
-            <p class="vacio">Entra con tu cuenta del juego para ver tus caballos, escoger los colores de tu stud y equipar tus skins.</p>
-            <button class="comprar" id="boton_entrar_stud" type="button">ENTRAR <small>MI STUD</small></button>
-        </div>
-        <div id="stud_dentro" class="oculto">
-            <p class="vacio">Tu stud ya viene listo para correr. Si quieres, cambia aquí el nombre, los colores, el color de tus caballos y tu equipo.</p>
-            <p class="sub">Nombre de tu stud</p>
-            <input class="nombre-stud" id="stud_nombre" maxlength="24" placeholder="Ej.: Stud Los Robles">
-            <p class="sub">Tus colores</p>
-            <div class="vista-stud" id="vista_stud"></div>
-            <p class="vacio">Tus colores son únicos: ningún otro stud puede tener la misma combinación. Si no escoges, te damos unos al azar que no tiene más nadie.</p>
-            <div id="stud_colores"></div>
-            <p class="sub">Diseño de la chaquetilla</p>
-            <div class="chips" id="stud_disenos"></div>
-            <p class="sub">Tus caballos</p>
-            <div class="stud-caballos" id="stud_caballos"></div>
-            <p class="sub">Tu equipo (skins)</p>
-            <div class="stud-equipo" id="stud_equipo"></div>
-            <button class="comprar" id="boton_guardar_stud" type="button">GUARDAR <small>MI STUD</small></button>
-            <div id="aviso_stud" class="aviso"></div>
-        </div>
-    </section>
 
     <!-- ===== CABALLO RETADOR (lo único que se cobra hoy) ===== -->
     <section class="destacada marco" id="seccion_caballos">
@@ -599,6 +573,31 @@
     </section>
 
     <p class="pie">Los artículos se abren muy pronto. El equipo de cada liga se abre al subir de liga.<br>IA Power Tech · Proyecto BDG · Brisas de Gloria</p>
+    <!-- ===== MI STUD (24-nov-2026): nombre, chaquetilla, mantilla, caballos y skins del jugador ===== -->
+    <section class="stud marco" id="seccion_stud">
+        <h2 class="foil">MI STUD</h2>
+        <div id="stud_fuera">
+            <p class="vacio">Entra con tu cuenta del juego para ver tus caballos, escoger los colores de tu stud y equipar tus skins.</p>
+            <button class="comprar" id="boton_entrar_stud" type="button">ENTRAR <small>MI STUD</small></button>
+        </div>
+        <div id="stud_dentro" class="oculto">
+            <p class="vacio">Tu stud ya viene listo para correr. Si quieres, cambia aquí el nombre, los colores, el color de tus caballos y tu equipo.</p>
+            <p class="sub">Nombre de tu stud</p>
+            <input class="nombre-stud" id="stud_nombre" maxlength="24" placeholder="Ej.: Stud Los Robles">
+            <p class="sub">Tus colores</p>
+            <div class="vista-stud" id="vista_stud"></div>
+            <p class="vacio">Tus colores son únicos: ningún otro stud puede tener la misma combinación. Si no escoges, te damos unos al azar que no tiene más nadie.</p>
+            <div id="stud_colores"></div>
+            <p class="sub">Diseño de la chaquetilla</p>
+            <div class="chips" id="stud_disenos"></div>
+            <p class="sub">Tus caballos</p>
+            <div class="stud-caballos" id="stud_caballos"></div>
+            <p class="sub">Tu equipo (skins)</p>
+            <div class="stud-equipo" id="stud_equipo"></div>
+            <button class="comprar" id="boton_guardar_stud" type="button">GUARDAR <small>MI STUD</small></button>
+            <div id="aviso_stud" class="aviso"></div>
+        </div>
+    </section>
 </div>
 <div id="aviso_flotante" class="aviso-flotante" role="status"></div>
 <div id="defs_dibujos"></div>
