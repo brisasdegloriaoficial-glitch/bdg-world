@@ -354,6 +354,38 @@
         filter: drop-shadow(0 1px 0 #fff3c4) drop-shadow(0 2px 0 #5a3d0c) drop-shadow(0 5px 7px rgba(0,0,0,.85)); }
     .tablero-letras::after { content: attr(data-t); position: absolute; left: 0; top: 0; background: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 38%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; }
     .logo.tablero-nombre img { display: none; }
+    /* ===== cofre de arriba (fortuna2) ===== */
+    .fortuna2 { position: relative; margin: 12px 12px 0; border-radius: 14px; overflow: hidden; }
+    .fortuna2 .escena { position: absolute; inset: 0; background: url(/Hero_Poster.jpg) center 70% / cover; filter: brightness(.34) saturate(1.25); }
+    .fortuna2 .luz { position: absolute; inset: 0; background: radial-gradient(circle at 25% 45%, rgba(255,205,90,.30), rgba(255,205,90,0) 40%), linear-gradient(180deg, rgba(11,15,25,.55), rgba(11,15,25,.2) 40%, rgba(11,15,25,.85)); }
+    .emblema-fortuna { display: block; width: 110px; margin: -16px auto 2px; mix-blend-mode: lighten; }
+    .fortuna2 { border: 2px solid #d4af37; box-shadow: 0 0 18px rgba(212,175,55,.35), inset 0 0 0 4px rgba(11,15,25,.9), inset 0 0 0 5px rgba(212,175,55,.6); }
+    .fortuna2 .contenido { position: relative; padding: 16px 12px 16px; text-align: center; }
+    .fortuna2 .titulo-fortuna { font-family: 'Cinzel', serif; font-weight: 800; font-size: 21px; line-height: 1.15; filter: drop-shadow(0 2px 2px rgba(0,0,0,.8)); }
+    .divisor-fortuna { display: flex; align-items: center; gap: 8px; margin: 8px 20px 4px; }
+    .divisor-fortuna i { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(212,175,55,0), #d4af37, rgba(212,175,55,0)); }
+    .divisor-fortuna span { width: 8px; height: 8px; background: #d4af37; transform: rotate(45deg); }
+    .palabra-recarga { font-family: 'Cinzel', serif; font-weight: 900; font-size: 30px; letter-spacing: 1px; filter: drop-shadow(0 2px 3px rgba(0,0,0,.85)); }
+    .fila-cofre { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .fortuna2 .cofre { position: relative; width: 50%; aspect-ratio: 1; flex: none; }
+    .fortuna2 .cofre img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; filter: drop-shadow(0 4px 8px rgba(0,0,0,.7)); }
+    .opciones-monedas { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .opcion-moneda { display: flex; align-items: center; gap: 8px; padding: 8px 8px; border-radius: 14px; background: rgba(11,15,25,.85); border: 1.5px solid #d4af37; box-shadow: 0 0 10px rgba(212,175,55,.3); color: #fff; text-align: left; text-decoration: none; font-family: 'Cinzel', serif; font-weight: 700; font-size: 13px; line-height: 1.2; cursor: pointer; }
+    .opcion-moneda img { width: 36px; height: 36px; flex: none; }
+    .opcion-moneda span { flex: 1; }
+    .opcion-moneda b { color: #d4af37; font-size: 22px; }
+    .saldo2 { display: flex; align-items: center; gap: 10px; margin-top: 10px; height: 46px; padding: 0 6px; border-radius: 999px; background: rgba(11,15,25,.88); border: 1.5px solid #d4af37; }
+    .saldo2 img { width: 36px; height: 36px; }
+    .saldo2 .nombre { font-family: 'Cinzel', serif; font-weight: 800; font-size: 17px; color: #fff; padding-left: 10px; border-left: 1.5px solid #d4af37; }
+    .saldo2 b { flex: 1; text-align: right; font-weight: 800; font-size: 17px; color: #fff; }
+    .saldo2 .mas { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(180deg, #fff1bd, #f0d68f 35%, #d4af37 65%, #a7801c); color: #1a1205; font-weight: 800; font-size: 22px; line-height: 1; border: 1px solid #5a4010; text-decoration: none; cursor: pointer; }
+    .cambio2 { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+    .cambio2 i { flex: 1; height: 1px; background: #d4af37; opacity: .7; }
+    .cambio2 span { font-family: 'Cinzel', serif; font-weight: 700; font-size: 13px; color: #f0d68f; }
+    .boton-grande { display: block; width: 100%; margin-top: 12px; padding: 13px 10px; border-radius: 999px; border: 1.5px solid #5a4010; background: linear-gradient(180deg, #fff6cf 0%, #f2d77f 40%, #d4af37 65%, #a7801c 100%); box-shadow: 0 0 16px rgba(255,214,106,.5), inset 0 1px 0 rgba(255,255,255,.7); color: #1a1205; font-family: 'Cinzel', serif; font-weight: 900; font-size: 18px; letter-spacing: .5px; cursor: pointer; }
+    .fortuna2 .recarga { justify-content: center; margin-top: 12px; }
+    .fortuna2 .recarga .boton { padding: 9px 18px; border-radius: 10px; border: 1.5px solid #5a4010; background: linear-gradient(180deg, #fff6cf 0%, #f2d77f 40%, #d4af37 65%, #a7801c 100%); color: #1a1205; font-family: 'Cinzel', serif; font-weight: 800; font-size: 13px; }
+    @media (min-width: 760px) { .fortuna2 { margin-left: 24px; margin-right: 24px; } .fortuna2 .contenido { max-width: 520px; margin: 0 auto; } }
 </style>
 </head>
 <body>
@@ -367,18 +399,32 @@
 </nav>
 <div class="pagina">
 
-    <header class="cabecera">
-        <img class="fondo" src="/BDG_Marketplace_Fondo_Cabecera_Hipodromo_Atardecer_Palmeras.png" alt="">
-        <a class="logo tablero-nombre" href="/" aria-label="Volver al inicio">
-            <span class="tablero-adorno izquierdo" aria-hidden="true"></span>
-            <span class="tablero-centro"><span class="tablero-letras" data-t="BRISAS DE GLORIA">BRISAS DE GLORIA</span></span>
-            <span class="tablero-adorno derecho" aria-hidden="true"></span>
-        </a>
-        <div class="saldos">
-            <button class="saldo" type="button" data-ir="fortuna" aria-label="Saldo de Gloria"><img data-moneda="gloria" alt=""><b id="saldo_gloria">0</b><span class="mas">+</span></button>
-            <button class="saldo" type="button" data-ir="fortuna" aria-label="Saldo de Centi"><img data-moneda="centi" alt=""><b id="saldo_centi">0</b><span class="mas">+</span></button>
+    <section class="fortuna2 marco" id="seccion_fortuna">
+        <div class="escena"></div><div class="luz"></div>
+        <div class="contenido">
+            <img class="emblema-fortuna" src="/BDG_Marketplace_Recarga_emblema_caballo.png" alt="">
+            <h4 class="foil titulo-fortuna">Tu fortuna en el hipódromo</h4>
+            <div class="divisor-fortuna"><i></i><span></span><i></i></div>
+            <div class="foil palabra-recarga">RECARGA</div>
+            <div class="fila-cofre">
+                <div class="cofre" id="cofre"><img alt="" src="/BDG_Marketplace_Recarga_cofre_caballo.png"></div>
+                <div class="opciones-monedas">
+                    <button class="opcion-moneda" type="button" id="opcion_recargar_usdt"><img src="/BDG_Marketplace_Recarga_moneda_gloria_caballo.png" alt=""><span>Recargar con USDT</span><b>›</b></button>
+                    <a class="opcion-moneda" href="/" id="opcion_ganar_centi"><img src="/BDG_Marketplace_Recarga_moneda_centi_caballo.png" alt=""><span>Gana Centi gratis jugando</span><b>›</b></a>
+                </div>
+            </div>
+            <div class="saldo2"><img src="/BDG_Marketplace_Recarga_moneda_gloria_caballo.png" alt=""><span class="nombre">Gloria</span><b id="saldo_gloria">0</b><button class="mas" type="button" id="mas_gloria" aria-label="Recargar Gloria">+</button></div>
+            <div class="saldo2"><img src="/BDG_Marketplace_Recarga_moneda_centi_caballo.png" alt=""><span class="nombre">Centi</span><b id="saldo_centi">0</b><a class="mas" href="/" aria-label="Ganar Centi">+</a></div>
+            <div class="cambio2"><i></i><span>1 Gloria = 1 USD = 100 Centi</span><i></i></div>
+            <button class="boton-grande" type="button" id="boton_obtener_monedas">OBTENER MONEDAS</button>
+            <div class="recarga oculto" id="panel_recarga">
+                <input type="number" id="monto_recarga" min="0" step="1" inputmode="decimal" placeholder="Monto" aria-label="Monto a recargar en USDT">
+                <span class="unidad">USDT = Gloria</span>
+                <button class="boton" type="button" id="boton_recargar">RECARGAR</button>
+                <div id="aviso_recarga" class="aviso"></div>
+            </div>
         </div>
-    </header>
+    </section>
 
     <div class="titulo">
         <svg class="bolsa" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="g-bolsa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1bd"/><stop offset=".55" stop-color="#d4af37"/><stop offset="1" stop-color="#8f6d2b"/></linearGradient></defs>
@@ -447,22 +493,7 @@
     <div class="cab" id="explorar"><h3 class="foil">Explora el Marketplace</h3><i></i></div>
     <div class="categorias" id="categorias"></div>
 
-    <section class="fortuna marco" id="seccion_fortuna">
-        <div class="escena"></div><div class="luz"></div>
-        <div class="cofre" id="cofre"></div>
-        <div class="texto">
-            <h4 class="foil">Tu fortuna en el hipódromo</h4>
-            <div class="vias-monedas"><span><b>RECARGA</b> tu saldo de Gloria con USDT</span><span class="o">o</span><span><b>GANA CENTI GRATIS</b> jugando</span></div>
-            <p class="cambio">1 Gloria = 1 USD = 100 Centi</p>
-            <button class="boton" type="button" id="boton_obtener_monedas">OBTENER MONEDAS</button>
-            <div class="recarga oculto" id="panel_recarga">
-                <input type="number" id="monto_recarga" min="0" step="1" inputmode="decimal" placeholder="Monto" aria-label="Monto a recargar en USDT">
-                <span class="unidad">USDT = Gloria</span>
-                <button class="boton" type="button" id="boton_recargar">RECARGAR</button>
-                <div id="aviso_recarga" class="aviso"></div>
-            </div>
-        </div>
-    </section>
+    
 
     <div id="secciones"></div>
 
@@ -1171,7 +1202,9 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
     });
 
     // ---------- cofre de monedas ----------
-    $("cofre").innerHTML = '<img alt="" src="/BDG_Marketplace_Cofre_Monedas_Gloria_Centi_BDG.png" style="left:0;top:0;width:116px;height:116px">';
+    $("cofre").innerHTML = '<img alt="" src="/BDG_Marketplace_Recarga_cofre_caballo.png">';
+    // "Recargar con USDT" y el "+" de Gloria abren la recarga
+    ["opcion_recargar_usdt", "mas_gloria"].forEach((id) => $(id).addEventListener("click", () => { $("panel_recarga").classList.remove("oculto"); $("monto_recarga").focus(); }));
 
     // ---------- botones que todavía no venden ----------
     document.addEventListener("click", (ev) => {
