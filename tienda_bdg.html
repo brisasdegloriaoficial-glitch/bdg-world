@@ -355,7 +355,7 @@
     .tablero-letras::after { content: attr(data-t); position: absolute; left: 0; top: 0; background: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 38%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; }
     .logo.tablero-nombre img { display: none; }
     /* ===== cofre de arriba (fortuna2) ===== */
-    .fortuna2 { position: relative; margin: 12px 12px 0; border-radius: 14px; overflow: hidden; }
+    .fortuna2 { position: relative; margin: 6px 0 16px; border-radius: 14px; overflow: hidden; }
     .fortuna2 .escena { position: absolute; inset: 0; background: url(/Hero_Poster.jpg) center 70% / cover; filter: brightness(.34) saturate(1.25); }
     .fortuna2 .luz { position: absolute; inset: 0; background: radial-gradient(circle at 25% 45%, rgba(255,205,90,.30), rgba(255,205,90,0) 40%), linear-gradient(180deg, rgba(11,15,25,.55), rgba(11,15,25,.2) 40%, rgba(11,15,25,.85)); }
     .emblema-fortuna { display: block; width: 110px; margin: -16px auto 2px; mix-blend-mode: lighten; }
@@ -385,7 +385,78 @@
     .boton-grande { display: block; width: 100%; margin-top: 12px; padding: 13px 10px; border-radius: 999px; border: 1.5px solid #5a4010; background: linear-gradient(180deg, #fff6cf 0%, #f2d77f 40%, #d4af37 65%, #a7801c 100%); box-shadow: 0 0 16px rgba(255,214,106,.5), inset 0 1px 0 rgba(255,255,255,.7); color: #1a1205; font-family: 'Cinzel', serif; font-weight: 900; font-size: 18px; letter-spacing: .5px; cursor: pointer; }
     .fortuna2 .recarga { justify-content: center; margin-top: 12px; }
     .fortuna2 .recarga .boton { padding: 9px 18px; border-radius: 10px; border: 1.5px solid #5a4010; background: linear-gradient(180deg, #fff6cf 0%, #f2d77f 40%, #d4af37 65%, #a7801c 100%); color: #1a1205; font-family: 'Cinzel', serif; font-weight: 800; font-size: 13px; }
-    @media (min-width: 760px) { .fortuna2 { margin-left: 24px; margin-right: 24px; } .fortuna2 .contenido { max-width: 520px; margin: 0 auto; } }
+    @media (min-width: 760px) { .fortuna2 .contenido { max-width: 520px; margin: 0 auto; } }
+    /* ===== Mi Stud con adornos (diseño ChatGPT 26-nov) ===== */
+    .stud { background: linear-gradient(180deg, rgba(11,15,25,.92), rgba(11,15,25,.97)), url(/Hero_Poster.jpg) center bottom / cover; border: 2px solid #d4af37; box-shadow: 0 0 18px rgba(212,175,55,.3), inset 0 0 0 4px rgba(11,15,25,.9), inset 0 0 0 5px rgba(212,175,55,.45); }
+    .titulo-mistud { display: flex; align-items: center; gap: 10px; }
+    .titulo-mistud i { flex: 1; height: 2px; background: linear-gradient(90deg, rgba(212,175,55,0), #d4af37); }
+    .titulo-mistud i:last-child { background: linear-gradient(90deg, #d4af37, rgba(212,175,55,0)); }
+    .titulo-mistud span { font-size: 28px; letter-spacing: 1px; }
+    .emblema-fortuna { width: 140px; margin: -12px auto 0; }
+    .separador-herradura { display: block; width: 150px; margin: -4px auto 4px; }
+    .stud .encabezado-stud { display: flex; align-items: center; justify-content: center; gap: 2px; margin: 18px 0 10px; }
+    .encabezado-stud > i { flex: 1; height: 1px; background: linear-gradient(90deg, rgba(212,175,55,0), #d4af37); }
+    .encabezado-stud > i:last-child { background: linear-gradient(90deg, #d4af37, rgba(212,175,55,0)); }
+    .encabezado-stud .laurel { width: 22px; height: auto; }
+    .encabezado-stud span { display: inline-flex; align-items: center; gap: 6px; padding: 5px 16px; border-radius: 999px; border: 1.5px solid #d4af37; background: linear-gradient(180deg, #151c2e, #0b0f19); box-shadow: 0 0 10px rgba(212,175,55,.25); font-family: 'Cinzel', serif; font-weight: 700; font-size: 15px; color: #f0d68f; white-space: nowrap; }
+    .encabezado-stud .icono-caballo { width: 24px; height: auto; }
+    .stud input.nombre-stud { background: linear-gradient(180deg, #0b0f19, #121a2e); box-shadow: inset 0 2px 6px rgba(0,0,0,.6), 0 0 8px rgba(212,175,55,.2); }
+    .stud .color { width: 34px; height: 34px; border-radius: 8px; border: 2px solid #8f6d2b; box-shadow: inset 0 2px 4px rgba(255,255,255,.25), inset 0 -3px 5px rgba(0,0,0,.35); }
+    .stud .color.si { border-color: #f0d68f; box-shadow: 0 0 0 2px rgba(240,214,143,.6), 0 0 12px rgba(255,214,106,.8); }
+    .stud .colores { gap: 9px; }
+    .ficha-caballo { border: 1.5px solid #d4af37; background: linear-gradient(180deg, #141c30, #0b0f19); box-shadow: 0 0 10px rgba(212,175,55,.22), inset 0 1px 0 rgba(255,255,255,.06); }
+    .ranura { border-color: #8f6d2b; background: linear-gradient(180deg, #141c30, #0b0f19); }
+    .ranura.lleno { border-color: #d4af37; box-shadow: 0 0 10px rgba(212,175,55,.3); }
+    #stud_disenos > * { border-color: #d4af37 !important; }
+    .stud .comprar { box-shadow: 0 0 18px rgba(255,214,106,.5); }
+    .stud .chips#stud_disenos { gap: 8px; padding: 8px; border-radius: 12px; border: 1px solid rgba(212,175,55,.5); background: rgba(11,15,25,.6); }
+    .chip.disenio-chaquetilla { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 78px; padding: 6px 4px; border-radius: 10px; border: 1.5px solid #8f6d2b; background: linear-gradient(180deg, #1a2238, #0b0f19); color: #f0d68f; font-family: 'Cinzel', serif; font-size: 11px; }
+    .chip.disenio-chaquetilla.si { border-color: #f0d68f; background: linear-gradient(180deg, #3a2f12, #0b0f19); color: #fff1bd; box-shadow: 0 0 12px rgba(255,214,106,.7); }
+    .ficha-caballo img.retrato-raza { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; border: 1.5px solid #d4af37; margin-bottom: 8px; }
+    .ranura img.icono-equipo { width: 64px; height: 44px; object-fit: contain; border-radius: 8px; }
+    .stud-equipo { padding: 8px; border-radius: 12px; border: 1px solid rgba(212,175,55,.5); background: rgba(11,15,25,.6); }
+    .ranura { font-family: 'Cinzel', serif; color: #f0d68f; }
+
+    /* ===== Mi Stud: tarjetas y desplegables ===== */
+    #seccion_stud { color: #f0d68f; }
+    #seccion_stud .titulo-mistud, #seccion_stud .encabezado-stud,
+    #seccion_stud .sub { font-family: 'Cinzel', serif; color: #f0d68f; }
+    #seccion_stud .vista-stud { margin: 0 auto 8px; min-height: 92px; }
+    #seccion_stud .vista-stud svg { width: 112px; height: 112px; filter: drop-shadow(0 5px 9px rgba(0,0,0,.7)); }
+    #seccion_stud #stud_disenos { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:9px; padding:10px; border:1px solid rgba(212,175,55,.5); border-radius:14px; background:rgba(11,15,25,.72); }
+    #seccion_stud .chip.disenio-chaquetilla { width:100%; min-height:104px; padding:7px 4px; border:1.5px solid #8f6d2b !important; border-radius:11px; background:linear-gradient(180deg,#172238,#0b0f19); }
+    #seccion_stud .chip.disenio-chaquetilla svg { width:68px; height:68px; }
+    #seccion_stud .chip.disenio-chaquetilla span { font-family:'Cinzel',serif; font-size:11px; color:#f0d68f; }
+    #seccion_stud .chip.disenio-chaquetilla.si { border-color:#f0d68f !important; box-shadow:0 0 0 1px #d4af37,0 0 15px rgba(212,175,55,.65); }
+    #seccion_stud .config-chaquetilla { display:none; grid-column:1/-1; padding:10px; margin-top:2px; border:1px solid #d4af37; border-radius:12px; background:linear-gradient(180deg,#151e30,#0b0f19); text-align:left; }
+    #seccion_stud .config-chaquetilla.abierta { display:block; }
+    #seccion_stud .colores-principales { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    #seccion_stud .colores { display:block; margin:4px 0 9px; text-align:center; }
+    #seccion_stud .colores b { display:block; margin-bottom:7px; color:#f0d68f; font:700 11px 'Cinzel',serif; }
+    #seccion_stud .paleta-stud { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; }
+    #seccion_stud .color { width:25px; height:25px; border-radius:7px; }
+    #seccion_stud .colores-discretos { margin-top:7px; border-top:1px solid rgba(212,175,55,.3); padding-top:8px; }
+    #seccion_stud .colores-discretos summary, #seccion_stud .ficha-detalle summary { cursor:pointer; color:#f0d68f; font:700 12px 'Cinzel',serif; padding:7px 10px; border:1px solid rgba(212,175,55,.7); border-radius:9px; display:inline-block; list-style:none; }
+    #seccion_stud summary::-webkit-details-marker { display:none; }
+    #seccion_stud .colores-discretos[open] summary, #seccion_stud .ficha-detalle[open] summary { background:rgba(212,175,55,.13); }
+    #seccion_stud .stud-caballos { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    #seccion_stud .ficha-caballo { padding:8px; border-radius:13px; overflow:hidden; }
+    #seccion_stud .ficha-caballo img.retrato-raza { width:100%; aspect-ratio:4/3; object-fit:cover; margin:0 0 7px; border-radius:9px; border:1px solid #d4af37; }
+    #seccion_stud .caballo-resumen { min-height:38px; text-align:center; }
+    #seccion_stud .caballo-resumen .cod { font-size:13px; }
+    #seccion_stud .ficha-detalle { margin-top:7px; text-align:left; font-size:10.5px; line-height:1.6; }
+    #seccion_stud .ficha-detalle summary { display:block; text-align:center; }
+    #seccion_stud .ficha-detalle .nombre-pelaje { margin-left:3px; }
+    #seccion_stud .stud-equipo { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; padding:8px; }
+    #seccion_stud .ranura { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:5px; min-width:0; min-height:112px; padding:8px 4px; border-style:solid; border-radius:11px; }
+    #seccion_stud .ranura img.icono-equipo { width:100%; max-width:76px; height:55px; object-fit:contain; }
+    #seccion_stud .ranura .nombre-ranura { font:700 10px 'Cinzel',serif; color:#f0d68f; }
+    #seccion_stud .ranura select { width:100%; min-width:0; font-size:10px; }
+    #seccion_stud .ranura small { font:500 9px 'Montserrat',sans-serif; line-height:1.3; color:#cbd5e1; }
+    @media(min-width:600px) {
+      #seccion_stud .stud-caballos { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      #seccion_stud .chip.disenio-chaquetilla { min-height:116px; }
+    }
 </style>
 </head>
 <body>
@@ -399,32 +470,7 @@
 </nav>
 <div class="pagina">
 
-    <section class="fortuna2 marco" id="seccion_fortuna">
-        <div class="escena"></div><div class="luz"></div>
-        <div class="contenido">
-            <img class="emblema-fortuna" src="/BDG_Marketplace_Recarga_emblema_caballo.png" alt="">
-            <h4 class="foil titulo-fortuna">Tu fortuna en el hipódromo</h4>
-            <div class="divisor-fortuna"><i></i><span></span><i></i></div>
-            <div class="foil palabra-recarga">RECARGA</div>
-            <div class="fila-cofre">
-                <div class="cofre" id="cofre"><img alt="" src="/BDG_Marketplace_Recarga_cofre_caballo.png"></div>
-                <div class="opciones-monedas">
-                    <button class="opcion-moneda" type="button" id="opcion_recargar_usdt"><img src="/BDG_Marketplace_Recarga_moneda_gloria_caballo.png" alt=""><span>Recargar con USDT</span><b>›</b></button>
-                    <a class="opcion-moneda" href="/" id="opcion_ganar_centi"><img src="/BDG_Marketplace_Recarga_moneda_centi_caballo.png" alt=""><span>Gana Centi gratis jugando</span><b>›</b></a>
-                </div>
-            </div>
-            <div class="saldo2"><img src="/BDG_Marketplace_Recarga_moneda_gloria_caballo.png" alt=""><span class="nombre">Gloria</span><b id="saldo_gloria">0</b><button class="mas" type="button" id="mas_gloria" aria-label="Recargar Gloria">+</button></div>
-            <div class="saldo2"><img src="/BDG_Marketplace_Recarga_moneda_centi_caballo.png" alt=""><span class="nombre">Centi</span><b id="saldo_centi">0</b><a class="mas" href="/" aria-label="Ganar Centi">+</a></div>
-            <div class="cambio2"><i></i><span>1 Gloria = 1 USD = 100 Centi</span><i></i></div>
-            <button class="boton-grande" type="button" id="boton_obtener_monedas">OBTENER MONEDAS</button>
-            <div class="recarga oculto" id="panel_recarga">
-                <input type="number" id="monto_recarga" min="0" step="1" inputmode="decimal" placeholder="Monto" aria-label="Monto a recargar en USDT">
-                <span class="unidad">USDT = Gloria</span>
-                <button class="boton" type="button" id="boton_recargar">RECARGAR</button>
-                <div id="aviso_recarga" class="aviso"></div>
-            </div>
-        </div>
-    </section>
+    
 
     <div class="titulo">
         <svg class="bolsa" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="g-bolsa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1bd"/><stop offset=".55" stop-color="#d4af37"/><stop offset="1" stop-color="#8f6d2b"/></linearGradient></defs>
@@ -454,7 +500,7 @@
             <p class="mas-razas">✦ Más razas muy pronto ✦</p>
             <div class="promo-lanzamiento"><b>2 CABALLOS POR EL PRECIO DE 1</b><span>Compra un caballo y llévate otro sin costo. Oferta de lanzamiento por tiempo limitado.</span></div>
             <button class="comprar" id="boton_pagar" type="button"><span id="precio_producto">10</span> GLORIA <small>COMPRAR</small></button>
-            <p class="pago">Pagas con tu saldo de Gloria. ¿No tienes suficiente? Recárgala más abajo con USDT (1 USDT = 1 Gloria).</p>
+            <p class="pago">Pagas con tu saldo de Gloria. ¿No tienes suficiente? Recárgala en Mi Stud con USDT (1 USDT = 1 Gloria).</p>
             <div id="aviso_tienda" class="aviso"></div>
         </div>
     </section>
@@ -619,24 +665,51 @@
     <p class="pie">Los artículos se abren muy pronto. El equipo de cada liga se abre al subir de liga.<br>IA Power Tech · Proyecto BDG · Brisas de Gloria</p>
     <!-- ===== MI STUD (24-nov-2026): nombre, chaquetilla, mantilla, caballos y skins del jugador ===== -->
     <section class="stud marco oculto" id="seccion_stud">
-        <h2 class="foil">MI STUD</h2>
+        <h2 class="titulo-mistud"><i></i><span class="foil">MI STUD</span><i></i></h2>
         <div id="stud_fuera">
             <p class="vacio">Entra con tu cuenta del juego para ver tus caballos, escoger los colores de tu stud y equipar tus skins.</p>
             <button class="comprar" id="boton_entrar_stud" type="button">ENTRAR <small>MI STUD</small></button>
         </div>
         <div id="stud_dentro" class="oculto">
+            <section class="fortuna2 marco" id="seccion_fortuna">
+        <div class="escena"></div><div class="luz"></div>
+        <div class="contenido">
+            <img class="emblema-fortuna" src="/BDG_MiStud_Emblema_Caballo_Laureles.png" alt="">
+            <h4 class="foil titulo-fortuna">Tu fortuna en el hipódromo</h4>
+            <div class="divisor-fortuna"><i></i><span></span><i></i></div>
+            <div class="foil palabra-recarga">RECARGA</div>
+            <div class="fila-cofre">
+                <div class="cofre" id="cofre"></div>
+                <div class="opciones-monedas">
+                    <button class="opcion-moneda" type="button" id="opcion_recargar_usdt"><img src="/BDG_Marketplace_Recarga_moneda_gloria_caballo.png" alt=""><span>Recargar con USDT</span><b>›</b></button>
+                    <a class="opcion-moneda" href="/" id="opcion_ganar_centi"><img src="/BDG_Marketplace_Recarga_moneda_centi_caballo.png" alt=""><span>Gana Centi gratis jugando</span><b>›</b></a>
+                </div>
+            </div>
+            <div class="saldo2"><img src="/BDG_Marketplace_Recarga_moneda_gloria_caballo.png" alt=""><span class="nombre">Gloria</span><b id="saldo_gloria">0</b><button class="mas" type="button" id="mas_gloria" aria-label="Recargar Gloria">+</button></div>
+            <div class="saldo2"><img src="/BDG_Marketplace_Recarga_moneda_centi_caballo.png" alt=""><span class="nombre">Centi</span><b id="saldo_centi">0</b><a class="mas" href="/" aria-label="Ganar Centi">+</a></div>
+            <div class="cambio2"><i></i><span>1 Gloria = 1 USD = 100 Centi</span><i></i></div>
+            <button class="boton-grande" type="button" id="boton_obtener_monedas">OBTENER MONEDAS</button>
+            <div class="recarga oculto" id="panel_recarga">
+                <input type="number" id="monto_recarga" min="0" step="1" inputmode="decimal" placeholder="Monto" aria-label="Monto a recargar en USDT">
+                <span class="unidad">USDT = Gloria</span>
+                <button class="boton" type="button" id="boton_recargar">RECARGAR</button>
+                <div id="aviso_recarga" class="aviso"></div>
+            </div>
+        </div>
+    </section>
+            <img class="separador-herradura" src="/BDG_MiStud_Separador_Herradura_Laureles.png" alt="">
             <p class="vacio">Tu stud ya viene listo para correr. Si quieres, cambia aquí el nombre, los colores, el color de tus caballos y tu equipo.</p>
-            <p class="sub">Nombre de tu stud</p>
+            <p class="sub encabezado-stud"><i></i><img class="laurel" src="/BDG_MiStud_Laurel_Izquierdo.png" alt=""><span><img class="icono-caballo" src="/BDG_MiStud_Icono_Caballo.png" alt="">Nombre de tu stud</span><img class="laurel" src="/BDG_MiStud_Laurel_Derecho.png" alt=""><i></i></p>
             <input class="nombre-stud" id="stud_nombre" maxlength="24" placeholder="Ej.: Stud Los Robles">
-            <p class="sub">Tus colores</p>
+            <p class="sub encabezado-stud"><i></i><img class="laurel" src="/BDG_MiStud_Laurel_Izquierdo.png" alt=""><span>Tus colores</span><img class="laurel" src="/BDG_MiStud_Laurel_Derecho.png" alt=""><i></i></p>
             <div class="vista-stud" id="vista_stud"></div>
             <p class="vacio">Tus colores son únicos: ningún otro stud puede tener la misma combinación. Si no escoges, te damos unos al azar que no tiene más nadie.</p>
-            <div id="stud_colores"></div>
-            <p class="sub">Diseño de la chaquetilla</p>
+            <p class="sub encabezado-stud"><i></i><img class="laurel" src="/BDG_MiStud_Laurel_Izquierdo.png" alt=""><span>Diseño de la chaquetilla</span><img class="laurel" src="/BDG_MiStud_Laurel_Derecho.png" alt=""><i></i></p>
             <div class="chips" id="stud_disenos"></div>
-            <p class="sub">Tus caballos</p>
+            <div id="stud_colores" class="oculto"></div>
+            <p class="sub encabezado-stud"><i></i><img class="laurel" src="/BDG_MiStud_Laurel_Izquierdo.png" alt=""><span><img class="icono-caballo" src="/BDG_MiStud_Icono_Caballo.png" alt="">Tus caballos</span><img class="laurel" src="/BDG_MiStud_Laurel_Derecho.png" alt=""><i></i></p>
             <div class="stud-caballos" id="stud_caballos"></div>
-            <p class="sub">Tu equipo (skins)</p>
+            <p class="sub encabezado-stud"><i></i><img class="laurel" src="/BDG_MiStud_Laurel_Izquierdo.png" alt=""><span>Tu equipo (skins)</span><img class="laurel" src="/BDG_MiStud_Laurel_Derecho.png" alt=""><i></i></p>
             <div class="stud-equipo" id="stud_equipo"></div>
             <button class="comprar" id="boton_guardar_stud" type="button">GUARDAR <small>MI STUD</small></button>
             <div id="aviso_stud" class="aviso"></div>
@@ -1126,7 +1199,7 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
         document.querySelector(".promo-lanzamiento").classList.toggle("oculto", !!tp.gratis);
         document.querySelector(".pago").textContent = tp.gratis
             ? "Un caballo gratis por cuenta, para que pruebes el juego. Escoge bien: se reclama una sola vez."
-            : "Pagas con tu saldo de Gloria. ¿No tienes suficiente? Recárgala más abajo con USDT (1 USDT = 1 Gloria).";
+            : "Pagas con tu saldo de Gloria. ¿No tienes suficiente? Recárgala en Mi Stud con USDT (1 USDT = 1 Gloria).";
         document.querySelectorAll(".tipo").forEach((x) => x.classList.toggle("activo", x.dataset.tipo === tipoEscogido));
         $("pestanas").innerHTML = caballos.map((c, i) =>
             '<button class="pestana' + (i === caballoActivo ? " activa" : "") + '" type="button" data-caballo="' + i + '">Caballo ' + (i + 1) +
@@ -1277,17 +1350,39 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
             '<path d="M47 24 Q60 2 73 24 Z" fill="' + c.gorra + '" stroke="#000" stroke-opacity=".5"/><path d="M58 24 H82 Q78 29 60 27 Z" fill="' + c.gorra + '" stroke="#000" stroke-opacity=".5"/>' +
             '<rect x="22" y="108" width="76" height="9" rx="4" fill="' + c.mantilla + '" stroke="#000" stroke-opacity=".5"/></svg>';
     }
+    // dibujos de Mi Stud (diseño ChatGPT 26-nov)
+    const ICONOS_EQUIPO = { casco: "/BDG_MiStud_Equipo_Casco.png", lentes: "/BDG_MiStud_Equipo_Lentes.png", botas: "/BDG_MiStud_Equipo_Botas.png", guantes: "/BDG_MiStud_Equipo_Guantes.png", silla: "/BDG_MiStud_Equipo_Silla.png" };
+    const RETRATOS_RAZA = { americano: "/BDG_Marketplace_Raza_Americano_Alazan_Retrato_Cabeza_Pecho.png", arabe: "/BDG_Marketplace_Raza_Arabe_Tordo_Retrato_Cabeza_Pecho.png", cuarto: "/BDG_Marketplace_Raza_Cuarto_de_Milla_Castano_Retrato_Cabeza_Pecho.png", patilargo: "/BDG_Marketplace_Raza_Patilargo_Negro_Retrato_Cabeza_Pecho.png" };
+    function retratoRaza(raza) {
+        const r = String(raza || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const k = Object.keys(RETRATOS_RAZA).find((x) => r.indexOf(x) >= 0);
+        return k ? '<img class="retrato-raza" src="' + RETRATOS_RAZA[k] + '" alt="">' : "";
+    }
+    let disenoAbierto = false;
     function pintarStud() {
         const c = stud.colores;
         $("vista_stud").innerHTML = chaquetilla(c);
         if ($("acceso_stud_chaquetilla")) $("acceso_stud_chaquetilla").innerHTML = chaquetilla(c).replace('width="150" height="150"', 'width="64" height="64"').replace(/corte_stud/g, "corte_acceso").replace(/cuadros_stud/g, "cuadros_acceso");
-        $("stud_colores").innerHTML = Object.entries(COLORES_STUD).map(([k, nombre]) =>
-            '<div class="colores"><b>' + nombre + "</b>" + PALETA_STUD.map((h) =>
-                '<button type="button" class="color' + (c[k] === h ? " si" : "") + '" data-parte="' + k + '" data-color="' + h + '" style="background:' + h + '" aria-label="' + nombre + " " + h + '"></button>').join("") + "</div>").join("");
+
+        const pintarPaleta = (k) => {
+            const nombre = COLORES_STUD[k];
+            return '<div class="colores"><b>' + nombre + '</b><div class="paleta-stud">' + PALETA_STUD.map((h) =>
+                '<button type="button" class="color' + (c[k] === h ? " si" : "") + '" data-parte="' + k + '" data-color="' + h + '" style="background:' + h + '" aria-label="' + nombre + " " + h + '"></button>').join("") + '</div></div>';
+        };
+
         $("stud_disenos").innerHTML = Object.entries(DISENOS_CHAQUETILLA).map(([k, n]) =>
-            '<button type="button" class="chip' + (c.diseno === k ? " si" : "") + '" data-diseno="' + k + '">' + n + "</button>").join("");
+            '<button type="button" class="chip disenio-chaquetilla' + (c.diseno === k ? " si" : "") + '" data-diseno="' + k + '">' +
+            chaquetilla(Object.assign({}, c, { diseno: k })).replace('width="150" height="150"', 'width="64" height="64"').replace(/corte_stud/g, "corte_d_" + k).replace(/cuadros_stud/g, "cuadros_d_" + k) +
+            "<span>" + n + "</span></button>").join("") +
+            '<div class="config-chaquetilla' + (disenoAbierto ? " abierta" : "") + '">' +
+            '<div class="colores-principales">' + pintarPaleta("principal") + pintarPaleta("secundario") + '</div>' +
+            '<details class="colores-discretos"><summary>Gorra y mantilla</summary>' + pintarPaleta("gorra") + pintarPaleta("mantilla") + '</details></div>';
+
+        $("stud_colores").innerHTML = "";
+
         $("stud_caballos").innerHTML = (stud.caballos || []).length ? stud.caballos.map((h) =>
-            '<div class="ficha-caballo"><b class="cod">' + h.nombre + "</b>" + (h.nombre !== h.codigo ? "<small>" + h.codigo + "</small>" : "") +
+            '<article class="ficha-caballo">' + retratoRaza(h.raza) + '<div class="caballo-resumen"><b class="cod">' + h.nombre + "</b>" + (h.nombre !== h.codigo ? "<small>" + h.codigo + "</small>" : "") + '</div>' +
+            '<details class="ficha-detalle"><summary>Ver ficha</summary>' +
             (h.nombre_fijo ? "" : '<input class="nombre-caballo" data-nombre="' + h.numero + '" maxlength="18" placeholder="Ponle nombre (una sola vez)" value="' + (stud.nombres[h.numero] || "").replace(/"/g, "") + '">') +
             '<div class="mantilla" style="background:' + c.mantilla + '"></div>' +
             "<span>Color del caballo:</span>" + (h.pelaje_fijo
@@ -1297,15 +1392,18 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
                   '<small class="nombre-pelaje">' + (stud.pelajes[h.numero] || h.pelaje) + (stud.pelajes[h.numero] ? "" : " (por defecto)") + '</small><br><small class="una-vez">Puedes cambiarlo una sola vez. Al guardar, queda para siempre.</small><br>') +
             "<span>Raza:</span> " + h.raza + "<br><span>Versatilidad:</span> " + h.versatilidad + "<br><span>Pista:</span> " + h.pista +
             "<br><span>Distancias:</span> " + h.distancia + "<br><span>Estilo:</span> " + h.estilo + "<br><span>Clima:</span> " + h.clima +
-            "<br><span>Horario:</span> " + h.horario + "</div>").join("")
+            "<br><span>Horario:</span> " + h.horario + "</details></article>").join("")
             : '<p class="vacio">Todavía no tienes caballos. Reclama tu caballo gratis o compra uno aquí abajo.</p>';
+
         $("stud_equipo").innerHTML = Object.entries(PARTES_EQUIPO).map(([parte, nombre]) => {
             const mios = stud.skins.filter((x) => x.startsWith(parte + "_"));
             const puesto = stud.equipo[parte] || "";
-            return '<div class="ranura' + (puesto ? " lleno" : "") + '">' + dibujo(parte, puesto ? puesto.split("_")[1] : "cobre", 54) + "<br>" + nombre +
+            return '<div class="ranura' + (puesto ? " lleno" : "") + '">' +
+                (ICONOS_EQUIPO[parte] ? '<img class="icono-equipo" src="' + ICONOS_EQUIPO[parte] + '" alt="">' : dibujo(parte, puesto ? puesto.split("_")[1] : "cobre", 54)) +
+                '<span class="nombre-ranura">' + nombre + '</span>' +
                 (mios.length ? '<select data-equipo="' + parte + '"><option value="">Sin skin</option>' +
                     mios.map((x) => '<option value="' + x + '"' + (x === puesto ? " selected" : "") + ">" + NOMBRE_SKIN(x) + "</option>").join("") + "</select>"
-                    : "<br><small>Gánalo jugando o en el Marketplace</small>") + "</div>";
+                    : "<small>Gánalo jugando o en el Marketplace</small>") + "</div>";
         }).join("");
     }
     async function cargarStud() {
@@ -1325,7 +1423,7 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
             pintarStud();
         } catch (e) { aviso("aviso_stud", (e && e.message) || "No se pudo cargar tu stud.", "error"); }
     }
-    $("stud_colores").addEventListener("click", (ev) => {
+    $("stud_disenos").addEventListener("click", (ev) => {
         const b = ev.target.closest("button[data-color]");
         if (!b) return;
         stud.colores[b.dataset.parte] = b.dataset.color;
@@ -1345,6 +1443,7 @@ const IMAGENES = {"moneda_gloria": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg
         const b = ev.target.closest("button[data-diseno]");
         if (!b) return;
         stud.colores.diseno = b.dataset.diseno;
+        disenoAbierto = true;
         pintarStud();
     });
     $("stud_equipo").addEventListener("change", (ev) => {
