@@ -13,11 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brisas de Gloria</title>
     <script defer src="/_vercel/insights/script.js"></script>
-    <meta name="description" content="El videojuego 3D de carreras de caballos donde gana el que mejor corre. Juega gratis la Beta desde el 1 de diciembre en web, Android y PC.">
+    <meta name="description" content="Simulación 3D donde tu habilidad gana. Juega gratis, sube de nivel y gana recompensas. Beta desde el 1 de diciembre en web, Android y PC.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Brisas de Gloria">
     <meta property="og:title" content="Brisas de Gloria">
-    <meta property="og:description" content="El videojuego 3D de carreras de caballos donde gana el que mejor corre. Juega gratis la Beta desde el 1 de diciembre en web, Android y PC.">
+    <meta property="og:description" content="Simulación 3D donde tu habilidad gana. Juega gratis, sube de nivel y gana recompensas. Beta desde el 1 de diciembre en web, Android y PC.">
     <meta property="og:image" content="https://bdg-world.vercel.app/Hero_Poster.jpg">
     <meta property="og:url" content="https://bdg-world.vercel.app/">
     <meta name="twitter:card" content="summary_large_image">
@@ -215,6 +215,87 @@
             .boton-musica .icono-musica { width: 26px; height: 26px; }
             #aviso-pantalla { bottom: 64px; }
         }
+
+        /* ===== REDISEÑO DE ENTRADA: JUGAR GRATIS COMO ACCIÓN PRINCIPAL ===== */
+        .cabecera { position:sticky; top:0; }
+        .cabecera-interior { max-width:1240px; min-height:68px; gap:18px; }
+        .cabecera nav { justify-content:flex-start; gap:8px 22px; }
+        .cabecera nav a { font-size:13px; }
+        .cabecera-jugar { white-space:nowrap; }
+        .menu-explorar { position:relative; flex:0 0 auto; }
+        .menu-explorar summary { list-style:none; cursor:pointer; padding:9px 13px; border:1px solid var(--borde); border-radius:7px; color:var(--dorado-claro); font-size:13px; font-weight:700; }
+        .menu-explorar summary::-webkit-details-marker { display:none; }
+        .menu-explorar[open] summary { border-color:var(--dorado); }
+        .menu-explorar-panel { position:absolute; right:0; top:calc(100% + 8px); min-width:220px; padding:8px; border:1px solid var(--borde); border-radius:10px; background:#101a2d; box-shadow:0 16px 35px #0009; z-index:300; }
+        .menu-explorar-panel a { display:block; padding:11px 12px; border-radius:6px; color:var(--texto); font-size:13px; }
+        .menu-explorar-panel a:hover { background:#1b2944; color:var(--dorado-claro); }
+        .portada { padding:30px 18px 44px; background:radial-gradient(90% 65% at 50% 0%,#1b2a4a 0%,#0b0f19 75%); }
+        .portada-interior { max-width:1050px; }
+        .portada .antetitulo { letter-spacing:3px; }
+        .portada h1 { margin-bottom:18px; }
+        .hero-banner { border-radius:14px; box-shadow:0 22px 55px #0009; }
+        .hero-subtitulo { margin:20px auto 16px; font-size:clamp(16px,2.3vw,20px); }
+        .hero-actions { display:flex; flex-direction:column; align-items:center; gap:12px; margin:22px auto 0; }
+        .boton-jugar-principal { min-width:min(100%,340px); min-height:62px; padding:17px 34px; border-radius:10px; font-size:19px; letter-spacing:1.5px; box-shadow:0 8px 28px #c5a05955; }
+        #boton-jugar { display:inline-flex; }
+        .hero-como-jugar { color:var(--dorado-claro); font-size:14px; text-decoration:underline; text-underline-offset:4px; }
+        .hero-gratis { color:#dbe4f2; font-size:13px; margin:12px auto 0; }
+        .otras-formas { max-width:650px; margin:20px auto 0; text-align:left; border:1px solid #293753; border-radius:10px; background:#101827; }
+        .otras-formas summary, .desplegable-detalles summary { cursor:pointer; padding:13px 16px; color:var(--dorado-claro); font-size:13px; font-weight:700; text-align:center; }
+        .otras-formas-contenido { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:0 14px 15px; }
+        .otras-formas-contenido .boton-secundario { font-size:11px; padding:10px 13px; }
+        .aviso-seguridad { margin-top:12px; }
+        .aviso-seguridad .aviso-instalacion { margin:0 12px 12px; }
+        .aviso-desliza { margin-top:18px; letter-spacing:2px; }
+        .seccion { padding:54px 20px; }
+        #sobre-el-juego { background:linear-gradient(180deg,#101a2c,#0b0f19); }
+        #sobre-el-juego .entrada { max-width:680px; }
+        .desplegable-detalles { max-width:900px; margin:24px auto 0; border:1px solid var(--borde); border-radius:10px; background:#101827; }
+        .desplegable-detalles .rejilla { padding:0 14px 14px; }
+        .mas-informacion { border-top:1px solid #27334b; border-bottom:1px solid #27334b; background:#0d1422; }
+        .mas-informacion > summary { list-style:none; max-width:1080px; margin:0 auto; padding:24px 22px; cursor:pointer; color:var(--dorado-claro); font-family:'Cinzel',serif; font-size:20px; text-align:center; }
+        .mas-informacion > summary::-webkit-details-marker { display:none; }
+        .mas-informacion > summary span { display:block; margin-top:4px; color:var(--suave); font-family:'Montserrat',sans-serif; font-size:12px; font-weight:500; }
+        .mas-informacion[open] > summary { border-bottom:1px solid #27334b; }
+        .mas-informacion-contenido { max-width:1180px; margin:0 auto; }
+        .mas-informacion-contenido .seccion { padding-top:42px; padding-bottom:42px; }
+        #marketplace .boton-dorado, #ejemplares .boton-dorado, #tu-caballo .boton-dorado { font-size:12px; }
+        #contacto { background:#101827; }
+        .pie { padding-bottom:42px; }
+        .boton-musica { left:12px; bottom:12px; opacity:.88; }
+        button:focus-visible, a:focus-visible, summary:focus-visible { outline:3px solid #f3e5ab; outline-offset:3px; }
+        @media (max-width:700px) {
+            .cabecera { position:sticky; }
+            .cabecera-interior { display:grid; grid-template-columns:1fr auto; padding:9px 13px; gap:9px; }
+            .cabecera-logo { grid-column:1; grid-row:1; justify-self:start; }
+            .cabecera-logo img { height:38px; }
+            .cabecera nav { grid-column:1 / -1; grid-row:2; order:initial; flex-basis:auto; justify-content:center; gap:5px 18px; padding:4px 0; }
+            .cabecera nav a { font-size:12px; }
+            .menu-explorar { grid-column:2; grid-row:1; justify-self:end; }
+            .menu-explorar-panel { right:0; }
+            .cabecera-jugar { grid-column:1 / -1; grid-row:3; width:100%; min-height:44px; }
+            .portada { padding:22px 13px 34px; }
+            .portada h1 { font-size:clamp(27px,8vw,42px); letter-spacing:1.5px; }
+            .hero-banner { border-radius:9px; }
+            .hero-banner-overlay { padding:20px 10px 8px; }
+            .hero-banner-overlay p { font-size:11px; }
+            .boton-jugar-principal { width:100%; max-width:360px; }
+            .otras-formas-contenido { flex-direction:column; }
+            .otras-formas-contenido a, .otras-formas-contenido button { width:100%; }
+            .seccion { padding:42px 14px; }
+            .mas-informacion > summary { padding:20px 14px; font-size:17px; }
+            .gloria-bloque img { max-width:220px; }
+            .boton-musica { bottom:10px; left:10px; }
+        }
+        .controles-tactil, .aviso-peso { display:none; }
+        @media (pointer: coarse) {
+            .controles-teclado { display:none; }
+            .controles-tactil { display:block; }
+            .aviso-peso { display:block; color:var(--suave); font-size:12px; margin:-4px auto 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+        }
     </style>
 </head>
 <body>
@@ -229,18 +310,20 @@
     <header class="cabecera">
         <div class="cabecera-interior">
             <a class="cabecera-logo" href="#inicio"><img src="/Logo_PaginaPrincipal.png" alt="Brisas de Gloria"></a>
-            <nav>
+            <nav aria-label="Navegación principal">
                 <a href="#inicio" class="activo">Inicio</a>
-                <a href="#tu-camino">Tu camino</a>
-                <a href="#carreras">Carreras</a>
-                <a href="#becas">Becas</a>
-                <a href="/tienda_bdg.html">Marketplace</a>
+                <a href="#sobre-el-juego">Cómo se juega</a>
                 <a href="#contacto">Comunidad</a>
-                <a href="#ecosistema">Ecosistema</a>
-                <a href="#whitepaper">Whitepaper</a>
-                <a href="#hoja-de-ruta">Hoja de ruta</a>
             </nav>
-            <a class="boton-dorado" href="#inicio">JUGAR AHORA</a>
+            <details class="menu-explorar">
+                <summary>Explorar <span aria-hidden="true">⌄</span></summary>
+                <div class="menu-explorar-panel">
+                    <a href="/tienda_bdg.html">Marketplace</a>
+                    <a href="/whitepaper.html">Whitepaper</a>
+                    <a href="#mas-informacion">Información del proyecto</a>
+                </div>
+            </details>
+            <button class="boton-dorado cabecera-jugar" type="button" onclick="mostrarJuego()">JUGAR GRATIS</button>
         </div>
     </header>
 
@@ -250,38 +333,31 @@
             <h1>BRISAS DE GLORIA</h1>
 
             <div class="hero-banner">
-                <video autoplay muted loop playsinline poster="/Hero_Poster.jpg" aria-label="Carrera de caballos de Brisas de Gloria">
+                <video autoplay muted loop playsinline poster="/Hero_Poster.jpg" aria-label="Video del juego Brisas de Gloria">
                     <source src="/Hero_BrisasDeGloria.mp4" type="video/mp4">
                 </video>
                 <div class="hero-banner-overlay">
-                    <p>Siente los vientos del triunfo. Vive las brisas del placer. Corre por tu gloria.</p>
+                    <p>Simulación 3D. Tu habilidad decide la carrera.</p>
                 </div>
             </div>
 
-            <p class="hero-subtitulo">El videojuego 3D de carreras de caballos donde gana el que mejor corre.</p>
+            <p class="hero-subtitulo">La simulación 3D donde gana el que mejor corre.</p>
 
-            <div class="botones-portada">
-                <button id="boton-jugar" class="boton-dorado" onclick="mostrarJuego()">JUGAR AHORA</button>
-                <a class="boton-marketplace" href="/tienda_bdg.html">MARKETPLACE</a>
+            <div class="hero-actions">
+                <button id="boton-jugar" class="boton-dorado boton-jugar-principal" onclick="mostrarJuego()">JUGAR GRATIS</button>
+                <p class="aviso-peso">En el teléfono el juego pesa unos 66 MB: mejor con wifi.</p>
+                <a class="hero-como-jugar" href="#sobre-el-juego">¿Cómo se juega?</a>
             </div>
-
-            <!-- ===== ACCESO A MI STUD (24-nov-2026): lleva al stud del jugador dentro del Marketplace ===== -->
-            <a class="acceso-stud" href="/tienda_bdg.html#seccion_stud">
-                <svg viewBox="0 0 120 120" width="58" height="58" aria-hidden="true"><defs><clipPath id="corte_inicio"><path d="M38 34 L52 26 H68 L82 34 L84 104 H36 Z"/></clipPath></defs>
-                    <path d="M38 34 L16 70 L27 77 L43 52 Z" fill="#0033A0" stroke="#000" stroke-opacity=".5"/><path d="M82 34 L104 70 L93 77 L77 52 Z" fill="#0033A0" stroke="#000" stroke-opacity=".5"/>
-                    <path d="M38 34 L52 26 H68 L82 34 L84 104 H36 Z" fill="#0033A0"/><g clip-path="url(#corte_inicio)"><path d="M36 46 L50 30 L86 92 L72 106 Z" fill="#FFD100"/></g>
-                    <path d="M38 34 L52 26 H68 L82 34 L84 104 H36 Z" fill="none" stroke="#000" stroke-opacity=".5"/>
-                    <path d="M47 24 Q60 2 73 24 Z" fill="#FFD100" stroke="#000" stroke-opacity=".5"/><path d="M58 24 H82 Q78 29 60 27 Z" fill="#FFD100" stroke="#000" stroke-opacity=".5"/>
-                    <rect x="22" y="108" width="76" height="9" rx="4" fill="#0033A0" stroke="#000" stroke-opacity=".5"/></svg>
-                <span class="texto"><b>MI STUD</b><small>Tus caballos, tus colores y tus skins</small></span>
-                <span class="flecha">›</span>
-            </a>
-
-            <div class="botones-fila">
-                <a class="boton-secundario" href="https://github.com/brisasdegloriaoficial-glitch/bdg-world/releases/latest/download/BrisasDeGloria.apk">DESCARGAR PARA ANDROID</a>
-                <a class="boton-secundario" href="https://github.com/brisasdegloriaoficial-glitch/bdg-world/releases/latest/download/BrisasDeGloria.exe">DESCARGAR PARA WINDOWS</a>
-                <button id="boton-compartir" class="boton-secundario" onclick="compartirJuego()"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11A2.99 2.99 0 0 0 21 5a3 3 0 1 0-5.91.7L8.04 9.81A2.99 2.99 0 0 0 3 12a3 3 0 0 0 5.04 2.19l7.12 4.16c-.05.21-.08.43-.08.65A2.92 2.92 0 1 0 18 16.08z"/></svg><span id="texto-compartir">COMPARTIR</span></button>
-            </div>
+            <p class="hero-gratis">Entra y prueba el juego gratis. No necesitas comprar nada para comenzar.</p>
+            <details class="otras-formas">
+                <summary>Otras formas de jugar y compartir</summary>
+                <div class="otras-formas-contenido">
+                    <a class="boton-secundario" href="https://github.com/brisasdegloriaoficial-glitch/bdg-world/releases/latest/download/BrisasDeGloria.apk">DESCARGAR PARA ANDROID</a>
+                    <a class="boton-secundario" href="https://github.com/brisasdegloriaoficial-glitch/bdg-world/releases/latest/download/BrisasDeGloria.exe">DESCARGAR PARA WINDOWS</a>
+                    <button id="boton-compartir" class="boton-secundario" onclick="compartirJuego()"><span id="texto-compartir">COMPARTIR JUEGO</span></button>
+                    <a class="boton-secundario" href="/tienda_bdg.html#seccion_stud">MI STUD</a>
+                </div>
+            </details>
 
             <div id="aviso-inicio" class="aviso-desliza" aria-label="Desliza hacia abajo">DESLIZA PARA DESCUBRIR<span>&#8595;</span></div>
 
@@ -295,29 +371,39 @@
 
                     <div id="overlay-tutorial">
                         <h3>Cómo jugar</h3>
-                        <ul>
+                        <ul class="controles-teclado">
                             <li>Flecha arriba: Arrear (acelerar)</li>
                             <li>Flecha abajo: Frenar</li>
                             <li>Flecha izquierda: Cambiar al carril de la izquierda</li>
                             <li>Flecha derecha: Cambiar al carril de la derecha</li>
                             <li>Clic izquierdo del mouse: Látigo izquierdo</li>
                             <li>Clic derecho del mouse: Látigo derecho</li>
-                            <li>Barra espaciadora: Cambiar de mano (alterna el lado del látigo)</li>
                             <li>Tecla Control (Ctrl): Cambiar de cámara</li>
                             <li>Rueda del mouse: Zoom (funciona en todas las cámaras)</li>
                         </ul>
-                        <p class="nota-limite">El arreo y el látigo son limitados durante la carrera — mira el contador en pantalla y úsalos con cuidado. Cambiar de mano te ayuda a repartir el esfuerzo entre los dos lados.</p>
+                        <ul class="controles-tactil">
+                            <li>Izquierda, arriba: Arrear (ARREO)</li>
+                            <li>Izquierda, a los lados: Cambiar de carril</li>
+                            <li>Izquierda, abajo: Cambiar de cámara</li>
+                            <li>Derecha, a los lados: Látigo de ese lado</li>
+                            <li>Derecha, abajo: Frenar</li>
+                            <li>Juntar o separar dos dedos: Zoom</li>
+                        </ul>
+                        <p class="nota-limite">El arreo y el látigo son limitados durante la carrera — mira el contador en pantalla y úsalos con cuidado.</p>
                         <button id="boton-empezar" class="boton-dorado" onclick="empezarJuego()">EMPEZAR</button>
                     </div>
                 </div>
             </div>
 
-            <div class="aviso-instalacion">
+            <details class="otras-formas aviso-seguridad">
+                <summary>Información importante antes de instalar</summary>
+                <div class="aviso-instalacion">
                 <p><strong>Antes de instalar, ten en cuenta:</strong> Brisas de Gloria se encuentra en fase de distribución previa a su publicación en las tiendas oficiales. Por este motivo, tu dispositivo podría mostrar advertencias de seguridad al descargar o abrir el juego.</p>
                 <p><strong>En Android:</strong> es posible que aparezca una advertencia indicando que la aplicación procede de una fuente externa a Google Play. Antes de continuar, verifica que el archivo provenga exclusivamente de nuestra página oficial y revisa los permisos solicitados.</p>
                 <p><strong>En Windows:</strong> Windows puede mostrar una advertencia de Microsoft Defender SmartScreen al ejecutar el instalador. Esto puede ocurrir con aplicaciones nuevas que todavía no cuentan con suficiente reconocimiento. Verifica siempre el origen y la autenticidad del archivo antes de ejecutarlo.</p>
                 <p><strong>Importante:</strong> no ignores las advertencias de seguridad si no puedes verificar el archivo. Descarga siempre Brisas de Gloria desde nuestros canales oficiales.</p>
-            </div>
+                </div>
+            </details>
         </div>
     </div>
 
@@ -364,8 +450,7 @@
                 alternarMusica();
             }
         }
-        document.addEventListener('click', arrancarConPrimerToque, true);
-        document.addEventListener('keydown', arrancarConPrimerToque, true);
+        // La música solo comienza cuando el visitante pulsa su botón: nunca por un toque accidental.
 
         function mostrarJuego() {
             pausarMusica();
@@ -410,7 +495,7 @@
         function compartirJuego() {
             var datos = {
                 title: 'Brisas de Gloria',
-                text: 'Carreras de caballos en 3D. Juega gratis y gana por habilidad.',
+                text: 'Simulación 3D: juega gratis y gana recompensas por habilidad.',
                 url: ENLACE_JUEGO
             };
             if (navigator.share) {
@@ -442,8 +527,10 @@
         <div class="seccion-interior">
             <span class="antetitulo-seccion">El juego</span>
             <h2>Tu habilidad escribe la carrera</h2>
-            <p class="entrada">Aquí no decide la suerte: decides tú. Cómo arrancas, cuándo aceleras, por dónde pasas y cómo usas la fusta marcan la diferencia en cada carrera. Compite contra jugadores reales, sube de nivel, entra a las ligas y forma parte de una comunidad que crece carrera a carrera.</p>
-            <div class="rejilla dos">
+            <p class="entrada">Controla el ritmo, administra la energía y decide cuándo acelerar. Cada carrera pone a prueba tu estrategia y tu habilidad.</p>
+            <details class="desplegable-detalles">
+                <summary>Ver controles de computadora y Android</summary>
+                <div class="rejilla dos">
                 <div class="tarjeta controles-col">
                     <h3>Controles en computadora</h3>
                     <ul>
@@ -451,7 +538,6 @@
                         <li><strong>Flecha abajo:</strong> frenar</li>
                         <li><strong>Flechas izquierda y derecha:</strong> cambiar de carril</li>
                         <li><strong>Clic izquierdo o derecho:</strong> látigo de ese lado</li>
-                        <li><strong>Tecla Alt:</strong> cambiar el látigo de mano</li>
                         <li><strong>Tecla Control:</strong> cambiar de cámara</li>
                         <li><strong>Rueda del mouse:</strong> zoom</li>
                     </ul>
@@ -462,16 +548,19 @@
                         <li><strong>Izquierda, arriba:</strong> arrear (ARREO)</li>
                         <li><strong>Izquierda, a los lados:</strong> cambiar de carril</li>
                         <li><strong>Izquierda, abajo:</strong> cambiar de cámara</li>
-                        <li><strong>Derecha, arriba:</strong> cambiar el látigo de mano (MANO)</li>
                         <li><strong>Derecha, a los lados:</strong> látigo de ese lado</li>
                         <li><strong>Derecha, abajo:</strong> frenar</li>
                         <li><strong>Juntar o separar dos dedos:</strong> zoom</li>
                     </ul>
                 </div>
-            </div>
+                </div>
+            </details>
         </div>
     </section>
 
+    <details class="mas-informacion" id="mas-informacion">
+        <summary>Más sobre Brisas de Gloria <span>Marketplace, becas, caballos y proyecto</span></summary>
+        <div class="mas-informacion-contenido">
     <section id="tu-camino" class="seccion">
         <div class="seccion-interior">
             <span class="antetitulo-seccion">Tu recorrido</span>
@@ -482,13 +571,13 @@
                     <span class="numero">01</span>
                     <h3>Juega gratis</h3>
                     <p>Corre, sube de nivel y haz crecer tu caballo.</p>
-                    <div class="nota"><p>Corre contra la IA o contra otros jugadores que juegan gratis, por el honor de ganar. Puedes llevar tu caballo por todos los niveles sin pagar.</p></div>
+                    <div class="nota"><p>Corre contra la IA o contra otros jugadores que juegan gratis, por el honor de ganar. Puedes llevar tu caballo por todos los niveles sin recargar.</p></div>
                 </div>
                 <div class="tarjeta">
                     <span class="numero">02</span>
                     <h3>Mejora tu caballo</h3>
                     <p>Entrénalo y equípalo con Centi, la moneda gratis del juego.</p>
-                    <div class="nota"><p>Tu caballo mejora a medida que lo entrenas. El entrenamiento y el equipo se pagan con Centi.</p></div>
+                    <div class="nota"><p>Tu caballo mejora a medida que lo entrenas. El entrenamiento y el equipo se adquieren con Centi.</p></div>
                 </div>
                 <div class="tarjeta">
                     <span class="numero">03</span>
@@ -552,7 +641,7 @@
                 </div>
             </div>
             <p class="lema">EN BRISAS DE GLORIA, TU HABILIDAD MARCA LA DIFERENCIA.</p>
-            <p class="nota-pequena">Juego limpio: cualquiera puede jugar; para cobrar recompensas hay que ser mayor de edad. Ni el equipo de Brisas de Gloria ni sus familiares compiten por recompensas.</p>
+            <p class="nota-pequena">Juego limpio: cualquiera puede jugar; para recibir recompensas hay que ser mayor de edad. Ni el equipo de Brisas de Gloria ni sus familiares compiten por recompensas.</p>
         </div>
     </section>
 
@@ -634,6 +723,9 @@
         </div>
     </section>
 
+        </div>
+    </details>
+
     <section id="contacto" class="seccion">
         <div class="seccion-interior">
             <span class="antetitulo-seccion">Comunidad</span>
@@ -661,6 +753,9 @@
         </div>
     </section>
 
+    <details class="mas-informacion documentos-secundarios">
+        <summary>Economía y documentación <span>Consulta los detalles del ecosistema, Whitepaper y hoja de ruta</span></summary>
+        <div class="mas-informacion-contenido">
     <section id="ecosistema" class="seccion">
         <div class="seccion-interior">
             <span class="antetitulo-seccion">Proyecto BDG</span>
@@ -696,7 +791,7 @@
             <span class="antetitulo-seccion">Documentación</span>
             <h2>Whitepaper</h2>
             <p class="entrada">Conoce el proyecto en profundidad: el videojuego, el sistema competitivo, el Marketplace, el token y la hoja de ruta.</p>
-            <div class="botones-portada">
+            <div class="botones-whitepaper">
                 <a class="boton-dorado" href="/whitepaper.html">LEER WHITEPAPER</a>
                 <a class="boton-secundario" href="/Whitepaper_BrisasDeGloria.pdf" download>DESCARGAR EN PDF</a>
             </div>
@@ -740,6 +835,9 @@
         </div>
     </section>
 
+        </div>
+    </details>
+
     <footer class="pie">
         <div class="pie-interior">
             <span>IA PowerTech · Proyecto BDG · Brisas de Gloria</span>
@@ -752,11 +850,12 @@
         function revisarAvisoDesliza() {
             var inicio = document.getElementById('aviso-inicio').getBoundingClientRect();
             var seVeArriba = inicio.top >= 0 && inicio.bottom <= window.innerHeight;
-            var llego = document.getElementById('whitepaper').getBoundingClientRect().top < window.innerHeight * 0.8;
+            var pie = document.querySelector('.pie');
+            var llego = pie && pie.getBoundingClientRect().top < window.innerHeight * 0.8;
             var aviso = document.getElementById('aviso-pantalla');
             aviso.classList.toggle('visible', !seVeArriba);
             aviso.classList.toggle('final', llego);
-            document.getElementById('texto-desliza').textContent = llego ? 'Entra al Whitepaper o descárgalo en PDF' : 'Desliza hacia abajo';
+            document.getElementById('texto-desliza').textContent = llego ? 'Gracias por conocer Brisas de Gloria' : 'Descubre cómo se juega';
         }
         window.addEventListener('scroll', revisarAvisoDesliza);
         window.addEventListener('resize', revisarAvisoDesliza);
