@@ -60,7 +60,7 @@
         /* ---------- cabecera fija ---------- */
         .cabecera { position: sticky; top: 0; z-index: 200; background: rgba(8,12,22,.94); backdrop-filter: blur(6px); border-bottom: 1px solid #1c2740; }
         .cabecera-interior { max-width: 1180px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; gap: 22px; }
-        .cabecera-logo img { display: block; height: 44px; width: auto; border-radius: 4px; }
+        .cabecera-logo { display: none !important; }
         .cabecera nav { flex: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; }
         .cabecera nav a { font-size: 12.5px; color: #cbd5e1; white-space: nowrap; }
         .cabecera nav a:hover, .cabecera nav a.activo { color: var(--dorado-claro); }
@@ -288,6 +288,19 @@
             .boton-musica { bottom:10px; left:10px; }
         }
         .controles-tactil, .aviso-peso { display:none; }
+        #contenedor-juego.visible { position:fixed; inset:0; z-index:2000; margin:0; background:#000; }
+        #contenedor-juego.visible .juego-caja { max-width:none; width:100%; height:100%; border:none; border-radius:0; }
+        #boton-salir-juego { position:absolute; top:10px; right:10px; z-index:10; width:44px; height:44px; border-radius:50%; border:1px solid var(--dorado); background:rgba(11,15,25,.85); color:var(--dorado-claro); font-size:20px; cursor:pointer; }
+        .cargando-juego { color:var(--dorado-claro); font-size:13px; margin-bottom:18px; }
+        @media (max-width:700px) {
+            #aviso-pantalla { display:none; }
+            .cabecera-logo { display:none; }
+            .cabecera nav { grid-row:1; }
+            .cabecera-jugar { grid-row:2; }
+            .menu-explorar { grid-column:1 / -1; grid-row:3; justify-self:center; }
+            .menu-explorar summary { text-align:center; }
+            .menu-explorar-panel { position:static; margin-top:8px; }
+        }
         @media (pointer: coarse) {
             .controles-teclado { display:none; }
             .controles-tactil { display:block; }
@@ -301,11 +314,6 @@
 <body>
     <!-- Musica principal de la pagina. El navegador no deja que suene sola:
          suena cuando la persona toca el boton. -->
-    <audio id="musica-principal" src="/Naci_ParaCabalgar.mp3" preload="none" loop></audio>
-    <button id="boton-musica" class="boton-musica esperando" onclick="alternarMusica()" aria-label="Escuchar Nací para cabalgar">
-        <span class="icono-musica" id="icono-musica">&#9654;</span>
-        <span id="texto-musica">Escucha: Nací para cabalgar</span>
-    </button>
 
     <header class="cabecera">
         <div class="cabecera-interior">
@@ -341,7 +349,7 @@
                 </div>
             </div>
 
-            <p class="hero-subtitulo">La simulación 3D donde gana el que mejor corre.</p>
+            <p class="hero-subtitulo">Juega gratis, sube de nivel y gana recompensas.</p>
 
             <div class="hero-actions">
                 <button id="boton-jugar" class="boton-dorado boton-jugar-principal" onclick="mostrarJuego()">JUGAR GRATIS</button>
@@ -363,6 +371,7 @@
 
             <div id="contenedor-juego">
                 <div class="juego-caja" id="juego-caja">
+                    <button id="boton-salir-juego" type="button" onclick="cerrarJuego()" aria-label="Salir del juego">✕</button>
                     <iframe
                         id="iframe-juego"
                         data-src="/Pre_Alfa_A/BrisasDeGloria.html"
@@ -390,6 +399,7 @@
                             <li>Juntar o separar dos dedos: Zoom</li>
                         </ul>
                         <p class="nota-limite">El arreo y el látigo son limitados durante la carrera — mira el contador en pantalla y úsalos con cuidado.</p>
+                        <p class="cargando-juego">El juego se está cargando. La primera vez puede tardar un poco.</p>
                         <button id="boton-empezar" class="boton-dorado" onclick="empezarJuego()">EMPEZAR</button>
                     </div>
                 </div>
@@ -427,7 +437,7 @@
         // Al abrir la demo se pausa la musica: el juego trae la suya.
         function pausarMusica() {
             var musica = document.getElementById('musica-principal');
-            if (!musica.paused) {
+            if (musica && !musica.paused) {
                 alternarMusica();
             }
         }
@@ -458,9 +468,25 @@
             var iframe = document.getElementById('iframe-juego');
             var boton = document.getElementById('boton-jugar');
 
-            iframe.src = iframe.getAttribute('data-src');
+            if (!iframe.getAttribute('src')) {
+                iframe.src = iframe.getAttribute('data-src');
+            }
             contenedor.classList.add('visible');
+            document.body.style.overflow = 'hidden';
             boton.style.display = 'none';
+        }
+
+        // Salir del juego: cierra la pantalla del juego y vuelve a la pagina.
+        function cerrarJuego() {
+            if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+            var iframe = document.getElementById('iframe-juego');
+            iframe.removeAttribute('src');
+            document.getElementById('contenedor-juego').classList.remove('visible');
+            document.getElementById('overlay-tutorial').style.display = '';
+            document.getElementById('boton-jugar').style.display = '';
+            document.body.style.overflow = '';
         }
 
         function empezarJuego() {
