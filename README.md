@@ -20,7 +20,7 @@
 ## Gratis y con premios
 
 - **Jugar es gratis siempre**, todo lo que quieras.
-- Los niveles 1 al 10 son gratis y son el camino para demostrar tu habilidad. Hoy hay 10 niveles; en la Alfa llegan al 20 y en la Beta a 25, con opción a más.
+- Los primeros niveles son gratis y son el camino para demostrar tu habilidad.
 - **Desde el nivel 11** puedes competir por premios con una recarga de 10 USD: se descuenta 1 USD solo el día que juegas, y cuentan 15 carreras diarias (próximamente).
 - **Becas:** al cerrar cada temporada, el 10% mejor de los que juegan gratis entra becado a la siguiente.
 - **Carreras de 1 USD** desde la Beta, del nivel 20 en adelante: 12 jugadores, 6 USD al primero, 3 al segundo y 1 al tercero.
@@ -31,7 +31,7 @@ Todos los detalles están en el [Whitepaper](https://bdg-world.vercel.app/whitep
 
 ## Estado
 
-Pre-Alfa de pruebas hasta el 31 de octubre de 2026. **Fase Alfa desde el 1 de noviembre de 2026** (niveles hasta el 20). Beta en diciembre de 2026 (25 niveles).
+**Fase Beta.** Lanzamiento público el 1 de diciembre de 2026.
 
 ## Comunidad
 
