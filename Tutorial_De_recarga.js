@@ -1,5 +1,5 @@
 /* ===== AVISO DEL TUTORIAL DE RECARGA (27-nov-2026) =====
-   Pone el aviso "¿Cómo pago? · Mira el tutorial" en:
+   Pone el aviso "¿Cómo recargar? · Mira el tutorial" en:
    - Página principal: arriba de los botones JUGAR AHORA / MARKETPLACE
    - Marketplace: debajo del título MARKETPLACE
    - Mi Stud: encima de la palabra RECARGA
@@ -8,7 +8,7 @@
 
 const AJUSTES_TUTORIAL = {
     video: "/BDG_Tutorial_Recarga_Gloria.mp4",
-    titulo: "¿Cómo pago?",
+    titulo: "¿Cómo recargar?",
     subtitulo: "Mira el tutorial de recarga · 29 s",
     titulo_ventana: "Cómo recargar Gloria",
     color_fondo: "#5a0f1c",        // vino tinto
